@@ -64,7 +64,7 @@ const programDesign = [
     icon: Heart,
     title: "Social Sector Development",
     desc: "A vibrant social sector is essential for resilience and well-being. As a social enterprise, Tigaal works with NGOs, government agencies, and community organizations to strengthen healthcare, education, social services, and social protection systems. Our focus includes advancing inclusive access to social safety nets, shock-responsive and adaptive programs, and sustainable livelihoods. We deliver training on social sector and protection priorities, conduct evidence-based research, and advocate for reforms that promote equity, resilience, and lasting impact.",
-    image: teamImg3,
+    image: communityYouth,
   },
 ];
 
