@@ -88,7 +88,7 @@ const Services = () => {
               </p>
             </div>
             <div className="relative">
-              <img src={teamImg2} alt="Tigaal team in action" className="w-full h-[400px] object-cover rounded-sm" />
+              <img src={groupWorkshop} alt="Tigaal team in action" className="w-full h-[400px] object-cover rounded-sm" />
               <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground px-8 py-5 rounded-sm">
                 <span className="font-display text-3xl">6+</span>
                 <span className="text-sm ml-2 opacity-90">Core Service Areas</span>
