@@ -2,10 +2,20 @@ import { useState } from "react";
 import PageHero from "@/components/PageHero";
 import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 
+import teamAhmed from "@/assets/team-ahmed.png";
+import teamSimon from "@/assets/team-simon.png";
+import teamAbdishakur from "@/assets/team-abdishakur.png";
+import teamAli from "@/assets/team-ali.png";
+import teamKhali from "@/assets/team-khali.png";
+import teamIbrahim from "@/assets/team-ibrahim.png";
+import teamGuled from "@/assets/team-guled.png";
+import teamRidwan from "@/assets/team-ridwan.png";
+
 const teamMembers = [
   {
     name: "Ahmed Ran",
     title: "Research & Business Development Manager",
+    photo: teamAhmed,
     bio: "Ahmed Ran is Practice Lead for Private Sector Development at TIGAAL Consulting and an independent research, monitoring and evaluation, and private sector development specialist with 10 years of experience working across Somalia, Ethiopia, Kenya, and the wider Horn of Africa, with additional project experience in the UK and Turkey. He has built a strong track record leading complex assessments, data systems, and market research assignments for development institutions and bilateral donors, including DANIDA, USAID, the World Bank, IFC, the Netherlands Government, FCDO, SDC, and FAO, amongst others. His work spans the full research and MEL cycle, from instrument design and large-scale field data collection through to analysis, data systems integration, and donor reporting, covering private sector development, value chain and market systems analysis, climate-adaptive sectors, livelihoods programming, and sustainability assessments. Technically, he is proficient across the qualitative and quantitative data analysis and collection tools including STATA, Power BI, NVivo, and ODK, and has designed and built data management systems and real-time reporting dashboards used by major international organisations. Ahmed holds a First Class BSc in International Business from Kingston University, London, and is a native English and Somali speaker.",
   },
   {
