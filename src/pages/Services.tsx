@@ -27,7 +27,7 @@ const services = [
     icon: Megaphone,
     title: "Strategic Communication and Public Relations",
     desc: "We help organizations strengthen their voice, build credibility, and engage diverse stakeholders through communication approaches that amplify development impact. Our services include development-focused content creation, crisis communication, strategic press releases, social media management, event design, multilingual communication solutions, and opinion polls and perception surveys.",
-    image: teamImg3,
+    image: trainingSession2,
     highlights: ["Content Creation", "Crisis Communication", "Social Media", "Perception Surveys"],
   },
   {
