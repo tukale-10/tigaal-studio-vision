@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
-        display: ["Playfair Display", "serif"],
+        display: ["DM Serif Display", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -103,15 +103,25 @@ export default {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "ken-burns": {
+          from: { transform: "scale(1.0)" },
+          to: { transform: "scale(1.08)" },
+        },
+        "slide-up-fade": {
+          from: { opacity: "0", transform: "translateY(60px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in-up": "fade-in-up 0.7s ease-out forwards",
-        "fade-in": "fade-in 0.5s ease-out forwards",
+        "fade-in-up": "fade-in-up 0.8s cubic-bezier(0.16,1,0.3,1) forwards",
+        "fade-in": "fade-in 0.6s ease-out forwards",
         "slide-in-left": "slide-in-left 0.7s ease-out forwards",
         "slide-in-right": "slide-in-right 0.7s ease-out forwards",
         "count-up": "count-up 0.5s ease-out forwards",
+        "ken-burns": "ken-burns 20s ease-out forwards",
+        "slide-up-fade": "slide-up-fade 1s cubic-bezier(0.16,1,0.3,1) forwards",
       },
     },
   },
