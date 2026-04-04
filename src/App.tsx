@@ -14,6 +14,8 @@ import Projects from "./pages/Projects";
 import Team from "./pages/Team";
 import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
+import NewsUpdates from "./pages/NewsUpdates";
+import Publications from "./pages/Publications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/team" element={<Team />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/resources/news" element={<NewsUpdates />} />
+          <Route path="/resources/publications" element={<Publications />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
