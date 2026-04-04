@@ -40,9 +40,9 @@ const AdminNews = () => {
   const openEdit = (item: NewsItem) => { setCreating(false); setEditing(item); setForm({ title: item.title, excerpt: item.excerpt, content: item.content || [], category: item.category, published_date: item.published_date, published: item.published }); };
 
   const save = async () => {
-    const payload = { ...form, content: form.content as unknown as Record<string, unknown>[] };
+    const payload = { ...form, content: JSON.parse(JSON.stringify(form.content)) };
     if (editing) await supabase.from("news_updates").update(payload).eq("id", editing.id);
-    else await supabase.from("news_updates").insert(payload);
+    else await supabase.from("news_updates").insert([payload]);
     setEditing(null); setCreating(false); load();
   };
 
