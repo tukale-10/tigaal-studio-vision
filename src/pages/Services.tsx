@@ -13,7 +13,7 @@ const services = [
     icon: GraduationCap,
     title: "Capacity Development and Trainings",
     desc: "We deliver evidence-based policy research and strategic analyses that inform decision-making and strengthen development outcomes. Our work spans social policy papers, public policy strategies, learning briefs, stakeholder mapping, and political economy assessments. We bring practical experience in shock-responsive social protection, including the design of social safety net delivery in fragile and post-conflict settings, ensuring programmes remain responsive to evolving risks.",
-    image: teamImg1,
+    image: trainingSession1,
     highlights: ["Policy Research", "Strategic Analyses", "Social Protection", "Safety Net Delivery"],
   },
   {
