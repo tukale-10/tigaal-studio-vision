@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import logo from "@/assets/tigaal-logo.webp";
 import img1 from "@/assets/team-workshop-1.jpg";
 import img2 from "@/assets/team-workshop-2.jpg";
