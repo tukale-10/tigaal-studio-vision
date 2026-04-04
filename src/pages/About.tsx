@@ -1,8 +1,8 @@
 import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronRight, Target, Eye } from "lucide-react";
-import teamImg from "@/assets/team-workshop-2.jpg";
-import presentationImg from "@/assets/team-presentation-1.jpg";
+import teamImg from "@/assets/training-session-1.jpg";
+import presentationImg from "@/assets/training-session-2.jpg";
 
 const coreValues = [
   "Innovating for inclusive and sustainable development.",

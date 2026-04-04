@@ -2,15 +2,19 @@ import { Link } from "react-router-dom";
 import teamImg1 from "@/assets/team-workshop-1.jpg";
 import teamImg2 from "@/assets/team-presentation-1.jpg";
 import teamImg3 from "@/assets/team-workshop-3.jpg";
+import trainingSession1 from "@/assets/training-session-1.jpg";
+import groupWorkshop from "@/assets/group-workshop.jpg";
+import mogadishuSkyline from "@/assets/mogadishu-skyline.jpg";
+import mogadishuWaterfront from "@/assets/mogadishu-waterfront.jpg";
 
 const heroImages: Record<string, string> = {
   "Who We Are": teamImg1,
-  "Services": teamImg2,
-  "Our Approach": teamImg3,
-  "Projects": teamImg1,
+  "Services": trainingSession1,
+  "Our Approach": groupWorkshop,
+  "Projects": mogadishuSkyline,
   "Our Team": teamImg2,
-  "Partners": teamImg3,
-  "Contact": teamImg1,
+  "Partners": mogadishuWaterfront,
+  "Contact": teamImg3,
 };
 
 interface PageHeroProps {
