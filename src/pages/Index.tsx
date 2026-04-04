@@ -1,8 +1,3 @@
-import { Link } from "react-router-dom";
-import {
-  GraduationCap, BarChart3, Megaphone, TrendingUp, Leaf, Landmark,
-  ArrowRight, MapPin, Shield, Users, Cpu, DollarSign, ChevronRight,
-} from "lucide-react";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSnapshot from "@/components/home/AboutSnapshot";
 import ServicesGrid from "@/components/home/ServicesGrid";
