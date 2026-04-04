@@ -20,7 +20,7 @@ const services = [
     icon: BarChart3,
     title: "Monitoring, Evaluation and Learning",
     desc: "We design customized frameworks for outcome and impact evaluations, emphasizing objectivity and accuracy. Our services include formative assessments, end-of-year evaluations, mid-term reviews, third-party monitoring (TPMs), and baseline/endline evaluations for complex programmes. We combine strategic planning, performance monitoring, and organizational development tools to help clients drive measurable, accountable results.",
-    image: teamImg2,
+    image: groupWorkshop,
     highlights: ["Impact Evaluations", "Third-Party Monitoring", "Performance Monitoring", "Baseline Studies"],
   },
   {
