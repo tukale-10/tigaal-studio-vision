@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 import teamAhmed from "@/assets/team-ahmed.png";
 import teamSimon from "@/assets/team-simon.png";
@@ -69,51 +69,73 @@ const Team = () => {
     <main>
       <PageHero title="Our Team" subtitle="Decades of combined expertise across research, governance, and development" breadcrumb="Our Team" />
 
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="text-center mb-16">
-            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">The People</span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Meet the <span className="text-accent italic">Experts</span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              TIGAAL's strength lies in the calibre and diversity of its team. Our professionals bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development. Each team member combines international standards of practice with deep contextual knowledge of Somalia and the broader Horn of Africa.
-            </p>
+      {/* Intro Section */}
+      <section className="py-20 lg:py-28 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">The People</span>
+              <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-foreground leading-tight">
+                Meet the <span className="text-accent italic">Experts</span>
+              </h2>
+            </div>
+            <div>
+              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                TIGAAL's strength lies in the calibre and diversity of its team. Our professionals bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development. Each team member combines international standards of practice with deep contextual knowledge of Somalia and the broader Horn of Africa.
+              </p>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden">
+      {/* Team Grid */}
+      <section className="py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             {teamMembers.map((member, i) => {
               const isExpanded = expandedIndex === i;
 
               return (
                 <div
                   key={member.name}
-                  className="bg-background p-8 lg:p-10 group hover:bg-accent/[0.02] transition-all duration-500"
+                  className="bg-background border border-border rounded-sm overflow-hidden group hover:border-accent/40 hover:shadow-xl transition-all duration-500"
                 >
-                  <div className="flex items-start gap-5 mb-5">
-                    <div className="w-16 h-16 rounded-sm flex-shrink-0 overflow-hidden">
-                      <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
+                  {/* Top accent line */}
+                  <div className="h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                  <div className="p-8 lg:p-10">
+                    <div className="flex items-start gap-6 mb-6">
+                      {/* Larger photo */}
+                      <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-sm flex-shrink-0 overflow-hidden bg-secondary">
+                        <img
+                          src={member.photo}
+                          alt={member.name}
+                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        />
+                      </div>
+                      <div className="pt-2">
+                        <h3 className="font-display text-2xl lg:text-2xl text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
+                          {member.name}
+                        </h3>
+                        <p className="text-accent text-base font-semibold tracking-wide">{member.title}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-display text-lg text-foreground">{member.name}</h3>
-                      <p className="text-accent text-sm font-medium mt-0.5">{member.title}</p>
-                    </div>
+
+                    <p className={`text-base text-muted-foreground leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>
+                      {member.bio}
+                    </p>
+
+                    <button
+                      onClick={() => setExpandedIndex(isExpanded ? null : i)}
+                      className="flex items-center gap-2 mt-5 text-accent text-sm font-bold tracking-wide uppercase hover:gap-3 transition-all"
+                    >
+                      {isExpanded ? (
+                        <>Show Less <ChevronUp size={16} /></>
+                      ) : (
+                        <>Read Full Bio <ChevronDown size={16} /></>
+                      )}
+                    </button>
                   </div>
-
-                  <p className={`text-muted-foreground text-sm leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>
-                    {member.bio}
-                  </p>
-
-                  <button
-                    onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                    className="flex items-center gap-1.5 mt-4 text-accent text-xs font-semibold tracking-wide uppercase hover:gap-2.5 transition-all"
-                  >
-                    {isExpanded ? (
-                      <>Show Less <ChevronUp size={14} /></>
-                    ) : (
-                      <>Read Full Bio <ChevronDown size={14} /></>
-                    )}
-                  </button>
                 </div>
               );
             })}
