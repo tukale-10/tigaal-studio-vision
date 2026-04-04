@@ -1,54 +1,54 @@
 import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
 import { GraduationCap, BarChart3, Megaphone, TrendingUp, Leaf, Landmark, Scale, Heart, ArrowRight, CheckCircle2 } from "lucide-react";
-import teamImg1 from "@/assets/team-workshop-1.jpg";
-import teamImg2 from "@/assets/team-presentation-1.jpg";
-import teamImg3 from "@/assets/team-workshop-3.jpg";
-import teamImg4 from "@/assets/team-workshop-2.jpg";
-import teamImg5 from "@/assets/team-presentation-2.jpg";
-import heroImg from "@/assets/hero-workshop.jpg";
+import trainingSession1 from "@/assets/training-session-1.jpg";
+import trainingSession2 from "@/assets/training-session-2.jpg";
+import groupWorkshop from "@/assets/group-workshop.jpg";
+import communityYouth from "@/assets/community-youth.jpg";
+import mogadishuSkyline from "@/assets/mogadishu-skyline.jpg";
+import mogadishuWaterfront from "@/assets/mogadishu-waterfront.jpg";
 
 const services = [
   {
     icon: GraduationCap,
     title: "Capacity Development and Trainings",
     desc: "We deliver evidence-based policy research and strategic analyses that inform decision-making and strengthen development outcomes. Our work spans social policy papers, public policy strategies, learning briefs, stakeholder mapping, and political economy assessments. We bring practical experience in shock-responsive social protection, including the design of social safety net delivery in fragile and post-conflict settings, ensuring programmes remain responsive to evolving risks.",
-    image: teamImg1,
+    image: trainingSession1,
     highlights: ["Policy Research", "Strategic Analyses", "Social Protection", "Safety Net Delivery"],
   },
   {
     icon: BarChart3,
     title: "Monitoring, Evaluation and Learning",
     desc: "We design customized frameworks for outcome and impact evaluations, emphasizing objectivity and accuracy. Our services include formative assessments, end-of-year evaluations, mid-term reviews, third-party monitoring (TPMs), and baseline/endline evaluations for complex programmes. We combine strategic planning, performance monitoring, and organizational development tools to help clients drive measurable, accountable results.",
-    image: teamImg2,
+    image: groupWorkshop,
     highlights: ["Impact Evaluations", "Third-Party Monitoring", "Performance Monitoring", "Baseline Studies"],
   },
   {
     icon: Megaphone,
     title: "Strategic Communication and Public Relations",
     desc: "We help organizations strengthen their voice, build credibility, and engage diverse stakeholders through communication approaches that amplify development impact. Our services include development-focused content creation, crisis communication, strategic press releases, social media management, event design, multilingual communication solutions, and opinion polls and perception surveys.",
-    image: teamImg3,
+    image: trainingSession2,
     highlights: ["Content Creation", "Crisis Communication", "Social Media", "Perception Surveys"],
   },
   {
     icon: TrendingUp,
     title: "Market Studies and Assessments",
     desc: "We provide actionable insights into consumer behaviours, market trends, and competitive landscapes, enabling businesses and policymakers to make informed decisions. Our assessments involve comprehensive data collection through surveys, focus group discussions, and stakeholder interviews to understand supply and demand dynamics, identify market gaps, and evaluate feasibility of new products and services.",
-    image: teamImg4,
+    image: mogadishuSkyline,
     highlights: ["Consumer Insights", "Market Trends", "Feasibility Studies", "Data Collection"],
   },
   {
     icon: Leaf,
     title: "Climate Resilience & Adaptation",
     desc: "We support the design of climate-responsive policies, regulatory frameworks, and sustainable programmes aligned with regional and global adaptation agendas. By fostering partnerships with governments, communities, and development partners, we build adaptive capacities, protect vulnerable populations, and advance long-term resilience to the climate crisis across Somalia and the Horn of Africa.",
-    image: teamImg5,
+    image: communityYouth,
     highlights: ["Climate Policy", "Regulatory Frameworks", "Adaptive Capacity", "Resilience Building"],
   },
   {
     icon: Landmark,
     title: "Private Sector Development & Financial Inclusion",
     desc: "We promote private sector growth and extend financial services to underserved communities as a pathway to Somalia's economic recovery. Working with diverse stakeholders, we address structural challenges, encourage entrepreneurship, and streamline regulatory environments. Our services guide entrepreneurs on market strategies, financing, and building a conducive environment for sustainable business growth.",
-    image: heroImg,
+    image: mogadishuWaterfront,
     highlights: ["Financial Services", "Entrepreneurship", "Market Strategies", "Economic Recovery"],
   },
 ];
@@ -58,13 +58,13 @@ const programDesign = [
     icon: Scale,
     title: "Governance & Rule of Law",
     desc: "Strong governance and effective rule of law are cornerstones of peace, stability, and inclusive development. This portfolio provides integrated support to strengthen public institutions, enhance transparency, and promote citizen trust in governance systems. Our approach combines rigorous policy research, institutional diagnostics, and capacity development with practical advisory services tailored to fragile and conflict-affected contexts. Our work also includes supporting justice sector institutions in improving access, efficiency, and responsiveness to citizens' needs. By applying global best practices and conflict-sensitive methodologies, we help shape reforms that align with democratic principles and foster sustainable state-building.",
-    image: teamImg1,
+    image: trainingSession1,
   },
   {
     icon: Heart,
     title: "Social Sector Development",
     desc: "A vibrant social sector is essential for resilience and well-being. As a social enterprise, Tigaal works with NGOs, government agencies, and community organizations to strengthen healthcare, education, social services, and social protection systems. Our focus includes advancing inclusive access to social safety nets, shock-responsive and adaptive programs, and sustainable livelihoods. We deliver training on social sector and protection priorities, conduct evidence-based research, and advocate for reforms that promote equity, resilience, and lasting impact.",
-    image: teamImg3,
+    image: communityYouth,
   },
 ];
 
@@ -88,7 +88,7 @@ const Services = () => {
               </p>
             </div>
             <div className="relative">
-              <img src={teamImg2} alt="Tigaal team in action" className="w-full h-[400px] object-cover rounded-sm" />
+              <img src={groupWorkshop} alt="Tigaal team in action" className="w-full h-[400px] object-cover rounded-sm" />
               <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground px-8 py-5 rounded-sm">
                 <span className="font-display text-3xl">6+</span>
                 <span className="text-sm ml-2 opacity-90">Core Service Areas</span>
