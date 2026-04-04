@@ -84,7 +84,6 @@ const Team = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden">
             {teamMembers.map((member, i) => {
               const isExpanded = expandedIndex === i;
-              const initials = member.name.split(" ").map(n => n[0]).join("");
 
               return (
                 <div
