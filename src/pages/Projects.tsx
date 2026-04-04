@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { X } from "lucide-react";
+import { X, ArrowUpRight } from "lucide-react";
 
 const pastProjects = [
   {
@@ -118,71 +118,99 @@ const Projects = () => {
     <main>
       <PageHero title="Our Projects" subtitle="Tailored Solutions to Complex Problems" breadcrumb="Projects" />
 
-      <section className="py-20">
+      <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Tab Filters */}
-          <div className="flex justify-center gap-4 mb-12">
+          <div className="flex justify-center gap-1 mb-16">
             <button
               onClick={() => setTab("past")}
-              className={`px-8 py-3 rounded-md font-semibold transition-colors ${
-                tab === "past" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+              className={`px-8 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 rounded-sm ${
+                tab === "past"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:text-foreground"
               }`}
             >
               Past Projects
             </button>
             <button
               onClick={() => setTab("current")}
-              className={`px-8 py-3 rounded-md font-semibold transition-colors relative ${
-                tab === "current" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+              className={`px-8 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 rounded-sm relative ${
+                tab === "current"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:text-foreground"
               }`}
             >
               Current Projects
+              <span className="ml-2 w-2 h-2 bg-accent rounded-full inline-block animate-pulse" />
             </button>
           </div>
 
           {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {projects.map((project, i) => (
-              <button
-                key={project.id}
-                onClick={() => setSelectedProject(project)}
-                className="text-left bg-background border border-border rounded-xl p-6 hover:shadow-lg hover:border-accent/50 transition-all duration-300 group"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-accent text-sm font-semibold">
-                    {tab === "past" ? `${String(i + 1).padStart(2, "0")}` : ""}
-                  </span>
-                  {"active" in project && project.active && (
-                    <span className="flex items-center gap-1.5 text-xs font-medium text-accent">
-                      <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                      Active
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden">
+              {projects.map((project, i) => (
+                <button
+                  key={project.id}
+                  onClick={() => setSelectedProject(project)}
+                  className="text-left bg-background p-8 lg:p-10 hover:bg-accent/[0.03] transition-all duration-500 group relative"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="font-display text-3xl text-accent/15">
+                      {String(i + 1).padStart(2, "0")}
                     </span>
-                  )}
-                </div>
-                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-accent transition-colors line-clamp-2">{project.title}</h3>
-                <p className="text-sm text-muted-foreground mb-2">{project.client}</p>
-                <p className="text-sm text-muted-foreground line-clamp-3">{project.desc}</p>
-              </button>
-            ))}
+                    {"active" in project && project.active && (
+                      <span className="flex items-center gap-1.5 text-xs font-medium text-accent">
+                        <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                        Active
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-accent font-medium mb-3 tracking-wide uppercase">{project.client}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">{project.desc}</p>
+                  <ArrowUpRight
+                    size={16}
+                    className="absolute top-8 right-8 text-muted-foreground/20 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/50 backdrop-blur-sm" onClick={() => setSelectedProject(null)}>
-          <div className="bg-background rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-start mb-4">
-              <span className="text-accent text-sm font-semibold">{selectedProject.client}</span>
-              <button onClick={() => setSelectedProject(null)} className="text-muted-foreground hover:text-foreground">
-                <X size={20} />
-              </button>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/60 backdrop-blur-md"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="bg-background rounded-sm max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal header */}
+            <div className="p-8 pb-0">
+              <div className="flex justify-between items-start mb-6">
+                <span className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">{selectedProject.client}</span>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="w-10 h-10 rounded-sm bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <h2 className="font-display text-2xl text-foreground mb-2">{selectedProject.title}</h2>
+              {"subtitle" in selectedProject && selectedProject.subtitle && (
+                <h3 className="text-muted-foreground mb-2">{selectedProject.subtitle}</h3>
+              )}
             </div>
-            <h2 className="text-2xl font-bold text-foreground mb-2">{selectedProject.title}</h2>
-            {"subtitle" in selectedProject && selectedProject.subtitle && (
-              <h3 className="text-lg text-muted-foreground mb-4">{selectedProject.subtitle}</h3>
-            )}
-            <p className="text-muted-foreground leading-relaxed">{selectedProject.desc}</p>
+            <div className="w-full h-px bg-border my-6" />
+            <div className="px-8 pb-8">
+              <p className="text-muted-foreground leading-relaxed">{selectedProject.desc}</p>
+            </div>
           </div>
         </div>
       )}

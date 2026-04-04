@@ -1,5 +1,17 @@
 import { Link } from "react-router-dom";
-import aboutHero from "@/assets/about-hero.jpg";
+import teamImg1 from "@/assets/team-workshop-1.jpg";
+import teamImg2 from "@/assets/team-presentation-1.jpg";
+import teamImg3 from "@/assets/team-workshop-3.jpg";
+
+const heroImages: Record<string, string> = {
+  "Who We Are": teamImg1,
+  "Services": teamImg2,
+  "Our Approach": teamImg3,
+  "Projects": teamImg1,
+  "Our Team": teamImg2,
+  "Partners": teamImg3,
+  "Contact": teamImg1,
+};
 
 interface PageHeroProps {
   title: string;
@@ -8,30 +20,40 @@ interface PageHeroProps {
 }
 
 const PageHero = ({ title, subtitle, breadcrumb }: PageHeroProps) => {
+  const bgImage = heroImages[breadcrumb || title] || teamImg1;
+
   return (
-    <section className="relative h-[340px] md:h-[400px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[400px] md:h-[480px] flex items-end overflow-hidden">
       <img
-        src={aboutHero}
+        src={bgImage}
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
-        width={1920}
-        height={800}
+        loading="eager"
+        style={{ animation: "ken-burns 25s ease-out forwards" }}
       />
-      <div className="absolute inset-0 bg-primary/85" />
-      <div className="relative z-10 text-center px-4">
+      <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/75 to-primary/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent" />
+
+      <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-14 md:pb-20">
         {breadcrumb && (
-          <div className="text-primary-foreground/60 text-sm mb-3">
+          <div className="text-primary-foreground/50 text-xs tracking-[0.2em] uppercase mb-4 animate-fade-in">
             <Link to="/" className="hover:text-accent transition-colors">Home</Link>
-            <span className="mx-2">›</span>
-            <span className="text-primary-foreground/80">{breadcrumb}</span>
+            <span className="mx-3">—</span>
+            <span className="text-primary-foreground/70">{breadcrumb}</span>
           </div>
         )}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4">{title}</h1>
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground leading-[1.1] mb-4 animate-slide-up-fade">
+          {title}
+        </h1>
         {subtitle && (
-          <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto">{subtitle}</p>
+          <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl leading-relaxed animate-slide-up-fade" style={{ animationDelay: "0.1s" }}>
+            {subtitle}
+          </p>
         )}
       </div>
+
+      {/* Geometric accent */}
+      <div className="absolute bottom-0 right-0 w-40 h-40 border-l-2 border-t-2 border-accent/20 hidden lg:block" />
     </section>
   );
 };
