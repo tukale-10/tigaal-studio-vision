@@ -57,6 +57,7 @@ const teamMembers = [
   {
     name: "Ridwan Tukale",
     title: "Communications & Digital Strategy Specialist",
+    photo: teamRidwan,
     bio: "Eight years of experience in strategic communications, media production, and digital strategy across Somalia, Somaliland, and Ethiopia, working with major donor-funded programmes including USAID, EU, UN agencies, and international NGOs. Specializes in visibility and documentation for complex development programmes, human interest storytelling, brand identity systems, and multimedia content production. Brings a technical edge with a computer science background, enabling data-driven communications approaches and digital tool development for M&E reporting and programme visibility. Has produced communication strategies, field documentation, and stakeholder engagement campaigns for organizations including FAO, IOM, and World Vision. At Tigaal, Ridwan leads communications and content strategy across client engagements, ensuring programme achievements are effectively captured, packaged, and amplified to donor and public audiences. Fluent in English, Somali, Arabic, and Amharic.",
   },
 ];
