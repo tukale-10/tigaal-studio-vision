@@ -34,8 +34,8 @@ const programDesign = [
 ];
 
 const getIcon = (name: string) => {
-  const Icon = (LucideIcons as Record<string, React.ComponentType<{ className?: string; size?: number }>>)[name];
-  return Icon || LucideIcons.Briefcase;
+  const icons = LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string; size?: number }>>;
+  return icons[name] || LucideIcons.Briefcase;
 };
 
 const Services = () => {
