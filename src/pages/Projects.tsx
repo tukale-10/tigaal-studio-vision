@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { X, ArrowUpRight } from "lucide-react";
+import { X, ArrowUpRight, Briefcase, TrendingUp } from "lucide-react";
 
 const pastProjects = [
   {
@@ -118,62 +118,104 @@ const Projects = () => {
     <main>
       <PageHero title="Our Projects" subtitle="Tailored Solutions to Complex Problems" breadcrumb="Projects" />
 
-      <section className="py-24 lg:py-32">
+      {/* Intro + Stats */}
+      <section className="py-20 lg:py-28 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">Our Portfolio</span>
+              <h2 className="font-display text-4xl lg:text-5xl text-foreground mb-6 leading-tight">
+                Delivering Impact Across Somalia and the Horn of Africa
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                From third-party monitoring for World Bank–funded programs to strategic communications for the Supreme Court, 
+                our portfolio reflects deep expertise across governance, humanitarian response, financial inclusion, and peacebuilding.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { value: "80+", label: "Projects Completed" },
+                { value: "15+", label: "Strategic Partners" },
+                { value: "60+", label: "Districts Covered" },
+                { value: "7+", label: "Years of Impact" },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-background rounded-sm p-8 text-center border border-border">
+                  <span className="font-display text-4xl lg:text-5xl text-accent block mb-2">{stat.value}</span>
+                  <span className="text-base text-muted-foreground font-medium">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tabs + Grid */}
+      <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Tab Filters */}
-          <div className="flex justify-center gap-1 mb-16">
+          <div className="flex justify-center gap-2 mb-16">
             <button
               onClick={() => setTab("past")}
-              className={`px-8 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 rounded-sm ${
+              className={`px-10 py-4 text-base font-semibold tracking-wide uppercase transition-all duration-300 rounded-sm flex items-center gap-3 ${
                 tab === "past"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:text-foreground"
+                  ? "bg-primary text-primary-foreground shadow-lg"
+                  : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
               }`}
             >
+              <Briefcase size={20} />
               Past Projects
             </button>
             <button
               onClick={() => setTab("current")}
-              className={`px-8 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 rounded-sm relative ${
+              className={`px-10 py-4 text-base font-semibold tracking-wide uppercase transition-all duration-300 rounded-sm flex items-center gap-3 relative ${
                 tab === "current"
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:text-foreground"
+                  ? "bg-primary text-primary-foreground shadow-lg"
+                  : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
               }`}
             >
+              <TrendingUp size={20} />
               Current Projects
-              <span className="ml-2 w-2 h-2 bg-accent rounded-full inline-block animate-pulse" />
+              <span className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse" />
             </button>
           </div>
 
           {/* Project Grid */}
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-sm overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project, i) => (
                 <button
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className="text-left bg-background p-8 lg:p-10 hover:bg-accent/[0.03] transition-all duration-500 group relative"
+                  className="text-left bg-background border border-border rounded-sm p-10 lg:p-12 hover:border-accent/40 hover:shadow-xl transition-all duration-500 group relative"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <span className="font-display text-3xl text-accent/15">
+                  <div className="flex items-start justify-between mb-6">
+                    <span className="font-display text-5xl text-accent/10 leading-none">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    {"active" in project && project.active && (
-                      <span className="flex items-center gap-1.5 text-xs font-medium text-accent">
-                        <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                        Active
-                      </span>
-                    )}
+                    <div className="flex items-center gap-3">
+                      {"active" in project && project.active && (
+                        <span className="flex items-center gap-2 text-sm font-semibold text-accent bg-accent/10 px-3 py-1.5 rounded-sm">
+                          <span className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse" />
+                          Active
+                        </span>
+                      )}
+                      <ArrowUpRight
+                        size={22}
+                        className="text-muted-foreground/30 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                      />
+                    </div>
                   </div>
-                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">
+                  <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 leading-snug">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-accent font-medium mb-3 tracking-wide uppercase">{project.client}</p>
-                  <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">{project.desc}</p>
-                  <ArrowUpRight
-                    size={16}
-                    className="absolute top-8 right-8 text-muted-foreground/20 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
+                  {"subtitle" in project && project.subtitle && (
+                    <p className="text-base text-muted-foreground mb-3 italic">{project.subtitle}</p>
+                  )}
+                  <p className="text-sm text-accent font-semibold mb-4 tracking-[0.15em] uppercase">{project.client}</p>
+                  <p className="text-base text-muted-foreground line-clamp-3 leading-relaxed">{project.desc}</p>
+                  
+                  {/* Bottom accent line */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-accent group-hover:w-full transition-all duration-500" />
                 </button>
               ))}
             </div>
@@ -188,28 +230,31 @@ const Projects = () => {
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="bg-background rounded-sm max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl animate-scale-in"
+            className="bg-background rounded-sm max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Modal accent bar */}
+            <div className="h-1.5 bg-accent w-full" />
+
             {/* Modal header */}
-            <div className="p-8 pb-0">
-              <div className="flex justify-between items-start mb-6">
-                <span className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">{selectedProject.client}</span>
+            <div className="p-10 pb-0">
+              <div className="flex justify-between items-start mb-8">
+                <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase">{selectedProject.client}</span>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="w-10 h-10 rounded-sm bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+                  className="w-12 h-12 rounded-sm bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
                 >
-                  <X size={18} />
+                  <X size={22} />
                 </button>
               </div>
-              <h2 className="font-display text-2xl text-foreground mb-2">{selectedProject.title}</h2>
+              <h2 className="font-display text-3xl lg:text-4xl text-foreground mb-3 leading-tight">{selectedProject.title}</h2>
               {"subtitle" in selectedProject && selectedProject.subtitle && (
-                <h3 className="text-muted-foreground mb-2">{selectedProject.subtitle}</h3>
+                <h3 className="text-lg text-muted-foreground mb-2">{selectedProject.subtitle}</h3>
               )}
             </div>
-            <div className="w-full h-px bg-border my-6" />
-            <div className="px-8 pb-8">
-              <p className="text-muted-foreground leading-relaxed">{selectedProject.desc}</p>
+            <div className="w-full h-px bg-border my-8" />
+            <div className="px-10 pb-10">
+              <p className="text-lg text-muted-foreground leading-relaxed">{selectedProject.desc}</p>
             </div>
           </div>
         </div>
