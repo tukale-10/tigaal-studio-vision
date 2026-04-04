@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Linkedin } from "lucide-react";
 
 const teamMembers = [
   {
@@ -50,41 +50,57 @@ const Team = () => {
 
   return (
     <main>
-      <PageHero title="Our Team" breadcrumb="Our Team" />
+      <PageHero title="Our Team" subtitle="Decades of combined expertise across research, governance, and development" breadcrumb="Our Team" />
 
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <p className="text-lg text-muted-foreground leading-relaxed text-center mb-14 max-w-4xl mx-auto">
-            TIGAAL's strength lies in the calibre and diversity of its team. Our professionals bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development. Each team member combines international standards of practice with deep contextual knowledge of Somalia and the broader Horn of Africa.
-          </p>
+      <section className="py-24 lg:py-32">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="text-center mb-16">
+            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">The People</span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
+              Meet the <span className="text-accent italic">Experts</span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              TIGAAL's strength lies in the calibre and diversity of its team. Our professionals bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development. Each team member combines international standards of practice with deep contextual knowledge of Somalia and the broader Horn of Africa.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {teamMembers.map((member, i) => (
-              <div key={member.name} className="bg-background border border-border rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-bold text-xl">{member.name.split(" ").map(n => n[0]).join("")}</span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
-                    <p className="text-accent text-sm font-medium">{member.title}</p>
-                  </div>
-                </div>
-                <p className={`text-muted-foreground text-sm leading-relaxed ${expandedIndex === i ? "" : "line-clamp-3"}`}>
-                  {member.bio}
-                </p>
-                <button
-                  onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
-                  className="flex items-center gap-1 mt-3 text-accent text-sm font-medium hover:underline"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border rounded-sm overflow-hidden">
+            {teamMembers.map((member, i) => {
+              const isExpanded = expandedIndex === i;
+              const initials = member.name.split(" ").map(n => n[0]).join("");
+
+              return (
+                <div
+                  key={member.name}
+                  className="bg-background p-8 lg:p-10 group hover:bg-accent/[0.02] transition-all duration-500"
                 >
-                  {expandedIndex === i ? (
-                    <>Show Less <ChevronUp size={14} /></>
-                  ) : (
-                    <>Read More <ChevronDown size={14} /></>
-                  )}
-                </button>
-              </div>
-            ))}
+                  <div className="flex items-start gap-5 mb-5">
+                    <div className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary-foreground font-display text-lg">{initials}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-display text-lg text-foreground">{member.name}</h3>
+                      <p className="text-accent text-sm font-medium mt-0.5">{member.title}</p>
+                    </div>
+                  </div>
+
+                  <p className={`text-muted-foreground text-sm leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>
+                    {member.bio}
+                  </p>
+
+                  <button
+                    onClick={() => setExpandedIndex(isExpanded ? null : i)}
+                    className="flex items-center gap-1.5 mt-4 text-accent text-xs font-semibold tracking-wide uppercase hover:gap-2.5 transition-all"
+                  >
+                    {isExpanded ? (
+                      <>Show Less <ChevronUp size={14} /></>
+                    ) : (
+                      <>Read Full Bio <ChevronDown size={14} /></>
+                    )}
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

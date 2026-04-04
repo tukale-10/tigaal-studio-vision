@@ -1,5 +1,6 @@
 import PageHero from "@/components/PageHero";
-import { GraduationCap, BarChart3, Megaphone, TrendingUp, Leaf, Landmark, Scale, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
+import { GraduationCap, BarChart3, Megaphone, TrendingUp, Leaf, Landmark, Scale, Heart, ArrowRight, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
@@ -53,30 +54,37 @@ const Services = () => {
       <PageHero title="Our Services" subtitle="Research, Training, and Advocacy for a Better Tomorrow" breadcrumb="Services" />
 
       {/* Intro */}
-      <section className="py-16">
+      <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+          <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">What We Deliver</span>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">Integrated Solutions for <span className="text-accent italic">Complex</span> Challenges</h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             We provide integrated services that combine policy research, strategic advisory, communication for development, and monitoring and evaluation. Grounded in evidence, informed by local knowledge, and enriched with innovative analytics, our solutions are tailored to local contexts where we work and designed to strengthen systems, empower communities, and drive sustainable impact.
           </p>
         </div>
       </section>
 
-      {/* Service Details */}
-      <section className="pb-20">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="space-y-8">
+      {/* Service Pillars */}
+      <section className="pb-24 lg:pb-32">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-6xl mx-auto space-y-0">
             {services.map((service, i) => (
               <div
                 key={service.title}
-                className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-start bg-background rounded-xl border border-border p-8`}
+                className={`grid md:grid-cols-[1fr_2fr] gap-0 border-t border-border ${i === services.length - 1 ? "border-b" : ""}`}
               >
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center">
-                    <service.icon className="text-accent" size={32} />
+                {/* Left label */}
+                <div className="p-8 lg:p-12 flex flex-col justify-center bg-secondary/50">
+                  <div className="w-14 h-14 bg-accent/10 rounded-sm flex items-center justify-center mb-5">
+                    <service.icon className="text-accent" size={24} />
                   </div>
+                  <span className="text-accent/30 font-display text-sm tracking-wider mb-2">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-xl lg:text-2xl text-foreground leading-snug">{service.title}</h3>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
+                {/* Right description */}
+                <div className="p-8 lg:p-12 flex items-center border-l-0 md:border-l border-border">
                   <p className="text-muted-foreground leading-relaxed">{service.desc}</p>
                 </div>
               </div>
@@ -86,23 +94,43 @@ const Services = () => {
       </section>
 
       {/* Program Design */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Program Design and Development</h2>
-          <p className="text-muted-foreground text-center mb-12 text-lg max-w-3xl mx-auto">
-            We 'co-create' policies, programs, and services by collaborating with clients and communities. Together, we define challenges and design solutions, particularly focusing on the following areas:
-          </p>
+      <section className="py-24 lg:py-32 bg-primary">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="text-center mb-16">
+            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
+              Program Design
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6">
+              Program Design & Development
+            </h2>
+            <p className="text-primary-foreground/60 text-lg max-w-3xl mx-auto leading-relaxed">
+              We 'co-create' policies, programs, and services by collaborating with clients and communities. Together, we define challenges and design solutions, particularly focusing on the following areas:
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 gap-8">
             {programDesign.map((item) => (
-              <div key={item.title} className="bg-background rounded-xl p-8 border border-border">
-                <div className="w-14 h-14 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
-                  <item.icon className="text-accent" size={28} />
+              <div key={item.title} className="bg-primary-foreground/5 backdrop-blur-sm rounded-sm p-10 border border-primary-foreground/10 hover:border-accent/30 transition-all duration-500 group">
+                <div className="w-14 h-14 bg-accent/10 rounded-sm flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <item.icon className="text-accent" size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm">{item.desc}</p>
+                <h3 className="font-display text-xl text-primary-foreground mb-4">{item.title}</h3>
+                <p className="text-primary-foreground/60 leading-relaxed text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">Need a tailored solution?</h2>
+          <Link
+            to="/contact"
+            className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all"
+          >
+            Discuss Your Project <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </section>
     </main>
