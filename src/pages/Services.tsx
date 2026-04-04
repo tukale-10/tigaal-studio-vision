@@ -1,12 +1,12 @@
 import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
 import { GraduationCap, BarChart3, Megaphone, TrendingUp, Leaf, Landmark, Scale, Heart, ArrowRight, CheckCircle2 } from "lucide-react";
-import teamImg1 from "@/assets/team-workshop-1.jpg";
-import teamImg2 from "@/assets/team-presentation-1.jpg";
-import teamImg3 from "@/assets/team-workshop-3.jpg";
-import teamImg4 from "@/assets/team-workshop-2.jpg";
-import teamImg5 from "@/assets/team-presentation-2.jpg";
-import heroImg from "@/assets/hero-workshop.jpg";
+import trainingSession1 from "@/assets/training-session-1.jpg";
+import trainingSession2 from "@/assets/training-session-2.jpg";
+import groupWorkshop from "@/assets/group-workshop.jpg";
+import communityYouth from "@/assets/community-youth.jpg";
+import mogadishuSkyline from "@/assets/mogadishu-skyline.jpg";
+import mogadishuWaterfront from "@/assets/mogadishu-waterfront.jpg";
 
 const services = [
   {
