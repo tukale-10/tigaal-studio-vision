@@ -1,6 +1,6 @@
 import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronRight, Target, Eye } from "lucide-react";
+import { ArrowRight, Target, Eye } from "lucide-react";
 import teamImg from "@/assets/team-workshop-2.jpg";
 import presentationImg from "@/assets/team-presentation-1.jpg";
 
@@ -162,33 +162,40 @@ const About = () => {
 
       {/* Bridging the Gap */}
       <section className="py-24 lg:py-32 bg-primary">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="text-center mb-16">
-            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Investment Advisory</span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6">Bridging the Gap</h2>
-            <p className="text-primary-foreground/70 text-lg leading-relaxed max-w-3xl mx-auto">
-              As Somalia recovers from past instability, it presents vast investment opportunities. Recent reforms, including an online business registration platform, have rejuvenated its business environment. Sectors like manufacturing, tech, hospitality, and agri-farming are ripe for investment.
-            </p>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div>
+              <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Investment Advisory</span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6 leading-tight">
+                Bridging the <span className="text-accent italic">Gap</span>
+              </h2>
+              <div className="w-16 h-1 bg-accent mb-8" />
+              <p className="text-primary-foreground/70 text-lg leading-relaxed mb-6">
+                As Somalia recovers from past instability, it presents vast investment opportunities. Recent reforms, including an online business registration platform, have rejuvenated its business environment. Sectors like manufacturing, tech, hospitality, and agri-farming are ripe for investment.
+              </p>
+              <p className="text-primary-foreground/50 leading-relaxed">
+                However, accessing the Somali market remains challenging for foreign investors. Leveraging our local expertise and understanding of Somalia's evolving landscape, we provide investors with contextual insights, industry analyses, and identify investment gaps and opportunities. We streamline the entire process, from securing necessary permits from federal and regional authorities to fully establishing businesses in Somalia.
+              </p>
+            </div>
 
-          <p className="text-primary-foreground/60 text-center text-lg leading-relaxed mb-14 max-w-3xl mx-auto">
-            However, accessing the Somali market remains challenging for foreign investors. Leveraging our local expertise and understanding of Somalia's evolving landscape, we provide investors with contextual insights, industry analyses, and identify investment gaps and opportunities. We streamline the entire process, from securing necessary permits from federal and regional authorities to fully establishing businesses in Somalia.
-          </p>
-
-          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-0">
-            {businessSteps.map((step, i) => (
-              <div key={step} className="flex items-center">
-                <div className="flex items-center gap-3 bg-primary-foreground/10 backdrop-blur-sm rounded-sm px-5 py-3 border border-primary-foreground/10">
-                  <span className="w-8 h-8 bg-accent text-accent-foreground rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0">
-                    {i + 1}
-                  </span>
-                  <span className="text-primary-foreground text-sm font-medium whitespace-nowrap">{step}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {businessSteps.map((step, i) => (
+                <div
+                  key={step}
+                  className={`group relative p-6 rounded-sm border border-primary-foreground/10 hover:border-accent/40 bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.07] transition-all duration-500 ${i === businessSteps.length - 1 ? "sm:col-span-2" : ""}`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-accent/15 group-hover:bg-accent/25 rounded-sm flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                      <span className="font-display text-xl text-accent font-bold">{String(i + 1).padStart(2, "0")}</span>
+                    </div>
+                    <div className="pt-2">
+                      <h4 className="text-primary-foreground font-semibold text-base leading-snug">{step}</h4>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent group-hover:w-full transition-all duration-500" />
                 </div>
-                {i < businessSteps.length - 1 && (
-                  <ChevronRight className="text-accent/50 mx-1 hidden md:block flex-shrink-0" size={18} />
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
