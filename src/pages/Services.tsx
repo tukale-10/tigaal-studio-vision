@@ -41,7 +41,7 @@ const services = [
     icon: Leaf,
     title: "Climate Resilience & Adaptation",
     desc: "We support the design of climate-responsive policies, regulatory frameworks, and sustainable programmes aligned with regional and global adaptation agendas. By fostering partnerships with governments, communities, and development partners, we build adaptive capacities, protect vulnerable populations, and advance long-term resilience to the climate crisis across Somalia and the Horn of Africa.",
-    image: teamImg5,
+    image: communityYouth,
     highlights: ["Climate Policy", "Regulatory Frameworks", "Adaptive Capacity", "Resilience Building"],
   },
   {
