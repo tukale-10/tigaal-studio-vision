@@ -92,8 +92,8 @@ const Team = () => {
                   className="bg-background p-8 lg:p-10 group hover:bg-accent/[0.02] transition-all duration-500"
                 >
                   <div className="flex items-start gap-5 mb-5">
-                    <div className="w-16 h-16 bg-primary rounded-sm flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary-foreground font-display text-lg">{initials}</span>
+                    <div className="w-16 h-16 rounded-sm flex-shrink-0 overflow-hidden">
+                      <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h3 className="font-display text-lg text-foreground">{member.name}</h3>
