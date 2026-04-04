@@ -48,7 +48,7 @@ const services = [
     icon: Landmark,
     title: "Private Sector Development & Financial Inclusion",
     desc: "We promote private sector growth and extend financial services to underserved communities as a pathway to Somalia's economic recovery. Working with diverse stakeholders, we address structural challenges, encourage entrepreneurship, and streamline regulatory environments. Our services guide entrepreneurs on market strategies, financing, and building a conducive environment for sustainable business growth.",
-    image: heroImg,
+    image: mogadishuWaterfront,
     highlights: ["Financial Services", "Entrepreneurship", "Market Strategies", "Economic Recovery"],
   },
 ];
