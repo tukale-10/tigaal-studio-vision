@@ -21,31 +21,37 @@ const teamMembers = [
   {
     name: "Simon Robins",
     title: "Expert Advisor",
+    photo: teamSimon,
     bio: "Simon Robins combines 15 years of academic research and consulting, focusing on humanitarian protection, human rights, and transitional justice. He's actively involved in evaluation and program support, especially in post-conflict states, working closely with international agencies like the UN and NGOs. Simon serves as the Research Advisor for the International Committee of the Red Cross Missing Persons Centre and is a Senior Research Fellow at the University of York. He offers policy and programmatic guidance, often concentrating on protection and the rule of law. Simon's academic pursuits prioritize victims' needs in conflict aftermath, exploring victim-centered and therapeutic methods related to histories of violence. His research critically assesses transitional justice, with significant attention to those missing in armed conflicts and dead migrants at the EU's southern border. Simon's extensive field experience spans Nepal, Tunisia, sub-Saharan Africa, and Asia.",
   },
   {
     name: "Abdishakur Diriye",
     title: "Strategic Research Advisor",
+    photo: teamAbdishakur,
     bio: "Abdishakur Diriye is a PhD student at the University of Edinburgh and the Jameel Observatory, specializing in climate change and food security for pastoral livelihoods. He has over seven years of academic and professional experience in Somalia, the UK, and China. Abdishakur has published several research papers on sustainable land use policies and has expertise in econometric modeling, statistical analysis, and data visualization using Python, RStudio, QGIS, Stata, and SPSS. His previous roles include climate change and environmental policy officer, environmental policy research assistant, and sustainable energy consultant. Currently, he focuses on anticipatory action and forecast-based microfinancing programs, such as drought index insurance for Somali pastoral resilience. He also supports TIGAAL as a strategic research advisor and lead researcher on climate-related projects.",
   },
   {
     name: "Ali Mohamed Salah",
     title: "Third-Party Monitoring Specialist",
+    photo: teamAli,
     bio: "Ali Mohamed Salah is a seasoned Third-Party Monitoring Specialist at Tigaal Consulting. With over a decade of extensive experience in international development, Ali excels in designing, managing, and evaluating multi-sectoral and multi-stakeholder policy processes. His expertise spans governance, human capital development, economic and social development, with a particular focus on health, nutrition, fisheries, education, and durable solutions. Ali's previous roles include significant positions such as Program Manager at World Vision Somalia, M&E Analyst at UN FAO Somalia, and MEARL Adviser at the Ministry of Planning, Investment, and Economic Development in Puntland. Currently, he leverages his profound contextual understanding of Somalia's political dynamics, humanitarian trends, and institutional challenges to drive impactful monitoring and evaluation initiatives at Tigaal Consulting.",
   },
   {
     name: "Khali Jamah",
     title: "Communication Lead",
+    photo: teamKhali,
     bio: "Khali Jamah boasts over four years in strategic communications, document translation, and media consulting in the Horn of Africa's dynamic contexts. With a knack for producing top-tier media products, she thrives under pressure, leveraging her interpersonal skills and multicultural exposure. Khali has collaborated with several renowned local and international organizations. As Tigaal's lead for communication and stakeholder analyses, she ensures effective branding and messaging across projects. She earned her Bachelor's in International Relations from the University of Nairobi and is pursuing an online Master's in Project Planning and Management. Khali is native in Somali and fluent in English and Kiswahili.",
   },
   {
     name: "Ibrahim Isse Abdulle",
     title: "Somalia SME Policy & Stakeholder Engagement Specialist",
+    photo: teamIbrahim,
     bio: "Ibrahim Isse Abdulle is TIGAAL's Somalia SME Policy and Stakeholder Engagement Specialist bringing over ten years of experience at the intersection of public sector reform, SME development, and private sector engagement in Somalia. He has spent his career at Somalia's Ministry of Commerce and Industry, progressing from Business Environment and SME Development Advisor to Director of Promotion of SMEs and Cooperatives, and currently serving as Head of Planning and Policy, a trajectory that has given him unmatched institutional knowledge of Somalia's MSME policy landscape, business registration environment, and regulatory framework. In his roles at MoCI, he developed Somalia's National MSMEs Policy, led regulatory reforms to improve the business environment for startups and SMEs, coordinated multi-stakeholder programmes funded by international donors, and contributed directly to capacity-building initiatives covering ESG principles and green entrepreneurship. He holds a Master of Global Innovation Studies from Toyo University, Japan, and a Digital Finance certification from Frankfurt School of Finance and Management. On this assignment, Ibrahim leads SME identification and outreach across Shuraako Capital's portfolio, drawing on his government networks and deep knowledge of Somalia's private sector landscape, and contributes to the governance dimension of the assessment framework.",
   },
   {
     name: "Guled Abdi",
     title: "ESG & Private Sector Development Specialist",
+    photo: teamGuled,
     bio: "Guled Abdi is an ESG and private sector development specialist with over 10 years of experience working in SME development, investment advisory, and sustainability in fragile and pastoralist contexts in Ethiopia, particularly in the Somali Region. He has worked with the World Bank Group (IFC) and FAO on ESG-aligned investment models, value chain analysis, and private sector engagement, supporting businesses to meet environmental and social standards while improving commercial viability. As the Founder of Barwaqo Consultancy, he has led business assessments, feasibility studies, and enterprise support initiatives for SMEs and development programs. In recent years, he has also focused on regenerative agriculture and climate-resilient systems, providing practical sustainability solutions to farmers and agribusinesses. Guled holds an MBA in Impact Entrepreneurship and is fluent in Somali, Amharic, and English.",
   },
   {
