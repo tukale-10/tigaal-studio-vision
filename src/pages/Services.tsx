@@ -34,7 +34,7 @@ const services = [
     icon: TrendingUp,
     title: "Market Studies and Assessments",
     desc: "We provide actionable insights into consumer behaviours, market trends, and competitive landscapes, enabling businesses and policymakers to make informed decisions. Our assessments involve comprehensive data collection through surveys, focus group discussions, and stakeholder interviews to understand supply and demand dynamics, identify market gaps, and evaluate feasibility of new products and services.",
-    image: teamImg4,
+    image: mogadishuSkyline,
     highlights: ["Consumer Insights", "Market Trends", "Feasibility Studies", "Data Collection"],
   },
   {
