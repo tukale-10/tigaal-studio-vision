@@ -2,18 +2,54 @@ import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-const partnerCategories = [
+import iftiin from "@/assets/partners/iftiin.jpg";
+import saferworld from "@/assets/partners/saferworld.jpg";
+import netherlands from "@/assets/partners/netherlands.png";
+import moys from "@/assets/partners/moys.png";
+import unops from "@/assets/partners/unops.png";
+import nagaasho from "@/assets/partners/nagaasho.png";
+import shaqo from "@/assets/partners/shaqo.jpg";
+import idlo from "@/assets/partners/idlo.png";
+import candlelight from "@/assets/partners/candlelight.jpeg";
+import igad from "@/assets/partners/igad.png";
+
+type Partner = { name: string; logo?: string };
+
+const partnerCategories: { category: string; partners: Partner[] }[] = [
   {
     category: "International Organizations",
-    partners: ["World Bank", "UNOPS", "Save the Children", "CARE", "Saferworld", "Life & Peace Institute", "IDLO"],
+    partners: [
+      { name: "UNOPS", logo: unops },
+      { name: "Saferworld", logo: saferworld },
+      { name: "IDLO", logo: idlo },
+      { name: "World Bank" },
+      { name: "Save the Children" },
+      { name: "CARE" },
+      { name: "Life & Peace Institute" },
+    ],
   },
   {
     category: "Government Bodies",
-    partners: ["Central Bank of Somalia", "Supreme Court of Somalia", "Ministry of Youth & Sports", "Ministry of Commerce & Industry"],
+    partners: [
+      { name: "Ministry of Youth & Sports", logo: moys },
+      { name: "Netherlands Ministry of Foreign Affairs", logo: netherlands },
+      { name: "Central Bank of Somalia" },
+      { name: "Supreme Court of Somalia" },
+      { name: "Ministry of Commerce & Industry" },
+    ],
   },
   {
     category: "Regional & Local Partners",
-    partners: ["IGAD CAEP", "iRise", "Shaqo Platform", "Iftiin Foundation", "Nagaasho", "Expanding Access to Justice", "Candlelight", "Gargaara Finance", "Netherlands Ministry of Foreign Affairs"],
+    partners: [
+      { name: "IGAD CAEP", logo: igad },
+      { name: "Iftiin Foundation", logo: iftiin },
+      { name: "Nagaasho", logo: nagaasho },
+      { name: "Candlelight", logo: candlelight },
+      { name: "Shaqo Platform", logo: shaqo },
+      { name: "iRise" },
+      { name: "Gargaara Finance" },
+      { name: "Expanding Access to Justice" },
+    ],
   },
 ];
 
@@ -35,21 +71,31 @@ const Partners = () => {
           </div>
 
           {partnerCategories.map((cat, catIndex) => (
-            <div key={cat.category} className="mb-16 last:mb-0">
-              <div className="flex items-center gap-4 mb-8">
+            <div key={cat.category} className="mb-20 last:mb-0">
+              <div className="flex items-center gap-4 mb-10">
                 <span className="font-display text-4xl text-accent/15">{String(catIndex + 1).padStart(2, "0")}</span>
                 <div>
                   <h3 className="font-display text-xl text-foreground">{cat.category}</h3>
                   <div className="w-12 h-px bg-accent mt-2" />
                 </div>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-px bg-border rounded-sm overflow-hidden">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {cat.partners.map((partner) => (
                   <div
-                    key={partner}
-                    className="bg-background p-6 lg:p-8 flex items-center justify-center text-center hover:bg-accent/[0.03] transition-all duration-500 group min-h-[100px]"
+                    key={partner.name}
+                    className="bg-white rounded-lg border border-border p-6 lg:p-8 flex items-center justify-center text-center hover:shadow-lg hover:border-accent/30 transition-all duration-300 group min-h-[120px]"
                   >
-                    <span className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">{partner}</span>
+                    {partner.logo ? (
+                      <img
+                        src={partner.logo}
+                        alt={partner.name}
+                        className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform"
+                      />
+                    ) : (
+                      <span className="text-base font-semibold text-foreground group-hover:text-accent transition-colors">
+                        {partner.name}
+                      </span>
+                    )}
                   </div>
                 ))}
               </div>
