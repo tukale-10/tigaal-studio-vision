@@ -36,6 +36,18 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
+    // Restore session first
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      const u = session?.user ?? null;
+      setUser(u);
+      if (u) {
+        const admin = await checkAdmin(u.id);
+        setIsAdmin(admin);
+      }
+      setLoading(false);
+    });
+
+    // Listen for subsequent auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       const u = session?.user ?? null;
       setUser(u);
@@ -44,16 +56,6 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
         setIsAdmin(admin);
       } else {
         setIsAdmin(false);
-      }
-      setLoading(false);
-    });
-
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      const u = session?.user ?? null;
-      setUser(u);
-      if (u) {
-        const admin = await checkAdmin(u.id);
-        setIsAdmin(admin);
       }
       setLoading(false);
     });
