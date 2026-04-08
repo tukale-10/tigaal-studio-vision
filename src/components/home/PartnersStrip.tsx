@@ -11,8 +11,14 @@ import shaqo from "@/assets/partners/shaqo.jpg";
 import idlo from "@/assets/partners/idlo.png";
 import candlelight from "@/assets/partners/candlelight.jpeg";
 import igad from "@/assets/partners/igad.png";
+import worldbank from "@/assets/partners/worldbank.svg";
+import cbs from "@/assets/partners/cbs.png";
+import irise from "@/assets/partners/irise.png";
+import supremecourt from "@/assets/partners/supremecourt.jpg";
+import moci from "@/assets/partners/moci.png";
 
 const partners = [
+  { name: "World Bank", logo: worldbank },
   { name: "UNOPS", logo: unops },
   { name: "Saferworld", logo: saferworld },
   { name: "IDLO", logo: idlo },
@@ -23,11 +29,14 @@ const partners = [
   { name: "Shaqo Platform", logo: shaqo },
   { name: "Ministry of Youth & Sports", logo: moys },
   { name: "Netherlands MFA", logo: netherlands },
+  { name: "Central Bank of Somalia", logo: cbs },
+  { name: "iRise", logo: irise },
+  { name: "Supreme Court of Somalia", logo: supremecourt },
+  { name: "Ministry of Commerce & Industry", logo: moci },
 ];
 
 const textOnlyPartners = [
-  "World Bank", "Save the Children", "CARE", "Life & Peace Institute",
-  "Central Bank of Somalia", "Supreme Court of Somalia", "Gargaara Finance", "iRise",
+  "Save the Children", "CARE", "Life & Peace Institute", "Gargaara Finance",
 ];
 
 const PartnersStrip = () => {
@@ -46,7 +55,6 @@ const PartnersStrip = () => {
           </Link>
         </div>
 
-        {/* Logo grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-8">
           {partners.map((partner) => (
             <div
@@ -62,7 +70,6 @@ const PartnersStrip = () => {
           ))}
         </div>
 
-        {/* Text-only partners */}
         <div className="flex flex-wrap gap-3">
           {textOnlyPartners.map((partner) => (
             <div key={partner} className="px-5 py-2.5 bg-secondary rounded-sm text-sm font-medium text-muted-foreground border border-border hover:border-accent/30 transition-colors">

@@ -12,6 +12,11 @@ import shaqo from "@/assets/partners/shaqo.jpg";
 import idlo from "@/assets/partners/idlo.png";
 import candlelight from "@/assets/partners/candlelight.jpeg";
 import igad from "@/assets/partners/igad.png";
+import worldbank from "@/assets/partners/worldbank.svg";
+import cbs from "@/assets/partners/cbs.png";
+import irise from "@/assets/partners/irise.png";
+import supremecourt from "@/assets/partners/supremecourt.jpg";
+import moci from "@/assets/partners/moci.png";
 
 type Partner = { name: string; logo?: string };
 
@@ -19,10 +24,10 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
   {
     category: "International Organizations",
     partners: [
+      { name: "World Bank", logo: worldbank },
       { name: "UNOPS", logo: unops },
       { name: "Saferworld", logo: saferworld },
       { name: "IDLO", logo: idlo },
-      { name: "World Bank" },
       { name: "Save the Children" },
       { name: "CARE" },
       { name: "Life & Peace Institute" },
@@ -33,9 +38,9 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
     partners: [
       { name: "Ministry of Youth & Sports", logo: moys },
       { name: "Netherlands Ministry of Foreign Affairs", logo: netherlands },
-      { name: "Central Bank of Somalia" },
-      { name: "Supreme Court of Somalia" },
-      { name: "Ministry of Commerce & Industry" },
+      { name: "Central Bank of Somalia", logo: cbs },
+      { name: "Supreme Court of Somalia", logo: supremecourt },
+      { name: "Ministry of Commerce & Industry", logo: moci },
     ],
   },
   {
@@ -46,7 +51,7 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
       { name: "Nagaasho", logo: nagaasho },
       { name: "Candlelight", logo: candlelight },
       { name: "Shaqo Platform", logo: shaqo },
-      { name: "iRise" },
+      { name: "iRise", logo: irise },
       { name: "Gargaara Finance" },
       { name: "Expanding Access to Justice" },
     ],
@@ -104,7 +109,6 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in partnering?</h2>
