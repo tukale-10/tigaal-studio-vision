@@ -1,11 +1,33 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
+import iftiin from "@/assets/partners/iftiin.jpg";
+import saferworld from "@/assets/partners/saferworld.jpg";
+import netherlands from "@/assets/partners/netherlands.png";
+import moys from "@/assets/partners/moys.png";
+import unops from "@/assets/partners/unops.png";
+import nagaasho from "@/assets/partners/nagaasho.png";
+import shaqo from "@/assets/partners/shaqo.jpg";
+import idlo from "@/assets/partners/idlo.png";
+import candlelight from "@/assets/partners/candlelight.jpeg";
+import igad from "@/assets/partners/igad.png";
+
 const partners = [
-  "World Bank", "UNOPS", "Save the Children", "CARE", "Saferworld",
-  "Life & Peace Institute", "IGAD CAEP", "Central Bank of Somalia",
-  "Supreme Court of Somalia", "IDLO", "Iftiin Foundation",
-  "Gargaara Finance", "Candlelight", "iRise",
+  { name: "UNOPS", logo: unops },
+  { name: "Saferworld", logo: saferworld },
+  { name: "IDLO", logo: idlo },
+  { name: "IGAD CAEP", logo: igad },
+  { name: "Iftiin Foundation", logo: iftiin },
+  { name: "Nagaasho", logo: nagaasho },
+  { name: "Candlelight", logo: candlelight },
+  { name: "Shaqo Platform", logo: shaqo },
+  { name: "Ministry of Youth & Sports", logo: moys },
+  { name: "Netherlands MFA", logo: netherlands },
+];
+
+const textOnlyPartners = [
+  "World Bank", "Save the Children", "CARE", "Life & Peace Institute",
+  "Central Bank of Somalia", "Supreme Court of Somalia", "Gargaara Finance", "iRise",
 ];
 
 const PartnersStrip = () => {
@@ -23,8 +45,26 @@ const PartnersStrip = () => {
             View All <ChevronRight size={16} />
           </Link>
         </div>
-        <div className="flex flex-wrap gap-3">
+
+        {/* Logo grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-8">
           {partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="bg-white rounded-lg border border-border p-6 flex items-center justify-center h-24 hover:shadow-md hover:border-accent/30 transition-all"
+            >
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="max-h-14 max-w-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Text-only partners */}
+        <div className="flex flex-wrap gap-3">
+          {textOnlyPartners.map((partner) => (
             <div key={partner} className="px-5 py-2.5 bg-secondary rounded-sm text-sm font-medium text-muted-foreground border border-border hover:border-accent/30 transition-colors">
               {partner}
             </div>
