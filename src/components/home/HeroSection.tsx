@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import logo from "@/assets/tigaal-logo.webp";
 import img1 from "@/assets/team-workshop-1.jpg";
 import img2 from "@/assets/team-workshop-2.jpg";
@@ -70,6 +70,14 @@ const HeroSection = () => {
               Explore Our Work
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
+            <a
+              href="/TIGAAL_Profile_2026.pdf"
+              download
+              className="group px-8 py-4 border border-primary-foreground/30 text-primary-foreground font-medium rounded-sm hover:border-accent hover:text-accent transition-all duration-300 backdrop-blur-sm flex items-center gap-2"
+            >
+              <Download size={16} />
+              Download Profile
+            </a>
             <Link
               to="/contact"
               className="px-8 py-4 border border-primary-foreground/30 text-primary-foreground font-medium rounded-sm hover:border-accent hover:text-accent transition-all duration-300 backdrop-blur-sm"
