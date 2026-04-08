@@ -12,7 +12,8 @@ import shaqo from "@/assets/partners/shaqo.jpg";
 import idlo from "@/assets/partners/idlo.png";
 import candlelight from "@/assets/partners/candlelight.jpeg";
 import igad from "@/assets/partners/igad.png";
-import worldbank from "@/assets/partners/worldbank.svg";
+import worldbank from "@/assets/partners/worldbank.png";
+import gargaara from "@/assets/partners/gargaara.png";
 import cbs from "@/assets/partners/cbs.png";
 import irise from "@/assets/partners/irise.png";
 import supremecourt from "@/assets/partners/supremecourt.jpg";
@@ -55,7 +56,7 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
       { name: "Candlelight", logo: candlelight },
       { name: "Shaqo Platform", logo: shaqo },
       { name: "iRise", logo: irise },
-      { name: "Gargaara Finance" },
+      { name: "Gargaara Finance", logo: gargaara },
       { name: "Expanding Access to Justice" },
     ],
   },

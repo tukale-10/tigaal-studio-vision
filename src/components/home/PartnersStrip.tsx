@@ -11,7 +11,7 @@ import shaqo from "@/assets/partners/shaqo.jpg";
 import idlo from "@/assets/partners/idlo.png";
 import candlelight from "@/assets/partners/candlelight.jpeg";
 import igad from "@/assets/partners/igad.png";
-import worldbank from "@/assets/partners/worldbank.svg";
+import worldbank from "@/assets/partners/worldbank.png";
 import cbs from "@/assets/partners/cbs.png";
 import irise from "@/assets/partners/irise.png";
 import supremecourt from "@/assets/partners/supremecourt.jpg";
