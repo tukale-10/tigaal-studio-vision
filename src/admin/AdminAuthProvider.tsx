@@ -24,13 +24,15 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   const checkAdmin = async (userId: string) => {
-    const { data } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    return !!data;
+    const { data, error } = await supabase.rpc("has_role", {
+      _user_id: userId,
+      _role: "admin",
+    });
+    if (error) {
+      console.error("has_role check failed:", error);
+      return false;
+    }
+    return data === true;
   };
 
   useEffect(() => {
