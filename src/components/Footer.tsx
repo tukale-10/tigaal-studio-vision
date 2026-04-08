@@ -73,8 +73,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/50">
-          © {new Date().getFullYear()} TIGAAL Consulting. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex items-center justify-between text-sm text-primary-foreground/50">
+          <span>© {new Date().getFullYear()} TIGAAL Consulting. All rights reserved.</span>
+          <Link to="/admin" className="hover:text-accent transition-colors">Admin</Link>
         </div>
       </div>
     </footer>
