@@ -16,12 +16,18 @@ import cbs from "@/assets/partners/cbs.png";
 import irise from "@/assets/partners/irise.png";
 import supremecourt from "@/assets/partners/supremecourt.jpg";
 import moci from "@/assets/partners/moci.png";
+import lpi from "@/assets/partners/lpi.jpg";
+import care from "@/assets/partners/care.png";
+import savethechildren from "@/assets/partners/savethechildren.jpg";
 
 const partners = [
   { name: "World Bank", logo: worldbank },
   { name: "UNOPS", logo: unops },
+  { name: "Save the Children", logo: savethechildren },
+  { name: "CARE", logo: care },
   { name: "Saferworld", logo: saferworld },
   { name: "IDLO", logo: idlo },
+  { name: "Life & Peace Institute", logo: lpi },
   { name: "IGAD CAEP", logo: igad },
   { name: "Iftiin Foundation", logo: iftiin },
   { name: "Nagaasho", logo: nagaasho },
@@ -35,9 +41,7 @@ const partners = [
   { name: "Ministry of Commerce & Industry", logo: moci },
 ];
 
-const textOnlyPartners = [
-  "Save the Children", "CARE", "Life & Peace Institute", "Gargaara Finance",
-];
+const textOnlyPartners = ["Gargaara Finance"];
 
 const PartnersStrip = () => {
   return (

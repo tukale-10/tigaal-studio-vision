@@ -17,6 +17,9 @@ import cbs from "@/assets/partners/cbs.png";
 import irise from "@/assets/partners/irise.png";
 import supremecourt from "@/assets/partners/supremecourt.jpg";
 import moci from "@/assets/partners/moci.png";
+import lpi from "@/assets/partners/lpi.jpg";
+import care from "@/assets/partners/care.png";
+import savethechildren from "@/assets/partners/savethechildren.jpg";
 
 type Partner = { name: string; logo?: string };
 
@@ -26,11 +29,11 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
     partners: [
       { name: "World Bank", logo: worldbank },
       { name: "UNOPS", logo: unops },
+      { name: "Save the Children", logo: savethechildren },
+      { name: "CARE", logo: care },
       { name: "Saferworld", logo: saferworld },
       { name: "IDLO", logo: idlo },
-      { name: "Save the Children" },
-      { name: "CARE" },
-      { name: "Life & Peace Institute" },
+      { name: "Life & Peace Institute", logo: lpi },
     ],
   },
   {
