@@ -1,0 +1,6 @@
+UPDATE services SET image_url = 'https://mrdsuasmtojsymahutzy.supabase.co/storage/v1/object/public/cms-images/services/capacity-development.jpg' WHERE id = '968509b2-6918-4496-a21e-7d3ddfc0dd35';
+UPDATE services SET image_url = 'https://mrdsuasmtojsymahutzy.supabase.co/storage/v1/object/public/cms-images/services/monitoring-evaluation.jpg' WHERE id = '6ef701c5-a29a-44c0-9ebc-6fcd854bbc5c';
+UPDATE services SET image_url = 'https://mrdsuasmtojsymahutzy.supabase.co/storage/v1/object/public/cms-images/services/strategic-communication.jpg' WHERE id = 'bc7e42ce-f636-42fe-8a26-883cdc9fe18f';
+UPDATE services SET image_url = 'https://mrdsuasmtojsymahutzy.supabase.co/storage/v1/object/public/cms-images/services/market-studies.jpg' WHERE id = '1a9ce4dc-a24f-4ce9-b97a-0d19d1cb8130';
+UPDATE services SET image_url = 'https://mrdsuasmtojsymahutzy.supabase.co/storage/v1/object/public/cms-images/services/climate-resilience.jpg' WHERE id = '536267a1-ab07-4a15-8b12-141c7534118c';
+UPDATE services SET image_url = 'https://mrdsuasmtojsymahutzy.supabase.co/storage/v1/object/public/cms-images/services/private-sector.jpg' WHERE id = '687358e5-06b2-477c-89aa-48e4bdac8cd0';
