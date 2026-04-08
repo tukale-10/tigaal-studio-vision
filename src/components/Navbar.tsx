@@ -152,7 +152,12 @@ const Navbar = () => {
                         <Link
                           key={child.path}
                           to={child.path}
-                          className={`block px-4 py-2.5 text-sm font-medium transition-colors ${
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsMobileOpen(false);
+                            setOpenDropdown(null);
+                          }}
+                          className={`block px-4 py-2.5 text-sm font-medium transition-colors relative z-10 ${
                             location.pathname === child.path
                               ? "text-accent"
                               : "text-primary-foreground/70 hover:text-accent"
