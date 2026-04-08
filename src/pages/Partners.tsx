@@ -56,7 +56,7 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
       { name: "Candlelight", logo: candlelight },
       { name: "Shaqo Platform", logo: shaqo },
       { name: "iRise", logo: irise },
-      { name: "Gargaara Finance" },
+      { name: "Gargaara Finance", logo: gargaara },
       { name: "Expanding Access to Justice" },
     ],
   },
