@@ -29,7 +29,7 @@ const programDesign = [
   {
     icon: Heart,
     title: "Social Sector Development",
-    desc: "A vibrant social sector is essential for resilience and well-being. As a social enterprise, Tigaal works with NGOs, government agencies, and community organizations to strengthen healthcare, education, social services, and social protection systems. Our focus includes advancing inclusive access to social safety nets, shock-responsive and adaptive programs, and sustainable livelihoods. We deliver training on social sector and protection priorities, conduct evidence-based research, and advocate for reforms that promote equity, resilience, and lasting impact.",
+    desc: "A vibrant social sector is essential for resilience and well-being. As a social enterprise, TIGAAL works with NGOs, government agencies, and community organizations to strengthen healthcare, education, social services, and social protection systems. Our focus includes advancing inclusive access to social safety nets, shock-responsive and adaptive programs, and sustainable livelihoods. We deliver training on social sector and protection priorities, conduct evidence-based research, and advocate for reforms that promote equity, resilience, and lasting impact.",
     image: communityYouth,
   },
 ];
@@ -70,7 +70,7 @@ const Services = () => {
               </p>
             </div>
             <div className="relative">
-              <img src={groupWorkshop} alt="Tigaal team in action" className="w-full h-[400px] object-cover rounded-sm" />
+              <img src={groupWorkshop} alt="TIGAAL team in action" className="w-full h-[400px] object-cover rounded-sm" />
               <div className="absolute -bottom-6 -left-6 bg-accent text-accent-foreground px-8 py-5 rounded-sm">
                 <span className="font-display text-3xl">{services.length || "7"}+</span>
                 <span className="text-sm ml-2 opacity-90">Core Capability Areas</span>

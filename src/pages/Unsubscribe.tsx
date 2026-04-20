@@ -65,7 +65,7 @@ const Unsubscribe = () => {
               <>
                 <h2 className="font-display text-2xl text-foreground mb-3">Confirm unsubscribe</h2>
                 <p className="text-muted-foreground text-sm mb-8">
-                  Click below to stop receiving emails from Tigaal.
+                  Click below to stop receiving emails from TIGAAL.
                 </p>
                 <button
                   onClick={confirm}
