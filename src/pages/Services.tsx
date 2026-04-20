@@ -92,7 +92,14 @@ const Services = () => {
                   <div key={service.id} className={`grid lg:grid-cols-2 gap-0 items-stretch group`}>
                     <div className={`relative overflow-hidden h-[320px] lg:h-auto min-h-[400px] ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                       {service.image_url ? (
-                        <img src={service.image_url} alt={service.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                        <img
+                          src={optimizedImage(service.image_url, { width: 1000, quality: 65 })}
+                          alt={service.title}
+                          loading={i === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={i === 0 ? "high" : "low"}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
                       ) : (
                         <div className="absolute inset-0 bg-secondary" />
                       )}
