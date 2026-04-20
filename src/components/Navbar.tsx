@@ -49,18 +49,31 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const navBg = isScrolled || !isHome
-    ? "bg-primary shadow-lg"
-    : "bg-transparent";
+  const isSolid = isScrolled || isMobileOpen;
+  const navBg = isSolid ? "bg-primary shadow-lg" : "bg-white shadow-sm";
 
   const isResourcesActive = location.pathname.startsWith("/resources");
+
+  // Color tokens that flip based on background
+  const linkBase = isSolid ? "text-primary-foreground/90" : "text-foreground/80";
+  const linkHover = "hover:text-accent";
+  const linkActive = "text-accent";
+  const dropdownBg = isSolid ? "bg-primary border-primary-foreground/10" : "bg-white border-border";
+  const dropdownItemBase = isSolid
+    ? "text-primary-foreground/80 hover:text-accent hover:bg-primary-foreground/5 border-primary-foreground/5"
+    : "text-foreground/80 hover:text-accent hover:bg-secondary border-border";
+  const mobileToggleColor = isSolid ? "text-primary-foreground" : "text-foreground";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex-shrink-0">
-            <img src={logo} alt="TIGAAL Consulting" className="h-10 brightness-0 invert" />
+            <img
+              src={logo}
+              alt="TIGAAL Consulting"
+              className={`h-10 transition-all duration-300 ${isSolid ? "brightness-0 invert" : ""}`}
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -71,24 +84,22 @@ const Navbar = () => {
                   <button
                     onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
                     className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                      isResourcesActive
-                        ? "text-accent"
-                        : "text-primary-foreground/90 hover:text-accent"
+                      isResourcesActive ? linkActive : `${linkBase} ${linkHover}`
                     }`}
                   >
                     {link.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`} />
                   </button>
                   {openDropdown === link.label && (
-                    <div className="absolute top-full right-0 mt-2 w-52 bg-primary border border-primary-foreground/10 rounded-sm shadow-xl animate-fade-in overflow-hidden">
+                    <div className={`absolute top-full right-0 mt-2 w-52 border rounded-sm shadow-xl animate-fade-in overflow-hidden ${dropdownBg}`}>
                       {link.children.map((child) => (
                         <Link
                           key={child.path}
                           to={child.path}
-                          className={`block px-5 py-3 text-sm font-medium transition-colors border-b border-primary-foreground/5 last:border-0 ${
+                          className={`block px-5 py-3 text-sm font-medium transition-colors border-b last:border-0 ${
                             location.pathname === child.path
                               ? "text-accent bg-accent/5"
-                              : "text-primary-foreground/80 hover:text-accent hover:bg-primary-foreground/5"
+                              : dropdownItemBase
                           }`}
                         >
                           {child.label}
@@ -102,9 +113,7 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                    location.pathname === link.path
-                      ? "text-accent"
-                      : "text-primary-foreground/90 hover:text-accent"
+                    location.pathname === link.path ? linkActive : `${linkBase} ${linkHover}`
                   }`}
                 >
                   {link.label}
