@@ -1,0 +1,1 @@
+DELETE FROM publications WHERE id = 'cb85544c-9b4d-407e-b7e3-950daaf0f34e';
