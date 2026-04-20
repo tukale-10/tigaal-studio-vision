@@ -2,7 +2,7 @@ import { Navigate, Outlet, NavLink, useLocation } from "react-router-dom";
 import { useAdminAuth } from "./AdminAuthProvider";
 import {
   LayoutDashboard, Settings, Users, FileText, Newspaper,
-  BookOpen, Briefcase, FolderKanban, LogOut, Menu, X, ChevronRight
+  BookOpen, Briefcase, FolderKanban, LogOut, Menu, X, ChevronRight, Mail
 } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/tigaal-logo.webp";
@@ -14,6 +14,7 @@ const sidebarLinks = [
   { to: "/admin/team", icon: Users, label: "Team" },
   { to: "/admin/news", icon: Newspaper, label: "News & Updates" },
   { to: "/admin/publications", icon: BookOpen, label: "Publications" },
+  { to: "/admin/contacts", icon: Mail, label: "Contact Forms" },
   { to: "/admin/users", icon: Settings, label: "Users" },
 ];
 
