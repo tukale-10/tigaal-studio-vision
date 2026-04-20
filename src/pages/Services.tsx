@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Scale, Heart } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { optimizedImage } from "@/lib/image";
 import groupWorkshop from "@/assets/group-workshop.jpg";
 import trainingSession1 from "@/assets/training-session-1.jpg";
 import communityYouth from "@/assets/community-youth.jpg";
