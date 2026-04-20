@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Plus, Pencil, Trash2, Eye, EyeOff } from "lucide-react";
+import { Plus, Pencil, Trash2, Eye, EyeOff, Newspaper, FileText } from "lucide-react";
 import RichEditor from "./components/RichEditor";
 import type { Block } from "@blocknote/core";
+
+type DispatchType = "news" | "dispatch";
 
 interface NewsItem {
   id: string;
@@ -12,13 +14,16 @@ interface NewsItem {
   category: string;
   published_date: string;
   published: boolean;
+  dispatch_type: DispatchType;
 }
 
-const cats = ["Project Update", "Partnership", "Training", "Research", "Event", "Milestone", "Announcement"];
+const newsCats = ["Project Update", "Partnership", "Training", "Event", "Milestone", "Announcement"];
+const dispatchCats = ["Analysis", "Research", "Policy Brief", "Commentary", "Insight"];
 
 const empty: Omit<NewsItem, "id"> = {
-  title: "", excerpt: "", content: [], category: "Update",
+  title: "", excerpt: "", content: [], category: "Project Update",
   published_date: new Date().toISOString().split("T")[0], published: false,
+  dispatch_type: "news",
 };
 
 const AdminNews = () => {
@@ -27,6 +32,7 @@ const AdminNews = () => {
   const [creating, setCreating] = useState(false);
   const [form, setForm] = useState(empty);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<"all" | DispatchType>("all");
 
   const load = async () => {
     const { data } = await supabase.from("news_updates").select("*").order("published_date", { ascending: false });
@@ -37,7 +43,15 @@ const AdminNews = () => {
   useEffect(() => { load(); }, []);
 
   const openCreate = () => { setEditing(null); setForm(empty); setCreating(true); };
-  const openEdit = (item: NewsItem) => { setCreating(false); setEditing(item); setForm({ title: item.title, excerpt: item.excerpt, content: item.content || [], category: item.category, published_date: item.published_date, published: item.published }); };
+  const openEdit = (item: NewsItem) => {
+    setCreating(false);
+    setEditing(item);
+    setForm({
+      title: item.title, excerpt: item.excerpt, content: item.content || [],
+      category: item.category, published_date: item.published_date, published: item.published,
+      dispatch_type: item.dispatch_type || "news",
+    });
+  };
 
   const save = async () => {
     const payload = { ...form, content: JSON.parse(JSON.stringify(form.content)) };
@@ -49,6 +63,9 @@ const AdminNews = () => {
   const remove = async (id: string) => { if (confirm("Delete?")) { await supabase.from("news_updates").delete().eq("id", id); load(); } };
   const togglePublish = async (item: NewsItem) => { await supabase.from("news_updates").update({ published: !item.published }).eq("id", item.id); load(); };
 
+  const visible = items.filter((i) => filter === "all" || (i.dispatch_type || "news") === filter);
+  const cats = form.dispatch_type === "dispatch" ? dispatchCats : newsCats;
+
   if (creating || editing) {
     return (
       <div>
@@ -57,6 +74,42 @@ const AdminNews = () => {
           <button onClick={() => { setEditing(null); setCreating(false); }} className="text-white/40 hover:text-white text-sm">Cancel</button>
         </div>
         <div className="max-w-3xl space-y-6">
+          <div>
+            <label className="block text-white/60 text-sm mb-2">Type</label>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setForm({ ...form, dispatch_type: "news", category: newsCats[0] })}
+                className={`flex items-center gap-3 px-4 py-3 rounded-md border text-left transition-colors ${
+                  form.dispatch_type === "news"
+                    ? "bg-[hsl(var(--accent))]/10 border-[hsl(var(--accent))] text-white"
+                    : "bg-white/5 border-white/10 text-white/60 hover:border-white/20"
+                }`}
+              >
+                <Newspaper size={18} />
+                <div>
+                  <div className="font-medium text-sm">News & Update</div>
+                  <div className="text-xs opacity-60">Project news, milestones, events</div>
+                </div>
+              </button>
+              <button
+                type="button"
+                onClick={() => setForm({ ...form, dispatch_type: "dispatch", category: dispatchCats[0] })}
+                className={`flex items-center gap-3 px-4 py-3 rounded-md border text-left transition-colors ${
+                  form.dispatch_type === "dispatch"
+                    ? "bg-[hsl(var(--accent))]/10 border-[hsl(var(--accent))] text-white"
+                    : "bg-white/5 border-white/10 text-white/60 hover:border-white/20"
+                }`}
+              >
+                <FileText size={18} />
+                <div>
+                  <div className="font-medium text-sm">Analytical Dispatch</div>
+                  <div className="text-xs opacity-60">Analysis, research, commentary</div>
+                </div>
+              </button>
+            </div>
+          </div>
+
           <Field label="Title" value={form.title} onChange={(v) => setForm({ ...form, title: v })} />
           <div>
             <label className="block text-white/60 text-sm mb-2">Excerpt</label>
@@ -86,18 +139,51 @@ const AdminNews = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-display text-white">News & Updates</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-display text-white">News & Dispatches</h1>
         <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] rounded-md text-sm font-semibold hover:opacity-90"><Plus size={16} /> New Article</button>
       </div>
+
+      <div className="flex items-center gap-2 mb-6">
+        {([
+          { key: "all", label: "All" },
+          { key: "news", label: "News & Updates" },
+          { key: "dispatch", label: "Analytical Dispatch" },
+        ] as const).map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setFilter(tab.key)}
+            className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+              filter === tab.key
+                ? "bg-white/10 text-white"
+                : "text-white/40 hover:text-white/70 hover:bg-white/5"
+            }`}
+          >
+            {tab.label}
+            <span className="ml-2 text-xs opacity-60">
+              {tab.key === "all" ? items.length : items.filter((i) => (i.dispatch_type || "news") === tab.key).length}
+            </span>
+          </button>
+        ))}
+      </div>
+
       {loading ? <div className="space-y-3">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-white/5 rounded-lg animate-pulse" />)}</div>
-      : items.length === 0 ? <div className="text-center py-20 text-white/30">No articles yet.</div>
+      : visible.length === 0 ? <div className="text-center py-20 text-white/30">No articles yet.</div>
       : (
         <div className="space-y-2">
-          {items.map((item) => (
+          {visible.map((item) => (
             <div key={item.id} className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-lg p-4 hover:border-white/10 transition-colors">
               <div className="flex-1 min-w-0">
-                <h3 className="text-white font-medium truncate">{item.title}</h3>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className={`text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-semibold ${
+                    (item.dispatch_type || "news") === "dispatch"
+                      ? "bg-[hsl(var(--accent))]/15 text-[hsl(var(--accent))]"
+                      : "bg-white/10 text-white/60"
+                  }`}>
+                    {(item.dispatch_type || "news") === "dispatch" ? "Dispatch" : "News"}
+                  </span>
+                  <h3 className="text-white font-medium truncate">{item.title}</h3>
+                </div>
                 <p className="text-white/40 text-sm">{item.category} · {item.published_date}</p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">

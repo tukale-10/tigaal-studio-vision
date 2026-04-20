@@ -15,6 +15,7 @@ const navLinks = [
     path: "/resources",
     children: [
       { label: "News & Updates", path: "/resources/news" },
+      { label: "Analytical Dispatch", path: "/resources/analytical-dispatch" },
       { label: "Publications", path: "/resources/publications" },
     ],
   },

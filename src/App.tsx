@@ -17,6 +17,7 @@ import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
 import NewsUpdates from "./pages/NewsUpdates";
 import Publications from "./pages/Publications";
+import AnalyticalDispatch from "./pages/AnalyticalDispatch";
 import Unsubscribe from "./pages/Unsubscribe";
 import NotFound from "./pages/NotFound";
 
@@ -67,6 +68,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/resources/news" element={<NewsUpdates />} />
             <Route path="/resources/publications" element={<Publications />} />
+            <Route path="/resources/analytical-dispatch" element={<AnalyticalDispatch />} />
             <Route path="/unsubscribe" element={<Unsubscribe />} />
           </Route>
 
