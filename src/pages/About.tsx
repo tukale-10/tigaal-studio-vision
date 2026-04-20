@@ -48,13 +48,13 @@ const About = () => {
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  TIGAAL is a research and analytical management firm operating at the centre of Somalia's development landscape. Founded to address the critical gap between international development frameworks and local realities, Tigaal provides rigorous research, in-depth analysis, and strategic advisory services tailored to the Horn of Africa's unique operating environment.
+                  TIGAAL is a research and analytical management firm operating at the centre of Somalia's development landscape. Founded to address the critical gap between international development frameworks and local realities, TIGAAL provides rigorous research, in-depth analysis, and strategic advisory services tailored to the Horn of Africa's unique operating environment.
                 </p>
                 <p>
                   Our firm collaborates with governmental bodies, international organizations, UN agencies, and grassroots networks to deliver evidence-based solutions that drive measurable impact. We combine deep local knowledge with modern data analytics, technology, and a team of specialists whose combined expertise spans governance, climate science, financial inclusion, social protection, and strategic communications.
                 </p>
                 <p>
-                  Tigaal is not simply a consulting firm; we are a catalyst for positive, tangible change. Our domain of expertise includes robust thematic advisory, in-depth policy research, practical strategies, and adaptive program designs that respond to the evolving challenges of the region. Every solution we deliver is built around local perspectives, genuine engagement, and community empowerment.
+                  TIGAAL is not simply a consulting firm; we are a catalyst for positive, tangible change. Our domain of expertise includes robust thematic advisory, in-depth policy research, practical strategies, and adaptive program designs that respond to the evolving challenges of the region. Every solution we deliver is built around local perspectives, genuine engagement, and community empowerment.
                 </p>
               </div>
             </div>
@@ -86,7 +86,7 @@ const About = () => {
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  What distinguishes Tigaal from other firms operating in the Somali context is the depth and breadth of our team's local knowledge, our established relationships with key stakeholders at federal and regional levels, and our commitment to producing work that meets international quality standards while remaining grounded in the realities on the ground.
+                  What distinguishes TIGAAL from other firms operating in the Somali context is the depth and breadth of our team's local knowledge, our established relationships with key stakeholders at federal and regional levels, and our commitment to producing work that meets international quality standards while remaining grounded in the realities on the ground.
                 </p>
                 <p>
                   Our collaborative approach ensures that our programs do not merely address surface-level issues but transform outcomes, setting the foundation for enduring stability and holistic opportunity across the communities we serve.

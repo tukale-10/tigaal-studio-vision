@@ -32,7 +32,7 @@ const NewsUpdates = () => {
 
   return (
     <main>
-      <PageHero title="News & Updates" subtitle="Latest developments, project milestones, and announcements from Tigaal" breadcrumb="Resources" />
+      <PageHero title="News & Updates" subtitle="Latest developments, project milestones, and announcements from TIGAAL" breadcrumb="Resources" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">

@@ -5,8 +5,8 @@ const whyChoose = [
   { icon: Shield, title: "Rigorous Methodology", desc: "We apply international standards of research and evaluation practice, adapted for the Somali context. Our work has been trusted by the World Bank, Save the Children, Interpeace, and other leading institutions." },
   { icon: Users, title: "Established Networks", desc: "Our relationships span federal and regional government officials, UN agencies, international NGOs, and local civil society organizations, enabling rapid mobilization and stakeholder access." },
   { icon: Cpu, title: "Technology-Enabled", desc: "We leverage modern data collection tools, digital dashboards, and analytical platforms to deliver real-time insights and ensure data quality across geographically dispersed operations." },
-  { icon: ArrowRight, title: "End-to-End Capability", desc: "From initial research and programme design through implementation support, third-party monitoring, and strategic communications, Tigaal offers a complete solution that reduces the need for multiple contractors." },
-  { icon: DollarSign, title: "Cost-Effective", desc: "As a locally established firm, Tigaal offers competitive pricing without compromising quality, delivering better value compared to international firms with higher overhead structures." },
+  { icon: ArrowRight, title: "End-to-End Capability", desc: "From initial research and programme design through implementation support, third-party monitoring, and strategic communications, TIGAAL offers a complete solution that reduces the need for multiple contractors." },
+  { icon: DollarSign, title: "Cost-Effective", desc: "As a locally established firm, TIGAAL offers competitive pricing without compromising quality, delivering better value compared to international firms with higher overhead structures." },
 ];
 
 const WhyChoose = () => {
@@ -18,7 +18,7 @@ const WhyChoose = () => {
             Our Edge
           </span>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 leading-tight">
-            Why Choose Tigaal
+            Why Choose TIGAAL
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             When selecting a research, advisory, or monitoring partner for operations in Somalia and the Horn of Africa, the decision should be guided by demonstrated capability, contextual depth, and a track record of delivering results under challenging conditions.
