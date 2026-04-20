@@ -107,6 +107,23 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
+              {submitted ? (
+                <div className="bg-secondary rounded-sm p-8 lg:p-12 border border-border text-center">
+                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="text-accent" size={32} />
+                  </div>
+                  <h2 className="font-display text-2xl text-foreground mb-3">Your message was received</h2>
+                  <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
+                    Thank you for reaching out. Someone from our Tigaal team will reach out to you shortly.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="inline-flex items-center gap-2 px-8 py-3 border border-border text-foreground font-semibold rounded-sm hover:border-accent/50 transition-all"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
               <form onSubmit={handleSubmit} className="bg-secondary rounded-sm p-8 lg:p-12 border border-border">
                 <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
                   Send a Message
@@ -119,9 +136,10 @@ const Contact = () => {
                     <input
                       type="text"
                       required
+                      disabled={submitting}
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all disabled:opacity-50"
                     />
                   </div>
                   <div>
@@ -129,9 +147,10 @@ const Contact = () => {
                     <input
                       type="email"
                       required
+                      disabled={submitting}
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all disabled:opacity-50"
                     />
                   </div>
                 </div>
@@ -141,18 +160,20 @@ const Contact = () => {
                     <label className="block text-xs font-semibold text-foreground mb-2 tracking-wide uppercase">Organization</label>
                     <input
                       type="text"
+                      disabled={submitting}
                       value={formData.organization}
                       onChange={(e) => setFormData({...formData, organization: e.target.value})}
-                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all disabled:opacity-50"
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-foreground mb-2 tracking-wide uppercase">Subject *</label>
                     <select
                       required
+                      disabled={submitting}
                       value={formData.subject}
                       onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all"
+                      className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all disabled:opacity-50"
                     >
                       <option value="">Select a subject</option>
                       {subjects.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -165,19 +186,26 @@ const Contact = () => {
                   <textarea
                     required
                     rows={6}
+                    disabled={submitting}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-sm border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50 transition-all resize-none disabled:opacity-50"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all"
+                  disabled={submitting}
+                  className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  {submitting ? (
+                    <>Sending… <Loader2 size={16} className="animate-spin" /></>
+                  ) : (
+                    <>Send Message <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" /></>
+                  )}
                 </button>
               </form>
+              )}
             </div>
           </div>
 
