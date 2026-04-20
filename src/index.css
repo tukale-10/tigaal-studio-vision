@@ -15,8 +15,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 29% 12%;
 
-    --primary: 200 45% 15%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 205 40% 28%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 20% 96%;
     --secondary-foreground: 210 29% 12%;
@@ -45,7 +45,7 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --tigaal-dark: 200 45% 15%;
+    --tigaal-dark: 205 40% 28%;
     --tigaal-green: 90 55% 45%;
     --tigaal-light-gray: 210 20% 96%;
     --tigaal-text: 210 29% 12%;

@@ -31,9 +31,9 @@ const HeroSection = () => {
         />
       ))}
 
-      {/* Cinematic gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent" />
+      {/* Soft, lively overlay — keeps imagery clear */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/35 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-20 pt-40 md:pb-28 md:pt-48">

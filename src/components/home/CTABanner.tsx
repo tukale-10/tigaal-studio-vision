@@ -6,7 +6,7 @@ const CTABanner = () => {
   return (
     <section className="relative py-28 overflow-hidden">
       <img src={workshopImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-primary/90" />
+      <div className="absolute inset-0 bg-primary/75" />
       <div className="relative z-10 container mx-auto px-4 lg:px-8 text-center">
         <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-5">
           Ready to partner with us?
