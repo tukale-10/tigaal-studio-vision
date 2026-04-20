@@ -3,10 +3,10 @@ import { ChevronRight } from "lucide-react";
 import teamImg from "@/assets/team-workshop-3.jpg";
 
 const stats = [
-  { value: "12+", label: "Projects Delivered" },
+  { value: "50+", label: "Projects Delivered" },
   { value: "6", label: "Service Pillars" },
   { value: "7+", label: "Team Specialists" },
-  { value: "20+", label: "Partner Organizations" },
+  { value: "20+", label: "Clients" },
 ];
 
 const AboutSnapshot = () => {
