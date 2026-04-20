@@ -84,7 +84,7 @@ const Projects = () => {
                 onClick={() => setTab("past")}
                 className={`flex items-center gap-2 px-6 py-3 rounded-sm font-semibold text-sm transition-all ${tab === "past" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
               >
-                <Briefcase size={16} /> Past Projects ({pastProjects.length})
+                <Briefcase size={16} /> Past Projects (60+)
               </button>
               <button
                 onClick={() => setTab("current")}
