@@ -65,7 +65,7 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
 const Partners = () => {
   return (
     <main>
-      <PageHero title="Our Partners" subtitle="Strategic collaborations driving impact at scale" breadcrumb="Partners" />
+      <PageHero title="Our Clients" subtitle="Strategic collaborations driving impact at scale" breadcrumb="Clients" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
@@ -75,7 +75,7 @@ const Partners = () => {
               Working With <span className="text-accent italic">Leaders</span> in Development
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              TIGAAL takes pride in its strategic collaborations with leading international organizations, government bodies, and development actors. These partnerships enable us to deliver impact at scale and ensure our work remains relevant, rigorous, and responsive to evolving needs.
+              TIGAAL takes pride in its work with leading international organizations, government bodies, and development actors. These client engagements enable us to deliver impact at scale and ensure our work remains relevant, rigorous, and responsive to evolving needs.
             </p>
           </div>
 
