@@ -1,0 +1,2 @@
+ALTER TABLE public.team_members ADD COLUMN IF NOT EXISTS category text NOT NULL DEFAULT 'core';
+UPDATE public.team_members SET category = 'expert' WHERE id IN ('24235a84-e908-4a49-bd51-5c9f622a694a','f1c455a3-f9a6-4b5a-8a21-fb454ccb0ce5');

@@ -14,11 +14,12 @@ interface TeamMember {
   linkedin_url: string | null;
   twitter_url: string | null;
   email: string | null;
+  category: string;
 }
 
 const empty: Omit<TeamMember, "id"> = {
   name: "", title: "", bio: "", image_url: null, display_order: 0,
-  published: true, linkedin_url: null, twitter_url: null, email: null,
+  published: true, linkedin_url: null, twitter_url: null, email: null, category: "core",
 };
 
 const AdminTeam = () => {
@@ -37,7 +38,7 @@ const AdminTeam = () => {
   useEffect(() => { load(); }, []);
 
   const openCreate = () => { setEditing(null); setForm({ ...empty, display_order: items.length }); setCreating(true); };
-  const openEdit = (item: TeamMember) => { setCreating(false); setEditing(item); setForm({ name: item.name, title: item.title, bio: item.bio, image_url: item.image_url, display_order: item.display_order, published: item.published, linkedin_url: item.linkedin_url, twitter_url: item.twitter_url, email: item.email }); };
+  const openEdit = (item: TeamMember) => { setCreating(false); setEditing(item); setForm({ name: item.name, title: item.title, bio: item.bio, image_url: item.image_url, display_order: item.display_order, published: item.published, linkedin_url: item.linkedin_url, twitter_url: item.twitter_url, email: item.email, category: item.category || "core" }); };
 
   const save = async () => {
     if (editing) await supabase.from("team_members").update(form).eq("id", editing.id);
@@ -65,6 +66,13 @@ const AdminTeam = () => {
           <div>
             <label className="block text-white/60 text-sm mb-2">Photo</label>
             <ImageUpload value={form.image_url || undefined} onChange={(url) => setForm({ ...form, image_url: url })} />
+          </div>
+          <div>
+            <label className="block text-white/60 text-sm mb-2">Category</label>
+            <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white/90 focus:outline-none focus:border-[hsl(var(--accent))]">
+              <option value="core">Core Team</option>
+              <option value="expert">Expert</option>
+            </select>
           </div>
           <Field label="LinkedIn URL" value={form.linkedin_url || ""} onChange={(v) => setForm({ ...form, linkedin_url: v || null })} />
           <Field label="Email" value={form.email || ""} onChange={(v) => setForm({ ...form, email: v || null })} />
