@@ -52,7 +52,7 @@ const PartnersStrip = () => {
             <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
               Trusted By
             </span>
-            <h2 className="font-display text-2xl md:text-3xl text-foreground">Our Partners</h2>
+            <h2 className="font-display text-2xl md:text-3xl text-foreground">Our Clients</h2>
           </div>
           <Link to="/partners" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all text-sm tracking-wide uppercase">
             View All <ChevronRight size={16} />
