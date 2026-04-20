@@ -21,7 +21,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {[
                 { label: "Who We Are", path: "/about" },
-                { label: "Our Services", path: "/services" },
+                { label: "Capabilities", path: "/services" },
                 { label: "Our Approach", path: "/approach" },
                 { label: "Projects", path: "/projects" },
                 { label: "Our Team", path: "/team" },
@@ -36,9 +36,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Capabilities */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-accent">Services</h4>
+            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-accent">Capabilities</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li>Capacity Development & Trainings</li>
               <li>Monitoring, Evaluation & Learning</li>
