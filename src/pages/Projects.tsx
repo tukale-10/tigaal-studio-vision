@@ -37,7 +37,7 @@ const Projects = () => {
   const projects = tab === "past" ? pastProjects : currentProjects;
 
   const stats = [
-    { label: "Completed Projects", value: pastProjects.length.toString() },
+    { label: "Completed Projects", value: "60+" },
     { label: "Active Engagements", value: currentProjects.length.toString() },
     { label: "Partner Organizations", value: "15+" },
     { label: "Sectors Covered", value: "6" },
