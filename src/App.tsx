@@ -17,6 +17,7 @@ import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
 import NewsUpdates from "./pages/NewsUpdates";
 import Publications from "./pages/Publications";
+import Unsubscribe from "./pages/Unsubscribe";
 import NotFound from "./pages/NotFound";
 
 import { AdminAuthProvider } from "./admin/AdminAuthProvider";
@@ -66,6 +67,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/resources/news" element={<NewsUpdates />} />
             <Route path="/resources/publications" element={<Publications />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
           </Route>
 
           {/* Admin */}
