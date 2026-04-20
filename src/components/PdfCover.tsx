@@ -31,7 +31,7 @@ const PdfCover = ({ url, title }: PdfCoverProps) => {
         canvas.height = scaled.height;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
-        await page.render({ canvasContext: ctx, viewport: scaled, canvas }).promise;
+        await page.render({ canvasContext: ctx, viewport: scaled } as Parameters<typeof page.render>[0]).promise;
         if (!cancelled) setStatus("ready");
       } catch {
         if (!cancelled) setStatus("error");

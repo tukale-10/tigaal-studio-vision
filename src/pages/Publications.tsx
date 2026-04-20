@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import PageHero from "@/components/PageHero";
-import { ArrowRight, BookOpen, Download } from "lucide-react";
+import { ArrowRight, Download, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import PdfCover from "@/components/PdfCover";
 
 interface Publication {
   id: string;
@@ -62,29 +63,45 @@ const Publications = () => {
           ) : items.length === 0 ? (
             <div className="text-center py-20 text-muted-foreground">No publications yet.</div>
           ) : (
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {items.map((pub) => (
-                <article key={pub.id} className="group relative grid md:grid-cols-[1fr_auto] gap-8 items-center bg-secondary rounded-sm p-8 lg:p-10 border border-border hover:border-accent/30 transition-all duration-500">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-xs font-semibold tracking-[0.15em] uppercase text-accent bg-accent/10 px-3 py-1.5 rounded-sm">{pub.pub_type}</span>
-                      <span className="text-muted-foreground/50 text-sm">{pub.year}</span>
-                    </div>
-                    <h3 className="font-display text-xl lg:text-2xl text-foreground mb-3 leading-snug group-hover:text-accent transition-colors duration-300">{pub.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{pub.description}</p>
-                  </div>
-                  <div className="flex-shrink-0">
+                <article key={pub.id} className="group flex flex-col bg-secondary rounded-sm border border-border hover:border-accent/40 transition-all duration-500 overflow-hidden">
+                  <div className="relative overflow-hidden">
                     {pub.file_url ? (
-                      <a href={pub.file_url} target="_blank" rel="noopener" className="w-14 h-14 bg-accent/10 group-hover:bg-accent/20 rounded-sm flex items-center justify-center transition-colors duration-300">
-                        <BookOpen className="text-accent" size={22} />
-                      </a>
+                      <PdfCover url={pub.file_url} title={pub.title} />
                     ) : (
-                      <div className="w-14 h-14 bg-accent/10 group-hover:bg-accent/20 rounded-sm flex items-center justify-center transition-colors duration-300">
-                        <BookOpen className="text-accent" size={22} />
+                      <div className="w-full aspect-[3/4] bg-accent/5 flex items-center justify-center">
+                        <BookOpen className="text-accent/40" size={48} />
+                      </div>
+                    )}
+                    <div className="absolute top-3 left-3 flex items-center gap-2">
+                      <span className="text-[0.65rem] font-semibold tracking-[0.15em] uppercase text-accent bg-background/95 backdrop-blur px-2.5 py-1 rounded-sm">{pub.pub_type}</span>
+                      <span className="text-[0.65rem] font-semibold text-foreground bg-background/95 backdrop-blur px-2.5 py-1 rounded-sm">{pub.year}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-1 p-6">
+                    <h3 className="font-display text-lg text-foreground mb-2 leading-snug group-hover:text-accent transition-colors duration-300 line-clamp-3">{pub.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-5">{pub.description}</p>
+                    {pub.file_url && (
+                      <div className="mt-auto flex gap-2">
+                        <a
+                          href={pub.file_url}
+                          target="_blank"
+                          rel="noopener"
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-accent text-accent-foreground text-sm font-semibold rounded-sm hover:bg-accent/90 transition-colors"
+                        >
+                          <BookOpen size={14} /> Read
+                        </a>
+                        <a
+                          href={pub.file_url}
+                          download
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-border text-foreground text-sm font-semibold rounded-sm hover:bg-accent/10 hover:border-accent/40 transition-colors"
+                        >
+                          <Download size={14} /> Download
+                        </a>
                       </div>
                     )}
                   </div>
-                  <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent group-hover:w-full transition-all duration-500" />
                 </article>
               ))}
             </div>
