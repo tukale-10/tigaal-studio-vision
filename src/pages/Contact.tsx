@@ -1,6 +1,8 @@
 import { useState } from "react";
 import PageHero from "@/components/PageHero";
-import { Phone, Mail, MapPin, Globe, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Globe, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 const subjects = ["Research", "M&E", "Communications", "Investment Advisory", "Partnership", "Other"];
 
@@ -15,12 +17,60 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "", email: "", organization: "", subject: "", message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:info@tigaal.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nOrganization: ${formData.organization}\nEmail: ${formData.email}\n\n${formData.message}`
-    )}`;
+    setSubmitting(true);
+    try {
+      const id = crypto.randomUUID();
+      const { error: insertError } = await supabase.from("contact_submissions").insert({
+        id,
+        name: formData.name,
+        email: formData.email,
+        organization: formData.organization || null,
+        subject: formData.subject,
+        message: formData.message,
+      });
+      if (insertError) throw insertError;
+
+      await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-confirmation",
+          recipientEmail: formData.email,
+          idempotencyKey: `contact-confirm-${id}`,
+          templateData: { name: formData.name, subject: formData.subject },
+        },
+      });
+
+      await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-notification",
+          recipientEmail: "info@tigaal.com",
+          idempotencyKey: `contact-notify-${id}`,
+          templateData: {
+            name: formData.name,
+            email: formData.email,
+            organization: formData.organization,
+            subject: formData.subject,
+            message: formData.message,
+          },
+        },
+      });
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", organization: "", subject: "", message: "" });
+    } catch (err) {
+      console.error("Contact submission failed", err);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email us directly at info@tigaal.com.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
