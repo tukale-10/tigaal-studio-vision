@@ -227,6 +227,7 @@ export type Database = {
       team_members: {
         Row: {
           bio: string
+          category: string
           created_at: string
           display_order: number
           email: string | null
@@ -241,6 +242,7 @@ export type Database = {
         }
         Insert: {
           bio?: string
+          category?: string
           created_at?: string
           display_order?: number
           email?: string | null
@@ -255,6 +257,7 @@ export type Database = {
         }
         Update: {
           bio?: string
+          category?: string
           created_at?: string
           display_order?: number
           email?: string | null
