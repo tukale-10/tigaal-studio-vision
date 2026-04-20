@@ -21,7 +21,7 @@ const InfoBar = () => {
           </a>
         </div>
         <a
-          href="https://www.linkedin.com/company/tigaal-consulting"
+          href="https://www.linkedin.com/company/tigaal/posts/?feedView=all"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-primary-foreground/85 hover:text-accent transition-colors"
