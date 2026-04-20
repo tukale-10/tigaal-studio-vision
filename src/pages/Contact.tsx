@@ -114,7 +114,7 @@ const Contact = () => {
                   </div>
                   <h2 className="font-display text-2xl text-foreground mb-3">Your message was received</h2>
                   <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
-                    Thank you for reaching out. Someone from our Tigaal team will reach out to you shortly.
+                    Thank you for reaching out. Someone from our team will reach out to you shortly.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
