@@ -5,7 +5,7 @@ import logo from "@/assets/tigaal-logo.webp";
 
 const navLinks = [
   { label: "Who We Are", path: "/about" },
-  { label: "Services", path: "/services" },
+  { label: "Capabilities", path: "/services" },
   { label: "Our Approach", path: "/approach" },
   { label: "Projects", path: "/projects" },
   { label: "Our Team", path: "/team" },
