@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import PageHero from "@/components/PageHero";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
-interface NewsItem {
+interface DispatchItem {
   id: string;
   title: string;
   excerpt: string;
@@ -12,8 +12,8 @@ interface NewsItem {
   published_date: string;
 }
 
-const NewsUpdates = () => {
-  const [items, setItems] = useState<NewsItem[]>([]);
+const AnalyticalDispatch = () => {
+  const [items, setItems] = useState<DispatchItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,9 +22,9 @@ const NewsUpdates = () => {
         .from("news_updates")
         .select("id, title, excerpt, category, published_date")
         .eq("published", true)
-        .eq("dispatch_type", "news")
+        .eq("dispatch_type", "dispatch")
         .order("published_date", { ascending: false });
-      setItems((data as NewsItem[]) || []);
+      setItems((data as DispatchItem[]) || []);
       setLoading(false);
     };
     fetch();
@@ -32,7 +32,11 @@ const NewsUpdates = () => {
 
   return (
     <main>
-      <PageHero title="News & Updates" subtitle="Latest developments, project milestones, and announcements from Tigaal" breadcrumb="Resources" />
+      <PageHero
+        title="Analytical Dispatch"
+        subtitle="In-depth analysis, research insights, and commentary from the Tigaal team"
+        breadcrumb="Resources"
+      />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
@@ -41,7 +45,10 @@ const NewsUpdates = () => {
               {[...Array(3)].map((_, i) => <div key={i} className="h-64 bg-secondary rounded-sm animate-pulse" />)}
             </div>
           ) : items.length === 0 ? (
-            <div className="text-center py-20 text-muted-foreground">No news articles published yet.</div>
+            <div className="text-center py-20">
+              <FileText className="mx-auto text-muted-foreground/30 mb-4" size={48} />
+              <p className="text-muted-foreground">No dispatches published yet. Check back soon for in-depth analysis.</p>
+            </div>
           ) : (
             <div className="grid lg:grid-cols-3 gap-8">
               {items.map((item) => (
@@ -54,7 +61,7 @@ const NewsUpdates = () => {
                     <p className="text-muted-foreground leading-relaxed mb-6">{item.excerpt}</p>
                     <div className="flex items-center gap-2 text-muted-foreground/60 text-sm">
                       <Calendar size={14} />
-                      <span>{new Date(item.published_date).toLocaleDateString("en-US", { year: "numeric", month: "long" })}</span>
+                      <span>{new Date(item.published_date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
                     </div>
                   </div>
                   <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent group-hover:w-full transition-all duration-500" />
@@ -67,8 +74,8 @@ const NewsUpdates = () => {
 
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Stay Informed</h2>
-          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Want to stay updated on our latest work? Reach out to join our mailing list.</p>
+          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Want our analysis on a specific topic?</h2>
+          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Reach out to discuss commissioned research and analytical work.</p>
           <Link to="/contact" className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all">
             Get In Touch <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -78,4 +85,4 @@ const NewsUpdates = () => {
   );
 };
 
-export default NewsUpdates;
+export default AnalyticalDispatch;
