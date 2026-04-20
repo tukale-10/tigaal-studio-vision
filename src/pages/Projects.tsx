@@ -37,7 +37,7 @@ const Projects = () => {
   const projects = tab === "past" ? pastProjects : currentProjects;
 
   const stats = [
-    { label: "Completed Projects", value: pastProjects.length.toString() },
+    { label: "Completed Projects", value: "60+" },
     { label: "Active Engagements", value: currentProjects.length.toString() },
     { label: "Partner Organizations", value: "15+" },
     { label: "Sectors Covered", value: "6" },
@@ -84,7 +84,7 @@ const Projects = () => {
                 onClick={() => setTab("past")}
                 className={`flex items-center gap-2 px-6 py-3 rounded-sm font-semibold text-sm transition-all ${tab === "past" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
               >
-                <Briefcase size={16} /> Past Projects ({pastProjects.length})
+                <Briefcase size={16} /> Past Projects (60+)
               </button>
               <button
                 onClick={() => setTab("current")}
