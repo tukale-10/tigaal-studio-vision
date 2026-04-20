@@ -123,7 +123,7 @@ const Approach = () => {
       <section className="py-24 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Get Started</span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">Ready to work together?</h2>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">Ready to collaborate?</h2>
           <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
             Let's discuss how TIGAAL can bring strategic insight and local expertise to your next initiative.
           </p>
