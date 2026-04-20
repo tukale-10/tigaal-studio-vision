@@ -22,7 +22,7 @@ const ServicesGrid = () => {
               What We Do
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight">
-              Our Services
+              Our Capabilities
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md">

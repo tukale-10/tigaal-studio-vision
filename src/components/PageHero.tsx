@@ -10,6 +10,7 @@ import mogadishuWaterfront from "@/assets/mogadishu-waterfront.jpg";
 const heroImages: Record<string, string> = {
   "Who We Are": teamImg1,
   "Services": trainingSession1,
+  "Capabilities": trainingSession1,
   "Our Approach": groupWorkshop,
   "Projects": mogadishuSkyline,
   "Our Team": teamImg2,
