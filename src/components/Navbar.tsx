@@ -82,7 +82,7 @@ const Navbar = () => {
                 <div key={link.label} className="relative">
                   <button
                     onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                    className={`flex items-center gap-1 px-4 py-2 text-[0.95rem] font-semibold rounded-md transition-colors ${
                       isResourcesActive ? linkActive : `${linkBase} ${linkHover}`
                     }`}
                   >
@@ -111,7 +111,7 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`px-4 py-2 text-[0.95rem] font-semibold rounded-md transition-colors ${
                     location.pathname === link.path ? linkActive : `${linkBase} ${linkHover}`
                   }`}
                 >
