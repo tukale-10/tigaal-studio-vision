@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Globe, ArrowRight } from "lucide-react";
 const subjects = ["Research", "M&E", "Communications", "Investment Advisory", "Partnership", "Other"];
 
 const contactDetails = [
-  { icon: Phone, label: "Phone", value: "+252 (0) 61 5595452" },
+  { icon: Phone, label: "Phone", value: "+252 613 926 664" },
   { icon: Mail, label: "Email", value: "info@tigaal.com" },
   { icon: MapPin, label: "Address", value: "Airport Road, Wadajir District, Mogadishu" },
   { icon: Globe, label: "Website", value: "www.tigaal.com" },

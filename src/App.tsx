@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/Navbar";
+import InfoBar from "@/components/InfoBar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
@@ -33,8 +34,13 @@ const queryClient = new QueryClient();
 
 const PublicLayout = () => (
   <>
-    <Navbar />
-    <Outlet />
+    <div className="fixed top-0 left-0 right-0 z-50">
+      <InfoBar />
+      <Navbar />
+    </div>
+    <div className="md:pt-9">
+      <Outlet />
+    </div>
     <Footer />
   </>
 );
@@ -75,7 +81,7 @@ const App = () => (
             </Route>
           </Route>
 
-          <Route path="*" element={<><Navbar /><NotFound /><Footer /></>} />
+          <Route path="*" element={<><InfoBar /><Navbar /><NotFound /><Footer /></>} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
