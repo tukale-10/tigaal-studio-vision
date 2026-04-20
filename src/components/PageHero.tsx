@@ -35,8 +35,8 @@ const PageHero = ({ title, subtitle, breadcrumb }: PageHeroProps) => {
         loading="eager"
         style={{ animation: "ken-burns 25s ease-out forwards" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/75 to-primary/40" />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent" />
 
       <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-14 md:pb-20">
         {breadcrumb && (
