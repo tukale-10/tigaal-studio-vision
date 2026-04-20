@@ -10,10 +10,11 @@ interface TeamMember {
   bio: string;
   image_url: string | null;
   display_order: number;
+  category: string;
 }
 
 const Team = () => {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedKey, setExpandedKey] = useState<string | null>(null);
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -63,46 +64,66 @@ const Team = () => {
               ))}
             </div>
           ) : (
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-              {teamMembers.map((member, i) => {
-                const isExpanded = expandedIndex === i;
+            <div className="max-w-7xl mx-auto space-y-20">
+              {[
+                { key: "core", label: "Core Team", subtitle: "The professionals driving TIGAAL's day-to-day work." },
+                { key: "expert", label: "Our Experts", subtitle: "Senior advisors providing specialised technical expertise." },
+              ].map((group) => {
+                const members = teamMembers.filter((m) => (m.category || "core") === group.key);
+                if (members.length === 0) return null;
                 return (
-                  <div
-                    key={member.id}
-                    className="bg-background border border-border rounded-sm overflow-hidden group hover:border-accent/40 hover:shadow-xl transition-all duration-500"
-                  >
-                    <div className="h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                    <div className="p-8 lg:p-10">
-                      <div className="flex items-start gap-6 mb-6">
-                        <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-sm flex-shrink-0 overflow-hidden bg-secondary">
-                          {member.image_url ? (
-                            <img
-                              src={member.image_url}
-                              alt={member.name}
-                              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-accent/10 flex items-center justify-center text-accent font-display text-2xl">
-                              {member.name.charAt(0)}
+                  <div key={group.key}>
+                    <div className="mb-10 pb-6 border-b border-border">
+                      <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-3 block">
+                        {group.label}
+                      </span>
+                      <h3 className="font-display text-3xl lg:text-4xl text-foreground">{group.subtitle}</h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {members.map((member) => {
+                        const key = member.id;
+                        const isExpanded = expandedKey === key;
+                        return (
+                          <div
+                            key={member.id}
+                            className="bg-background border border-border rounded-sm overflow-hidden group hover:border-accent/40 hover:shadow-xl transition-all duration-500"
+                          >
+                            <div className="h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                            <div className="p-8 lg:p-10">
+                              <div className="flex items-start gap-6 mb-6">
+                                <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-sm flex-shrink-0 overflow-hidden bg-secondary">
+                                  {member.image_url ? (
+                                    <img
+                                      src={member.image_url}
+                                      alt={member.name}
+                                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                    />
+                                  ) : (
+                                    <div className="w-full h-full bg-accent/10 flex items-center justify-center text-accent font-display text-2xl">
+                                      {member.name.charAt(0)}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="pt-2">
+                                  <h3 className="font-display text-2xl text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
+                                    {member.name}
+                                  </h3>
+                                  <p className="text-accent text-base font-semibold tracking-wide">{member.title}</p>
+                                </div>
+                              </div>
+                              <p className={`text-base text-muted-foreground leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>
+                                {member.bio}
+                              </p>
+                              <button
+                                onClick={() => setExpandedKey(isExpanded ? null : key)}
+                                className="flex items-center gap-2 mt-5 text-accent text-sm font-bold tracking-wide uppercase hover:gap-3 transition-all"
+                              >
+                                {isExpanded ? <>Show Less <ChevronUp size={16} /></> : <>Read Full Bio <ChevronDown size={16} /></>}
+                              </button>
                             </div>
-                          )}
-                        </div>
-                        <div className="pt-2">
-                          <h3 className="font-display text-2xl text-foreground mb-1 group-hover:text-accent transition-colors duration-300">
-                            {member.name}
-                          </h3>
-                          <p className="text-accent text-base font-semibold tracking-wide">{member.title}</p>
-                        </div>
-                      </div>
-                      <p className={`text-base text-muted-foreground leading-relaxed ${isExpanded ? "" : "line-clamp-3"}`}>
-                        {member.bio}
-                      </p>
-                      <button
-                        onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                        className="flex items-center gap-2 mt-5 text-accent text-sm font-bold tracking-wide uppercase hover:gap-3 transition-all"
-                      >
-                        {isExpanded ? <>Show Less <ChevronUp size={16} /></> : <>Read Full Bio <ChevronDown size={16} /></>}
-                      </button>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 );
