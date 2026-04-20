@@ -203,7 +203,7 @@ const About = () => {
       {/* CTA */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">Want to learn more?</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">Ready to collaborate?</h2>
           <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
             Whether you're a development partner, investor, or government body — we're ready to discuss how TIGAAL can support your objectives.
           </p>
