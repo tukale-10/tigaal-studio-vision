@@ -56,7 +56,7 @@ const HeroSection = () => {
             className="text-lg md:text-xl text-primary-foreground/70 mb-12 max-w-2xl leading-relaxed animate-slide-up-fade"
             style={{ animationDelay: "0.15s" }}
           >
-            Somalia's leading research and analytical management firm — delivering rigorous evidence, strategic advisory, and measurable impact across the Horn of Africa.
+            A Somalia-based social enterprise delivering research, advisory, and development projects across the Horn of Africa — with a consulting practice that sustains and reinvests in our mission.
           </p>
 
           <div
