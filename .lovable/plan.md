@@ -1,39 +1,31 @@
-## CMS Build Plan
+## Goal
+Reposition TIGAAL as a **social enterprise** — one that delivers non-profit/development projects, sustained by its consulting wing as the profit-making arm — without overhauling the site.
 
-### Phase 1: Database Schema
-Create tables for all content types:
-- `services` — title, description, icon, image, highlights, order
-- `projects` — title, subtitle, client, description, category, status
-- `team_members` — name, title, bio, image, order, social links
-- `news_updates` — title, excerpt, content (JSON blocks), category, date, published
-- `publications` — title, description, type, year, file_url, published
-- `user_roles` — admin role system (invite-only)
-- `media` — file storage tracking table
+## Approach
+Light-touch copy edits only. No structural, navigation, or visual changes. Update the "who we are" framing in a handful of high-visibility places so the social-enterprise identity comes through clearly.
 
-All with RLS policies (admins full CRUD, public read for published content).
+## Proposed copy changes
 
-### Phase 2: Admin Auth & Layout
-- Admin login page at `/admin`
-- Protected admin routes with auth guard
-- Admin layout with sidebar navigation and dashboard
-- Invite-only: first admin created via Supabase dashboard, can invite others
+1. **Footer (`src/components/Footer.tsx`)** — About blurb
+   - From: "TIGAAL is a research and analytical management firm…"
+   - To: "TIGAAL is a social enterprise delivering research, analysis, and development projects across Somalia and the Horn of Africa — sustained by our consulting practice, which reinvests in our mission-driven work."
 
-### Phase 3: Admin CRUD Pages
-- **Dashboard** — content stats overview
-- **Services Manager** — CRUD with image upload, drag-to-reorder
-- **Projects Manager** — CRUD with category/status management
-- **Team Manager** — CRUD with photo upload, bio editor
-- **News & Updates** — CRUD with Notion-like block editor
-- **Publications** — CRUD with PDF/file upload
-- **Users** — view admins, invite new admins
+2. **Home › AboutSnapshot (`src/components/home/AboutSnapshot.tsx`)** — intro paragraph
+   - Reframe opener to: "TIGAAL is a social enterprise operating at the centre of Somalia's development landscape. Our consulting practice powers and sustains the non-profit and development projects we deliver…" (rest preserved).
 
-### Phase 4: Rich Editor & File Uploads
-- Install `@blocknote/react` for Notion-like block editor
-- Supabase Storage buckets for images, documents
-- Image upload component with preview
-- File/PDF upload for publications
+3. **About page (`src/pages/About.tsx`)** — Company Overview + Mission quote
+   - First paragraph: lead with "TIGAAL is a social enterprise…" and add one sentence explaining the dual model (consulting funds mission delivery).
+   - Optionally add a short callout line under "What Sets Us Apart" noting the social-enterprise model.
 
-### Phase 5: Dynamic Public Site
-- Replace static content on Services, Projects, Team, News, Publications pages with database queries
-- Loading states and error handling
-- Keep current design, just swap data source
+4. **Hero subtitle / tagline** (if present on `HeroSection.tsx`) — small tweak to include "social enterprise" wording. Will confirm exact line after reading the file during implementation.
+
+5. **SEO metadata (`index.html`)** — update `<meta name="description">` and `og:description` to reflect social-enterprise positioning.
+
+## Out of scope
+- No new pages, sections, components, routes, or images.
+- No design, layout, color, or navigation changes.
+- No database/CMS edits.
+- Services, Approach, Projects, Team pages untouched (unless you want me to include them).
+
+## Question before I write the plan into code
+Want me to keep it to **just these 5 spots**, or also sprinkle the wording into the Services and Approach page intros?
