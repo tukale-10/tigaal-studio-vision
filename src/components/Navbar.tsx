@@ -5,7 +5,22 @@ import logo from "@/assets/tigaal-logo.webp";
 
 const navLinks = [
   { label: "Who We Are", path: "/about" },
-  { label: "Capabilities", path: "/services" },
+  {
+    label: "Capabilities",
+    path: "/services",
+    children: [
+      { label: "All Capabilities", path: "/services" },
+      { label: "Capacity Development & Trainings", path: "/services/capacity-development-and-trainings" },
+      { label: "Monitoring, Evaluation & Learning", path: "/services/monitoring-evaluation-and-learning" },
+      { label: "Strategic Communication & PR", path: "/services/strategic-communication-and-pr" },
+      { label: "Market Studies & Assessments", path: "/services/market-studies-and-assessments" },
+      { label: "Climate Resilience & Adaptation", path: "/services/climate-resilience-and-adaptation" },
+      { label: "Private Sector & Financial Inclusion", path: "/services/private-sector-and-financial-inclusion" },
+      { label: "Digital Solutions & MIS", path: "/services/digital-solutions-mis" },
+      { label: "PCVE, Peacebuilding & Social Cohesion", path: "/services/pcve-peacebuilding-social-cohesion" },
+      { label: "SSR, Political Risk & Geopolitics", path: "/services/ssr-political-risk-geopolitical" },
+    ],
+  },
   { label: "Our Approach", path: "/approach" },
   { label: "Projects", path: "/projects" },
   { label: "Our Team", path: "/team" },
@@ -52,7 +67,8 @@ const Navbar = () => {
   const isSolid = isScrolled || isMobileOpen;
   const navBg = isSolid ? "bg-primary shadow-lg" : "bg-white shadow-sm";
 
-  const isResourcesActive = location.pathname.startsWith("/resources");
+  const isParentActive = (link: typeof navLinks[number]) =>
+    link.children ? location.pathname.startsWith(link.path) : false;
 
   // Color tokens that flip based on background
   const linkBase = isSolid ? "text-primary-foreground/90" : "text-foreground/80";
@@ -84,14 +100,14 @@ const Navbar = () => {
                   <button
                     onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
                     className={`flex items-center gap-1 px-4 py-2 text-[0.95rem] font-semibold rounded-md transition-colors ${
-                      isResourcesActive ? linkActive : `${linkBase} ${linkHover}`
+                      isParentActive(link) ? linkActive : `${linkBase} ${linkHover}`
                     }`}
                   >
                     {link.label}
                     <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`} />
                   </button>
                   {openDropdown === link.label && (
-                    <div className={`absolute top-full right-0 mt-2 w-52 border rounded-sm shadow-xl animate-fade-in overflow-hidden ${dropdownBg}`}>
+                    <div className={`absolute top-full right-0 mt-2 ${link.label === "Capabilities" ? "w-80" : "w-52"} border rounded-sm shadow-xl animate-fade-in overflow-hidden ${dropdownBg}`}>
                       {link.children.map((child) => (
                         <Link
                           key={child.path}
@@ -147,7 +163,7 @@ const Navbar = () => {
                   <button
                     onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
                     className={`flex items-center justify-between w-full px-4 py-3 text-sm font-medium transition-colors ${
-                      isResourcesActive
+                      isParentActive(link)
                         ? "text-accent"
                         : "text-primary-foreground/90 hover:text-accent"
                     }`}
