@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import CapabilityDetail from "./pages/CapabilityDetail";
 import Approach from "./pages/Approach";
 import Projects from "./pages/Projects";
 import Team from "./pages/Team";
@@ -61,6 +62,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<CapabilityDetail />} />
             <Route path="/approach" element={<Approach />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/team" element={<Team />} />
