@@ -1,31 +1,68 @@
-## Goal
-Reposition TIGAAL as a **social enterprise** — one that delivers non-profit/development projects, sustained by its consulting wing as the profit-making arm — without overhauling the site.
+# Capability Detail Pages
 
-## Approach
-Light-touch copy edits only. No structural, navigation, or visual changes. Update the "who we are" framing in a handful of high-visibility places so the social-enterprise identity comes through clearly.
+Create a dedicated, richly-designed page for each of TIGAAL's 9 capabilities, accessible from the existing Capabilities/Services grid.
 
-## Proposed copy changes
+## Scope
 
-1. **Footer (`src/components/Footer.tsx`)** — About blurb
-   - From: "TIGAAL is a research and analytical management firm…"
-   - To: "TIGAAL is a social enterprise delivering research, analysis, and development projects across Somalia and the Horn of Africa — sustained by our consulting practice, which reinvests in our mission-driven work."
+One reusable `CapabilityDetail` page component, served from a new dynamic route `/services/:slug`. Each capability gets:
 
-2. **Home › AboutSnapshot (`src/components/home/AboutSnapshot.tsx`)** — intro paragraph
-   - Reframe opener to: "TIGAAL is a social enterprise operating at the centre of Somalia's development landscape. Our consulting practice powers and sustains the non-profit and development projects we deliver…" (rest preserved).
+- A hero with title, summary, breadcrumb, and signature image (from DB `image_url`).
+- An "Overview" narrative section (long-form description from DB + curated copy).
+- A "What We Offer" cards grid (4–6 service sub-areas, icon + short blurb).
+- A "Our Approach" stepped list (4–5 steps, numbered timeline).
+- A "By the Numbers" stats / chart strip — Recharts (bar or radial) showing illustrative impact metrics.
+- A "Where We Work" mini map of the Horn of Africa highlighting Somalia, Kenya, Ethiopia, Djibouti — SVG-based, no external map lib needed.
+- A "Key Focus Areas" highlight chips (from DB `highlights`).
+- A "Related Capabilities" section linking 2–3 sibling pages.
+- A CTA banner to /contact.
 
-3. **About page (`src/pages/About.tsx`)** — Company Overview + Mission quote
-   - First paragraph: lead with "TIGAAL is a social enterprise…" and add one sentence explaining the dual model (consulting funds mission delivery).
-   - Optionally add a short callout line under "What Sets Us Apart" noting the social-enterprise model.
+Recharts is already a viable choice (lightweight, fits design tokens). No new map library — a hand-tuned SVG of the region keeps it fast and on-brand.
 
-4. **Hero subtitle / tagline** (if present on `HeroSection.tsx`) — small tweak to include "social enterprise" wording. Will confirm exact line after reading the file during implementation.
+## Per-capability content
 
-5. **SEO metadata (`index.html`)** — update `<meta name="description">` and `og:description` to reflect social-enterprise positioning.
+Each capability gets its own content config (sub-services, approach steps, stat figures, focus regions) authored in a single typed file `src/content/capabilities.ts`, keyed by slug. Keeps DB schema unchanged. Slug derived from title.
+
+The 9 slugs:
+1. `capacity-development-and-trainings`
+2. `monitoring-evaluation-and-learning`
+3. `strategic-communication-and-pr`
+4. `market-studies-and-assessments`
+5. `climate-resilience-and-adaptation`
+6. `private-sector-and-financial-inclusion`
+7. `digital-solutions-mis`
+8. `pcve-peacebuilding-social-cohesion`
+9. `ssr-political-risk-geopolitical`
+
+## Wiring
+
+- Update `ServicesGrid` (home) and `Services` page so each capability card/row links to `/services/:slug` instead of `/services`.
+- Add route in `App.tsx`.
+- Slug helper: simple kebab-case from title with manual override map for accuracy.
+
+## Files
+
+New:
+- `src/pages/CapabilityDetail.tsx` — the detail page (single reusable component).
+- `src/content/capabilities.ts` — per-slug content config (sub-services, steps, stats, regions, related slugs).
+- `src/components/capability/StatsChart.tsx` — Recharts bar/radial.
+- `src/components/capability/HornOfAfricaMap.tsx` — inline SVG map with highlighted countries.
+- `src/lib/slug.ts` — slug helper + title↔slug map.
+
+Edited:
+- `src/App.tsx` — add `/services/:slug` route.
+- `src/pages/Services.tsx` — link rows to detail pages.
+- `src/components/home/ServicesGrid.tsx` — link cards to detail pages.
+
+## Design
+
+Uses existing tokens (accent, primary, secondary, muted). No new colors. Display font for headings, body font for prose. Generous whitespace, asymmetric two-column blocks (image/text alternating), accent-color accents on stats and chips. Recharts styled via CSS vars. Map: dark-primary land, accent for highlighted countries, subtle dotted grid background.
 
 ## Out of scope
-- No new pages, sections, components, routes, or images.
-- No design, layout, color, or navigation changes.
-- No database/CMS edits.
-- Services, Approach, Projects, Team pages untouched (unless you want me to include them).
 
-## Question before I write the plan into code
-Want me to keep it to **just these 5 spots**, or also sprinkle the wording into the Services and Approach page intros?
+- No CMS UI for editing the per-capability extended content (lives in `capabilities.ts`).
+- No new DB columns.
+- No changes to Approach, About, Projects, Team pages.
+
+## Question
+
+Confirm before I build: OK to author the rich per-capability content (sub-services, approach steps, illustrative stat figures) in code rather than the database? Illustrative stats will be plausible/representative (e.g. "120+ workshops delivered", "15 countries", etc.) and easy for you to tweak later in `src/content/capabilities.ts`. If you'd rather provide exact figures, share them and I'll plug them in.
