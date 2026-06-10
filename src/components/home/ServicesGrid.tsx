@@ -4,12 +4,12 @@ import {
 } from "lucide-react";
 
 const services = [
-  { icon: GraduationCap, title: "Capacity Development & Trainings", desc: "Evidence-based policy research and strategic analyses that inform decision-making and strengthen development outcomes." },
-  { icon: BarChart3, title: "Monitoring, Evaluation & Learning", desc: "Customized frameworks for outcome and impact evaluations, emphasizing objectivity and accuracy." },
-  { icon: Megaphone, title: "Strategic Communication & PR", desc: "Strengthening organizational voice, credibility, and stakeholder engagement through development-focused communication." },
-  { icon: TrendingUp, title: "Market Studies & Assessments", desc: "Actionable insights into consumer behaviours, market trends, and competitive landscapes." },
-  { icon: Leaf, title: "Climate Resilience & Adaptation", desc: "Climate-responsive policies, regulatory frameworks, and sustainable programmes aligned with adaptation agendas." },
-  { icon: Landmark, title: "Private Sector Development & Financial Inclusion", desc: "Promoting private sector growth and extending financial services to underserved communities." },
+  { icon: GraduationCap, slug: "capacity-development-and-trainings", title: "Capacity Development & Trainings", desc: "Evidence-based policy research and strategic analyses that inform decision-making and strengthen development outcomes." },
+  { icon: BarChart3, slug: "monitoring-evaluation-and-learning", title: "Monitoring, Evaluation & Learning", desc: "Customized frameworks for outcome and impact evaluations, emphasizing objectivity and accuracy." },
+  { icon: Megaphone, slug: "strategic-communication-and-pr", title: "Strategic Communication & PR", desc: "Strengthening organizational voice, credibility, and stakeholder engagement through development-focused communication." },
+  { icon: TrendingUp, slug: "market-studies-and-assessments", title: "Market Studies & Assessments", desc: "Actionable insights into consumer behaviours, market trends, and competitive landscapes." },
+  { icon: Leaf, slug: "climate-resilience-and-adaptation", title: "Climate Resilience & Adaptation", desc: "Climate-responsive policies, regulatory frameworks, and sustainable programmes aligned with adaptation agendas." },
+  { icon: Landmark, slug: "private-sector-and-financial-inclusion", title: "Private Sector Development & Financial Inclusion", desc: "Promoting private sector growth and extending financial services to underserved communities." },
 ];
 
 const ServicesGrid = () => {
@@ -33,7 +33,7 @@ const ServicesGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((service) => (
             <Link
-              to="/services"
+              to={`/services/${service.slug}`}
               key={service.title}
               className="group bg-background p-8 lg:p-10 hover:bg-accent/[0.03] transition-all duration-500 relative"
             >
