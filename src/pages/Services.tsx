@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2, Scale, Heart } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { optimizedImage } from "@/lib/image";
+import { slugifyTitle } from "@/lib/slug";
 import groupWorkshop from "@/assets/group-workshop.jpg";
 import trainingSession1 from "@/assets/training-session-1.jpg";
 import communityYouth from "@/assets/community-youth.jpg";
@@ -89,8 +90,9 @@ const Services = () => {
               {services.map((service, i) => {
                 const isEven = i % 2 === 0;
                 const IconComp = getIcon(service.icon_name);
+                const slug = slugifyTitle(service.title);
                 return (
-                  <div key={service.id} className={`grid lg:grid-cols-2 gap-0 items-stretch group`}>
+                  <Link to={`/services/${slug}`} key={service.id} className={`grid lg:grid-cols-2 gap-0 items-stretch group block`}>
                     <div className={`relative overflow-hidden h-[320px] lg:h-auto min-h-[400px] ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                       {service.image_url ? (
                         <img
@@ -113,17 +115,20 @@ const Services = () => {
                       <div className="w-14 h-14 bg-accent/10 rounded-sm flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
                         <IconComp className="text-accent" size={24} />
                       </div>
-                      <h3 className="font-display text-2xl lg:text-3xl text-foreground mb-5 leading-snug">{service.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed mb-8">{service.description}</p>
-                      <div className="flex flex-wrap gap-2">
+                      <h3 className="font-display text-2xl lg:text-3xl text-foreground mb-5 leading-snug group-hover:text-accent transition-colors">{service.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed mb-8 line-clamp-4">{service.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {service.highlights.map((tag) => (
                           <span key={tag} className="inline-flex items-center gap-1.5 text-xs font-medium text-accent bg-accent/10 px-3 py-1.5 rounded-sm">
                             <CheckCircle2 size={12} />{tag}
                           </span>
                         ))}
                       </div>
+                      <span className="inline-flex items-center gap-2 text-accent text-sm font-semibold">
+                        Explore capability <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
