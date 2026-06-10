@@ -55,7 +55,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Average Skill Uplift", value: 38, suffix: "%" },
     ],
     statsCaption: "Cumulative reach across TIGAAL capacity-development engagements.",
-    regions: ["SO", "KE", "ET", "DJ"],
+    regions: ["SO", "KE", "ET"],
     related: ["monitoring-evaluation-and-learning", "strategic-communication-and-pr"],
     quote: { text: "Capacity is not transferred — it is co-created.", attribution: "TIGAAL Learning Principle" },
   },
@@ -85,7 +85,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Donor Frameworks", value: 12 },
     ],
     statsCaption: "Across humanitarian, governance, and development portfolios.",
-    regions: ["SO", "KE", "ET", "SS"],
+    regions: ["SO", "KE", "ET"],
     related: ["capacity-development-and-trainings", "digital-solutions-mis"],
     quote: { text: "What gets measured rigorously, gets improved.", attribution: "TIGAAL MEL Practice" },
   },
@@ -115,7 +115,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Languages Worked In", value: 4 },
     ],
     statsCaption: "Behaviour-change and stakeholder-engagement campaigns since 2020.",
-    regions: ["SO", "KE", "ET", "DJ"],
+    regions: ["SO", "KE", "ET"],
     related: ["pcve-peacebuilding-social-cohesion", "capacity-development-and-trainings"],
   },
   "market-studies-and-assessments": {
@@ -144,7 +144,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Avg. Project Length (wks)", value: 8 },
     ],
     statsCaption: "Commercial and development-finance assignments across the Horn of Africa.",
-    regions: ["SO", "KE", "ET", "DJ"],
+    regions: ["SO", "KE", "ET"],
     related: ["private-sector-and-financial-inclusion", "digital-solutions-mis"],
   },
   "climate-resilience-and-adaptation": {
@@ -173,7 +173,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Climate Finance Concepts", value: 7 },
     ],
     statsCaption: "Spanning pastoralist, agro-pastoral, and coastal systems.",
-    regions: ["SO", "KE", "ET", "DJ", "SS"],
+    regions: ["SO", "KE", "ET"],
     related: ["private-sector-and-financial-inclusion", "monitoring-evaluation-and-learning"],
   },
   "private-sector-and-financial-inclusion": {
@@ -231,7 +231,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Uptime SLA", value: 99, suffix: "%" },
     ],
     statsCaption: "MIS and digital-delivery engagements across government and NGO clients.",
-    regions: ["SO", "KE", "ET", "DJ"],
+    regions: ["SO", "KE", "ET"],
     related: ["monitoring-evaluation-and-learning", "market-studies-and-assessments"],
   },
   "pcve-peacebuilding-social-cohesion": {
@@ -290,7 +290,7 @@ export const capabilities: Record<string, CapabilityContent> = {
       { label: "Scenarios Modelled", value: 36 },
     ],
     statsCaption: "Strategic advisory across governments, IOs, investors, and partners.",
-    regions: ["SO", "KE", "ET", "DJ", "ER", "SD", "SS"],
+    regions: ["SO", "KE", "ET"],
     related: ["pcve-peacebuilding-social-cohesion", "monitoring-evaluation-and-learning"],
   },
 };
