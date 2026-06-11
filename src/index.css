@@ -65,7 +65,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply tracking-tight;
   }
 }
 
@@ -75,7 +75,12 @@
   }
 
   .font-serif-display {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+  }
+
+  .eyebrow {
+    @apply text-[10px] font-bold tracking-[0.3em] uppercase text-accent;
   }
 }
 
