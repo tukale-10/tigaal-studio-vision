@@ -4,7 +4,16 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/tigaal-logo.webp";
 
 const navLinks = [
-  { label: "Who We Are", path: "/about" },
+  {
+    label: "Who We Are",
+    path: "/about",
+    children: [
+      { label: "About Us", path: "/about" },
+      { label: "Our Approach", path: "/approach" },
+      { label: "Our Team", path: "/team" },
+      { label: "Clients", path: "/partners" },
+    ],
+  },
   {
     label: "Capabilities",
     path: "/services",
@@ -21,9 +30,7 @@ const navLinks = [
       { label: "SSR, Political Risk & Geopolitics", path: "/services/ssr-political-risk-geopolitical" },
     ],
   },
-  { label: "Our Approach", path: "/approach" },
   { label: "Projects", path: "/projects" },
-  { label: "Our Team", path: "/team" },
   { label: "Clients", path: "/partners" },
   {
     label: "Resources",
