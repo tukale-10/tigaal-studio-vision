@@ -4,7 +4,16 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/tigaal-logo.webp";
 
 const navLinks = [
-  { label: "Who We Are", path: "/about" },
+  {
+    label: "Who We Are",
+    path: "/about",
+    children: [
+      { label: "About Us", path: "/about" },
+      { label: "Our Approach", path: "/approach" },
+      { label: "Our Team", path: "/team" },
+      { label: "Clients", path: "/partners" },
+    ],
+  },
   {
     label: "Capabilities",
     path: "/services",
@@ -21,9 +30,7 @@ const navLinks = [
       { label: "SSR, Political Risk & Geopolitics", path: "/services/ssr-political-risk-geopolitical" },
     ],
   },
-  { label: "Our Approach", path: "/approach" },
   { label: "Projects", path: "/projects" },
-  { label: "Our Team", path: "/team" },
   { label: "Clients", path: "/partners" },
   {
     label: "Resources",
@@ -68,7 +75,7 @@ const Navbar = () => {
   const navBg = isSolid ? "bg-primary shadow-lg" : "bg-white shadow-sm";
 
   const isParentActive = (link: typeof navLinks[number]) =>
-    link.children ? location.pathname.startsWith(link.path) : false;
+    link.children ? link.children.some((child) => location.pathname === child.path) : false;
 
   // Color tokens that flip based on background
   const linkBase = isSolid ? "text-primary-foreground/90" : "text-foreground/80";
