@@ -75,7 +75,7 @@ const Navbar = () => {
   const navBg = isSolid ? "bg-primary shadow-lg" : "bg-white shadow-sm";
 
   const isParentActive = (link: typeof navLinks[number]) =>
-    link.children ? location.pathname.startsWith(link.path) : false;
+    link.children ? link.children.some((child) => location.pathname === child.path) : false;
 
   // Color tokens that flip based on background
   const linkBase = isSolid ? "text-primary-foreground/90" : "text-foreground/80";
