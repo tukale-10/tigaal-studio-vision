@@ -14,53 +14,42 @@ const services = [
 
 const ServicesGrid = () => {
   return (
-    <section className="py-28 lg:py-36 bg-[#1A1A1A] text-white">
-      <div className="container mx-auto px-4 lg:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
+    <section className="py-24 lg:py-32 bg-secondary">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-accent block mb-6">
+            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
               What We Do
             </span>
-            <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-white leading-[1] tracking-tight">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight">
               Our Capabilities
             </h2>
           </div>
-          <p className="text-white/40 text-sm italic max-w-xs">
+          <p className="text-muted-foreground text-lg max-w-md">
             Research, Training, and Advocacy for a Better Tomorrow
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((service) => (
             <Link
               to={`/services/${service.slug}`}
               key={service.title}
-              className="group bg-[#1A1A1A] p-10 lg:p-12 hover:bg-accent/[0.08] transition-colors duration-500 relative"
+              className="group bg-background p-8 lg:p-10 hover:bg-accent/[0.03] transition-all duration-500 relative"
             >
-              <div className="w-10 h-10 mb-8 flex items-center justify-center border border-white/20 text-accent group-hover:border-accent transition-colors">
-                <service.icon size={18} />
+              <div className="w-12 h-12 bg-accent/10 rounded-sm flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                <service.icon className="text-accent" size={22} />
               </div>
-              <h3 className="text-xl font-medium text-white mb-4 leading-snug">
+              <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
                 {service.title}
               </h3>
-              <p className="text-sm text-white/50 leading-relaxed mb-10">{service.desc}</p>
-              <div className="w-full h-px bg-white/5 group-hover:bg-accent transition-colors" />
+              <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
               <ArrowUpRight
-                size={16}
-                className="absolute top-10 right-10 text-white/30 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                size={18}
+                className="absolute top-8 right-8 text-muted-foreground/30 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </Link>
           ))}
-        </div>
-
-        <div className="mt-12 flex justify-end">
-          <Link
-            to="/services"
-            className="group inline-flex items-center gap-4 text-[11px] font-bold tracking-[0.25em] uppercase text-white/70 hover:text-accent transition-colors"
-          >
-            View All Capabilities
-            <span className="h-px w-12 bg-white/30 group-hover:bg-accent group-hover:w-16 transition-all" />
-          </Link>
         </div>
       </div>
     </section>
