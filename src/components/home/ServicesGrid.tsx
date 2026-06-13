@@ -26,7 +26,7 @@ const ServicesGrid = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-lg max-w-md">
-            Research, Training, and Advocacy for a Better Tomorrow
+            Six interconnected practice areas — built around research, learning, and advocacy for a better tomorrow.
           </p>
         </div>
 
