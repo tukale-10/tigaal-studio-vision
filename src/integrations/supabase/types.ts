@@ -207,12 +207,19 @@ export type Database = {
           created_at: string
           created_by: string | null
           description: string | null
+          followup_actions: string | null
           funder: string | null
           id: string
+          key_tasks: string | null
           lead: string | null
           name: string
+          opportunity_no: number | null
+          progress_remarks: string | null
+          sector: string | null
           sort_order: number
+          stage_flags: Json
           status: string
+          submission_deadline: string | null
           tags: string[]
           timeline: string | null
           updated_at: string
@@ -223,12 +230,19 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           description?: string | null
+          followup_actions?: string | null
           funder?: string | null
           id?: string
+          key_tasks?: string | null
           lead?: string | null
           name: string
+          opportunity_no?: number | null
+          progress_remarks?: string | null
+          sector?: string | null
           sort_order?: number
+          stage_flags?: Json
           status?: string
+          submission_deadline?: string | null
           tags?: string[]
           timeline?: string | null
           updated_at?: string
@@ -239,12 +253,19 @@ export type Database = {
           created_at?: string
           created_by?: string | null
           description?: string | null
+          followup_actions?: string | null
           funder?: string | null
           id?: string
+          key_tasks?: string | null
           lead?: string | null
           name?: string
+          opportunity_no?: number | null
+          progress_remarks?: string | null
+          sector?: string | null
           sort_order?: number
+          stage_flags?: Json
           status?: string
+          submission_deadline?: string | null
           tags?: string[]
           timeline?: string | null
           updated_at?: string

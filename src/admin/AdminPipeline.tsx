@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Search, Plus, X, Trash2, AlertCircle, LayoutGrid, Table as TableIcon,
-  List as ListIcon, Check
+  List as ListIcon, Check, CalendarClock
 } from "lucide-react";
 
 const STATUSES = [
@@ -18,31 +18,58 @@ const STATUS_MAP: Record<string, typeof STATUSES[number]> = Object.fromEntries(
   STATUSES.map(s => [s.key, s])
 ) as any;
 
+const STAGES = [
+  { key: "prequalification", label: "Prequalification" },
+  { key: "proposal_drafted", label: "Proposal Drafted" },
+  { key: "submitted",        label: "Submitted" },
+  { key: "awarded",          label: "Awarded" },
+] as const;
+type StageKey = typeof STAGES[number]["key"];
+type StageFlags = Record<StageKey, boolean>;
+
 type ChecklistItem = { text: string; done: boolean };
 interface PipelineProject {
   id: string;
+  opportunity_no: number | null;
   name: string;
   funder: string | null;
+  sector: string | null;
   status: StatusKey;
   lead: string | null;
+  submission_deadline: string | null;
   timeline: string | null;
   contacts: string | null;
   description: string | null;
+  key_tasks: string | null;
+  progress_remarks: string | null;
+  followup_actions: string | null;
   tags: string[];
   checklist: ChecklistItem[];
+  stage_flags: StageFlags;
 }
+
+const emptyFlags = (): StageFlags => ({
+  prequalification: false, proposal_drafted: false, submitted: false, awarded: false,
+});
 
 const emptyDraft = (): PipelineProject => ({
   id: "",
+  opportunity_no: null,
   name: "",
   funder: "",
+  sector: "",
   status: "pipeline",
   lead: "",
+  submission_deadline: "",
   timeline: "",
   contacts: "",
   description: "",
+  key_tasks: "",
+  progress_remarks: "",
+  followup_actions: "",
   tags: [],
   checklist: [],
+  stage_flags: emptyFlags(),
 });
 
 const initials = (name?: string | null) => {
@@ -50,6 +77,37 @@ const initials = (name?: string | null) => {
   const parts = name.trim().split(/\s+/);
   return ((parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "")).toUpperCase() || "?";
 };
+
+const daysUntil = (iso?: string | null): number | null => {
+  if (!iso) return null;
+  const d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return null;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.round((d.getTime() - today.getTime()) / 86400000);
+};
+
+const deadlineTone = (days: number | null) => {
+  if (days === null) return { bg: "rgba(255,255,255,0.06)", fg: "rgba(255,255,255,0.55)", label: "No deadline" };
+  if (days < 0)  return { bg: "rgba(228,122,110,0.18)", fg: "#E47A6E", label: `${Math.abs(days)}d overdue` };
+  if (days <= 7) return { bg: "rgba(228,122,110,0.18)", fg: "#E47A6E", label: `${days}d left` };
+  if (days <= 30) return { bg: "rgba(240,185,90,0.18)", fg: "#F0B95A", label: `${days}d left` };
+  return { bg: "rgba(168,219,94,0.15)", fg: "#A8DB5E", label: `${days}d left` };
+};
+
+const progressPct = (flags?: StageFlags | null) => {
+  if (!flags) return 0;
+  const done = STAGES.filter(s => flags[s.key]).length;
+  return Math.round((done / STAGES.length) * 100);
+};
+
+const formatDate = (iso?: string | null) => {
+  if (!iso) return "—";
+  const d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return "—";
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+};
+
 
 const AdminPipeline = () => {
   const [projects, setProjects] = useState<PipelineProject[]>([]);
@@ -71,11 +129,13 @@ const AdminPipeline = () => {
     const { data } = await supabase
       .from("pipeline_projects")
       .select("*")
+      .order("opportunity_no", { ascending: true, nullsFirst: false })
       .order("updated_at", { ascending: false });
     setProjects(((data as any[]) || []).map(p => ({
       ...p,
       tags: p.tags || [],
       checklist: Array.isArray(p.checklist) ? p.checklist : [],
+      stage_flags: { ...emptyFlags(), ...(p.stage_flags || {}) },
     })));
     setLoading(false);
   }, []);
@@ -97,7 +157,7 @@ const AdminPipeline = () => {
       if (fFunder && p.funder !== fFunder) return false;
       if (fLead && p.lead !== fLead) return false;
       if (q) {
-        const hay = [p.name, p.funder, p.lead, p.description, (p.tags || []).join(" ")]
+        const hay = [p.name, p.funder, p.sector, p.lead, p.description, p.key_tasks, p.progress_remarks, (p.tags || []).join(" ")]
           .filter(Boolean).join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
@@ -121,28 +181,45 @@ const AdminPipeline = () => {
   };
   const openEdit = (p: PipelineProject) => {
     setIsNew(false);
-    setDrawer({ ...p, tags: [...p.tags], checklist: p.checklist.map(c => ({ ...c })) });
+    setDrawer({
+      ...p,
+      tags: [...p.tags],
+      checklist: p.checklist.map(c => ({ ...c })),
+      stage_flags: { ...emptyFlags(), ...(p.stage_flags || {}) },
+    });
     setSavedAt(null);
   };
 
   const save = async () => {
     if (!drawer) return;
     setSaving(true);
-    const payload = {
+    const payload: any = {
+      opportunity_no: drawer.opportunity_no,
       name: drawer.name.trim() || "Untitled project",
       funder: drawer.funder?.trim() || null,
+      sector: drawer.sector?.trim() || null,
       status: drawer.status,
       lead: drawer.lead?.trim() || null,
+      submission_deadline: drawer.submission_deadline || null,
       timeline: drawer.timeline?.trim() || null,
       contacts: drawer.contacts?.trim() || null,
       description: drawer.description?.trim() || null,
+      key_tasks: drawer.key_tasks?.trim() || null,
+      progress_remarks: drawer.progress_remarks?.trim() || null,
+      followup_actions: drawer.followup_actions?.trim() || null,
       tags: drawer.tags,
       checklist: drawer.checklist,
+      stage_flags: drawer.stage_flags,
     };
     if (isNew) {
       const { data } = await supabase.from("pipeline_projects").insert(payload).select().single();
       if (data) {
-        setDrawer({ ...(data as any), tags: data.tags || [], checklist: data.checklist || [] });
+        setDrawer({
+          ...(data as any),
+          tags: data.tags || [],
+          checklist: (data as any).checklist || [],
+          stage_flags: { ...emptyFlags(), ...((data as any).stage_flags || {}) },
+        });
         setIsNew(false);
       }
     } else {
@@ -153,6 +230,7 @@ const AdminPipeline = () => {
     setSaving(false);
     setTimeout(() => setSavedAt(null), 3000);
   };
+
 
   const remove = async () => {
     if (!drawer || isNew) { setDrawer(null); return; }
@@ -281,13 +359,25 @@ const AdminPipeline = () => {
                     <div className="text-xs text-white/30 text-center py-4">No projects</div>
                   ) : items.map(p => {
                     const open = (p.checklist || []).filter(c => !c.done).length;
+                    const days = daysUntil(p.submission_deadline);
+                    const tone = deadlineTone(days);
+                    const pct = progressPct(p.stage_flags);
                     return (
                       <button
                         key={p.id}
                         onClick={() => openEdit(p)}
                         className="bg-[#0c1222] border border-white/10 rounded-md p-3 text-left hover:border-[#8DC63F] hover:-translate-y-0.5 transition"
                       >
-                        {p.funder && <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mb-1.5">{p.funder}</div>}
+                        <div className="flex items-start justify-between gap-2 mb-1.5">
+                          {(p.funder || p.sector) && (
+                            <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold truncate">
+                              {p.funder || p.sector}
+                            </div>
+                          )}
+                          {p.opportunity_no != null && (
+                            <span className="text-[9px] font-mono text-white/30 flex-none">#{p.opportunity_no}</span>
+                          )}
+                        </div>
                         <h4 className="text-sm font-semibold leading-snug mb-2">{p.name}</h4>
                         {p.tags?.length > 0 && (
                           <div className="flex flex-wrap gap-1 mb-2">
@@ -296,7 +386,20 @@ const AdminPipeline = () => {
                             ))}
                           </div>
                         )}
-                        <div className="flex items-center justify-between text-[11px] text-white/50 mt-2">
+                        {p.submission_deadline && (
+                          <div className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded mb-2" style={{ background: tone.bg, color: tone.fg }}>
+                            <CalendarClock size={10} /> {formatDate(p.submission_deadline)} · {tone.label}
+                          </div>
+                        )}
+                        <div className="mt-1.5">
+                          <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-white/40 font-bold mb-1">
+                            <span>Progress</span><span>{pct}%</span>
+                          </div>
+                          <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                            <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: s.color }} />
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px] text-white/50 mt-2.5">
                           <div className="flex items-center gap-1.5 min-w-0">
                             <div className="w-5 h-5 rounded-full bg-[#134A6B] text-white text-[9px] font-bold flex items-center justify-center flex-none">{initials(p.lead)}</div>
                             <span className="truncate">{p.lead || "Unassigned"}</span>
@@ -304,7 +407,7 @@ const AdminPipeline = () => {
                           {p.timeline && <span className="text-white/40 ml-2 flex-none">{p.timeline}</span>}
                         </div>
                         {open > 0 && (
-                          <div className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold text-[#E5A93C]">
+                          <div className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold text-[#F0B95A]">
                             <AlertCircle size={10} /> {open} outstanding
                           </div>
                         )}
@@ -317,15 +420,20 @@ const AdminPipeline = () => {
           })}
         </div>
       ) : view === "table" ? (
-        <div className="bg-[#0f172a] border border-white/5 rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="bg-[#0f172a] border border-white/5 rounded-lg overflow-hidden overflow-x-auto">
+          <table className="w-full text-sm min-w-[1100px]">
             <thead>
               <tr className="text-left text-white/40 text-[11px] uppercase tracking-wider bg-[#0c1222]">
                 {[
-                  { k: "name", l: "Project" }, { k: "funder", l: "Funder/Client" },
-                  { k: "status", l: "Status" }, { k: "lead", l: "Lead" }, { k: "timeline", l: "Timeline" },
+                  { k: "opportunity_no", l: "#" },
+                  { k: "name", l: "Opportunity" },
+                  { k: "sector", l: "Sector" },
+                  { k: "submission_deadline", l: "Deadline" },
+                  { k: "status", l: "Stage" },
+                  { k: "lead", l: "Focal" },
+                  { k: "progress", l: "Progress" },
                 ].map(c => (
-                  <th key={c.k} onClick={() => sortBy(c.k)} className="px-4 py-3 cursor-pointer hover:text-white">
+                  <th key={c.k} onClick={() => sortBy(c.k)} className="px-4 py-3 cursor-pointer hover:text-white whitespace-nowrap">
                     {c.l} {sortCol === c.k && <span className="text-[#8DC63F]">{sortDir === 1 ? "▲" : "▼"}</span>}
                   </th>
                 ))}
@@ -333,24 +441,43 @@ const AdminPipeline = () => {
             </thead>
             <tbody>
               {sortedTable.length === 0 ? (
-                <tr><td colSpan={5} className="text-center py-10 text-white/40">No projects match your filters.</td></tr>
+                <tr><td colSpan={7} className="text-center py-10 text-white/40">No projects match your filters.</td></tr>
               ) : sortedTable.map(p => {
                 const s = STATUS_MAP[p.status];
+                const days = daysUntil(p.submission_deadline);
+                const tone = deadlineTone(days);
+                const pct = progressPct(p.stage_flags);
                 return (
                   <tr key={p.id} onClick={() => openEdit(p)} className="border-t border-white/5 hover:bg-white/5 cursor-pointer">
-                    <td className="px-4 py-3 font-semibold">{p.name}</td>
-                    <td className="px-4 py-3 text-white/60">{p.funder || "—"}</td>
-                    <td className="px-4 py-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full text-white" style={{ background: s.color }}>{s.label}</span>
+                    <td className="px-4 py-3 text-white/40 font-mono text-xs">{p.opportunity_no ?? "—"}</td>
+                    <td className="px-4 py-3 font-semibold max-w-[340px]">{p.name}</td>
+                    <td className="px-4 py-3 text-white/60 text-xs">{p.sector || "—"}</td>
+                    <td className="px-4 py-3 text-xs">
+                      {p.submission_deadline ? (
+                        <span className="inline-flex items-center gap-1 font-bold px-1.5 py-0.5 rounded" style={{ background: tone.bg, color: tone.fg }}>
+                          {formatDate(p.submission_deadline)} · {tone.label}
+                        </span>
+                      ) : <span className="text-white/40">—</span>}
                     </td>
-                    <td className="px-4 py-3 text-white/60">{p.lead || "Unassigned"}</td>
-                    <td className="px-4 py-3 text-white/60">{p.timeline || "—"}</td>
+                    <td className="px-4 py-3">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full" style={{ background: s.color, color: "#0c1222" }}>{s.label}</span>
+                    </td>
+                    <td className="px-4 py-3 text-white/60 text-xs">{p.lead || "Unassigned"}</td>
+                    <td className="px-4 py-3 min-w-[140px]">
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                          <div className="h-full rounded-full" style={{ width: `${pct}%`, background: s.color }} />
+                        </div>
+                        <span className="text-[10px] font-mono text-white/50">{pct}%</span>
+                      </div>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </div>
+
       ) : (
         <div>
           {STATUSES.map(s => {
@@ -403,33 +530,96 @@ const AdminPipeline = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto p-5 space-y-4">
-              <Field label="Project name">
-                <input value={drawer.name} onChange={(e) => setDrawer({ ...drawer, name: e.target.value })} className={inputCls} />
-              </Field>
+              <div className="grid grid-cols-[80px_1fr] gap-3">
+                <Field label="S/no">
+                  <input
+                    type="number"
+                    value={drawer.opportunity_no ?? ""}
+                    onChange={(e) => setDrawer({ ...drawer, opportunity_no: e.target.value ? parseInt(e.target.value, 10) : null })}
+                    className={inputCls}
+                  />
+                </Field>
+                <Field label="Opportunity title">
+                  <input value={drawer.name} onChange={(e) => setDrawer({ ...drawer, name: e.target.value })} className={inputCls} />
+                </Field>
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <Field label="Funder / Client">
                   <input value={drawer.funder || ""} onChange={(e) => setDrawer({ ...drawer, funder: e.target.value })} className={inputCls} />
                 </Field>
-                <Field label="Status">
+                <Field label="Sector / Thematic Area">
+                  <input value={drawer.sector || ""} onChange={(e) => setDrawer({ ...drawer, sector: e.target.value })} className={inputCls} placeholder="e.g. Gender & Women's Empowerment" />
+                </Field>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <Field label="Submission deadline">
+                  <input
+                    type="date"
+                    value={drawer.submission_deadline || ""}
+                    onChange={(e) => setDrawer({ ...drawer, submission_deadline: e.target.value })}
+                    className={inputCls}
+                  />
+                </Field>
+                <Field label="Current stage">
                   <select value={drawer.status} onChange={(e) => setDrawer({ ...drawer, status: e.target.value as StatusKey })} className={inputCls}>
                     {STATUSES.map(s => <option key={s.key} value={s.key}>{s.label}</option>)}
                   </select>
                 </Field>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <Field label="TIGAAL Lead">
-                  <input value={drawer.lead || ""} onChange={(e) => setDrawer({ ...drawer, lead: e.target.value })} className={inputCls} />
+                <Field label="Focal person">
+                  <input value={drawer.lead || ""} onChange={(e) => setDrawer({ ...drawer, lead: e.target.value })} className={inputCls} placeholder="e.g. Mohamed" />
                 </Field>
                 <Field label="Timeline">
                   <input placeholder="e.g. Jan 2025 – Jun 2026" value={drawer.timeline || ""} onChange={(e) => setDrawer({ ...drawer, timeline: e.target.value })} className={inputCls} />
                 </Field>
               </div>
+
+              <Field label="Stage progress">
+                <div className="bg-[#0c1222] border border-white/10 rounded-md p-3 space-y-2">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-white/40 font-bold">
+                    <span>Pipeline → Award</span>
+                    <span className="text-[#A8DB5E]">{progressPct(drawer.stage_flags)}%</span>
+                  </div>
+                  <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full transition-all" style={{ width: `${progressPct(drawer.stage_flags)}%`, background: STATUS_MAP[drawer.status]?.color || "#A8DB5E" }} />
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5 pt-1">
+                    {STAGES.map(st => {
+                      const on = drawer.stage_flags[st.key];
+                      return (
+                        <button
+                          key={st.key}
+                          onClick={() => setDrawer({ ...drawer, stage_flags: { ...drawer.stage_flags, [st.key]: !on } })}
+                          className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border transition ${on ? "bg-[#A8DB5E]/15 border-[#A8DB5E]/40 text-[#A8DB5E]" : "border-white/10 text-white/50 hover:border-white/30"}`}
+                        >
+                          <span className={`w-3.5 h-3.5 rounded-sm border flex-none flex items-center justify-center ${on ? "bg-[#A8DB5E] border-[#A8DB5E]" : "border-white/30"}`}>
+                            {on && <Check size={10} className="text-[#0c1222]" />}
+                          </span>
+                          {st.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Field>
+
+              <Field label="Key tasks & deliverables">
+                <textarea rows={3} value={drawer.key_tasks || ""} onChange={(e) => setDrawer({ ...drawer, key_tasks: e.target.value })} className={inputCls} />
+              </Field>
+              <Field label="Progress & remarks">
+                <textarea rows={3} value={drawer.progress_remarks || ""} onChange={(e) => setDrawer({ ...drawer, progress_remarks: e.target.value })} className={inputCls} />
+              </Field>
+              <Field label="Follow-up actions & timeline">
+                <textarea rows={3} value={drawer.followup_actions || ""} onChange={(e) => setDrawer({ ...drawer, followup_actions: e.target.value })} className={inputCls} />
+              </Field>
               <Field label="Key contacts">
                 <input placeholder="e.g. John Opiyo (UNOPS PM)" value={drawer.contacts || ""} onChange={(e) => setDrawer({ ...drawer, contacts: e.target.value })} className={inputCls} />
               </Field>
-              <Field label="Description">
-                <textarea rows={4} value={drawer.description || ""} onChange={(e) => setDrawer({ ...drawer, description: e.target.value })} className={inputCls} />
+              <Field label="Notes / Description">
+                <textarea rows={3} value={drawer.description || ""} onChange={(e) => setDrawer({ ...drawer, description: e.target.value })} className={inputCls} />
               </Field>
+
               <Field label="Tags (comma separated)">
                 <input
                   value={drawer.tags.join(", ")}
