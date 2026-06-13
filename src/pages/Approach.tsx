@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import { MessageCircle, Search, Handshake, Target, ArrowRight, Lightbulb, Users, FlaskConical, Rocket, BarChart3 } from "lucide-react";
 
 const steps = [
-  { icon: MessageCircle, title: "Dialogue", desc: "Engage in open dialogue to understand underlying problems and priorities.", color: "bg-accent" },
-  { icon: Search, title: "Assessment", desc: "Assess existing practices, activities, tools, and outcomes.", color: "bg-primary" },
-  { icon: Handshake, title: "Co-creation", desc: "Co-create strategies and build alliances to achieve sustainable solutions.", color: "bg-accent" },
-  { icon: Target, title: "Results", desc: "Deliver results within agreed timelines, ensuring responsiveness, relevance, and impact.", color: "bg-primary" },
+  { icon: MessageCircle, title: "Dialogue", desc: "Open conversations to understand the underlying problem and what success looks like.", color: "bg-accent" },
+  { icon: Search, title: "Assessment", desc: "Review existing practice, evidence, tools, and outcomes to find what's working and what isn't.", color: "bg-primary" },
+  { icon: Handshake, title: "Co-creation", desc: "Design strategies and partnerships with clients and local stakeholders for durable results.", color: "bg-accent" },
+  { icon: Target, title: "Results", desc: "Deliver on time — with responsiveness, relevance, and measurable impact.", color: "bg-primary" },
 ];
 
 const deliveryModel = [
-  { icon: Lightbulb, step: "Understand", desc: "Listen to clients, map context, and identify the real challenges beneath the surface." },
-  { icon: Users, step: "Co-create", desc: "Collaborate with stakeholders — from policymakers to community members — to design locally grounded solutions." },
-  { icon: FlaskConical, step: "Test", desc: "Validate approaches in real-world settings, iterating based on evidence and feedback." },
-  { icon: Rocket, step: "Implement", desc: "Deploy solutions with local ownership, building capacity at every stage." },
-  { icon: BarChart3, step: "Measure & Follow-up", desc: "Track results rigorously and ensure sustainability beyond project timelines." },
+  { icon: Lightbulb, step: "Understand", desc: "Listen closely, map context, and identify the real challenge beneath the surface." },
+  { icon: Users, step: "Co-create", desc: "Work with stakeholders — from policymakers to communities — to shape locally grounded solutions." },
+  { icon: FlaskConical, step: "Test", desc: "Validate approaches in the field and iterate based on evidence and feedback." },
+  { icon: Rocket, step: "Implement", desc: "Deliver with local ownership, building capacity at every stage." },
+  { icon: BarChart3, step: "Measure & Follow-up", desc: "Track results rigorously and sustain impact beyond the project timeline." },
 ];
 
 const Approach = () => {
