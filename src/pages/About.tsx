@@ -205,7 +205,7 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">Ready to collaborate?</h2>
           <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-            Whether you're a development partner, investor, or government body — we're ready to discuss how TIGAAL can support your objectives.
+            Whether you're a development partner, investor, or public institution, we'd be glad to discuss how TIGAAL can support your work.
           </p>
           <Link
             to="/contact"
