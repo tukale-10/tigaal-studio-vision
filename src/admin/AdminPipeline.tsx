@@ -401,7 +401,7 @@ const AdminPipeline = () => {
                         </div>
                         <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2.5">
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <div className="w-5 h-5 rounded-full bg-slate-900 text-slate-900 text-[9px] font-bold flex items-center justify-center flex-none">{initials(p.lead)}</div>
+                            <div className="w-5 h-5 rounded-full bg-slate-900 text-white text-[9px] font-bold flex items-center justify-center flex-none">{initials(p.lead)}</div>
                             <span className="truncate">{p.lead || "Unassigned"}</span>
                           </div>
                           {p.timeline && <span className="text-slate-500 ml-2 flex-none">{p.timeline}</span>}
@@ -498,7 +498,7 @@ const AdminPipeline = () => {
                       </div>
                       <div className="flex items-center gap-4 flex-none text-xs text-slate-500">
                         <div className="flex items-center gap-1.5">
-                          <div className="w-5 h-5 rounded-full bg-slate-900 text-slate-900 text-[9px] font-bold flex items-center justify-center">{initials(p.lead)}</div>
+                          <div className="w-5 h-5 rounded-full bg-slate-900 text-white text-[9px] font-bold flex items-center justify-center">{initials(p.lead)}</div>
                           {p.lead || "Unassigned"}
                         </div>
                         <span className="hidden md:inline">{p.timeline}</span>
@@ -517,7 +517,7 @@ const AdminPipeline = () => {
         <>
           <div className="fixed inset-0 bg-black/60 z-40" onClick={() => setDrawer(null)} />
           <div className="fixed top-0 right-0 h-full w-full max-w-[480px] bg-white border-l border-slate-200 z-50 flex flex-col shadow-2xl">
-            <div className="bg-slate-900 p-5 flex justify-between items-start gap-3">
+            <div className="bg-slate-50 border-b border-slate-200 p-5 flex justify-between items-start gap-3">
               <div className="min-w-0">
                 <div className="text-[11px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
                   {drawer.funder || "NEW PROJECT"}
@@ -674,7 +674,7 @@ const AdminPipeline = () => {
                         setDrawer({ ...drawer, checklist: [...drawer.checklist, { text: newItem.trim(), done: false }] });
                         setNewItem("");
                       }}
-                      className="px-3 py-2 bg-slate-900 border border-slate-200 rounded-md text-sm font-semibold hover:bg-[#0D3650]"
+                      className="px-3 py-2 bg-slate-900 border border-slate-200 rounded-md text-sm font-semibold hover:bg-slate-800"
                     >
                       Add
                     </button>
