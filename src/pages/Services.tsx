@@ -63,11 +63,11 @@ const Services = () => {
             <div>
               <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">What We Deliver</span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 leading-tight">
-                Integrated Solutions for <span className="text-accent italic">Complex</span> Challenges
+                Integrated solutions for <span className="text-accent italic">complex</span> challenges
               </h2>
               <div className="w-16 h-1 bg-accent mb-8" />
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We provide integrated capabilities that combine policy research, strategic advisory, communication for development, and monitoring and evaluation. Grounded in evidence, informed by local knowledge, and enriched with innovative analytics, our solutions are tailored to local contexts where we work and designed to strengthen systems, empower communities, and drive sustainable impact.
+                We combine policy research, strategic advisory, communications, and monitoring & evaluation into integrated capabilities — grounded in evidence, informed by local knowledge, and tailored to the contexts where we work. The aim: stronger systems, empowered communities, and durable impact.
               </p>
             </div>
             <div className="relative">
