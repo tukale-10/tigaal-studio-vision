@@ -47,7 +47,7 @@ const Team = () => {
             </div>
             <div>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                TIGAAL's strength lies in the calibre and diversity of its team. Our professionals bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development. Each team member combines international standards of practice with deep contextual knowledge of Somalia and the broader Horn of Africa.
+                TIGAAL's strength is the calibre and diversity of its people. Our specialists bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development — pairing international standards with deep contextual knowledge of Somalia and the wider Horn of Africa.
               </p>
             </div>
           </div>
