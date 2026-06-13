@@ -519,7 +519,7 @@ const AdminPipeline = () => {
           <div className="fixed top-0 right-0 h-full w-full max-w-[480px] bg-white border-l border-slate-200 z-50 flex flex-col shadow-2xl">
             <div className="bg-slate-50 border-b border-slate-200 p-5 flex justify-between items-start gap-3">
               <div className="min-w-0">
-                <div className="text-[11px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
+                <div className="text-[11px] uppercase tracking-wider text-slate-500 font-semibold mb-1">
                   {drawer.funder || "NEW PROJECT"}
                 </div>
                 <h2 className="text-lg font-bold leading-tight">{drawer.name || "New project"}</h2>
