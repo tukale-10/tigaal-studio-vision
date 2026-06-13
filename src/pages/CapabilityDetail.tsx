@@ -142,7 +142,7 @@ const CapabilityDetail = () => {
               <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">Service offerings</h2>
             </div>
             <p className="text-muted-foreground max-w-md">
-              Modular offerings configured to client need, country context, and partner ecosystem.
+              Modular offerings adapted to client need, country context, and partner ecosystem.
             </p>
           </div>
 
