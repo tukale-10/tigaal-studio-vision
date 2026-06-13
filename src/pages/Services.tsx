@@ -142,7 +142,7 @@ const Services = () => {
             <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Program Design</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6">Program Design & Development</h2>
             <p className="text-primary-foreground/60 text-lg max-w-3xl mx-auto leading-relaxed">
-              We 'co-create' policies, programs, and services by collaborating with clients and communities. Together, we define challenges and design solutions, particularly focusing on the following areas:
+              We co-create policies, programmes, and services with clients and communities — defining the problem together and designing solutions that work in context. Two areas where we go deepest:
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
