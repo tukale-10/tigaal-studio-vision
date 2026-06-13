@@ -125,7 +125,7 @@ const Approach = () => {
           <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Get Started</span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">Ready to collaborate?</h2>
           <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Let's discuss how TIGAAL can bring strategic insight and local expertise to your next initiative.
+            Let's talk about how TIGAAL's mix of local insight and rigorous methods can support your next initiative.
           </p>
           <Link
             to="/contact"
