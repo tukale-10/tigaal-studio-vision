@@ -274,7 +274,7 @@ const AdminPipeline = () => {
               <div key={s.key} className="bg-[#0f172a] border border-white/5 rounded-lg min-w-[280px] flex-1 flex flex-col max-h-[calc(100vh-280px)]">
                 <div className="p-3 border-b-2 flex items-center justify-between" style={{ borderBottomColor: s.color }}>
                   <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>{s.label}</h3>
-                  <span className="text-xs font-mono text-white px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
+                  <span className="text-xs font-mono text-[#0c1222] font-bold px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
                 </div>
                 <div className="p-3 flex flex-col gap-2 overflow-y-auto">
                   {items.length === 0 ? (
