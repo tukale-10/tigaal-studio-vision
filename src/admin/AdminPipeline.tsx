@@ -360,7 +360,7 @@ const AdminPipeline = () => {
               <div key={s.key} className="mb-6">
                 <div className="flex items-center gap-3 pb-2 mb-3 border-b-2" style={{ borderBottomColor: s.color }}>
                   <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>{s.label}</h3>
-                  <span className="text-xs font-mono text-white px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
+                  <span className="text-xs font-mono text-[#0c1222] font-bold px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
                 </div>
                 <div className="space-y-2">
                   {items.map(p => (
