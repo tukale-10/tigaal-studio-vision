@@ -82,14 +82,14 @@ const About = () => {
                 What Sets Us Apart
               </span>
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6 leading-tight">
-                Deep Local Knowledge, <span className="text-accent italic">International</span> Standards
+                Local knowledge. <span className="text-accent italic">International</span> standards.
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  What distinguishes TIGAAL from other firms operating in the Somali context is the depth and breadth of our team's local knowledge, our established relationships with key stakeholders at federal and regional levels, and our commitment to producing work that meets international quality standards while remaining grounded in the realities on the ground.
+                  What sets TIGAAL apart is the depth of our team's contextual knowledge, our trusted relationships with federal and regional stakeholders, and our commitment to producing work that meets international standards while remaining grounded in local realities.
                 </p>
                 <p>
-                  Our collaborative approach ensures that our programs do not merely address surface-level issues but transform outcomes, setting the foundation for enduring stability and holistic opportunity across the communities we serve.
+                  We work collaboratively — not transactionally — so that our programmes move beyond surface fixes to shift outcomes, building the foundation for lasting stability and opportunity in the communities we serve.
                 </p>
               </div>
             </div>
