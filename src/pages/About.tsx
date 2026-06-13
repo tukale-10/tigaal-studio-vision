@@ -67,7 +67,7 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
           <div className="w-16 h-px bg-accent mx-auto mb-8" />
           <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl text-primary-foreground italic leading-snug mb-8">
-            "Our mission: to be instrumental in shaping transformative strategies that pave the way for Somalia's progressive future."
+            "To shape transformative strategies that build a more inclusive and prosperous future for Somalia and the Horn of Africa."
           </blockquote>
           <div className="w-16 h-px bg-accent mx-auto" />
         </div>
