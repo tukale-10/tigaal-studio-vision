@@ -33,7 +33,7 @@ const Team = () => {
 
   return (
     <main>
-      <PageHero title="Our Team" subtitle="Decades of combined expertise across research, governance, and development" breadcrumb="Our Team" />
+      <PageHero title="Our Team" subtitle="Specialists with decades of combined experience across research, governance, and development." breadcrumb="Our Team" />
 
       {/* Intro Section */}
       <section className="py-20 lg:py-28 bg-secondary">
