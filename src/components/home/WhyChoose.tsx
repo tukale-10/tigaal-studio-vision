@@ -1,12 +1,12 @@
 import { MapPin, Shield, Users, Cpu, ArrowRight, DollarSign } from "lucide-react";
 
 const whyChoose = [
-  { icon: MapPin, title: "Deep Local Knowledge", desc: "Our team is embedded in Somalia's development ecosystem. We understand the political dynamics, clan structures, security considerations, and cultural nuances that determine whether programmes succeed or fail." },
-  { icon: Shield, title: "Rigorous Methodology", desc: "We apply international standards of research and evaluation practice, adapted for the Somali context. Our work has been trusted by the World Bank, Save the Children, Interpeace, and other leading institutions." },
-  { icon: Users, title: "Established Networks", desc: "Our relationships span federal and regional government officials, UN agencies, international NGOs, and local civil society organizations, enabling rapid mobilization and stakeholder access." },
-  { icon: Cpu, title: "Technology-Enabled", desc: "We leverage modern data collection tools, digital dashboards, and analytical platforms to deliver real-time insights and ensure data quality across geographically dispersed operations." },
-  { icon: ArrowRight, title: "End-to-End Capability", desc: "From initial research and programme design through implementation support, third-party monitoring, and strategic communications, TIGAAL offers a complete solution that reduces the need for multiple contractors." },
-  { icon: DollarSign, title: "Cost-Effective", desc: "As a locally established firm, TIGAAL offers competitive pricing without compromising quality, delivering better value compared to international firms with higher overhead structures." },
+  { icon: MapPin, title: "Deep Local Knowledge", desc: "Our team is embedded in Somalia's development ecosystem — fluent in the political dynamics, clan structures, security realities, and cultural nuances that determine whether programmes succeed." },
+  { icon: Shield, title: "Rigorous Methodology", desc: "We apply international research and evaluation standards, adapted for the Somali context. Our work is trusted by the World Bank, Save the Children, Interpeace, and other leading institutions." },
+  { icon: Users, title: "Established Networks", desc: "Long-standing relationships across federal and regional government, UN agencies, international NGOs, and local civil society enable rapid mobilisation and reliable stakeholder access." },
+  { icon: Cpu, title: "Technology-Enabled", desc: "Modern data collection tools, live dashboards, and analytical platforms give clients real-time insight and consistent data quality across dispersed operations." },
+  { icon: ArrowRight, title: "End-to-End Capability", desc: "From scoping research and programme design through delivery, third-party monitoring, and strategic communications — one trusted partner instead of several." },
+  { icon: DollarSign, title: "Cost-Effective", desc: "As a locally established firm, TIGAAL offers competitive pricing without compromising quality — better value than international firms with heavier overheads." },
 ];
 
 const WhyChoose = () => {
