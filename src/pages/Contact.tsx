@@ -85,9 +85,9 @@ const Contact = () => {
               <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
                 Reach Out
               </span>
-              <h2 className="font-display text-3xl text-foreground mb-6">Get In Touch</h2>
+              <h2 className="font-display text-3xl text-foreground mb-6">Get in touch</h2>
               <p className="text-muted-foreground leading-relaxed mb-10">
-                Whether you are planning a research initiative, seeking a third-party monitoring partner, or exploring investment opportunities in Somalia, our team is ready to discuss how TIGAAL can support your objectives.
+                Whether you're planning a research initiative, seeking a third-party monitoring partner, or exploring investment opportunities in Somalia, our team is ready to discuss how TIGAAL can support your objectives.
               </p>
 
               <div className="space-y-3">
