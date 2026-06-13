@@ -5,11 +5,11 @@ import teamImg from "@/assets/team-workshop-2.jpg";
 import presentationImg from "@/assets/team-presentation-1.jpg";
 
 const coreValues = [
-  "Innovating for inclusive and sustainable development.",
-  "Transforming insights into impact for communities.",
-  "Partnering for accountability, equity, and change.",
-  "Local knowledge, global standards, lasting solutions.",
-  "Shaping systems that serve people first.",
+  "Innovate for inclusive and sustainable development.",
+  "Turn insight into impact for communities.",
+  "Partner for accountability, equity, and change.",
+  "Combine local knowledge with global standards.",
+  "Build systems that put people first.",
 ];
 
 const businessSteps = [
