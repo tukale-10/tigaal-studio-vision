@@ -4,9 +4,9 @@ import teamImg from "@/assets/team-workshop-3.jpg";
 
 const stats = [
   { value: "60+", label: "Projects Delivered" },
-  { value: "6", label: "Service Pillars" },
-  { value: "7+", label: "Team Specialists" },
-  { value: "20+", label: "Clients" },
+  { value: "6", label: "Core Service Areas" },
+  { value: "7+", label: "In-House Specialists" },
+  { value: "20+", label: "Clients & Partners" },
 ];
 
 const AboutSnapshot = () => {
