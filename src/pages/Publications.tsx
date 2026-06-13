@@ -42,7 +42,7 @@ const Publications = () => {
             <div className="flex-1">
               <span className="text-xs font-semibold tracking-[0.15em] uppercase text-accent bg-accent/10 px-3 py-1.5 rounded-sm mb-4 inline-block">Company Profile</span>
               <h2 className="font-display text-2xl lg:text-3xl text-foreground mb-3">TIGAAL Company Profile 2026</h2>
-              <p className="text-muted-foreground leading-relaxed max-w-xl">Download our comprehensive company profile to learn more about our capabilities, track record, and the impact we deliver across the Horn of Africa.</p>
+              <p className="text-muted-foreground leading-relaxed max-w-xl">A concise overview of our capabilities, track record, and the impact we deliver across the Horn of Africa.</p>
             </div>
             <a
               href="/TIGAAL_Profile_2026.pdf"
