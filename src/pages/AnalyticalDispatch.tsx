@@ -74,8 +74,8 @@ const AnalyticalDispatch = () => {
 
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Want our analysis on a specific topic?</h2>
-          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Reach out to discuss commissioned research and analytical work.</p>
+          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Want analysis on a specific topic?</h2>
+          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Get in touch to discuss commissioned research and analytical work.</p>
           <Link to="/contact" className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all">
             Get In Touch <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
