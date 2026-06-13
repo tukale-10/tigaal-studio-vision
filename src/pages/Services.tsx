@@ -171,8 +171,8 @@ const Services = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
           <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Get Started</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">Need a tailored solution?</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10">Let's discuss how our integrated capabilities can address your unique challenges and drive lasting impact.</p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">Looking for a tailored solution?</h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10">Tell us about your context and the questions you're trying to answer — we'll come back with a focused proposal.</p>
           <Link to="/contact" className="group inline-flex items-center gap-3 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all text-lg">
             Discuss Your Project <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
