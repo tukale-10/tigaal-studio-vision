@@ -44,17 +44,17 @@ const About = () => {
                 About TIGAAL
               </span>
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6 leading-tight">
-                A Catalyst for Positive, <span className="text-accent italic">Tangible</span> Change
+                A catalyst for <span className="text-accent italic">tangible</span> change
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  TIGAAL is a social enterprise operating at the centre of Somalia's development landscape. We deliver non-profit and development projects alongside a consulting practice that serves as our sustainability engine — our profit-making wing that funds and reinvests in our mission-driven work. Founded to address the critical gap between international development frameworks and local realities, TIGAAL provides rigorous research, in-depth analysis, and strategic advisory services tailored to the Horn of Africa's unique operating environment.
+                  TIGAAL is a social enterprise working at the heart of Somalia's development landscape. We deliver development and non-profit programmes alongside a consulting practice that funds and sustains our mission — reinvesting commercial earnings into research and public-interest work.
                 </p>
                 <p>
-                  Our firm collaborates with governmental bodies, international organizations, UN agencies, and grassroots networks to deliver evidence-based solutions that drive measurable impact. We combine deep local knowledge with modern data analytics, technology, and a team of specialists whose combined expertise spans governance, climate science, financial inclusion, social protection, and strategic communications.
+                  Founded to close the gap between international frameworks and local realities, TIGAAL provides rigorous research, in-depth analysis, and strategic advisory tailored to the Horn of Africa. We partner with governments, UN agencies, donors, INGOs, and grassroots networks to deliver evidence that drives measurable impact.
                 </p>
                 <p>
-                  TIGAAL is not simply a consulting firm; we are a catalyst for positive, tangible change. Our domain of expertise includes robust thematic advisory, in-depth policy research, practical strategies, and adaptive program designs that respond to the evolving challenges of the region. Every solution we deliver is built around local perspectives, genuine engagement, and community empowerment.
+                  Our team combines deep local knowledge with modern data analytics and specialist expertise across governance, climate, financial inclusion, social protection, and strategic communications — translating insight into practical, locally grounded solutions.
                 </p>
               </div>
             </div>
