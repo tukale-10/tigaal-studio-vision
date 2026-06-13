@@ -274,38 +274,71 @@ export type Database = {
       }
       projects: {
         Row: {
+          budget: string | null
           category: string
           client: string | null
+          cover_image: string | null
           created_at: string
           description: string
+          donor: string | null
+          end_date: string | null
+          gallery: string[] | null
           id: string
+          location: string | null
+          outcomes: string | null
+          partners: string | null
           published: boolean
+          sector: string | null
+          start_date: string | null
           status: string
           subtitle: string | null
+          tags: string[] | null
           title: string
           updated_at: string
         }
         Insert: {
+          budget?: string | null
           category?: string
           client?: string | null
+          cover_image?: string | null
           created_at?: string
           description?: string
+          donor?: string | null
+          end_date?: string | null
+          gallery?: string[] | null
           id?: string
+          location?: string | null
+          outcomes?: string | null
+          partners?: string | null
           published?: boolean
+          sector?: string | null
+          start_date?: string | null
           status?: string
           subtitle?: string | null
+          tags?: string[] | null
           title: string
           updated_at?: string
         }
         Update: {
+          budget?: string | null
           category?: string
           client?: string | null
+          cover_image?: string | null
           created_at?: string
           description?: string
+          donor?: string | null
+          end_date?: string | null
+          gallery?: string[] | null
           id?: string
+          location?: string | null
+          outcomes?: string | null
+          partners?: string | null
           published?: boolean
+          sector?: string | null
+          start_date?: string | null
           status?: string
           subtitle?: string | null
+          tags?: string[] | null
           title?: string
           updated_at?: string
         }
