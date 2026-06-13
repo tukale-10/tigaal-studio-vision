@@ -268,15 +268,15 @@ const AdminPipeline = () => {
   };
 
   return (
-    <div className="text-white">
+    <div className="text-slate-900">
       {/* Header bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Pipeline Management</h1>
-          <p className="text-white/40 text-sm mt-1">Track every tender, proposal, active engagement and closure.</p>
+          <p className="text-slate-500 text-sm mt-1">Track every tender, proposal, active engagement and closure.</p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex bg-[#0f172a] border border-white/10 rounded-lg p-1 gap-1">
+          <div className="flex bg-white border border-slate-200 rounded-lg p-1 gap-1">
             {([
               { k: "board", icon: LayoutGrid, label: "Board" },
               { k: "table", icon: TableIcon, label: "Table" },
@@ -287,8 +287,8 @@ const AdminPipeline = () => {
                 onClick={() => setView(v.k)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition ${
                   view === v.k
-                    ? "bg-[#8DC63F] text-[#0D3650]"
-                    : "text-white/50 hover:text-white"
+                    ? "bg-[#8DC63F] text-slate-900"
+                    : "text-slate-500 hover:text-slate-900"
                 }`}
               >
                 <v.icon size={14} /> {v.label}
@@ -297,7 +297,7 @@ const AdminPipeline = () => {
           </div>
           <button
             onClick={openNew}
-            className="bg-[#8DC63F] text-[#0D3650] font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1.5 hover:brightness-110"
+            className="bg-[#8DC63F] text-slate-900 font-semibold px-4 py-2 rounded-lg text-sm flex items-center gap-1.5 hover:brightness-110"
           >
             <Plus size={16} /> New project
           </button>
@@ -305,42 +305,42 @@ const AdminPipeline = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-[#0f172a] border border-white/5 rounded-lg p-3 mb-6 flex flex-wrap items-center gap-3">
+      <div className="bg-white border border-slate-200 rounded-lg p-3 mb-6 flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search projects, clients, leads, tags…"
-            className="w-full bg-[#0c1222] border border-white/10 rounded-md pl-9 pr-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#8DC63F]"
+            className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#8DC63F]"
           />
         </div>
-        <select value={fStatus} onChange={(e) => setFStatus(e.target.value)} className="bg-[#0c1222] border border-white/10 rounded-md px-3 py-2 text-sm text-white">
+        <select value={fStatus} onChange={(e) => setFStatus(e.target.value)} className="bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-900">
           <option value="">All statuses</option>
           {STATUSES.map(s => <option key={s.key} value={s.key}>{s.label}</option>)}
         </select>
-        <select value={fFunder} onChange={(e) => setFFunder(e.target.value)} className="bg-[#0c1222] border border-white/10 rounded-md px-3 py-2 text-sm text-white max-w-[200px]">
+        <select value={fFunder} onChange={(e) => setFFunder(e.target.value)} className="bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-900 max-w-[200px]">
           <option value="">All funders</option>
           {funderOptions.map(f => <option key={f} value={f}>{f}</option>)}
         </select>
-        <select value={fLead} onChange={(e) => setFLead(e.target.value)} className="bg-[#0c1222] border border-white/10 rounded-md px-3 py-2 text-sm text-white">
+        <select value={fLead} onChange={(e) => setFLead(e.target.value)} className="bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-900">
           <option value="">All leads</option>
           {leadOptions.map(l => <option key={l} value={l}>{l}</option>)}
         </select>
         <button onClick={clearFilters} className="text-xs text-[#8DC63F] hover:underline font-semibold">Clear filters</button>
-        <span className="ml-auto text-xs text-white/40 font-mono">
+        <span className="ml-auto text-xs text-slate-500 font-mono">
           {filtered.length} project{filtered.length === 1 ? "" : "s"}
         </span>
       </div>
 
       {/* Content */}
       {loading ? (
-        <div className="text-center py-20 text-white/40">Loading projects…</div>
+        <div className="text-center py-20 text-slate-500">Loading projects…</div>
       ) : projects.length === 0 ? (
-        <div className="text-center py-20 bg-[#0f172a] border border-white/5 rounded-lg">
+        <div className="text-center py-20 bg-white border border-slate-200 rounded-lg">
           <h3 className="text-lg font-semibold mb-2">No projects yet</h3>
-          <p className="text-white/40 text-sm mb-4">Add your first tender or project to begin tracking.</p>
-          <button onClick={openNew} className="bg-[#8DC63F] text-[#0D3650] font-semibold px-4 py-2 rounded-lg text-sm">
+          <p className="text-slate-500 text-sm mb-4">Add your first tender or project to begin tracking.</p>
+          <button onClick={openNew} className="bg-[#8DC63F] text-slate-900 font-semibold px-4 py-2 rounded-lg text-sm">
             + New project
           </button>
         </div>
@@ -349,14 +349,14 @@ const AdminPipeline = () => {
           {STATUSES.map(s => {
             const items = filtered.filter(p => p.status === s.key);
             return (
-              <div key={s.key} className="bg-[#0f172a] border border-white/5 rounded-lg min-w-[280px] flex-1 flex flex-col max-h-[calc(100vh-280px)]">
+              <div key={s.key} className="bg-white border border-slate-200 rounded-lg min-w-[280px] flex-1 flex flex-col max-h-[calc(100vh-280px)]">
                 <div className="p-3 border-b-2 flex items-center justify-between" style={{ borderBottomColor: s.color }}>
                   <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>{s.label}</h3>
                   <span className="text-xs font-mono text-[#0c1222] font-bold px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
                 </div>
                 <div className="p-3 flex flex-col gap-2 overflow-y-auto">
                   {items.length === 0 ? (
-                    <div className="text-xs text-white/30 text-center py-4">No projects</div>
+                    <div className="text-xs text-slate-400 text-center py-4">No projects</div>
                   ) : items.map(p => {
                     const open = (p.checklist || []).filter(c => !c.done).length;
                     const days = daysUntil(p.submission_deadline);
@@ -366,16 +366,16 @@ const AdminPipeline = () => {
                       <button
                         key={p.id}
                         onClick={() => openEdit(p)}
-                        className="bg-[#0c1222] border border-white/10 rounded-md p-3 text-left hover:border-[#8DC63F] hover:-translate-y-0.5 transition"
+                        className="bg-slate-50 border border-slate-200 rounded-md p-3 text-left hover:border-[#8DC63F] hover:-translate-y-0.5 transition"
                       >
                         <div className="flex items-start justify-between gap-2 mb-1.5">
                           {(p.funder || p.sector) && (
-                            <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold truncate">
+                            <div className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold truncate">
                               {p.funder || p.sector}
                             </div>
                           )}
                           {p.opportunity_no != null && (
-                            <span className="text-[9px] font-mono text-white/30 flex-none">#{p.opportunity_no}</span>
+                            <span className="text-[9px] font-mono text-slate-400 flex-none">#{p.opportunity_no}</span>
                           )}
                         </div>
                         <h4 className="text-sm font-semibold leading-snug mb-2">{p.name}</h4>
@@ -392,19 +392,19 @@ const AdminPipeline = () => {
                           </div>
                         )}
                         <div className="mt-1.5">
-                          <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-white/40 font-bold mb-1">
+                          <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-slate-500 font-bold mb-1">
                             <span>Progress</span><span>{pct}%</span>
                           </div>
-                          <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                          <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                             <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: s.color }} />
                           </div>
                         </div>
-                        <div className="flex items-center justify-between text-[11px] text-white/50 mt-2.5">
+                        <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2.5">
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <div className="w-5 h-5 rounded-full bg-[#134A6B] text-white text-[9px] font-bold flex items-center justify-center flex-none">{initials(p.lead)}</div>
+                            <div className="w-5 h-5 rounded-full bg-slate-900 text-slate-900 text-[9px] font-bold flex items-center justify-center flex-none">{initials(p.lead)}</div>
                             <span className="truncate">{p.lead || "Unassigned"}</span>
                           </div>
-                          {p.timeline && <span className="text-white/40 ml-2 flex-none">{p.timeline}</span>}
+                          {p.timeline && <span className="text-slate-500 ml-2 flex-none">{p.timeline}</span>}
                         </div>
                         {open > 0 && (
                           <div className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold text-[#F0B95A]">
@@ -420,10 +420,10 @@ const AdminPipeline = () => {
           })}
         </div>
       ) : view === "table" ? (
-        <div className="bg-[#0f172a] border border-white/5 rounded-lg overflow-hidden overflow-x-auto">
+        <div className="bg-white border border-slate-200 rounded-lg overflow-hidden overflow-x-auto">
           <table className="w-full text-sm min-w-[1100px]">
             <thead>
-              <tr className="text-left text-white/40 text-[11px] uppercase tracking-wider bg-[#0c1222]">
+              <tr className="text-left text-slate-500 text-[11px] uppercase tracking-wider bg-slate-50">
                 {[
                   { k: "opportunity_no", l: "#" },
                   { k: "name", l: "Opportunity" },
@@ -433,7 +433,7 @@ const AdminPipeline = () => {
                   { k: "lead", l: "Focal" },
                   { k: "progress", l: "Progress" },
                 ].map(c => (
-                  <th key={c.k} onClick={() => sortBy(c.k)} className="px-4 py-3 cursor-pointer hover:text-white whitespace-nowrap">
+                  <th key={c.k} onClick={() => sortBy(c.k)} className="px-4 py-3 cursor-pointer hover:text-slate-900 whitespace-nowrap">
                     {c.l} {sortCol === c.k && <span className="text-[#8DC63F]">{sortDir === 1 ? "▲" : "▼"}</span>}
                   </th>
                 ))}
@@ -441,34 +441,34 @@ const AdminPipeline = () => {
             </thead>
             <tbody>
               {sortedTable.length === 0 ? (
-                <tr><td colSpan={7} className="text-center py-10 text-white/40">No projects match your filters.</td></tr>
+                <tr><td colSpan={7} className="text-center py-10 text-slate-500">No projects match your filters.</td></tr>
               ) : sortedTable.map(p => {
                 const s = STATUS_MAP[p.status];
                 const days = daysUntil(p.submission_deadline);
                 const tone = deadlineTone(days);
                 const pct = progressPct(p.stage_flags);
                 return (
-                  <tr key={p.id} onClick={() => openEdit(p)} className="border-t border-white/5 hover:bg-white/5 cursor-pointer">
-                    <td className="px-4 py-3 text-white/40 font-mono text-xs">{p.opportunity_no ?? "—"}</td>
+                  <tr key={p.id} onClick={() => openEdit(p)} className="border-t border-slate-200 hover:bg-slate-100 cursor-pointer">
+                    <td className="px-4 py-3 text-slate-500 font-mono text-xs">{p.opportunity_no ?? "—"}</td>
                     <td className="px-4 py-3 font-semibold max-w-[340px]">{p.name}</td>
-                    <td className="px-4 py-3 text-white/60 text-xs">{p.sector || "—"}</td>
+                    <td className="px-4 py-3 text-slate-600 text-xs">{p.sector || "—"}</td>
                     <td className="px-4 py-3 text-xs">
                       {p.submission_deadline ? (
                         <span className="inline-flex items-center gap-1 font-bold px-1.5 py-0.5 rounded" style={{ background: tone.bg, color: tone.fg }}>
                           {formatDate(p.submission_deadline)} · {tone.label}
                         </span>
-                      ) : <span className="text-white/40">—</span>}
+                      ) : <span className="text-slate-500">—</span>}
                     </td>
                     <td className="px-4 py-3">
                       <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full" style={{ background: s.color, color: "#0c1222" }}>{s.label}</span>
                     </td>
-                    <td className="px-4 py-3 text-white/60 text-xs">{p.lead || "Unassigned"}</td>
+                    <td className="px-4 py-3 text-slate-600 text-xs">{p.lead || "Unassigned"}</td>
                     <td className="px-4 py-3 min-w-[140px]">
                       <div className="flex items-center gap-2">
-                        <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                        <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                           <div className="h-full rounded-full" style={{ width: `${pct}%`, background: s.color }} />
                         </div>
-                        <span className="text-[10px] font-mono text-white/50">{pct}%</span>
+                        <span className="text-[10px] font-mono text-slate-500">{pct}%</span>
                       </div>
                     </td>
                   </tr>
@@ -491,14 +491,14 @@ const AdminPipeline = () => {
                 </div>
                 <div className="space-y-2">
                   {items.map(p => (
-                    <button key={p.id} onClick={() => openEdit(p)} className="w-full bg-[#0f172a] border border-white/5 rounded-lg p-4 flex items-center justify-between gap-4 hover:border-[#8DC63F] transition text-left">
+                    <button key={p.id} onClick={() => openEdit(p)} className="w-full bg-white border border-slate-200 rounded-lg p-4 flex items-center justify-between gap-4 hover:border-[#8DC63F] transition text-left">
                       <div className="min-w-0">
                         <h4 className="font-semibold text-sm">{p.name}</h4>
-                        <div className="text-xs text-white/40 mt-1">{p.funder || "—"}</div>
+                        <div className="text-xs text-slate-500 mt-1">{p.funder || "—"}</div>
                       </div>
-                      <div className="flex items-center gap-4 flex-none text-xs text-white/50">
+                      <div className="flex items-center gap-4 flex-none text-xs text-slate-500">
                         <div className="flex items-center gap-1.5">
-                          <div className="w-5 h-5 rounded-full bg-[#134A6B] text-white text-[9px] font-bold flex items-center justify-center">{initials(p.lead)}</div>
+                          <div className="w-5 h-5 rounded-full bg-slate-900 text-slate-900 text-[9px] font-bold flex items-center justify-center">{initials(p.lead)}</div>
                           {p.lead || "Unassigned"}
                         </div>
                         <span className="hidden md:inline">{p.timeline}</span>
@@ -516,15 +516,15 @@ const AdminPipeline = () => {
       {drawer && (
         <>
           <div className="fixed inset-0 bg-black/60 z-40" onClick={() => setDrawer(null)} />
-          <div className="fixed top-0 right-0 h-full w-full max-w-[480px] bg-[#0f172a] border-l border-white/10 z-50 flex flex-col shadow-2xl">
-            <div className="bg-[#134A6B] p-5 flex justify-between items-start gap-3">
+          <div className="fixed top-0 right-0 h-full w-full max-w-[480px] bg-white border-l border-slate-200 z-50 flex flex-col shadow-2xl">
+            <div className="bg-slate-900 p-5 flex justify-between items-start gap-3">
               <div className="min-w-0">
-                <div className="text-[11px] uppercase tracking-wider text-[#BFD4E2] font-semibold mb-1">
+                <div className="text-[11px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
                   {drawer.funder || "NEW PROJECT"}
                 </div>
                 <h2 className="text-lg font-bold leading-tight">{drawer.name || "New project"}</h2>
               </div>
-              <button onClick={() => setDrawer(null)} className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center flex-none">
+              <button onClick={() => setDrawer(null)} className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center flex-none">
                 <X size={16} />
               </button>
             </div>
@@ -576,12 +576,12 @@ const AdminPipeline = () => {
               </div>
 
               <Field label="Stage progress">
-                <div className="bg-[#0c1222] border border-white/10 rounded-md p-3 space-y-2">
-                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-white/40 font-bold">
+                <div className="bg-slate-50 border border-slate-200 rounded-md p-3 space-y-2">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-slate-500 font-bold">
                     <span>Pipeline → Award</span>
                     <span className="text-[#A8DB5E]">{progressPct(drawer.stage_flags)}%</span>
                   </div>
-                  <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                     <div className="h-full rounded-full transition-all" style={{ width: `${progressPct(drawer.stage_flags)}%`, background: STATUS_MAP[drawer.status]?.color || "#A8DB5E" }} />
                   </div>
                   <div className="grid grid-cols-2 gap-1.5 pt-1">
@@ -591,9 +591,9 @@ const AdminPipeline = () => {
                         <button
                           key={st.key}
                           onClick={() => setDrawer({ ...drawer, stage_flags: { ...drawer.stage_flags, [st.key]: !on } })}
-                          className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border transition ${on ? "bg-[#A8DB5E]/15 border-[#A8DB5E]/40 text-[#A8DB5E]" : "border-white/10 text-white/50 hover:border-white/30"}`}
+                          className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border transition ${on ? "bg-[#A8DB5E]/15 border-[#A8DB5E]/40 text-[#A8DB5E]" : "border-slate-200 text-slate-500 hover:border-slate-400"}`}
                         >
-                          <span className={`w-3.5 h-3.5 rounded-sm border flex-none flex items-center justify-center ${on ? "bg-[#A8DB5E] border-[#A8DB5E]" : "border-white/30"}`}>
+                          <span className={`w-3.5 h-3.5 rounded-sm border flex-none flex items-center justify-center ${on ? "bg-[#A8DB5E] border-[#A8DB5E]" : "border-slate-400"}`}>
                             {on && <Check size={10} className="text-[#0c1222]" />}
                           </span>
                           {st.label}
@@ -632,24 +632,24 @@ const AdminPipeline = () => {
               <Field label="Outstanding items">
                 <div className="space-y-2">
                   {drawer.checklist.length === 0 && (
-                    <div className="text-xs text-white/30 py-1">No items yet — add tasks below.</div>
+                    <div className="text-xs text-slate-400 py-1">No items yet — add tasks below.</div>
                   )}
                   {drawer.checklist.map((c, i) => (
-                    <div key={i} className={`flex items-start gap-2 bg-[#0c1222] border border-white/10 rounded-md p-2 ${c.done ? "opacity-60" : ""}`}>
+                    <div key={i} className={`flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-md p-2 ${c.done ? "opacity-60" : ""}`}>
                       <button
                         onClick={() => {
                           const cl = [...drawer.checklist];
                           cl[i] = { ...cl[i], done: !cl[i].done };
                           setDrawer({ ...drawer, checklist: cl });
                         }}
-                        className={`w-4 h-4 rounded border flex-none flex items-center justify-center mt-0.5 ${c.done ? "bg-[#8DC63F] border-[#8DC63F]" : "border-white/30"}`}
+                        className={`w-4 h-4 rounded border flex-none flex items-center justify-center mt-0.5 ${c.done ? "bg-[#8DC63F] border-[#8DC63F]" : "border-slate-400"}`}
                       >
-                        {c.done && <Check size={12} className="text-[#0D3650]" />}
+                        {c.done && <Check size={12} className="text-slate-900" />}
                       </button>
-                      <span className={`flex-1 text-sm ${c.done ? "line-through text-white/40" : ""}`}>{c.text}</span>
+                      <span className={`flex-1 text-sm ${c.done ? "line-through text-slate-500" : ""}`}>{c.text}</span>
                       <button
                         onClick={() => setDrawer({ ...drawer, checklist: drawer.checklist.filter((_, j) => j !== i) })}
-                        className="text-white/30 hover:text-red-400"
+                        className="text-slate-400 hover:text-red-400"
                       >
                         <X size={14} />
                       </button>
@@ -674,7 +674,7 @@ const AdminPipeline = () => {
                         setDrawer({ ...drawer, checklist: [...drawer.checklist, { text: newItem.trim(), done: false }] });
                         setNewItem("");
                       }}
-                      className="px-3 py-2 bg-[#134A6B] border border-white/10 rounded-md text-sm font-semibold hover:bg-[#0D3650]"
+                      className="px-3 py-2 bg-slate-900 border border-slate-200 rounded-md text-sm font-semibold hover:bg-[#0D3650]"
                     >
                       Add
                     </button>
@@ -686,16 +686,16 @@ const AdminPipeline = () => {
             {savedAt && (
               <div className="px-5 pb-1 text-[11px] text-[#8DC63F] font-mono">Saved {savedAt}</div>
             )}
-            <div className="border-t border-white/10 p-4 flex gap-2 items-center">
+            <div className="border-t border-slate-200 p-4 flex gap-2 items-center">
               {!isNew && (
-                <button onClick={remove} className="px-3 py-2.5 border border-white/10 text-red-400 hover:bg-red-500/10 rounded-lg text-sm font-semibold flex items-center gap-1.5">
+                <button onClick={remove} className="px-3 py-2.5 border border-slate-200 text-red-400 hover:bg-red-500/10 rounded-lg text-sm font-semibold flex items-center gap-1.5">
                   <Trash2 size={14} /> Delete
                 </button>
               )}
               <button
                 onClick={save}
                 disabled={saving}
-                className="flex-1 bg-[#8DC63F] text-[#0D3650] font-bold py-2.5 rounded-lg text-sm hover:brightness-110 disabled:opacity-60"
+                className="flex-1 bg-[#8DC63F] text-slate-900 font-bold py-2.5 rounded-lg text-sm hover:brightness-110 disabled:opacity-60"
               >
                 {saving ? "Saving…" : "Save changes"}
               </button>
@@ -707,11 +707,11 @@ const AdminPipeline = () => {
   );
 };
 
-const inputCls = "w-full bg-[#0c1222] border border-white/10 rounded-md px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#8DC63F]";
+const inputCls = "w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#8DC63F]";
 
 const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <div>
-    <label className="block text-[11px] font-bold uppercase tracking-wider text-white/40 mb-1.5">{label}</label>
+    <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">{label}</label>
     {children}
   </div>
 );

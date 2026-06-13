@@ -35,11 +35,11 @@ const ImageUpload = ({ value, onChange, bucket = "cms-images" }: ImageUploadProp
     <div>
       {value ? (
         <div className="relative group">
-          <img src={value} alt="" className="w-full h-48 object-cover rounded-md border border-white/10" />
+          <img src={value} alt="" className="w-full h-48 object-cover rounded-md border border-slate-200" />
           <button
             type="button"
             onClick={() => onChange("")}
-            className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute top-2 right-2 bg-black/60 text-slate-900 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <X size={14} />
           </button>
@@ -50,15 +50,15 @@ const ImageUpload = ({ value, onChange, bucket = "cms-images" }: ImageUploadProp
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
           className={`flex flex-col items-center justify-center h-48 border-2 border-dashed rounded-md cursor-pointer transition-colors ${
-            dragOver ? "border-[hsl(var(--accent))] bg-[hsl(var(--accent))]/5" : "border-white/10 hover:border-white/20"
+            dragOver ? "border-[hsl(var(--accent))] bg-[hsl(var(--accent))]/5" : "border-slate-200 hover:border-slate-300"
           }`}
         >
           {uploading ? (
-            <p className="text-white/40 text-sm animate-pulse">Uploading...</p>
+            <p className="text-slate-500 text-sm animate-pulse">Uploading...</p>
           ) : (
             <>
-              <Upload className="text-white/20 mb-2" size={24} />
-              <p className="text-white/40 text-sm">Drop image or click to browse</p>
+              <Upload className="text-slate-900/20 mb-2" size={24} />
+              <p className="text-slate-500 text-sm">Drop image or click to browse</p>
             </>
           )}
           <input

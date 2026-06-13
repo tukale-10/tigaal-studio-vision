@@ -41,25 +41,25 @@ const AdminUsers = () => {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-display text-white mb-1">Users & Roles</h1>
-        <p className="text-white/40 text-sm">Manage admin access to the CMS</p>
+        <h1 className="text-2xl font-display text-slate-900 mb-1">Users & Roles</h1>
+        <p className="text-slate-500 text-sm">Manage admin access to the CMS</p>
       </div>
 
       {/* Current admins */}
       <div className="mb-10">
-        <h2 className="text-lg font-semibold text-white mb-4">Current Admins</h2>
+        <h2 className="text-lg font-semibold text-slate-900 mb-4">Current Admins</h2>
         {loading ? (
-          <div className="space-y-2">{[...Array(2)].map((_, i) => <div key={i} className="h-16 bg-white/5 rounded-lg animate-pulse" />)}</div>
+          <div className="space-y-2">{[...Array(2)].map((_, i) => <div key={i} className="h-16 bg-slate-100 rounded-lg animate-pulse" />)}</div>
         ) : admins.length === 0 ? (
-          <p className="text-white/30 text-sm">No admin roles assigned yet.</p>
+          <p className="text-slate-400 text-sm">No admin roles assigned yet.</p>
         ) : (
           <div className="space-y-2">
             {admins.map((admin) => (
-              <div key={admin.user_id} className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-lg p-4">
+              <div key={admin.user_id} className="flex items-center gap-4 bg-white/[0.03] border border-slate-200 rounded-lg p-4">
                 <Shield className="text-[hsl(var(--accent))]" size={20} />
                 <div className="flex-1">
-                  <p className="text-white text-sm font-mono">{admin.user_id}</p>
-                  <p className="text-white/40 text-xs capitalize">{admin.role}{admin.user_id === user?.id ? " (you)" : ""}</p>
+                  <p className="text-slate-900 text-sm font-mono">{admin.user_id}</p>
+                  <p className="text-slate-500 text-xs capitalize">{admin.role}{admin.user_id === user?.id ? " (you)" : ""}</p>
                 </div>
               </div>
             ))}
@@ -68,18 +68,18 @@ const AdminUsers = () => {
       </div>
 
       {/* Invite instructions */}
-      <div className="bg-white/[0.03] border border-white/5 rounded-lg p-6">
+      <div className="bg-white/[0.03] border border-slate-200 rounded-lg p-6">
         <div className="flex items-center gap-3 mb-4">
           <UserPlus className="text-[hsl(var(--accent))]" size={20} />
-          <h2 className="text-lg font-semibold text-white">Add New Admin</h2>
+          <h2 className="text-lg font-semibold text-slate-900">Add New Admin</h2>
         </div>
-        <div className="text-white/50 text-sm space-y-3">
+        <div className="text-slate-500 text-sm space-y-3">
           <p>Since signup is disabled for security, adding new admins requires two steps:</p>
-          <ol className="list-decimal list-inside space-y-2 text-white/40">
-            <li>Go to <strong className="text-white/60">Lovable Cloud → Users</strong> and create a new user with email & password</li>
-            <li>Copy their User ID, then add a row to the <strong className="text-white/60">user_roles</strong> table with their user_id and role = 'admin'</li>
+          <ol className="list-decimal list-inside space-y-2 text-slate-500">
+            <li>Go to <strong className="text-slate-600">Lovable Cloud → Users</strong> and create a new user with email & password</li>
+            <li>Copy their User ID, then add a row to the <strong className="text-slate-600">user_roles</strong> table with their user_id and role = 'admin'</li>
           </ol>
-          <p className="text-white/30 text-xs mt-4">This ensures only authorized personnel can access the CMS.</p>
+          <p className="text-slate-400 text-xs mt-4">This ensures only authorized personnel can access the CMS.</p>
         </div>
       </div>
     </div>

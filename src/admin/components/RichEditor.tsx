@@ -24,7 +24,7 @@ const RichEditor = ({ value, onChange }: RichEditorProps) => {
   }, []);
 
   return (
-    <div className="rounded-md border border-white/10 overflow-hidden bg-white/[0.02] min-h-[300px] [&_.bn-editor]:!bg-transparent [&_.bn-block-content]:!text-white/80 [&_.bn-inline-content]:!text-white/80">
+    <div className="rounded-md border border-slate-200 overflow-hidden bg-white/[0.02] min-h-[300px] [&_.bn-editor]:!bg-transparent [&_.bn-block-content]:!text-slate-700 [&_.bn-inline-content]:!text-slate-700">
       <BlockNoteView
         editor={editor}
         theme="dark"

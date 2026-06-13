@@ -26,8 +26,8 @@ const AdminLayout = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[hsl(var(--primary))] flex items-center justify-center">
-        <div className="text-[hsl(var(--primary-foreground))]/60 animate-pulse">Loading...</div>
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-slate-500 animate-pulse">Loading...</div>
       </div>
     );
   }
@@ -35,12 +35,12 @@ const AdminLayout = () => {
   if (!user || !isAdmin) return <Navigate to="/admin" replace />;
 
   return (
-    <div className="min-h-screen bg-[#0c1222] flex">
+    <div className="min-h-screen bg-slate-50 flex">
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#0f172a] border-r border-white/5 flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
-        <div className="p-6 border-b border-white/5">
+      <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
+        <div className="p-6 border-b border-slate-200">
           <img src={logo} alt="TIGAAL" className="h-8 brightness-0 invert" />
-          <p className="text-white/30 text-xs mt-2 tracking-wider uppercase">Content Manager</p>
+          <p className="text-slate-400 text-xs mt-2 tracking-wider uppercase">Content Manager</p>
         </div>
 
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
@@ -53,7 +53,7 @@ const AdminLayout = () => {
                 `flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-medium transition-all ${
                   isActive
                     ? "bg-[hsl(var(--accent))]/10 text-[hsl(var(--accent))]"
-                    : "text-white/50 hover:text-white/80 hover:bg-white/5"
+                    : "text-slate-500 hover:text-slate-700 hover:bg-slate-100"
                 }`
               }
             >
@@ -63,11 +63,11 @@ const AdminLayout = () => {
           ))}
         </nav>
 
-        <div className="p-4 border-t border-white/5">
-          <div className="text-white/40 text-xs mb-3 truncate">{user.email}</div>
+        <div className="p-4 border-t border-slate-200">
+          <div className="text-slate-500 text-xs mb-3 truncate">{user.email}</div>
           <button
             onClick={signOut}
-            className="flex items-center gap-2 text-sm text-white/40 hover:text-red-400 transition-colors w-full"
+            className="flex items-center gap-2 text-sm text-slate-500 hover:text-red-400 transition-colors w-full"
           >
             <LogOut size={16} /> Sign Out
           </button>
@@ -81,14 +81,14 @@ const AdminLayout = () => {
 
       {/* Main */}
       <div className="flex-1 lg:ml-64">
-        <header className="sticky top-0 z-30 bg-[#0c1222]/80 backdrop-blur-md border-b border-white/5 px-4 lg:px-8 h-16 flex items-center justify-between">
-          <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-white/60 p-2">
+        <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 lg:px-8 h-16 flex items-center justify-between">
+          <button onClick={() => setSidebarOpen(true)} className="lg:hidden text-slate-600 p-2">
             <Menu size={20} />
           </button>
-          <div className="flex items-center gap-2 text-white/40 text-sm">
+          <div className="flex items-center gap-2 text-slate-500 text-sm">
             {sidebarLinks.find(l => location.pathname.startsWith(l.to))?.label || "Admin"}
           </div>
-          <a href="/" target="_blank" rel="noopener" className="text-xs text-white/30 hover:text-[hsl(var(--accent))] transition-colors flex items-center gap-1">
+          <a href="/" target="_blank" rel="noopener" className="text-xs text-slate-400 hover:text-[hsl(var(--accent))] transition-colors flex items-center gap-1">
             View Site <ChevronRight size={12} />
           </a>
         </header>
