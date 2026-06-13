@@ -287,7 +287,7 @@ const CapabilityDetail = () => {
             Let's build something <span className="italic text-accent">together</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10">
-            Tell us about your context and the decisions you're facing — we'll come back with a tailored proposition.
+            Tell us about your context and the decisions you're facing — we'll come back with a focused proposal.
           </p>
           <Link to="/contact" className="group inline-flex items-center gap-3 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all text-lg">
             Start a conversation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
