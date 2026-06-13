@@ -55,7 +55,7 @@ const Services = () => {
 
   return (
     <main>
-      <PageHero title="Our Capabilities" subtitle="Research, Training, and Advocacy for a Better Tomorrow" breadcrumb="Capabilities" />
+      <PageHero title="Our Capabilities" subtitle="Research, advisory, and learning services for development and the public sector." breadcrumb="Capabilities" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
