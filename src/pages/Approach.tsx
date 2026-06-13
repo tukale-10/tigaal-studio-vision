@@ -29,16 +29,16 @@ const Approach = () => {
             <div>
               <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">Our Philosophy</span>
               <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-foreground mb-8 leading-tight">
-                Local Problems Need <span className="text-accent italic">Local Solutions</span>
+                Local problems need <span className="text-accent italic">local solutions</span>
               </h2>
               <div className="h-1 w-20 bg-accent mb-8" />
             </div>
             <div className="space-y-6">
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                We are distinctive in the way we approach, handle, and execute projects. Our delivery model is rooted in a simple conviction: local problems need local solutions. As a social transformation company, we listen to our clients, engage relevant local stakeholders and subject matter experts, and create opportunities for innovative solutions at every stage of the project lifecycle.
+                We're distinctive in how we approach, manage, and deliver work. Our model rests on a simple conviction: local problems need local solutions. As a social enterprise, we listen first — to clients, to local stakeholders, and to the subject-matter experts closest to the issue — and create space for innovation at every stage of the project lifecycle.
               </p>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                "Local problems need local solutions" is the principle that guides all our work. As a social enterprise driving transformation, our delivery model emphasizes listening to clients, engaging with local stakeholders and relevant policymakers, and drawing on subject-matter expertise. This inclusive approach fosters collaboration and creates opportunities for innovative solutions at every stage of the process.
+                This inclusive way of working keeps our analysis grounded, our recommendations practical, and our solutions accountable to the people they affect.
               </p>
             </div>
           </div>
