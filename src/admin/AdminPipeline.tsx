@@ -6,12 +6,12 @@ import {
 } from "lucide-react";
 
 const STATUSES = [
-  { key: "pipeline",     label: "Pipeline / Tenders", color: "#8C8FD8", soft: "#E9E9F8" },
-  { key: "proposal",     label: "Proposal Submitted", color: "#E5A93C", soft: "#FBF0D9" },
-  { key: "did_not_land", label: "Did Not Land",       color: "#B5594E", soft: "#FBEAE7" },
-  { key: "active",       label: "Active",             color: "#134A6B", soft: "#DCE7EE" },
-  { key: "closing",      label: "Closing / Handover", color: "#8DC63F", soft: "#EAF6D8" },
-  { key: "completed",    label: "Completed",          color: "#6F8C7B", soft: "#E5EEE8" },
+  { key: "pipeline",     label: "Pipeline / Tenders", color: "#A5A8E8", soft: "rgba(165,168,232,0.14)" },
+  { key: "proposal",     label: "Proposal Submitted", color: "#F0B95A", soft: "rgba(240,185,90,0.14)" },
+  { key: "did_not_land", label: "Did Not Land",       color: "#E47A6E", soft: "rgba(228,122,110,0.14)" },
+  { key: "active",       label: "Active",             color: "#5EA8D6", soft: "rgba(94,168,214,0.14)" },
+  { key: "closing",      label: "Closing / Handover", color: "#A8DB5E", soft: "rgba(168,219,94,0.14)" },
+  { key: "completed",    label: "Completed",          color: "#9CC0AE", soft: "rgba(156,192,174,0.14)" },
 ] as const;
 type StatusKey = typeof STATUSES[number]["key"];
 const STATUS_MAP: Record<string, typeof STATUSES[number]> = Object.fromEntries(
@@ -274,7 +274,7 @@ const AdminPipeline = () => {
               <div key={s.key} className="bg-[#0f172a] border border-white/5 rounded-lg min-w-[280px] flex-1 flex flex-col max-h-[calc(100vh-280px)]">
                 <div className="p-3 border-b-2 flex items-center justify-between" style={{ borderBottomColor: s.color }}>
                   <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>{s.label}</h3>
-                  <span className="text-xs font-mono text-white px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
+                  <span className="text-xs font-mono text-[#0c1222] font-bold px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
                 </div>
                 <div className="p-3 flex flex-col gap-2 overflow-y-auto">
                   {items.length === 0 ? (
@@ -360,7 +360,7 @@ const AdminPipeline = () => {
               <div key={s.key} className="mb-6">
                 <div className="flex items-center gap-3 pb-2 mb-3 border-b-2" style={{ borderBottomColor: s.color }}>
                   <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>{s.label}</h3>
-                  <span className="text-xs font-mono text-white px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
+                  <span className="text-xs font-mono text-[#0c1222] font-bold px-1.5 py-0.5 rounded" style={{ background: s.color }}>{items.length}</span>
                 </div>
                 <div className="space-y-2">
                   {items.map(p => (
