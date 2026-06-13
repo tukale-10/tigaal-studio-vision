@@ -21,47 +21,100 @@ export const useAdminAuth = () => {
 export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [sessionLoading, setSessionLoading] = useState(true);
+  const [roleLoading, setRoleLoading] = useState(false);
+  const [roleCheckedUserId, setRoleCheckedUserId] = useState<string | null>(null);
+
+  const withTimeout = async <T,>(promise: PromiseLike<T>, ms = 12000): Promise<T> => {
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<never>((_, reject) => {
+      timeoutId = setTimeout(() => reject(new Error("Admin check timed out")), ms);
+    });
+
+    try {
+      return await Promise.race([Promise.resolve(promise), timeout]);
+    } finally {
+      if (timeoutId) clearTimeout(timeoutId);
+    }
+  };
 
   const checkAdmin = async (userId: string) => {
-    const { data, error } = await supabase.rpc("has_role", {
-      _user_id: userId,
-      _role: "admin",
-    });
-    if (error) {
+    try {
+      const { data, error } = await withTimeout(
+        supabase.rpc("has_role", {
+          _user_id: userId,
+          _role: "admin",
+        })
+      );
+      if (error) {
+        console.error("has_role check failed:", error);
+        return false;
+      }
+      return data === true;
+    } catch (error) {
       console.error("has_role check failed:", error);
       return false;
     }
-    return data === true;
   };
 
   useEffect(() => {
-    // Restore session first
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      const u = session?.user ?? null;
-      setUser(u);
-      if (u) {
-        const admin = await checkAdmin(u.id);
-        setIsAdmin(admin);
-      }
-      setLoading(false);
-    });
+    let mounted = true;
 
-    // Listen for subsequent auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      const u = session?.user ?? null;
-      setUser(u);
-      if (u) {
-        const admin = await checkAdmin(u.id);
-        setIsAdmin(admin);
-      } else {
+    supabase.auth.getSession()
+      .then(({ data: { session }, error }) => {
+        if (!mounted) return;
+        if (error) console.error("Session restore failed:", error);
+        setUser(session?.user ?? null);
+      })
+      .catch((error) => {
+        console.error("Session restore failed:", error);
+      })
+      .finally(() => {
+        if (mounted) setSessionLoading(false);
+      });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      if (!session?.user) {
         setIsAdmin(false);
+        setRoleCheckedUserId(null);
       }
-      setLoading(false);
+      setSessionLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!user?.id) {
+      setIsAdmin(false);
+      setRoleCheckedUserId(null);
+      setRoleLoading(false);
+      return;
+    }
+
+    setRoleCheckedUserId(null);
+    setRoleLoading(true);
+    checkAdmin(user.id)
+      .then((admin) => {
+        if (!cancelled) {
+          setIsAdmin(admin);
+          setRoleCheckedUserId(user.id);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setRoleLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.id]);
 
   const signIn = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -73,7 +126,10 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
     await supabase.auth.signOut();
     setUser(null);
     setIsAdmin(false);
+    setRoleCheckedUserId(null);
   };
+
+  const loading = sessionLoading || roleLoading || Boolean(user && roleCheckedUserId !== user.id);
 
   return (
     <AdminAuthCtx.Provider value={{ user, isAdmin, loading, signIn, signOut }}>
