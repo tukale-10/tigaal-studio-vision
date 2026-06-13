@@ -66,8 +66,8 @@ const Team = () => {
           ) : (
             <div className="max-w-7xl mx-auto space-y-20">
               {[
-                { key: "core", label: "Core Team", subtitle: "The professionals driving TIGAAL's day-to-day work." },
-                { key: "expert", label: "Our Experts", subtitle: "Senior advisors providing specialised technical expertise." },
+                { key: "core", label: "Core Team", subtitle: "The professionals driving TIGAAL's day-to-day work" },
+                { key: "expert", label: "Our Experts", subtitle: "Senior advisors providing specialist technical expertise" },
               ].map((group) => {
                 const members = teamMembers.filter((m) => (m.category || "core") === group.key);
                 if (members.length === 0) return null;
