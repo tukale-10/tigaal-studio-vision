@@ -21,7 +21,7 @@ const WhyChoose = () => {
             Why Choose TIGAAL
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            When selecting a research, advisory, or monitoring partner for operations in Somalia and the Horn of Africa, the decision should be guided by demonstrated capability, contextual depth, and a track record of delivering results under challenging conditions.
+            Choosing a research, advisory, or monitoring partner in Somalia and the Horn of Africa comes down to demonstrated capability, contextual depth, and a track record of delivering results under challenging conditions.
           </p>
         </div>
 
