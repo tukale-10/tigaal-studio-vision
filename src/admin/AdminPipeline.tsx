@@ -129,11 +129,13 @@ const AdminPipeline = () => {
     const { data } = await supabase
       .from("pipeline_projects")
       .select("*")
+      .order("opportunity_no", { ascending: true, nullsFirst: false })
       .order("updated_at", { ascending: false });
     setProjects(((data as any[]) || []).map(p => ({
       ...p,
       tags: p.tags || [],
       checklist: Array.isArray(p.checklist) ? p.checklist : [],
+      stage_flags: { ...emptyFlags(), ...(p.stage_flags || {}) },
     })));
     setLoading(false);
   }, []);
@@ -155,7 +157,7 @@ const AdminPipeline = () => {
       if (fFunder && p.funder !== fFunder) return false;
       if (fLead && p.lead !== fLead) return false;
       if (q) {
-        const hay = [p.name, p.funder, p.lead, p.description, (p.tags || []).join(" ")]
+        const hay = [p.name, p.funder, p.sector, p.lead, p.description, p.key_tasks, p.progress_remarks, (p.tags || []).join(" ")]
           .filter(Boolean).join(" ").toLowerCase();
         if (!hay.includes(q)) return false;
       }
@@ -179,28 +181,45 @@ const AdminPipeline = () => {
   };
   const openEdit = (p: PipelineProject) => {
     setIsNew(false);
-    setDrawer({ ...p, tags: [...p.tags], checklist: p.checklist.map(c => ({ ...c })) });
+    setDrawer({
+      ...p,
+      tags: [...p.tags],
+      checklist: p.checklist.map(c => ({ ...c })),
+      stage_flags: { ...emptyFlags(), ...(p.stage_flags || {}) },
+    });
     setSavedAt(null);
   };
 
   const save = async () => {
     if (!drawer) return;
     setSaving(true);
-    const payload = {
+    const payload: any = {
+      opportunity_no: drawer.opportunity_no,
       name: drawer.name.trim() || "Untitled project",
       funder: drawer.funder?.trim() || null,
+      sector: drawer.sector?.trim() || null,
       status: drawer.status,
       lead: drawer.lead?.trim() || null,
+      submission_deadline: drawer.submission_deadline || null,
       timeline: drawer.timeline?.trim() || null,
       contacts: drawer.contacts?.trim() || null,
       description: drawer.description?.trim() || null,
+      key_tasks: drawer.key_tasks?.trim() || null,
+      progress_remarks: drawer.progress_remarks?.trim() || null,
+      followup_actions: drawer.followup_actions?.trim() || null,
       tags: drawer.tags,
       checklist: drawer.checklist,
+      stage_flags: drawer.stage_flags,
     };
     if (isNew) {
       const { data } = await supabase.from("pipeline_projects").insert(payload).select().single();
       if (data) {
-        setDrawer({ ...(data as any), tags: data.tags || [], checklist: data.checklist || [] });
+        setDrawer({
+          ...(data as any),
+          tags: data.tags || [],
+          checklist: (data as any).checklist || [],
+          stage_flags: { ...emptyFlags(), ...((data as any).stage_flags || {}) },
+        });
         setIsNew(false);
       }
     } else {
@@ -211,6 +230,7 @@ const AdminPipeline = () => {
     setSaving(false);
     setTimeout(() => setSavedAt(null), 3000);
   };
+
 
   const remove = async () => {
     if (!drawer || isNew) { setDrawer(null); return; }
