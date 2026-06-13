@@ -23,7 +23,7 @@ const businessSteps = [
 const About = () => {
   return (
     <main>
-      <PageHero title="Who We Are" subtitle="Research & Analysis at the Centre of Somalia's Development" breadcrumb="Who We Are" />
+      <PageHero title="Who We Are" subtitle="A Somali-led social enterprise delivering research, analysis, and advisory across the Horn of Africa." breadcrumb="Who We Are" />
 
       {/* Company Overview */}
       <section className="py-24 lg:py-32">
