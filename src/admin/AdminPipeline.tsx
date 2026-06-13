@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Search, Plus, X, Trash2, AlertCircle, LayoutGrid, Table as TableIcon,
-  List as ListIcon, Check
+  List as ListIcon, Check, CalendarClock
 } from "lucide-react";
 
 const STATUSES = [
@@ -18,31 +18,58 @@ const STATUS_MAP: Record<string, typeof STATUSES[number]> = Object.fromEntries(
   STATUSES.map(s => [s.key, s])
 ) as any;
 
+const STAGES = [
+  { key: "prequalification", label: "Prequalification" },
+  { key: "proposal_drafted", label: "Proposal Drafted" },
+  { key: "submitted",        label: "Submitted" },
+  { key: "awarded",          label: "Awarded" },
+] as const;
+type StageKey = typeof STAGES[number]["key"];
+type StageFlags = Record<StageKey, boolean>;
+
 type ChecklistItem = { text: string; done: boolean };
 interface PipelineProject {
   id: string;
+  opportunity_no: number | null;
   name: string;
   funder: string | null;
+  sector: string | null;
   status: StatusKey;
   lead: string | null;
+  submission_deadline: string | null;
   timeline: string | null;
   contacts: string | null;
   description: string | null;
+  key_tasks: string | null;
+  progress_remarks: string | null;
+  followup_actions: string | null;
   tags: string[];
   checklist: ChecklistItem[];
+  stage_flags: StageFlags;
 }
+
+const emptyFlags = (): StageFlags => ({
+  prequalification: false, proposal_drafted: false, submitted: false, awarded: false,
+});
 
 const emptyDraft = (): PipelineProject => ({
   id: "",
+  opportunity_no: null,
   name: "",
   funder: "",
+  sector: "",
   status: "pipeline",
   lead: "",
+  submission_deadline: "",
   timeline: "",
   contacts: "",
   description: "",
+  key_tasks: "",
+  progress_remarks: "",
+  followup_actions: "",
   tags: [],
   checklist: [],
+  stage_flags: emptyFlags(),
 });
 
 const initials = (name?: string | null) => {
@@ -50,6 +77,37 @@ const initials = (name?: string | null) => {
   const parts = name.trim().split(/\s+/);
   return ((parts[0]?.[0] ?? "") + (parts[1]?.[0] ?? "")).toUpperCase() || "?";
 };
+
+const daysUntil = (iso?: string | null): number | null => {
+  if (!iso) return null;
+  const d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return null;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.round((d.getTime() - today.getTime()) / 86400000);
+};
+
+const deadlineTone = (days: number | null) => {
+  if (days === null) return { bg: "rgba(255,255,255,0.06)", fg: "rgba(255,255,255,0.55)", label: "No deadline" };
+  if (days < 0)  return { bg: "rgba(228,122,110,0.18)", fg: "#E47A6E", label: `${Math.abs(days)}d overdue` };
+  if (days <= 7) return { bg: "rgba(228,122,110,0.18)", fg: "#E47A6E", label: `${days}d left` };
+  if (days <= 30) return { bg: "rgba(240,185,90,0.18)", fg: "#F0B95A", label: `${days}d left` };
+  return { bg: "rgba(168,219,94,0.15)", fg: "#A8DB5E", label: `${days}d left` };
+};
+
+const progressPct = (flags?: StageFlags | null) => {
+  if (!flags) return 0;
+  const done = STAGES.filter(s => flags[s.key]).length;
+  return Math.round((done / STAGES.length) * 100);
+};
+
+const formatDate = (iso?: string | null) => {
+  if (!iso) return "—";
+  const d = new Date(iso + "T00:00:00");
+  if (isNaN(d.getTime())) return "—";
+  return d.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+};
+
 
 const AdminPipeline = () => {
   const [projects, setProjects] = useState<PipelineProject[]>([]);
