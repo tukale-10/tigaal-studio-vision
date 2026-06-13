@@ -33,7 +33,7 @@ const Publications = () => {
 
   return (
     <main>
-      <PageHero title="Publications" subtitle="Research papers, policy briefs, and learning documents from our work" breadcrumb="Resources" />
+      <PageHero title="Publications" subtitle="Research papers, policy briefs, and learning documents from our work." breadcrumb="Resources" />
 
       {/* Company Profile Download */}
       <section className="py-16 lg:py-20 bg-secondary border-b border-border">
