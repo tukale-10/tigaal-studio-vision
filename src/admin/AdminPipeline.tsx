@@ -420,15 +420,20 @@ const AdminPipeline = () => {
           })}
         </div>
       ) : view === "table" ? (
-        <div className="bg-[#0f172a] border border-white/5 rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="bg-[#0f172a] border border-white/5 rounded-lg overflow-hidden overflow-x-auto">
+          <table className="w-full text-sm min-w-[1100px]">
             <thead>
               <tr className="text-left text-white/40 text-[11px] uppercase tracking-wider bg-[#0c1222]">
                 {[
-                  { k: "name", l: "Project" }, { k: "funder", l: "Funder/Client" },
-                  { k: "status", l: "Status" }, { k: "lead", l: "Lead" }, { k: "timeline", l: "Timeline" },
+                  { k: "opportunity_no", l: "#" },
+                  { k: "name", l: "Opportunity" },
+                  { k: "sector", l: "Sector" },
+                  { k: "submission_deadline", l: "Deadline" },
+                  { k: "status", l: "Stage" },
+                  { k: "lead", l: "Focal" },
+                  { k: "progress", l: "Progress" },
                 ].map(c => (
-                  <th key={c.k} onClick={() => sortBy(c.k)} className="px-4 py-3 cursor-pointer hover:text-white">
+                  <th key={c.k} onClick={() => sortBy(c.k)} className="px-4 py-3 cursor-pointer hover:text-white whitespace-nowrap">
                     {c.l} {sortCol === c.k && <span className="text-[#8DC63F]">{sortDir === 1 ? "▲" : "▼"}</span>}
                   </th>
                 ))}
@@ -436,24 +441,43 @@ const AdminPipeline = () => {
             </thead>
             <tbody>
               {sortedTable.length === 0 ? (
-                <tr><td colSpan={5} className="text-center py-10 text-white/40">No projects match your filters.</td></tr>
+                <tr><td colSpan={7} className="text-center py-10 text-white/40">No projects match your filters.</td></tr>
               ) : sortedTable.map(p => {
                 const s = STATUS_MAP[p.status];
+                const days = daysUntil(p.submission_deadline);
+                const tone = deadlineTone(days);
+                const pct = progressPct(p.stage_flags);
                 return (
                   <tr key={p.id} onClick={() => openEdit(p)} className="border-t border-white/5 hover:bg-white/5 cursor-pointer">
-                    <td className="px-4 py-3 font-semibold">{p.name}</td>
-                    <td className="px-4 py-3 text-white/60">{p.funder || "—"}</td>
-                    <td className="px-4 py-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full text-white" style={{ background: s.color }}>{s.label}</span>
+                    <td className="px-4 py-3 text-white/40 font-mono text-xs">{p.opportunity_no ?? "—"}</td>
+                    <td className="px-4 py-3 font-semibold max-w-[340px]">{p.name}</td>
+                    <td className="px-4 py-3 text-white/60 text-xs">{p.sector || "—"}</td>
+                    <td className="px-4 py-3 text-xs">
+                      {p.submission_deadline ? (
+                        <span className="inline-flex items-center gap-1 font-bold px-1.5 py-0.5 rounded" style={{ background: tone.bg, color: tone.fg }}>
+                          {formatDate(p.submission_deadline)} · {tone.label}
+                        </span>
+                      ) : <span className="text-white/40">—</span>}
                     </td>
-                    <td className="px-4 py-3 text-white/60">{p.lead || "Unassigned"}</td>
-                    <td className="px-4 py-3 text-white/60">{p.timeline || "—"}</td>
+                    <td className="px-4 py-3">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full" style={{ background: s.color, color: "#0c1222" }}>{s.label}</span>
+                    </td>
+                    <td className="px-4 py-3 text-white/60 text-xs">{p.lead || "Unassigned"}</td>
+                    <td className="px-4 py-3 min-w-[140px]">
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 h-1.5 bg-white/5 rounded-full overflow-hidden">
+                          <div className="h-full rounded-full" style={{ width: `${pct}%`, background: s.color }} />
+                        </div>
+                        <span className="text-[10px] font-mono text-white/50">{pct}%</span>
+                      </div>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </div>
+
       ) : (
         <div>
           {STATUSES.map(s => {
