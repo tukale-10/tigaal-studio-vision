@@ -115,7 +115,7 @@ const Partners = () => {
 
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in partnering?</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in working with us?</h2>
           <Link
             to="/contact"
             className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all"
