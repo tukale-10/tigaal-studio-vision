@@ -28,21 +28,21 @@ const FileUpload = ({ value, onChange, bucket = "cms-documents", accept = ".pdf,
   return (
     <div>
       {value ? (
-        <div className="flex items-center gap-3 p-3 bg-white/5 rounded-md border border-white/10">
+        <div className="flex items-center gap-3 p-3 bg-slate-100 rounded-md border border-slate-200">
           <FileText className="text-[hsl(var(--accent))]" size={20} />
-          <a href={value} target="_blank" rel="noopener" className="text-sm text-white/70 hover:text-white truncate flex-1">{value.split("/").pop()}</a>
-          <button type="button" onClick={() => onChange("")} className="text-white/30 hover:text-red-400">
+          <a href={value} target="_blank" rel="noopener" className="text-sm text-slate-600 hover:text-slate-900 truncate flex-1">{value.split("/").pop()}</a>
+          <button type="button" onClick={() => onChange("")} className="text-slate-400 hover:text-red-400">
             <X size={16} />
           </button>
         </div>
       ) : (
-        <label className="flex items-center gap-3 p-3 border border-dashed border-white/10 rounded-md cursor-pointer hover:border-white/20 transition-colors">
+        <label className="flex items-center gap-3 p-3 border border-dashed border-slate-200 rounded-md cursor-pointer hover:border-slate-300 transition-colors">
           {uploading ? (
-            <span className="text-white/40 text-sm animate-pulse">Uploading...</span>
+            <span className="text-slate-500 text-sm animate-pulse">Uploading...</span>
           ) : (
             <>
-              <Upload className="text-white/20" size={18} />
-              <span className="text-white/40 text-sm">{label}</span>
+              <Upload className="text-slate-900/20" size={18} />
+              <span className="text-slate-500 text-sm">{label}</span>
             </>
           )}
           <input type="file" accept={accept} className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) upload(f); }} />

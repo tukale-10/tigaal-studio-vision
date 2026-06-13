@@ -70,20 +70,20 @@ const AdminNews = () => {
     return (
       <div>
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-display text-white">{editing ? "Edit Article" : "New Article"}</h1>
-          <button onClick={() => { setEditing(null); setCreating(false); }} className="text-white/40 hover:text-white text-sm">Cancel</button>
+          <h1 className="text-2xl font-display text-slate-900">{editing ? "Edit Article" : "New Article"}</h1>
+          <button onClick={() => { setEditing(null); setCreating(false); }} className="text-slate-500 hover:text-slate-900 text-sm">Cancel</button>
         </div>
         <div className="max-w-3xl space-y-6">
           <div>
-            <label className="block text-white/60 text-sm mb-2">Type</label>
+            <label className="block text-slate-600 text-sm mb-2">Type</label>
             <div className="grid grid-cols-2 gap-3">
               <button
                 type="button"
                 onClick={() => setForm({ ...form, dispatch_type: "news", category: newsCats[0] })}
                 className={`flex items-center gap-3 px-4 py-3 rounded-md border text-left transition-colors ${
                   form.dispatch_type === "news"
-                    ? "bg-[hsl(var(--accent))]/10 border-[hsl(var(--accent))] text-white"
-                    : "bg-white/5 border-white/10 text-white/60 hover:border-white/20"
+                    ? "bg-[hsl(var(--accent))]/10 border-[hsl(var(--accent))] text-slate-900"
+                    : "bg-slate-100 border-slate-200 text-slate-600 hover:border-slate-300"
                 }`}
               >
                 <Newspaper size={18} />
@@ -97,8 +97,8 @@ const AdminNews = () => {
                 onClick={() => setForm({ ...form, dispatch_type: "dispatch", category: dispatchCats[0] })}
                 className={`flex items-center gap-3 px-4 py-3 rounded-md border text-left transition-colors ${
                   form.dispatch_type === "dispatch"
-                    ? "bg-[hsl(var(--accent))]/10 border-[hsl(var(--accent))] text-white"
-                    : "bg-white/5 border-white/10 text-white/60 hover:border-white/20"
+                    ? "bg-[hsl(var(--accent))]/10 border-[hsl(var(--accent))] text-slate-900"
+                    : "bg-slate-100 border-slate-200 text-slate-600 hover:border-slate-300"
                 }`}
               >
                 <FileText size={18} />
@@ -112,23 +112,23 @@ const AdminNews = () => {
 
           <Field label="Title" value={form.title} onChange={(v) => setForm({ ...form, title: v })} />
           <div>
-            <label className="block text-white/60 text-sm mb-2">Excerpt</label>
-            <textarea value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })} rows={3} className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white/90 focus:outline-none focus:border-[hsl(var(--accent))] resize-none" />
+            <label className="block text-slate-600 text-sm mb-2">Excerpt</label>
+            <textarea value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })} rows={3} className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900/90 focus:outline-none focus:border-[hsl(var(--accent))] resize-none" />
           </div>
           <div>
-            <label className="block text-white/60 text-sm mb-2">Content</label>
+            <label className="block text-slate-600 text-sm mb-2">Content</label>
             <RichEditor value={form.content} onChange={(blocks) => setForm({ ...form, content: blocks })} />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-white/60 text-sm mb-2">Category</label>
-              <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white/90 focus:outline-none focus:border-[hsl(var(--accent))]">
+              <label className="block text-slate-600 text-sm mb-2">Category</label>
+              <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900/90 focus:outline-none focus:border-[hsl(var(--accent))]">
                 {cats.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
             <Field label="Published Date" value={form.published_date} onChange={(v) => setForm({ ...form, published_date: v })} type="date" />
           </div>
-          <label className="flex items-center gap-2 text-white/60 text-sm cursor-pointer">
+          <label className="flex items-center gap-2 text-slate-600 text-sm cursor-pointer">
             <input type="checkbox" checked={form.published} onChange={(e) => setForm({ ...form, published: e.target.checked })} className="accent-[hsl(var(--accent))]" /> Published
           </label>
           <button onClick={save} className="px-6 py-2.5 bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] font-semibold rounded-md hover:opacity-90">Save Article</button>
@@ -140,7 +140,7 @@ const AdminNews = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-display text-white">News & Dispatches</h1>
+        <h1 className="text-2xl font-display text-slate-900">News & Dispatches</h1>
         <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] rounded-md text-sm font-semibold hover:opacity-90"><Plus size={16} /> New Article</button>
       </div>
 
@@ -155,8 +155,8 @@ const AdminNews = () => {
             onClick={() => setFilter(tab.key)}
             className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
               filter === tab.key
-                ? "bg-white/10 text-white"
-                : "text-white/40 hover:text-white/70 hover:bg-white/5"
+                ? "bg-slate-100 text-slate-900"
+                : "text-slate-500 hover:text-slate-600 hover:bg-slate-100"
             }`}
           >
             {tab.label}
@@ -167,29 +167,29 @@ const AdminNews = () => {
         ))}
       </div>
 
-      {loading ? <div className="space-y-3">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-white/5 rounded-lg animate-pulse" />)}</div>
-      : visible.length === 0 ? <div className="text-center py-20 text-white/30">No articles yet.</div>
+      {loading ? <div className="space-y-3">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-slate-100 rounded-lg animate-pulse" />)}</div>
+      : visible.length === 0 ? <div className="text-center py-20 text-slate-400">No articles yet.</div>
       : (
         <div className="space-y-2">
           {visible.map((item) => (
-            <div key={item.id} className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-lg p-4 hover:border-white/10 transition-colors">
+            <div key={item.id} className="flex items-center gap-4 bg-white/[0.03] border border-slate-200 rounded-lg p-4 hover:border-slate-200 transition-colors">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className={`text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-semibold ${
                     (item.dispatch_type || "news") === "dispatch"
                       ? "bg-[hsl(var(--accent))]/15 text-[hsl(var(--accent))]"
-                      : "bg-white/10 text-white/60"
+                      : "bg-slate-100 text-slate-600"
                   }`}>
                     {(item.dispatch_type || "news") === "dispatch" ? "Dispatch" : "News"}
                   </span>
-                  <h3 className="text-white font-medium truncate">{item.title}</h3>
+                  <h3 className="text-slate-900 font-medium truncate">{item.title}</h3>
                 </div>
-                <p className="text-white/40 text-sm">{item.category} · {item.published_date}</p>
+                <p className="text-slate-500 text-sm">{item.category} · {item.published_date}</p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
-                <button onClick={() => togglePublish(item)} className={`p-2 rounded-md ${item.published ? "text-emerald-400" : "text-white/20"}`}>{item.published ? <Eye size={16} /> : <EyeOff size={16} />}</button>
-                <button onClick={() => openEdit(item)} className="p-2 text-white/40 hover:text-white hover:bg-white/5 rounded-md"><Pencil size={16} /></button>
-                <button onClick={() => remove(item.id)} className="p-2 text-white/40 hover:text-red-400 rounded-md"><Trash2 size={16} /></button>
+                <button onClick={() => togglePublish(item)} className={`p-2 rounded-md ${item.published ? "text-emerald-400" : "text-slate-900/20"}`}>{item.published ? <Eye size={16} /> : <EyeOff size={16} />}</button>
+                <button onClick={() => openEdit(item)} className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-md"><Pencil size={16} /></button>
+                <button onClick={() => remove(item.id)} className="p-2 text-slate-500 hover:text-red-400 rounded-md"><Trash2 size={16} /></button>
               </div>
             </div>
           ))}
@@ -200,7 +200,7 @@ const AdminNews = () => {
 };
 
 const Field = ({ label, value, onChange, type = "text" }: { label: string; value: string; onChange: (v: string) => void; type?: string }) => (
-  <div><label className="block text-white/60 text-sm mb-2">{label}</label><input type={type} value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white/90 focus:outline-none focus:border-[hsl(var(--accent))]" /></div>
+  <div><label className="block text-slate-600 text-sm mb-2">{label}</label><input type={type} value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900/90 focus:outline-none focus:border-[hsl(var(--accent))]" /></div>
 );
 
 export default AdminNews;

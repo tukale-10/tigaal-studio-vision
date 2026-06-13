@@ -47,14 +47,14 @@ const AdminDashboard = () => {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-display text-white mb-1">Dashboard</h1>
-        <p className="text-white/40 text-sm">Manage your website content</p>
+        <h1 className="text-2xl font-display text-slate-900 mb-1">Dashboard</h1>
+        <p className="text-slate-500 text-sm">Manage your website content</p>
       </div>
 
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="bg-white/5 rounded-lg p-6 animate-pulse h-32" />
+            <div key={i} className="bg-slate-100 rounded-lg p-6 animate-pulse h-32" />
           ))}
         </div>
       ) : (
@@ -63,16 +63,16 @@ const AdminDashboard = () => {
             <Link
               key={card.label}
               to={card.to}
-              className={`group relative bg-gradient-to-br ${card.color} border border-white/5 rounded-lg p-6 hover:border-white/10 transition-all duration-300`}
+              className={`group relative bg-gradient-to-br ${card.color} border border-slate-200 rounded-lg p-6 hover:border-slate-200 transition-all duration-300`}
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-white/40 text-sm mb-1">{card.label}</p>
-                  <p className="text-3xl font-display text-white">{card.count}</p>
+                  <p className="text-slate-500 text-sm mb-1">{card.label}</p>
+                  <p className="text-3xl font-display text-slate-900">{card.count}</p>
                 </div>
-                <card.icon className="text-white/10 group-hover:text-white/20 transition-colors" size={32} />
+                <card.icon className="text-slate-900/10 group-hover:text-slate-900/20 transition-colors" size={32} />
               </div>
-              <div className="flex items-center gap-1 mt-4 text-xs text-white/30 group-hover:text-[hsl(var(--accent))] transition-colors">
+              <div className="flex items-center gap-1 mt-4 text-xs text-slate-400 group-hover:text-[hsl(var(--accent))] transition-colors">
                 Manage <ArrowRight size={12} />
               </div>
             </Link>

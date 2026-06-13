@@ -89,36 +89,36 @@ const AdminServices = () => {
     return (
       <div>
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-display text-white">{editing ? "Edit Service" : "New Service"}</h1>
-          <button onClick={() => { setEditing(null); setCreating(false); }} className="text-white/40 hover:text-white text-sm">Cancel</button>
+          <h1 className="text-2xl font-display text-slate-900">{editing ? "Edit Service" : "New Service"}</h1>
+          <button onClick={() => { setEditing(null); setCreating(false); }} className="text-slate-500 hover:text-slate-900 text-sm">Cancel</button>
         </div>
         <div className="max-w-2xl space-y-6">
           <Field label="Title" value={form.title} onChange={(v) => setForm({ ...form, title: v })} />
           <div>
-            <label className="block text-white/60 text-sm mb-2">Description</label>
-            <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={5} className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white/90 placeholder:text-white/20 focus:outline-none focus:border-[hsl(var(--accent))] resize-none" />
+            <label className="block text-slate-600 text-sm mb-2">Description</label>
+            <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows={5} className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900/90 placeholder:text-slate-900/20 focus:outline-none focus:border-[hsl(var(--accent))] resize-none" />
           </div>
           <Field label="Icon Name (Lucide)" value={form.icon_name} onChange={(v) => setForm({ ...form, icon_name: v })} />
           <div>
-            <label className="block text-white/60 text-sm mb-2">Image</label>
+            <label className="block text-slate-600 text-sm mb-2">Image</label>
             <ImageUpload value={form.image_url || undefined} onChange={(url) => setForm({ ...form, image_url: url })} />
           </div>
           <div>
-            <label className="block text-white/60 text-sm mb-2">Highlights</label>
+            <label className="block text-slate-600 text-sm mb-2">Highlights</label>
             <div className="flex flex-wrap gap-2 mb-3">
               {form.highlights.map((h, i) => (
-                <span key={i} className="flex items-center gap-1 bg-white/5 text-white/70 text-sm px-3 py-1 rounded-md">
-                  {h} <button type="button" onClick={() => removeHighlight(i)} className="text-white/30 hover:text-red-400"><Trash2 size={12} /></button>
+                <span key={i} className="flex items-center gap-1 bg-slate-100 text-slate-600 text-sm px-3 py-1 rounded-md">
+                  {h} <button type="button" onClick={() => removeHighlight(i)} className="text-slate-400 hover:text-red-400"><Trash2 size={12} /></button>
                 </span>
               ))}
             </div>
             <div className="flex gap-2">
-              <input value={highlightInput} onChange={(e) => setHighlightInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addHighlight())} className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white/90 text-sm focus:outline-none focus:border-[hsl(var(--accent))]" placeholder="Add highlight..." />
-              <button type="button" onClick={addHighlight} className="px-4 py-2 bg-white/10 text-white/60 rounded-md text-sm hover:bg-white/15">Add</button>
+              <input value={highlightInput} onChange={(e) => setHighlightInput(e.target.value)} onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addHighlight())} className="flex-1 px-3 py-2 bg-slate-100 border border-slate-200 rounded-md text-slate-900/90 text-sm focus:outline-none focus:border-[hsl(var(--accent))]" placeholder="Add highlight..." />
+              <button type="button" onClick={addHighlight} className="px-4 py-2 bg-slate-100 text-slate-600 rounded-md text-sm hover:bg-white/15">Add</button>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <label className="flex items-center gap-2 text-white/60 text-sm cursor-pointer">
+            <label className="flex items-center gap-2 text-slate-600 text-sm cursor-pointer">
               <input type="checkbox" checked={form.published} onChange={(e) => setForm({ ...form, published: e.target.checked })} className="accent-[hsl(var(--accent))]" />
               Published
             </label>
@@ -132,30 +132,30 @@ const AdminServices = () => {
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-display text-white">Services</h1>
+        <h1 className="text-2xl font-display text-slate-900">Services</h1>
         <button onClick={openCreate} className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))] rounded-md text-sm font-semibold hover:opacity-90">
           <Plus size={16} /> Add Service
         </button>
       </div>
       {loading ? (
-        <div className="space-y-3">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-white/5 rounded-lg animate-pulse" />)}</div>
+        <div className="space-y-3">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-slate-100 rounded-lg animate-pulse" />)}</div>
       ) : items.length === 0 ? (
-        <div className="text-center py-20 text-white/30">No services yet. Click "Add Service" to create one.</div>
+        <div className="text-center py-20 text-slate-400">No services yet. Click "Add Service" to create one.</div>
       ) : (
         <div className="space-y-2">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-lg p-4 hover:border-white/10 transition-colors">
+            <div key={item.id} className="flex items-center gap-4 bg-white/[0.03] border border-slate-200 rounded-lg p-4 hover:border-slate-200 transition-colors">
               {item.image_url && <img src={item.image_url} alt="" className="w-16 h-16 object-cover rounded-md flex-shrink-0" />}
               <div className="flex-1 min-w-0">
-                <h3 className="text-white font-medium truncate">{item.title}</h3>
-                <p className="text-white/40 text-sm truncate">{item.description.slice(0, 100)}...</p>
+                <h3 className="text-slate-900 font-medium truncate">{item.title}</h3>
+                <p className="text-slate-500 text-sm truncate">{item.description.slice(0, 100)}...</p>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
-                <button onClick={() => togglePublish(item)} className={`p-2 rounded-md transition-colors ${item.published ? "text-emerald-400 hover:bg-emerald-500/10" : "text-white/20 hover:bg-white/5"}`} title={item.published ? "Published" : "Draft"}>
+                <button onClick={() => togglePublish(item)} className={`p-2 rounded-md transition-colors ${item.published ? "text-emerald-400 hover:bg-emerald-500/10" : "text-slate-900/20 hover:bg-slate-100"}`} title={item.published ? "Published" : "Draft"}>
                   {item.published ? <Eye size={16} /> : <EyeOff size={16} />}
                 </button>
-                <button onClick={() => openEdit(item)} className="p-2 text-white/40 hover:text-white hover:bg-white/5 rounded-md"><Pencil size={16} /></button>
-                <button onClick={() => remove(item.id)} className="p-2 text-white/40 hover:text-red-400 hover:bg-red-500/5 rounded-md"><Trash2 size={16} /></button>
+                <button onClick={() => openEdit(item)} className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-md"><Pencil size={16} /></button>
+                <button onClick={() => remove(item.id)} className="p-2 text-slate-500 hover:text-red-400 hover:bg-red-500/5 rounded-md"><Trash2 size={16} /></button>
               </div>
             </div>
           ))}
@@ -167,8 +167,8 @@ const AdminServices = () => {
 
 const Field = ({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) => (
   <div>
-    <label className="block text-white/60 text-sm mb-2">{label}</label>
-    <input value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md text-white/90 placeholder:text-white/20 focus:outline-none focus:border-[hsl(var(--accent))]" />
+    <label className="block text-slate-600 text-sm mb-2">{label}</label>
+    <input value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-md text-slate-900/90 placeholder:text-slate-900/20 focus:outline-none focus:border-[hsl(var(--accent))]" />
   </div>
 );
 
