@@ -167,14 +167,14 @@ const About = () => {
             <div>
               <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Investment Advisory</span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6 leading-tight">
-                Bridging the <span className="text-accent italic">Gap</span>
+                Bridging the <span className="text-accent italic">gap</span>
               </h2>
               <div className="w-16 h-1 bg-accent mb-8" />
               <p className="text-primary-foreground/70 text-lg leading-relaxed mb-6">
-                As Somalia recovers from past instability, it presents vast investment opportunities. Recent reforms, including an online business registration platform, have rejuvenated its business environment. Sectors like manufacturing, tech, hospitality, and agri-farming are ripe for investment.
+                As Somalia rebuilds, the country offers significant opportunity. Reforms — including the new online business registration platform — are reshaping the operating environment, opening up manufacturing, technology, hospitality, and agribusiness to fresh investment.
               </p>
               <p className="text-primary-foreground/50 leading-relaxed">
-                However, accessing the Somali market remains challenging for foreign investors. Leveraging our local expertise and understanding of Somalia's evolving landscape, we provide investors with contextual insights, industry analyses, and identify investment gaps and opportunities. We streamline the entire process, from securing necessary permits from federal and regional authorities to fully establishing businesses in Somalia.
+                Yet entering the market remains complex for outside investors. Drawing on our local expertise, we provide contextual analysis, sector intelligence, and opportunity mapping — and we walk clients through the full set-up journey, from federal and regional permits to fully operational businesses on the ground.
               </p>
             </div>
 
