@@ -359,13 +359,25 @@ const AdminPipeline = () => {
                     <div className="text-xs text-white/30 text-center py-4">No projects</div>
                   ) : items.map(p => {
                     const open = (p.checklist || []).filter(c => !c.done).length;
+                    const days = daysUntil(p.submission_deadline);
+                    const tone = deadlineTone(days);
+                    const pct = progressPct(p.stage_flags);
                     return (
                       <button
                         key={p.id}
                         onClick={() => openEdit(p)}
                         className="bg-[#0c1222] border border-white/10 rounded-md p-3 text-left hover:border-[#8DC63F] hover:-translate-y-0.5 transition"
                       >
-                        {p.funder && <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold mb-1.5">{p.funder}</div>}
+                        <div className="flex items-start justify-between gap-2 mb-1.5">
+                          {(p.funder || p.sector) && (
+                            <div className="text-[10px] uppercase tracking-wider text-white/40 font-semibold truncate">
+                              {p.funder || p.sector}
+                            </div>
+                          )}
+                          {p.opportunity_no != null && (
+                            <span className="text-[9px] font-mono text-white/30 flex-none">#{p.opportunity_no}</span>
+                          )}
+                        </div>
                         <h4 className="text-sm font-semibold leading-snug mb-2">{p.name}</h4>
                         {p.tags?.length > 0 && (
                           <div className="flex flex-wrap gap-1 mb-2">
@@ -374,7 +386,20 @@ const AdminPipeline = () => {
                             ))}
                           </div>
                         )}
-                        <div className="flex items-center justify-between text-[11px] text-white/50 mt-2">
+                        {p.submission_deadline && (
+                          <div className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded mb-2" style={{ background: tone.bg, color: tone.fg }}>
+                            <CalendarClock size={10} /> {formatDate(p.submission_deadline)} · {tone.label}
+                          </div>
+                        )}
+                        <div className="mt-1.5">
+                          <div className="flex items-center justify-between text-[9px] uppercase tracking-wider text-white/40 font-bold mb-1">
+                            <span>Progress</span><span>{pct}%</span>
+                          </div>
+                          <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                            <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: s.color }} />
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px] text-white/50 mt-2.5">
                           <div className="flex items-center gap-1.5 min-w-0">
                             <div className="w-5 h-5 rounded-full bg-[#134A6B] text-white text-[9px] font-bold flex items-center justify-center flex-none">{initials(p.lead)}</div>
                             <span className="truncate">{p.lead || "Unassigned"}</span>
@@ -382,7 +407,7 @@ const AdminPipeline = () => {
                           {p.timeline && <span className="text-white/40 ml-2 flex-none">{p.timeline}</span>}
                         </div>
                         {open > 0 && (
-                          <div className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold text-[#E5A93C]">
+                          <div className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold text-[#F0B95A]">
                             <AlertCircle size={10} /> {open} outstanding
                           </div>
                         )}
