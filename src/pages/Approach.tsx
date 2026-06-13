@@ -89,12 +89,12 @@ const Approach = () => {
               <div>
                 <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Execution</span>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-                  How We <span className="text-accent italic">Deliver</span>
+                  How we <span className="text-accent italic">deliver</span>
                 </h2>
               </div>
               <div className="flex items-end">
                 <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                  Our delivery model enables us to engage with relevant local stakeholders, influencers, and subject matter experts for advice, increasing opportunities for innovative solutions at every stage.
+                  Our delivery model brings together local stakeholders, influencers, and subject-matter experts — opening up space for innovation at every stage of the work.
                 </p>
               </div>
             </div>
