@@ -16,7 +16,7 @@ const ProgramDesign = () => {
               <span className="text-accent italic">Development</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              We 'co-create' policies, programs, and services by collaborating with clients and communities. Together, we define challenges and design solutions, particularly focusing on governance, rule of law, and social sector development.
+              We co-create policies, programmes, and services with our clients and the communities they serve. Together we frame the problem and design practical solutions — with a particular focus on governance, rule of law, and social sector development.
             </p>
             <div className="space-y-4 mb-8">
               <div className="border-l-2 border-accent pl-6 py-2">
