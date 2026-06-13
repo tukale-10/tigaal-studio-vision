@@ -34,7 +34,7 @@ const AnalyticalDispatch = () => {
     <main>
       <PageHero
         title="Analytical Dispatch"
-        subtitle="In-depth analysis, research insights, and commentary from the TIGAAL team"
+        subtitle="In-depth analysis, research insights, and commentary from the TIGAAL team."
         breadcrumb="Resources"
       />
 
