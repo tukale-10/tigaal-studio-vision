@@ -75,7 +75,7 @@ const Contact = () => {
 
   return (
     <main>
-      <PageHero title="Contact Us" subtitle="We welcome enquiries from potential clients, partners, and collaborators" breadcrumb="Contact" />
+      <PageHero title="Contact Us" subtitle="We welcome enquiries from prospective clients, partners, and collaborators." breadcrumb="Contact" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
