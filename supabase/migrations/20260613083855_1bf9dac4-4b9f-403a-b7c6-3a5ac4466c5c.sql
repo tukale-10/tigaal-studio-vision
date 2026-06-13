@@ -1,0 +1,1 @@
+UPDATE public.team_members SET title='Practice and Research Lead' WHERE name ILIKE 'Ahmed Ran%';
