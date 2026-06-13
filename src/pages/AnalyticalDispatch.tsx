@@ -47,7 +47,7 @@ const AnalyticalDispatch = () => {
           ) : items.length === 0 ? (
             <div className="text-center py-20">
               <FileText className="mx-auto text-muted-foreground/30 mb-4" size={48} />
-              <p className="text-muted-foreground">No dispatches published yet. Check back soon for in-depth analysis.</p>
+              <p className="text-muted-foreground">No dispatches published yet — check back soon for in-depth analysis.</p>
             </div>
           ) : (
             <div className="grid lg:grid-cols-3 gap-8">
