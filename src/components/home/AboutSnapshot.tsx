@@ -29,11 +29,11 @@ const AboutSnapshot = () => {
               Who We Are
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 leading-tight">
-              Research & Analysis at the{" "}
-              <span className="text-accent italic">Centre</span> of Somalia's Development
+              Research & analysis at the{" "}
+              <span className="text-accent italic">heart</span> of Somalia's development
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-              TIGAAL is a social enterprise operating at the centre of Somalia's development landscape. Our consulting practice powers and sustains the non-profit and development projects we deliver — bridging the critical gap between international development frameworks and local realities through rigorous research, in-depth analysis, and strategic advisory tailored to the Horn of Africa.
+              TIGAAL is a social enterprise working at the centre of Somalia's development landscape. Our consulting practice sustains the non-profit and development work we deliver — bridging global frameworks and local realities through rigorous research, in-depth analysis, and strategic advisory tailored to the Horn of Africa.
             </p>
             <Link
               to="/about"
