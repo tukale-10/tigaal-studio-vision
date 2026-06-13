@@ -6,12 +6,12 @@ import {
 } from "lucide-react";
 
 const STATUSES = [
-  { key: "pipeline",     label: "Pipeline / Tenders", color: "#8C8FD8", soft: "#E9E9F8" },
-  { key: "proposal",     label: "Proposal Submitted", color: "#E5A93C", soft: "#FBF0D9" },
-  { key: "did_not_land", label: "Did Not Land",       color: "#B5594E", soft: "#FBEAE7" },
-  { key: "active",       label: "Active",             color: "#134A6B", soft: "#DCE7EE" },
-  { key: "closing",      label: "Closing / Handover", color: "#8DC63F", soft: "#EAF6D8" },
-  { key: "completed",    label: "Completed",          color: "#6F8C7B", soft: "#E5EEE8" },
+  { key: "pipeline",     label: "Pipeline / Tenders", color: "#A5A8E8", soft: "rgba(165,168,232,0.14)" },
+  { key: "proposal",     label: "Proposal Submitted", color: "#F0B95A", soft: "rgba(240,185,90,0.14)" },
+  { key: "did_not_land", label: "Did Not Land",       color: "#E47A6E", soft: "rgba(228,122,110,0.14)" },
+  { key: "active",       label: "Active",             color: "#5EA8D6", soft: "rgba(94,168,214,0.14)" },
+  { key: "closing",      label: "Closing / Handover", color: "#A8DB5E", soft: "rgba(168,219,94,0.14)" },
+  { key: "completed",    label: "Completed",          color: "#9CC0AE", soft: "rgba(156,192,174,0.14)" },
 ] as const;
 type StatusKey = typeof STATUSES[number]["key"];
 const STATUS_MAP: Record<string, typeof STATUSES[number]> = Object.fromEntries(
