@@ -23,6 +23,7 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [sessionLoading, setSessionLoading] = useState(true);
   const [roleLoading, setRoleLoading] = useState(false);
+  const [roleCheckedUserId, setRoleCheckedUserId] = useState<string | null>(null);
 
   const withTimeout = async <T,>(promise: PromiseLike<T>, ms = 12000): Promise<T> => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
@@ -76,6 +77,7 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(session?.user ?? null);
       if (!session?.user) {
         setIsAdmin(false);
+        setRoleCheckedUserId(null);
       }
       setSessionLoading(false);
     });
@@ -91,14 +93,19 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
 
     if (!user?.id) {
       setIsAdmin(false);
+      setRoleCheckedUserId(null);
       setRoleLoading(false);
       return;
     }
 
+    setRoleCheckedUserId(null);
     setRoleLoading(true);
     checkAdmin(user.id)
       .then((admin) => {
-        if (!cancelled) setIsAdmin(admin);
+        if (!cancelled) {
+          setIsAdmin(admin);
+          setRoleCheckedUserId(user.id);
+        }
       })
       .finally(() => {
         if (!cancelled) setRoleLoading(false);
@@ -119,10 +126,13 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
     await supabase.auth.signOut();
     setUser(null);
     setIsAdmin(false);
+    setRoleCheckedUserId(null);
   };
 
+  const loading = sessionLoading || roleLoading || Boolean(user && roleCheckedUserId !== user.id);
+
   return (
-    <AdminAuthCtx.Provider value={{ user, isAdmin, loading: sessionLoading || roleLoading, signIn, signOut }}>
+    <AdminAuthCtx.Provider value={{ user, isAdmin, loading, signIn, signOut }}>
       {children}
     </AdminAuthCtx.Provider>
   );
