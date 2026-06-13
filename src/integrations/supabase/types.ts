@@ -200,6 +200,57 @@ export type Database = {
         }
         Relationships: []
       }
+      pipeline_projects: {
+        Row: {
+          checklist: Json
+          contacts: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          funder: string | null
+          id: string
+          lead: string | null
+          name: string
+          sort_order: number
+          status: string
+          tags: string[]
+          timeline: string | null
+          updated_at: string
+        }
+        Insert: {
+          checklist?: Json
+          contacts?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          funder?: string | null
+          id?: string
+          lead?: string | null
+          name: string
+          sort_order?: number
+          status?: string
+          tags?: string[]
+          timeline?: string | null
+          updated_at?: string
+        }
+        Update: {
+          checklist?: Json
+          contacts?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          funder?: string | null
+          id?: string
+          lead?: string | null
+          name?: string
+          sort_order?: number
+          status?: string
+          tags?: string[]
+          timeline?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       projects: {
         Row: {
           category: string
