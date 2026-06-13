@@ -39,7 +39,7 @@ const AdminLayout = () => {
       {/* Sidebar */}
       <aside className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="p-6 border-b border-slate-200">
-          <img src={logo} alt="TIGAAL" className="h-8 brightness-0 invert" />
+          <img src={logo} alt="TIGAAL" className="h-8" />
           <p className="text-slate-400 text-xs mt-2 tracking-wider uppercase">Content Manager</p>
         </div>
 
