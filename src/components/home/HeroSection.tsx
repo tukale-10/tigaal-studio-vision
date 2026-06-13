@@ -47,16 +47,15 @@ const HeroSection = () => {
           </div>
 
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] text-primary-foreground leading-[1.05] mb-8 animate-slide-up-fade">
-            Offering Innovative{" "}
-            <span className="text-accent italic">Solutions</span> To Complex
-            And Dynamic Problems
+            Evidence-led{" "}
+            <span className="text-accent italic">solutions</span> for the Horn of Africa's hardest questions
           </h1>
 
           <p
             className="text-lg md:text-xl text-primary-foreground/70 mb-12 max-w-2xl leading-relaxed animate-slide-up-fade"
             style={{ animationDelay: "0.15s" }}
           >
-            A Somalia-based social enterprise delivering research, advisory, and development projects across the Horn of Africa — with a consulting practice that sustains and reinvests in our mission.
+            TIGAAL is a Somalia-based social enterprise delivering rigorous research, advisory, and monitoring services across Somalia, Kenya, and Ethiopia — pairing international standards with deep local knowledge.
           </p>
 
           <div
