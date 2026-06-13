@@ -20,7 +20,7 @@ const deliveryModel = [
 const Approach = () => {
   return (
     <main>
-      <PageHero title="Our Approach" subtitle="Every project calls for a smart plan, not a benchmark" breadcrumb="Our Approach" />
+      <PageHero title="Our Approach" subtitle="Every engagement calls for a tailored plan, not a template." breadcrumb="Our Approach" />
 
       {/* Quote & Overview */}
       <section className="py-24 lg:py-32">
