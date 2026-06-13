@@ -112,7 +112,7 @@ const Publications = () => {
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in our research?</h2>
-          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Contact us to request full copies of our publications or discuss potential research collaborations.</p>
+          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Get in touch to request full copies or discuss a research collaboration.</p>
           <Link to="/contact" className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all">
             Request Publications <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
