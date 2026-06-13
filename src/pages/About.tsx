@@ -118,7 +118,7 @@ const About = () => {
               </div>
               <h3 className="font-display text-2xl text-foreground mb-4">Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our mission is to deliver evidence-based, innovative solutions that address development challenges effectively and efficiently. We are committed to continuous improvement, inclusivity, and people-centered impact.
+                To deliver evidence-based, locally grounded solutions that address development challenges effectively and equitably — driven by rigour, inclusivity, and people-centred impact.
               </p>
             </div>
             <div className="bg-background p-10 lg:p-14">
@@ -127,7 +127,7 @@ const About = () => {
               </div>
               <h3 className="font-display text-2xl text-foreground mb-4">Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our vision is to harness the latest knowledge and technologies to deliver value-added services that evolve with our clients' needs while staying ahead in today's innovative world.
+                To be the Horn of Africa's most trusted partner for research, advisory, and learning — using knowledge and technology to deliver value that evolves with our clients and communities.
               </p>
             </div>
           </div>
