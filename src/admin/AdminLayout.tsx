@@ -2,13 +2,14 @@ import { Navigate, Outlet, NavLink, useLocation } from "react-router-dom";
 import { useAdminAuth } from "./AdminAuthProvider";
 import {
   LayoutDashboard, Settings, Users, FileText, Newspaper,
-  BookOpen, Briefcase, FolderKanban, LogOut, Menu, X, ChevronRight, Mail
+  BookOpen, Briefcase, FolderKanban, LogOut, Menu, X, ChevronRight, Mail, GitBranch
 } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/tigaal-logo.webp";
 
 const sidebarLinks = [
   { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/admin/pipeline", icon: GitBranch, label: "Pipeline Mgt" },
   { to: "/admin/services", icon: Briefcase, label: "Services" },
   { to: "/admin/projects", icon: FolderKanban, label: "Projects" },
   { to: "/admin/team", icon: Users, label: "Team" },

@@ -33,6 +33,7 @@ import AdminNews from "./admin/AdminNews";
 import AdminPublications from "./admin/AdminPublications";
 import AdminContacts from "./admin/AdminContacts";
 import AdminUsers from "./admin/AdminUsers";
+import AdminPipeline from "./admin/AdminPipeline";
 
 const queryClient = new QueryClient();
 
@@ -80,6 +81,7 @@ const App = () => (
             <Route element={<AdminLayout />}>
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="services" element={<AdminServices />} />
+              <Route path="pipeline" element={<AdminPipeline />} />
               <Route path="projects" element={<AdminProjects />} />
               <Route path="team" element={<AdminTeam />} />
               <Route path="news" element={<AdminNews />} />
