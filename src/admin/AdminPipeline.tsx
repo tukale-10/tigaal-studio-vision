@@ -530,33 +530,96 @@ const AdminPipeline = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto p-5 space-y-4">
-              <Field label="Project name">
-                <input value={drawer.name} onChange={(e) => setDrawer({ ...drawer, name: e.target.value })} className={inputCls} />
-              </Field>
+              <div className="grid grid-cols-[80px_1fr] gap-3">
+                <Field label="S/no">
+                  <input
+                    type="number"
+                    value={drawer.opportunity_no ?? ""}
+                    onChange={(e) => setDrawer({ ...drawer, opportunity_no: e.target.value ? parseInt(e.target.value, 10) : null })}
+                    className={inputCls}
+                  />
+                </Field>
+                <Field label="Opportunity title">
+                  <input value={drawer.name} onChange={(e) => setDrawer({ ...drawer, name: e.target.value })} className={inputCls} />
+                </Field>
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <Field label="Funder / Client">
                   <input value={drawer.funder || ""} onChange={(e) => setDrawer({ ...drawer, funder: e.target.value })} className={inputCls} />
                 </Field>
-                <Field label="Status">
+                <Field label="Sector / Thematic Area">
+                  <input value={drawer.sector || ""} onChange={(e) => setDrawer({ ...drawer, sector: e.target.value })} className={inputCls} placeholder="e.g. Gender & Women's Empowerment" />
+                </Field>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <Field label="Submission deadline">
+                  <input
+                    type="date"
+                    value={drawer.submission_deadline || ""}
+                    onChange={(e) => setDrawer({ ...drawer, submission_deadline: e.target.value })}
+                    className={inputCls}
+                  />
+                </Field>
+                <Field label="Current stage">
                   <select value={drawer.status} onChange={(e) => setDrawer({ ...drawer, status: e.target.value as StatusKey })} className={inputCls}>
                     {STATUSES.map(s => <option key={s.key} value={s.key}>{s.label}</option>)}
                   </select>
                 </Field>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <Field label="TIGAAL Lead">
-                  <input value={drawer.lead || ""} onChange={(e) => setDrawer({ ...drawer, lead: e.target.value })} className={inputCls} />
+                <Field label="Focal person">
+                  <input value={drawer.lead || ""} onChange={(e) => setDrawer({ ...drawer, lead: e.target.value })} className={inputCls} placeholder="e.g. Mohamed" />
                 </Field>
                 <Field label="Timeline">
                   <input placeholder="e.g. Jan 2025 – Jun 2026" value={drawer.timeline || ""} onChange={(e) => setDrawer({ ...drawer, timeline: e.target.value })} className={inputCls} />
                 </Field>
               </div>
+
+              <Field label="Stage progress">
+                <div className="bg-[#0c1222] border border-white/10 rounded-md p-3 space-y-2">
+                  <div className="flex items-center justify-between text-[10px] uppercase tracking-wider text-white/40 font-bold">
+                    <span>Pipeline → Award</span>
+                    <span className="text-[#A8DB5E]">{progressPct(drawer.stage_flags)}%</span>
+                  </div>
+                  <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-full rounded-full transition-all" style={{ width: `${progressPct(drawer.stage_flags)}%`, background: STATUS_MAP[drawer.status]?.color || "#A8DB5E" }} />
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5 pt-1">
+                    {STAGES.map(st => {
+                      const on = drawer.stage_flags[st.key];
+                      return (
+                        <button
+                          key={st.key}
+                          onClick={() => setDrawer({ ...drawer, stage_flags: { ...drawer.stage_flags, [st.key]: !on } })}
+                          className={`flex items-center gap-2 text-xs px-2 py-1.5 rounded border transition ${on ? "bg-[#A8DB5E]/15 border-[#A8DB5E]/40 text-[#A8DB5E]" : "border-white/10 text-white/50 hover:border-white/30"}`}
+                        >
+                          <span className={`w-3.5 h-3.5 rounded-sm border flex-none flex items-center justify-center ${on ? "bg-[#A8DB5E] border-[#A8DB5E]" : "border-white/30"}`}>
+                            {on && <Check size={10} className="text-[#0c1222]" />}
+                          </span>
+                          {st.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </Field>
+
+              <Field label="Key tasks & deliverables">
+                <textarea rows={3} value={drawer.key_tasks || ""} onChange={(e) => setDrawer({ ...drawer, key_tasks: e.target.value })} className={inputCls} />
+              </Field>
+              <Field label="Progress & remarks">
+                <textarea rows={3} value={drawer.progress_remarks || ""} onChange={(e) => setDrawer({ ...drawer, progress_remarks: e.target.value })} className={inputCls} />
+              </Field>
+              <Field label="Follow-up actions & timeline">
+                <textarea rows={3} value={drawer.followup_actions || ""} onChange={(e) => setDrawer({ ...drawer, followup_actions: e.target.value })} className={inputCls} />
+              </Field>
               <Field label="Key contacts">
                 <input placeholder="e.g. John Opiyo (UNOPS PM)" value={drawer.contacts || ""} onChange={(e) => setDrawer({ ...drawer, contacts: e.target.value })} className={inputCls} />
               </Field>
-              <Field label="Description">
-                <textarea rows={4} value={drawer.description || ""} onChange={(e) => setDrawer({ ...drawer, description: e.target.value })} className={inputCls} />
+              <Field label="Notes / Description">
+                <textarea rows={3} value={drawer.description || ""} onChange={(e) => setDrawer({ ...drawer, description: e.target.value })} className={inputCls} />
               </Field>
+
               <Field label="Tags (comma separated)">
                 <input
                   value={drawer.tags.join(", ")}
