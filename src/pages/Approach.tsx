@@ -52,10 +52,10 @@ const Approach = () => {
             <div className="text-center mb-20">
               <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Methodology</span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-6">
-                From Dialogue to Results
+                From dialogue to results
               </h2>
               <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed">
-                A proven four-step framework that ensures every engagement is grounded, collaborative, and impact-driven.
+                A four-step framework that keeps every engagement grounded, collaborative, and outcome-focused.
               </p>
             </div>
 
