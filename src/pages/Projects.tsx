@@ -45,7 +45,7 @@ const Projects = () => {
 
   return (
     <main>
-      <PageHero title="Our Projects" subtitle="Tailored Solutions to Complex Problems" breadcrumb="Projects" />
+      <PageHero title="Our Projects" subtitle="Tailored solutions to complex development challenges." breadcrumb="Projects" />
 
       {/* Stats */}
       <section className="py-20 lg:py-28">
