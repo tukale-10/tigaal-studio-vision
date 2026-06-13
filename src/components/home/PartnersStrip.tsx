@@ -41,11 +41,50 @@ const partners = [
   { name: "Ministry of Commerce & Industry", logo: moci },
 ];
 
-const textOnlyPartners = ["Gargaara Finance"];
+const half = Math.ceil(partners.length / 2);
+const rowOne = partners.slice(0, half);
+const rowTwo = partners.slice(half);
+
+type Partner = { name: string; logo: string };
+
+const MarqueeRow = ({ items, direction = "left" }: { items: Partner[]; direction?: "left" | "right" }) => {
+  const loop = [...items, ...items];
+  return (
+    <div className="group relative overflow-hidden">
+      <div
+        className="flex gap-6 w-max"
+        style={{
+          animation: `marquee-${direction} 40s linear infinite`,
+        }}
+      >
+        {loop.map((p, i) => (
+          <div
+            key={`${p.name}-${i}`}
+            className="bg-white rounded-lg border border-border p-6 flex items-center justify-center h-24 w-48 shrink-0 hover:shadow-md hover:border-accent/30 transition-all"
+          >
+            <img src={p.logo} alt={p.name} className="max-h-14 max-w-full object-contain" />
+          </div>
+        ))}
+      </div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
+    </div>
+  );
+};
 
 const PartnersStrip = () => {
   return (
-    <section className="py-20 border-t border-border">
+    <section className="py-20 border-t border-border overflow-hidden">
+      <style>{`
+        @keyframes marquee-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
           <div>
@@ -59,27 +98,9 @@ const PartnersStrip = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-8">
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className="bg-white rounded-lg border border-border p-6 flex items-center justify-center h-24 hover:shadow-md hover:border-accent/30 transition-all"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="max-h-14 max-w-full object-contain"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="flex flex-wrap gap-3">
-          {textOnlyPartners.map((partner) => (
-            <div key={partner} className="px-5 py-2.5 bg-secondary rounded-sm text-sm font-medium text-muted-foreground border border-border hover:border-accent/30 transition-colors">
-              {partner}
-            </div>
-          ))}
+        <div className="space-y-6">
+          <MarqueeRow items={rowOne} direction="left" />
+          <MarqueeRow items={rowTwo} direction="right" />
         </div>
       </div>
     </section>
