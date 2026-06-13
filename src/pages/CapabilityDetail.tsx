@@ -225,10 +225,10 @@ const CapabilityDetail = () => {
               </h2>
               <div className="w-16 h-1 bg-accent mb-8" />
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Our work in this capability spans Somalia and selected Horn-of-Africa countries — combining local presence with regional perspective.
+                This capability spans Somalia, Kenya, and Ethiopia — pairing local presence with regional perspective.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Engagements are delivered through Nairobi, Mogadishu, and field hubs, with a network of local researchers, enumerators, and partners.
+                Engagements are delivered from Mogadishu and Nairobi, with field hubs and a network of local researchers, enumerators, and partners on the ground.
               </p>
             </div>
             <div className="order-1 lg:order-2 bg-background p-6 lg:p-8 rounded-sm border border-border">
