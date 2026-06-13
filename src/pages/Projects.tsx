@@ -55,11 +55,11 @@ const Projects = () => {
               <div>
                 <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">Portfolio</span>
                 <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-foreground leading-tight">
-                  Driving <span className="text-accent italic">Impact</span> Across Somalia
+                  Driving <span className="text-accent italic">impact</span> across Somalia
                 </h2>
               </div>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                Our projects span governance, climate resilience, financial inclusion, strategic communications, and monitoring & evaluation — each tailored to address Somalia's unique development challenges.
+                Our portfolio spans governance, climate resilience, financial inclusion, strategic communications, and monitoring & evaluation — each engagement designed to answer specific questions and deliver tangible results.
               </p>
             </div>
 
