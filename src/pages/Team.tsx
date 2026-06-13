@@ -33,7 +33,7 @@ const Team = () => {
 
   return (
     <main>
-      <PageHero title="Our Team" subtitle="Decades of combined expertise across research, governance, and development" breadcrumb="Our Team" />
+      <PageHero title="Our Team" subtitle="Specialists with decades of combined experience across research, governance, and development." breadcrumb="Our Team" />
 
       {/* Intro Section */}
       <section className="py-20 lg:py-28 bg-secondary">
@@ -47,7 +47,7 @@ const Team = () => {
             </div>
             <div>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                TIGAAL's strength lies in the calibre and diversity of its team. Our professionals bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development. Each team member combines international standards of practice with deep contextual knowledge of Somalia and the broader Horn of Africa.
+                TIGAAL's strength is the calibre and diversity of its people. Our specialists bring decades of combined experience across research, monitoring and evaluation, governance advisory, climate science, strategic communications, and institutional development — pairing international standards with deep contextual knowledge of Somalia and the wider Horn of Africa.
               </p>
             </div>
           </div>
@@ -66,8 +66,8 @@ const Team = () => {
           ) : (
             <div className="max-w-7xl mx-auto space-y-20">
               {[
-                { key: "core", label: "Core Team", subtitle: "The professionals driving TIGAAL's day-to-day work." },
-                { key: "expert", label: "Our Experts", subtitle: "Senior advisors providing specialised technical expertise." },
+                { key: "core", label: "Core Team", subtitle: "The professionals driving TIGAAL's day-to-day work" },
+                { key: "expert", label: "Our Experts", subtitle: "Senior advisors providing specialist technical expertise" },
               ].map((group) => {
                 const members = teamMembers.filter((m) => (m.category || "core") === group.key);
                 if (members.length === 0) return null;

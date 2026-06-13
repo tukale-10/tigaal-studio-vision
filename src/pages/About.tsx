@@ -5,11 +5,11 @@ import teamImg from "@/assets/team-workshop-2.jpg";
 import presentationImg from "@/assets/team-presentation-1.jpg";
 
 const coreValues = [
-  "Innovating for inclusive and sustainable development.",
-  "Transforming insights into impact for communities.",
-  "Partnering for accountability, equity, and change.",
-  "Local knowledge, global standards, lasting solutions.",
-  "Shaping systems that serve people first.",
+  "Innovate for inclusive and sustainable development.",
+  "Turn insight into impact for communities.",
+  "Partner for accountability, equity, and change.",
+  "Combine local knowledge with global standards.",
+  "Build systems that put people first.",
 ];
 
 const businessSteps = [
@@ -23,7 +23,7 @@ const businessSteps = [
 const About = () => {
   return (
     <main>
-      <PageHero title="Who We Are" subtitle="Research & Analysis at the Centre of Somalia's Development" breadcrumb="Who We Are" />
+      <PageHero title="Who We Are" subtitle="A Somali-led social enterprise delivering research, analysis, and advisory across the Horn of Africa." breadcrumb="Who We Are" />
 
       {/* Company Overview */}
       <section className="py-24 lg:py-32">
@@ -44,17 +44,17 @@ const About = () => {
                 About TIGAAL
               </span>
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6 leading-tight">
-                A Catalyst for Positive, <span className="text-accent italic">Tangible</span> Change
+                A catalyst for <span className="text-accent italic">tangible</span> change
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  TIGAAL is a social enterprise operating at the centre of Somalia's development landscape. We deliver non-profit and development projects alongside a consulting practice that serves as our sustainability engine — our profit-making wing that funds and reinvests in our mission-driven work. Founded to address the critical gap between international development frameworks and local realities, TIGAAL provides rigorous research, in-depth analysis, and strategic advisory services tailored to the Horn of Africa's unique operating environment.
+                  TIGAAL is a social enterprise working at the heart of Somalia's development landscape. We deliver development and non-profit programmes alongside a consulting practice that funds and sustains our mission — reinvesting commercial earnings into research and public-interest work.
                 </p>
                 <p>
-                  Our firm collaborates with governmental bodies, international organizations, UN agencies, and grassroots networks to deliver evidence-based solutions that drive measurable impact. We combine deep local knowledge with modern data analytics, technology, and a team of specialists whose combined expertise spans governance, climate science, financial inclusion, social protection, and strategic communications.
+                  Founded to close the gap between international frameworks and local realities, TIGAAL provides rigorous research, in-depth analysis, and strategic advisory tailored to the Horn of Africa. We partner with governments, UN agencies, donors, INGOs, and grassroots networks to deliver evidence that drives measurable impact.
                 </p>
                 <p>
-                  TIGAAL is not simply a consulting firm; we are a catalyst for positive, tangible change. Our domain of expertise includes robust thematic advisory, in-depth policy research, practical strategies, and adaptive program designs that respond to the evolving challenges of the region. Every solution we deliver is built around local perspectives, genuine engagement, and community empowerment.
+                  Our team combines deep local knowledge with modern data analytics and specialist expertise across governance, climate, financial inclusion, social protection, and strategic communications — translating insight into practical, locally grounded solutions.
                 </p>
               </div>
             </div>
@@ -67,7 +67,7 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
           <div className="w-16 h-px bg-accent mx-auto mb-8" />
           <blockquote className="font-display text-2xl md:text-3xl lg:text-4xl text-primary-foreground italic leading-snug mb-8">
-            "Our mission: to be instrumental in shaping transformative strategies that pave the way for Somalia's progressive future."
+            "To shape transformative strategies that build a more inclusive and prosperous future for Somalia and the Horn of Africa."
           </blockquote>
           <div className="w-16 h-px bg-accent mx-auto" />
         </div>
@@ -82,14 +82,14 @@ const About = () => {
                 What Sets Us Apart
               </span>
               <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6 leading-tight">
-                Deep Local Knowledge, <span className="text-accent italic">International</span> Standards
+                Local knowledge. <span className="text-accent italic">International</span> standards.
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  What distinguishes TIGAAL from other firms operating in the Somali context is the depth and breadth of our team's local knowledge, our established relationships with key stakeholders at federal and regional levels, and our commitment to producing work that meets international quality standards while remaining grounded in the realities on the ground.
+                  What sets TIGAAL apart is the depth of our team's contextual knowledge, our trusted relationships with federal and regional stakeholders, and our commitment to producing work that meets international standards while remaining grounded in local realities.
                 </p>
                 <p>
-                  Our collaborative approach ensures that our programs do not merely address surface-level issues but transform outcomes, setting the foundation for enduring stability and holistic opportunity across the communities we serve.
+                  We work collaboratively — not transactionally — so that our programmes move beyond surface fixes to shift outcomes, building the foundation for lasting stability and opportunity in the communities we serve.
                 </p>
               </div>
             </div>
@@ -118,7 +118,7 @@ const About = () => {
               </div>
               <h3 className="font-display text-2xl text-foreground mb-4">Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our mission is to deliver evidence-based, innovative solutions that address development challenges effectively and efficiently. We are committed to continuous improvement, inclusivity, and people-centered impact.
+                To deliver evidence-based, locally grounded solutions that address development challenges effectively and equitably — driven by rigour, inclusivity, and people-centred impact.
               </p>
             </div>
             <div className="bg-background p-10 lg:p-14">
@@ -127,7 +127,7 @@ const About = () => {
               </div>
               <h3 className="font-display text-2xl text-foreground mb-4">Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our vision is to harness the latest knowledge and technologies to deliver value-added services that evolve with our clients' needs while staying ahead in today's innovative world.
+                To be the Horn of Africa's most trusted partner for research, advisory, and learning — using knowledge and technology to deliver value that evolves with our clients and communities.
               </p>
             </div>
           </div>
@@ -167,14 +167,14 @@ const About = () => {
             <div>
               <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Investment Advisory</span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6 leading-tight">
-                Bridging the <span className="text-accent italic">Gap</span>
+                Bridging the <span className="text-accent italic">gap</span>
               </h2>
               <div className="w-16 h-1 bg-accent mb-8" />
               <p className="text-primary-foreground/70 text-lg leading-relaxed mb-6">
-                As Somalia recovers from past instability, it presents vast investment opportunities. Recent reforms, including an online business registration platform, have rejuvenated its business environment. Sectors like manufacturing, tech, hospitality, and agri-farming are ripe for investment.
+                As Somalia rebuilds, the country offers significant opportunity. Reforms — including the new online business registration platform — are reshaping the operating environment, opening up manufacturing, technology, hospitality, and agribusiness to fresh investment.
               </p>
               <p className="text-primary-foreground/50 leading-relaxed">
-                However, accessing the Somali market remains challenging for foreign investors. Leveraging our local expertise and understanding of Somalia's evolving landscape, we provide investors with contextual insights, industry analyses, and identify investment gaps and opportunities. We streamline the entire process, from securing necessary permits from federal and regional authorities to fully establishing businesses in Somalia.
+                Yet entering the market remains complex for outside investors. Drawing on our local expertise, we provide contextual analysis, sector intelligence, and opportunity mapping — and we walk clients through the full set-up journey, from federal and regional permits to fully operational businesses on the ground.
               </p>
             </div>
 
@@ -205,7 +205,7 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">Ready to collaborate?</h2>
           <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-            Whether you're a development partner, investor, or government body — we're ready to discuss how TIGAAL can support your objectives.
+            Whether you're a development partner, investor, or public institution, we'd be glad to discuss how TIGAAL can support your work.
           </p>
           <Link
             to="/contact"

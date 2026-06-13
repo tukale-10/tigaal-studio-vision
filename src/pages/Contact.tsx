@@ -75,7 +75,7 @@ const Contact = () => {
 
   return (
     <main>
-      <PageHero title="Contact Us" subtitle="We welcome enquiries from potential clients, partners, and collaborators" breadcrumb="Contact" />
+      <PageHero title="Contact Us" subtitle="We welcome enquiries from prospective clients, partners, and collaborators." breadcrumb="Contact" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8">
@@ -85,9 +85,9 @@ const Contact = () => {
               <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
                 Reach Out
               </span>
-              <h2 className="font-display text-3xl text-foreground mb-6">Get In Touch</h2>
+              <h2 className="font-display text-3xl text-foreground mb-6">Get in touch</h2>
               <p className="text-muted-foreground leading-relaxed mb-10">
-                Whether you are planning a research initiative, seeking a third-party monitoring partner, or exploring investment opportunities in Somalia, our team is ready to discuss how TIGAAL can support your objectives.
+                Whether you're planning a research initiative, seeking a third-party monitoring partner, or exploring investment opportunities in Somalia, our team is ready to discuss how TIGAAL can support your objectives.
               </p>
 
               <div className="space-y-3">

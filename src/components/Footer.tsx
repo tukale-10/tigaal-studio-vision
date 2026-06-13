@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <img src={logo} alt="TIGAAL" className="h-8 brightness-0 invert mb-4" />
             <p className="text-primary-foreground/90 text-sm leading-relaxed font-medium">
-              TIGAAL is a social enterprise delivering research, analysis, and development projects across Somalia and the Horn of Africa — sustained by our consulting practice, which reinvests in our mission-driven work.
+              A Somali-led social enterprise delivering research, analysis, and development programmes across Somalia, Kenya, and Ethiopia — sustained by our consulting practice, which reinvests in our mission-driven work.
             </p>
           </div>
 

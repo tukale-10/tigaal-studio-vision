@@ -3,24 +3,24 @@ import { Link } from "react-router-dom";
 import { MessageCircle, Search, Handshake, Target, ArrowRight, Lightbulb, Users, FlaskConical, Rocket, BarChart3 } from "lucide-react";
 
 const steps = [
-  { icon: MessageCircle, title: "Dialogue", desc: "Engage in open dialogue to understand underlying problems and priorities.", color: "bg-accent" },
-  { icon: Search, title: "Assessment", desc: "Assess existing practices, activities, tools, and outcomes.", color: "bg-primary" },
-  { icon: Handshake, title: "Co-creation", desc: "Co-create strategies and build alliances to achieve sustainable solutions.", color: "bg-accent" },
-  { icon: Target, title: "Results", desc: "Deliver results within agreed timelines, ensuring responsiveness, relevance, and impact.", color: "bg-primary" },
+  { icon: MessageCircle, title: "Dialogue", desc: "Open conversations to understand the underlying problem and what success looks like.", color: "bg-accent" },
+  { icon: Search, title: "Assessment", desc: "Review existing practice, evidence, tools, and outcomes to find what's working and what isn't.", color: "bg-primary" },
+  { icon: Handshake, title: "Co-creation", desc: "Design strategies and partnerships with clients and local stakeholders for durable results.", color: "bg-accent" },
+  { icon: Target, title: "Results", desc: "Deliver on time — with responsiveness, relevance, and measurable impact.", color: "bg-primary" },
 ];
 
 const deliveryModel = [
-  { icon: Lightbulb, step: "Understand", desc: "Listen to clients, map context, and identify the real challenges beneath the surface." },
-  { icon: Users, step: "Co-create", desc: "Collaborate with stakeholders — from policymakers to community members — to design locally grounded solutions." },
-  { icon: FlaskConical, step: "Test", desc: "Validate approaches in real-world settings, iterating based on evidence and feedback." },
-  { icon: Rocket, step: "Implement", desc: "Deploy solutions with local ownership, building capacity at every stage." },
-  { icon: BarChart3, step: "Measure & Follow-up", desc: "Track results rigorously and ensure sustainability beyond project timelines." },
+  { icon: Lightbulb, step: "Understand", desc: "Listen closely, map context, and identify the real challenge beneath the surface." },
+  { icon: Users, step: "Co-create", desc: "Work with stakeholders — from policymakers to communities — to shape locally grounded solutions." },
+  { icon: FlaskConical, step: "Test", desc: "Validate approaches in the field and iterate based on evidence and feedback." },
+  { icon: Rocket, step: "Implement", desc: "Deliver with local ownership, building capacity at every stage." },
+  { icon: BarChart3, step: "Measure & Follow-up", desc: "Track results rigorously and sustain impact beyond the project timeline." },
 ];
 
 const Approach = () => {
   return (
     <main>
-      <PageHero title="Our Approach" subtitle="Every project calls for a smart plan, not a benchmark" breadcrumb="Our Approach" />
+      <PageHero title="Our Approach" subtitle="Every engagement calls for a tailored plan, not a template." breadcrumb="Our Approach" />
 
       {/* Quote & Overview */}
       <section className="py-24 lg:py-32">
@@ -29,16 +29,16 @@ const Approach = () => {
             <div>
               <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">Our Philosophy</span>
               <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-foreground mb-8 leading-tight">
-                Local Problems Need <span className="text-accent italic">Local Solutions</span>
+                Local problems need <span className="text-accent italic">local solutions</span>
               </h2>
               <div className="h-1 w-20 bg-accent mb-8" />
             </div>
             <div className="space-y-6">
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                We are distinctive in the way we approach, handle, and execute projects. Our delivery model is rooted in a simple conviction: local problems need local solutions. As a social transformation company, we listen to our clients, engage relevant local stakeholders and subject matter experts, and create opportunities for innovative solutions at every stage of the project lifecycle.
+                We're distinctive in how we approach, manage, and deliver work. Our model rests on a simple conviction: local problems need local solutions. As a social enterprise, we listen first — to clients, to local stakeholders, and to the subject-matter experts closest to the issue — and create space for innovation at every stage of the project lifecycle.
               </p>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                "Local problems need local solutions" is the principle that guides all our work. As a social enterprise driving transformation, our delivery model emphasizes listening to clients, engaging with local stakeholders and relevant policymakers, and drawing on subject-matter expertise. This inclusive approach fosters collaboration and creates opportunities for innovative solutions at every stage of the process.
+                This inclusive way of working keeps our analysis grounded, our recommendations practical, and our solutions accountable to the people they affect.
               </p>
             </div>
           </div>
@@ -52,10 +52,10 @@ const Approach = () => {
             <div className="text-center mb-20">
               <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Methodology</span>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-6">
-                From Dialogue to Results
+                From dialogue to results
               </h2>
               <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed">
-                A proven four-step framework that ensures every engagement is grounded, collaborative, and impact-driven.
+                A four-step framework that keeps every engagement grounded, collaborative, and outcome-focused.
               </p>
             </div>
 
@@ -89,12 +89,12 @@ const Approach = () => {
               <div>
                 <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Execution</span>
                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-                  How We <span className="text-accent italic">Deliver</span>
+                  How we <span className="text-accent italic">deliver</span>
                 </h2>
               </div>
               <div className="flex items-end">
                 <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                  Our delivery model enables us to engage with relevant local stakeholders, influencers, and subject matter experts for advice, increasing opportunities for innovative solutions at every stage.
+                  Our delivery model brings together local stakeholders, influencers, and subject-matter experts — opening up space for innovation at every stage of the work.
                 </p>
               </div>
             </div>
@@ -125,7 +125,7 @@ const Approach = () => {
           <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Get Started</span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">Ready to collaborate?</h2>
           <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Let's discuss how TIGAAL can bring strategic insight and local expertise to your next initiative.
+            Let's talk about how TIGAAL's mix of local insight and rigorous methods can support your next initiative.
           </p>
           <Link
             to="/contact"

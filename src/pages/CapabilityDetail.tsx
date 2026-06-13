@@ -142,7 +142,7 @@ const CapabilityDetail = () => {
               <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">Service offerings</h2>
             </div>
             <p className="text-muted-foreground max-w-md">
-              Modular offerings configured to client need, country context, and partner ecosystem.
+              Modular offerings adapted to client need, country context, and partner ecosystem.
             </p>
           </div>
 
@@ -225,10 +225,10 @@ const CapabilityDetail = () => {
               </h2>
               <div className="w-16 h-1 bg-accent mb-8" />
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Our work in this capability spans Somalia and selected Horn-of-Africa countries — combining local presence with regional perspective.
+                This capability spans Somalia, Kenya, and Ethiopia — pairing local presence with regional perspective.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Engagements are delivered through Nairobi, Mogadishu, and field hubs, with a network of local researchers, enumerators, and partners.
+                Engagements are delivered from Mogadishu and Nairobi, with field hubs and a network of local researchers, enumerators, and partners on the ground.
               </p>
             </div>
             <div className="order-1 lg:order-2 bg-background p-6 lg:p-8 rounded-sm border border-border">
@@ -287,7 +287,7 @@ const CapabilityDetail = () => {
             Let's build something <span className="italic text-accent">together</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10">
-            Tell us about your context and the decisions you're facing — we'll come back with a tailored proposition.
+            Tell us about your context and the decisions you're facing — we'll come back with a focused proposal.
           </p>
           <Link to="/contact" className="group inline-flex items-center gap-3 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all text-lg">
             Start a conversation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

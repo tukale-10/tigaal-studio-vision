@@ -33,7 +33,7 @@ const Publications = () => {
 
   return (
     <main>
-      <PageHero title="Publications" subtitle="Research papers, policy briefs, and learning documents from our work" breadcrumb="Resources" />
+      <PageHero title="Publications" subtitle="Research papers, policy briefs, and learning documents from our work." breadcrumb="Resources" />
 
       {/* Company Profile Download */}
       <section className="py-16 lg:py-20 bg-secondary border-b border-border">
@@ -42,7 +42,7 @@ const Publications = () => {
             <div className="flex-1">
               <span className="text-xs font-semibold tracking-[0.15em] uppercase text-accent bg-accent/10 px-3 py-1.5 rounded-sm mb-4 inline-block">Company Profile</span>
               <h2 className="font-display text-2xl lg:text-3xl text-foreground mb-3">TIGAAL Company Profile 2026</h2>
-              <p className="text-muted-foreground leading-relaxed max-w-xl">Download our comprehensive company profile to learn more about our capabilities, track record, and the impact we deliver across the Horn of Africa.</p>
+              <p className="text-muted-foreground leading-relaxed max-w-xl">A concise overview of our capabilities, track record, and the impact we deliver across the Horn of Africa.</p>
             </div>
             <a
               href="/TIGAAL_Profile_2026.pdf"
@@ -112,7 +112,7 @@ const Publications = () => {
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in our research?</h2>
-          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Contact us to request full copies of our publications or discuss potential research collaborations.</p>
+          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Get in touch to request full copies or discuss a research collaboration.</p>
           <Link to="/contact" className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all">
             Request Publications <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>

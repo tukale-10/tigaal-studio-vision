@@ -32,7 +32,7 @@ const NewsUpdates = () => {
 
   return (
     <main>
-      <PageHero title="News & Updates" subtitle="Latest developments, project milestones, and announcements from TIGAAL" breadcrumb="Resources" />
+      <PageHero title="News & Updates" subtitle="Project milestones, announcements, and the latest from TIGAAL." breadcrumb="Resources" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
@@ -67,8 +67,8 @@ const NewsUpdates = () => {
 
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Stay Informed</h2>
-          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Want to stay updated on our latest work? Reach out to join our mailing list.</p>
+          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Stay informed</h2>
+          <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">Want updates on our latest work? Get in touch to join our mailing list.</p>
           <Link to="/contact" className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all">
             Get In Touch <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>

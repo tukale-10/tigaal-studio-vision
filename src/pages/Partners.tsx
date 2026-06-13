@@ -65,17 +65,17 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
 const Partners = () => {
   return (
     <main>
-      <PageHero title="Our Clients" subtitle="Strategic collaborations driving impact at scale" breadcrumb="Clients" />
+      <PageHero title="Our Clients" subtitle="Strategic collaborations delivering impact at scale." breadcrumb="Clients" />
 
       <section className="py-24 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
           <div className="text-center mb-16">
             <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Collaborations</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Working With <span className="text-accent italic">Leaders</span> in Development
+              Working with <span className="text-accent italic">leaders</span> in development
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              TIGAAL takes pride in its work with leading international organizations, government bodies, and development actors. These client engagements enable us to deliver impact at scale and ensure our work remains relevant, rigorous, and responsive to evolving needs.
+              We're proud to work with leading international organisations, governments, and development actors. These partnerships let us deliver impact at scale and keep our work rigorous, relevant, and responsive.
             </p>
           </div>
 
@@ -115,7 +115,7 @@ const Partners = () => {
 
       <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in partnering?</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6">Interested in working with us?</h2>
           <Link
             to="/contact"
             className="group inline-flex items-center gap-2 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all"
