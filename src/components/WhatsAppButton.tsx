@@ -19,7 +19,7 @@ export const WhatsAppButton = () => {
 
       {/* Button */}
       <a
-        href="https://web.whatsapp.com/send?phone=252613926664&text=Hi%20TIGAAL%2C%20I%27d%20like%20to%20get%20in%20touch"
+        href="https://wa.me/252613926664?text=Hi%20TIGAAL%2C%20I%27d%20like%20to%20get%20in%20touch"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with TIGAAL on WhatsApp"
