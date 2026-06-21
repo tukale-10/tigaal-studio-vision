@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import smrrc from "@/assets/partners/smrrc.png.asset.json";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
@@ -45,6 +46,7 @@ const partnerCategories: { category: string; partners: Partner[] }[] = [
       { name: "Central Bank of Somalia", logo: cbs },
       { name: "Supreme Court of Somalia", logo: supremecourt },
       { name: "Ministry of Commerce & Industry", logo: moci },
+      { name: "Somali Marine Resources Research Center (SMRRC)", logo: smrrc.url },
     ],
   },
   {
