@@ -40,6 +40,7 @@ const partners = [
   { name: "iRise", logo: irise },
   { name: "Supreme Court of Somalia", logo: supremecourt },
   { name: "Ministry of Commerce & Industry", logo: moci },
+  { name: "Somali Marine Resources Research Center (SMRRC)", logo: smrrc.url },
 ];
 
 const half = Math.ceil(partners.length / 2);
