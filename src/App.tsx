@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import InfoBar from "@/components/InfoBar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -47,6 +48,7 @@ const PublicLayout = () => (
       <Outlet />
     </div>
     <Footer />
+    <WhatsAppButton />
   </>
 );
 
