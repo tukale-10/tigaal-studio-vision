@@ -48,6 +48,7 @@ const PublicLayout = () => (
       <Outlet />
     </div>
     <Footer />
+    <WhatsAppButton />
   </>
 );
 
