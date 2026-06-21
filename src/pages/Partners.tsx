@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import smrrc from "@/assets/partners/smrrc.png.asset.json";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
