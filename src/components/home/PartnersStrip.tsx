@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
+import smrrc from "@/assets/partners/smrrc.png.asset.json";
 import iftiin from "@/assets/partners/iftiin.jpg";
 import saferworld from "@/assets/partners/saferworld.jpg";
 import netherlands from "@/assets/partners/netherlands.png";
@@ -39,6 +40,7 @@ const partners = [
   { name: "iRise", logo: irise },
   { name: "Supreme Court of Somalia", logo: supremecourt },
   { name: "Ministry of Commerce & Industry", logo: moci },
+  { name: "Somali Marine Resources Research Center (SMRRC)", logo: smrrc.url },
 ];
 
 const half = Math.ceil(partners.length / 2);
