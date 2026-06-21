@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
+import smrrc from "@/assets/partners/smrrc.png.asset.json";
 import iftiin from "@/assets/partners/iftiin.jpg";
 import saferworld from "@/assets/partners/saferworld.jpg";
 import netherlands from "@/assets/partners/netherlands.png";
