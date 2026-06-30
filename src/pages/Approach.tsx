@@ -23,21 +23,23 @@ const Approach = () => {
       <PageHero title="Our Approach" subtitle="Every engagement calls for a tailored plan, not a template." breadcrumb="Our Approach" />
 
       {/* Quote & Overview */}
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-28 lg:py-40">
+        <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div>
-              <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">Our Philosophy</span>
-              <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-foreground mb-8 leading-tight">
-                Local problems need <span className="text-accent italic">local solutions</span>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Our Philosophy</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-foreground leading-[1.05] tracking-tight">
+                Local problems need local solutions.
               </h2>
-              <div className="h-1 w-20 bg-accent mb-8" />
             </div>
-            <div className="space-y-6">
-              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                We're distinctive in how we approach, manage, and deliver work. Our model rests on a simple conviction: local problems need local solutions. As a social enterprise, we listen first — to clients, to local stakeholders, and to the subject-matter experts closest to the issue — and create space for innovation at every stage of the project lifecycle.
+            <div className="space-y-6 lg:pt-8">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light">
+                We're distinctive in how we approach, manage, and deliver work. Our model rests on a simple conviction: local problems need local solutions. As a social enterprise, we listen first — to clients, to local stakeholders, and to the subject-matter experts closest to the issue.
               </p>
-              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light">
                 This inclusive way of working keeps our analysis grounded, our recommendations practical, and our solutions accountable to the people they affect.
               </p>
             </div>
@@ -45,35 +47,33 @@ const Approach = () => {
         </div>
       </section>
 
-      {/* 4-Step Process — From Dialogue to Results */}
-      <section className="py-24 lg:py-32 bg-primary">
-        <div className="container mx-auto px-4 lg:px-8">
+      {/* 4-Step Process */}
+      <section className="py-28 lg:py-40 bg-primary">
+        <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Methodology</span>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-6">
-                From dialogue to results
+            <div className="text-center mb-20 max-w-2xl mx-auto">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Methodology</span>
+                <div className="h-px w-10 bg-accent" />
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-primary-foreground mb-6 leading-[1.05] tracking-tight">
+                From dialogue to results.
               </h2>
-              <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg text-primary-foreground/70 leading-relaxed font-light">
                 A four-step framework that keeps every engagement grounded, collaborative, and outcome-focused.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, i) => (
-                <div key={step.title} className="relative group">
-                  {/* Connector line */}
-                  {i < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-12 left-full w-8 h-px bg-primary-foreground/20 z-10" />
-                  )}
-                  <div className="bg-primary-foreground/[0.06] backdrop-blur-sm border border-primary-foreground/10 rounded-sm p-10 text-center hover:bg-primary-foreground/10 transition-all duration-500 h-full">
-                    <span className="font-display text-6xl text-accent/20 block mb-6 leading-none">{String(i + 1).padStart(2, "0")}</span>
-                    <div className={`w-18 h-18 ${step.color}/20 rounded-full flex items-center justify-center mx-auto mb-6`}>
-                      <step.icon className="text-accent" size={32} />
-                    </div>
-                    <h3 className="font-display text-2xl text-primary-foreground mb-3">{step.title}</h3>
-                    <p className="text-primary-foreground/60 text-base leading-relaxed">{step.desc}</p>
+                <div key={step.title} className="bg-primary-foreground/[0.04] border border-primary-foreground/10 rounded-2xl p-10 hover:bg-primary-foreground/[0.07] transition-all duration-500">
+                  <span className="font-display text-5xl text-accent/30 block mb-6 leading-none">{String(i + 1).padStart(2, "0")}</span>
+                  <div className="w-14 h-14 bg-accent/15 rounded-xl flex items-center justify-center mb-6">
+                    <step.icon className="text-accent" size={24} />
                   </div>
+                  <h3 className="font-display text-2xl text-primary-foreground mb-3">{step.title}</h3>
+                  <p className="text-primary-foreground/65 leading-relaxed font-light">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -82,36 +82,38 @@ const Approach = () => {
       </section>
 
       {/* Delivery Model */}
-      <section className="py-24 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-28 lg:py-40">
+        <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-16">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-20">
               <div>
-                <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Execution</span>
-                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight">
-                  How we <span className="text-accent italic">deliver</span>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-px w-10 bg-accent" />
+                  <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Execution</span>
+                </div>
+                <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-foreground leading-[1.05] tracking-tight">
+                  How we deliver.
                 </h2>
               </div>
               <div className="flex items-end">
-                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light">
                   Our delivery model brings together local stakeholders, influencers, and subject-matter experts — opening up space for innovation at every stage of the work.
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
               {deliveryModel.map((item, i) => (
                 <div
                   key={item.step}
-                  className="bg-secondary border border-border rounded-sm p-8 group hover:border-accent/40 hover:shadow-lg transition-all duration-500 relative overflow-hidden"
+                  className="bg-background border border-border/60 rounded-2xl p-8 hover:border-accent/40 hover:shadow-md transition-all duration-500 relative"
                 >
-                  <div className="absolute top-0 left-0 w-full h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                  <div className="w-14 h-14 bg-accent/10 rounded-sm flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                    <item.icon className="text-accent" size={28} />
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                    <item.icon className="text-accent" size={22} />
                   </div>
-                  <span className="font-display text-4xl text-accent/10 absolute top-6 right-6">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="font-display text-xl text-foreground mb-3 group-hover:text-accent transition-colors">{item.step}</h3>
-                  <p className="text-base text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <span className="font-display text-3xl text-accent/20 absolute top-6 right-6">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="font-display text-xl text-foreground mb-3">{item.step}</h3>
+                  <p className="text-muted-foreground leading-relaxed font-light text-[15px]">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -120,18 +122,17 @@ const Approach = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 lg:py-28 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <span className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Get Started</span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">Ready to collaborate?</h2>
-          <p className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+      <section className="py-28 lg:py-32 bg-secondary/50">
+        <div className="container mx-auto px-6 lg:px-12 text-center max-w-3xl">
+          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6 leading-[1.1] tracking-tight">Ready to collaborate?</h2>
+          <p className="text-lg text-muted-foreground mb-10 font-light leading-relaxed">
             Let's talk about how TIGAAL's mix of local insight and rigorous methods can support your next initiative.
           </p>
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-3 px-12 py-5 bg-accent text-accent-foreground text-lg font-semibold rounded-sm hover:bg-accent/90 transition-all shadow-lg hover:shadow-xl"
+            className="group inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-accent-foreground font-medium rounded-full hover:bg-accent/90 transition-all"
           >
-            Start a Conversation <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            Start a conversation <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>

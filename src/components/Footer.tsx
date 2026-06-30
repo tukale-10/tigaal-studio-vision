@@ -5,30 +5,33 @@ import logo from "@/assets/tigaal-logo.webp";
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-6 lg:px-12 py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* About */}
           <div>
-            <img src={logo} alt="TIGAAL" className="h-8 brightness-0 invert mb-4" />
-            <p className="text-primary-foreground/90 text-sm leading-relaxed font-medium">
-              A Somali-led social enterprise delivering research, analysis, and development programmes across Somalia, Kenya, and Ethiopia — sustained by our consulting practice, which reinvests in our mission-driven work.
+            <img src={logo} alt="TIGAAL" className="h-9 brightness-0 invert mb-6" />
+            <p className="text-primary-foreground/70 text-[15px] leading-[1.75] font-light">
+              A Somali-led social enterprise delivering research, analysis, and development programmes across Somalia, Kenya, and Ethiopia.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-accent">Quick Links</h4>
-            <ul className="space-y-2">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-6 bg-accent" />
+              <h4 className="text-[10px] font-semibold tracking-[0.32em] uppercase text-accent">Quick Links</h4>
+            </div>
+            <ul className="space-y-3">
               {[
                 { label: "Who We Are", path: "/about" },
                 { label: "Capabilities", path: "/services" },
                 { label: "Our Approach", path: "/approach" },
                 { label: "Projects", path: "/projects" },
                 { label: "Our Team", path: "/team" },
-                { label: "Partners", path: "/partners" },
+                { label: "Clients", path: "/partners" },
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-primary-foreground/90 hover:text-accent text-sm font-semibold transition-colors">
+                  <Link to={link.path} className="text-primary-foreground/70 hover:text-accent text-sm font-light transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -38,8 +41,11 @@ const Footer = () => {
 
           {/* Capabilities */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-accent">Capabilities</h4>
-            <ul className="space-y-2 text-sm text-primary-foreground/90 font-semibold">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-6 bg-accent" />
+              <h4 className="text-[10px] font-semibold tracking-[0.32em] uppercase text-accent">Capabilities</h4>
+            </div>
+            <ul className="space-y-3 text-sm text-primary-foreground/70 font-light">
               <li>Capacity Development & Trainings</li>
               <li>Monitoring, Evaluation & Learning</li>
               <li>Strategic Communication & PR</li>
@@ -51,30 +57,33 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider mb-4 text-accent">Contact Us</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/90 font-semibold">
-                <Phone size={16} className="mt-0.5 text-accent flex-shrink-0" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-6 bg-accent" />
+              <h4 className="text-[10px] font-semibold tracking-[0.32em] uppercase text-accent">Contact</h4>
+            </div>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+                <Phone size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 +252 613 926 664
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/90 font-semibold">
-                <Mail size={16} className="mt-0.5 text-accent flex-shrink-0" />
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+                <Mail size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 info@tigaal.com
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/90 font-semibold">
-                <MapPin size={16} className="mt-0.5 text-accent flex-shrink-0" />
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+                <MapPin size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 Airport Road, Wadajir District, Mogadishu
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/90 font-semibold">
-                <Globe size={16} className="mt-0.5 text-accent flex-shrink-0" />
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+                <Globe size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 www.tigaal.com
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10 text-sm text-primary-foreground/70 font-medium text-center">
-          <span>© {new Date().getFullYear()} TIGAAL Consulting. All rights reserved.</span>
+        <div className="mt-20 pt-8 border-t border-primary-foreground/10 text-xs text-primary-foreground/50 font-light text-center tracking-wide">
+          © {new Date().getFullYear()} TIGAAL. All rights reserved.
         </div>
       </div>
     </footer>

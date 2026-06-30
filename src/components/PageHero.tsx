@@ -28,7 +28,7 @@ const PageHero = ({ title, subtitle, breadcrumb }: PageHeroProps) => {
   const bgImage = heroImages[breadcrumb || title] || teamImg1;
 
   return (
-    <section className="relative h-[400px] md:h-[480px] flex items-end overflow-hidden">
+    <section className="relative h-[440px] md:h-[520px] flex items-end overflow-hidden">
       <img
         src={bgImage}
         alt=""
@@ -36,29 +36,28 @@ const PageHero = ({ title, subtitle, breadcrumb }: PageHeroProps) => {
         loading="eager"
         style={{ animation: "ken-burns 25s ease-out forwards" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/45 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-primary/10" />
 
-      <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-14 md:pb-20">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 pb-16 md:pb-24">
         {breadcrumb && (
-          <div className="text-primary-foreground/50 text-xs tracking-[0.2em] uppercase mb-4 animate-fade-in">
-            <Link to="/" className="hover:text-accent transition-colors">Home</Link>
-            <span className="mx-3">—</span>
-            <span className="text-primary-foreground/70">{breadcrumb}</span>
+          <div className="flex items-center gap-4 mb-6 animate-fade-in">
+            <div className="h-px w-8 bg-accent" />
+            <div className="text-primary-foreground/70 text-[11px] tracking-[0.32em] uppercase font-semibold">
+              <Link to="/" className="hover:text-accent transition-colors">Home</Link>
+              <span className="mx-3 opacity-50">/</span>
+              <span className="text-accent">{breadcrumb}</span>
+            </div>
           </div>
         )}
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground leading-[1.1] mb-4 animate-slide-up-fade">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-[4rem] text-primary-foreground leading-[1.05] tracking-tight mb-5 animate-slide-up-fade max-w-4xl">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl leading-relaxed animate-slide-up-fade" style={{ animationDelay: "0.1s" }}>
+          <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl leading-relaxed font-light animate-slide-up-fade" style={{ animationDelay: "0.1s" }}>
             {subtitle}
           </p>
         )}
       </div>
-
-      {/* Geometric accent */}
-      <div className="absolute bottom-0 right-0 w-40 h-40 border-l-2 border-t-2 border-accent/20 hidden lg:block" />
     </section>
   );
 };

@@ -48,26 +48,29 @@ const Projects = () => {
       <PageHero title="Our Projects" subtitle="Tailored solutions to complex development challenges." breadcrumb="Projects" />
 
       {/* Stats */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-28 lg:py-32">
+        <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-20">
               <div>
-                <span className="text-accent font-semibold tracking-[0.15em] uppercase text-sm mb-4 block">Portfolio</span>
-                <h2 className="font-display text-4xl lg:text-5xl xl:text-6xl text-foreground leading-tight">
-                  Driving <span className="text-accent italic">impact</span> across Somalia
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-px w-10 bg-accent" />
+                  <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Portfolio</span>
+                </div>
+                <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-foreground leading-[1.05] tracking-tight">
+                  Driving impact across Somalia.
                 </h2>
               </div>
-              <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light lg:pt-8">
                 Our portfolio spans governance, climate resilience, financial inclusion, strategic communications, and monitoring & evaluation — each engagement designed to answer specific questions and deliver tangible results.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border">
               {stats.map((stat) => (
-                <div key={stat.label} className="bg-secondary border border-border rounded-sm p-6 lg:p-8 text-center">
-                  <p className="font-display text-3xl lg:text-4xl text-accent mb-2">{stat.value}</p>
-                  <p className="text-muted-foreground text-sm">{stat.label}</p>
+                <div key={stat.label} className="bg-background p-8 lg:p-10 text-center">
+                  <p className="font-display text-4xl lg:text-5xl text-accent mb-2 tracking-tight">{stat.value}</p>
+                  <p className="text-muted-foreground text-xs tracking-[0.2em] uppercase">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -76,54 +79,51 @@ const Projects = () => {
       </section>
 
       {/* Tabs & Project List */}
-      <section className="pb-20 lg:pb-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="pb-28 lg:pb-40">
+        <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="flex gap-4 mb-10">
+            <div className="flex gap-3 mb-12">
               <button
                 onClick={() => setTab("past")}
-                className={`flex items-center gap-2 px-6 py-3 rounded-sm font-semibold text-sm transition-all ${tab === "past" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${tab === "past" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
               >
-                <Briefcase size={16} /> Past Projects (60+)
+                <Briefcase size={14} /> Past Projects (60+)
               </button>
               <button
                 onClick={() => setTab("current")}
-                className={`flex items-center gap-2 px-6 py-3 rounded-sm font-semibold text-sm transition-all ${tab === "current" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${tab === "current" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
               >
-                <TrendingUp size={16} /> Current ({currentProjects.length})
+                <TrendingUp size={14} /> Current ({currentProjects.length})
               </button>
             </div>
 
             {loading ? (
               <div className="grid md:grid-cols-2 gap-6">
-                {[...Array(4)].map((_, i) => <div key={i} className="h-48 bg-secondary rounded-sm animate-pulse" />)}
+                {[...Array(4)].map((_, i) => <div key={i} className="h-48 bg-secondary rounded-2xl animate-pulse" />)}
               </div>
             ) : (
               <div className="grid md:grid-cols-2 gap-6">
-                {projects.map((project, i) => (
+                {projects.map((project) => (
                   <div
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
-                    className="group relative bg-secondary border border-border rounded-sm p-10 lg:p-12 cursor-pointer hover:border-accent/30 transition-all duration-500"
+                    className="group relative bg-background border border-border/60 rounded-2xl p-10 cursor-pointer hover:border-accent/40 hover:shadow-md transition-all duration-500"
                   >
-                    <span className="absolute top-6 right-8 font-display text-5xl lg:text-6xl text-foreground/[0.03] group-hover:text-accent/10 transition-colors">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="relative z-10">
-                      <span className="text-accent text-xs font-semibold tracking-[0.15em] uppercase">{project.category}</span>
+                    <div className="flex items-center gap-3 mb-5">
+                      <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">{project.category}</span>
                       {tab === "current" && (
-                        <span className="ml-3 inline-flex items-center gap-1.5 text-xs text-emerald-400">
-                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" /> Active
+                        <span className="inline-flex items-center gap-1.5 text-xs text-emerald-600">
+                          <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Active
                         </span>
                       )}
-                      <h3 className="font-display text-xl lg:text-2xl text-foreground mt-3 mb-3 leading-snug group-hover:text-accent transition-colors">
-                        {project.title}
-                      </h3>
-                      {project.client && <p className="text-muted-foreground text-sm mb-4">Client: {project.client}</p>}
-                      <p className="text-muted-foreground leading-relaxed line-clamp-3">{project.description}</p>
-                      <div className="flex items-center gap-2 mt-6 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
-                        View Details <ArrowUpRight size={14} />
-                      </div>
+                    </div>
+                    <h3 className="font-display text-2xl text-foreground mb-3 leading-snug tracking-tight group-hover:text-accent transition-colors">
+                      {project.title}
+                    </h3>
+                    {project.client && <p className="text-muted-foreground text-sm mb-4 font-light">Client: {project.client}</p>}
+                    <p className="text-muted-foreground leading-[1.75] font-light line-clamp-3">{project.description}</p>
+                    <div className="flex items-center gap-2 mt-6 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
+                      View details <ArrowUpRight size={14} />
                     </div>
                   </div>
                 ))}
@@ -136,14 +136,13 @@ const Projects = () => {
       {/* Modal */}
       {selectedProject && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={() => setSelectedProject(null)}>
-          <div className="bg-background border border-border rounded-sm max-w-3xl w-full max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
-            <div className="h-1.5 bg-accent" />
+          <div className="bg-background border border-border rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
             <div className="p-10 lg:p-12">
               <div className="flex justify-between items-start mb-8">
                 <div>
-                  <span className="text-accent text-xs font-semibold tracking-[0.15em] uppercase">{selectedProject.category}</span>
-                  <h2 className="font-display text-2xl lg:text-3xl text-foreground mt-2 leading-snug">{selectedProject.title}</h2>
-                  {selectedProject.subtitle && <p className="text-muted-foreground mt-2 text-lg">{selectedProject.subtitle}</p>}
+                  <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">{selectedProject.category}</span>
+                  <h2 className="font-display text-3xl text-foreground mt-3 leading-snug tracking-tight">{selectedProject.title}</h2>
+                  {selectedProject.subtitle && <p className="text-muted-foreground mt-2 text-lg font-light">{selectedProject.subtitle}</p>}
                 </div>
                 <button onClick={() => setSelectedProject(null)} className="text-muted-foreground hover:text-foreground p-2"><X size={20} /></button>
               </div>
@@ -152,7 +151,7 @@ const Projects = () => {
                   <strong className="text-foreground">Client:</strong> {selectedProject.client}
                 </p>
               )}
-              <p className="text-lg text-muted-foreground leading-relaxed">{selectedProject.description}</p>
+              <p className="text-lg text-muted-foreground leading-[1.75] font-light">{selectedProject.description}</p>
             </div>
           </div>
         </div>
