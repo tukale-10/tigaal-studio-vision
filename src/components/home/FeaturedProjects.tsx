@@ -10,41 +10,44 @@ const featuredProjects = [
 
 const FeaturedProjects = () => {
   return (
-    <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
-              Our Impact
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight">
-              Featured Projects
+    <section className="py-28 lg:py-40 bg-primary text-primary-foreground">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-10 mb-20 items-end">
+          <div className="lg:col-span-8">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px w-10 bg-accent" />
+              <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">
+                Our Impact
+              </span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] text-primary-foreground leading-[1.1] tracking-tight">
+              Featured projects from across the Horn of Africa.
             </h2>
           </div>
-          <Link to="/projects" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all text-sm tracking-wide uppercase">
-            View All Projects <ArrowRight size={16} />
+          <Link to="/projects" className="lg:col-span-4 lg:justify-self-end inline-flex items-center gap-2 px-7 py-3.5 border border-primary-foreground/30 text-primary-foreground font-medium rounded-full hover:bg-primary-foreground/10 transition-all">
+            View all projects <ArrowRight size={16} />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-primary-foreground/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project, i) => (
             <Link
               to="/projects"
               key={project.id}
-              className="group bg-primary p-8 lg:p-10 hover:bg-primary-foreground/5 transition-all duration-500"
+              className="group bg-primary-foreground/[0.04] backdrop-blur rounded-2xl p-10 border border-primary-foreground/10 hover:border-accent/40 hover:bg-primary-foreground/[0.07] transition-all duration-500"
             >
-              <div className="flex items-start justify-between mb-4">
-                <span className="text-accent text-xs font-semibold tracking-wider uppercase">
+              <div className="flex items-start justify-between mb-6">
+                <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">
                   {project.client}
                 </span>
-                <span className="text-primary-foreground/20 font-display text-2xl">
+                <span className="text-primary-foreground/20 font-display text-3xl">
                   0{i + 1}
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-primary-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-primary-foreground mb-4 leading-snug group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h3>
-              <p className="text-primary-foreground/60 text-sm leading-relaxed">{project.desc}</p>
+              <p className="text-primary-foreground/60 leading-relaxed font-light">{project.desc}</p>
             </Link>
           ))}
         </div>
