@@ -8,6 +8,7 @@
         "@blocknote/core": "^0.47.3",
         "@blocknote/mantine": "^0.47.3",
         "@blocknote/react": "^0.47.3",
+        "@fontsource/fira-sans": "^5.2.7",
         "@hookform/resolvers": "^3.10.0",
         "@mantine/core": "^9.0.0",
         "@radix-ui/react-accordion": "^1.2.11",
@@ -185,6 +186,8 @@
     "@floating-ui/react-dom": ["@floating-ui/react-dom@2.1.8", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@floating-ui/react-dom/-/react-dom-2.1.8.tgz", { "dependencies": { "@floating-ui/dom": "^1.7.6" }, "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0" } }, "sha512-cC52bHwM/n/CxS87FH0yWdngEZrjdtLW/qVruo68qg+prK7ZQ4YGdut2GyDVpoGeAYe/h899rVeOVm6Oi40k2A=="],
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@floating-ui/utils/-/utils-0.2.11.tgz", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
+
+    "@fontsource/fira-sans": ["@fontsource/fira-sans@5.2.7", "https://europe-west1-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@fontsource/fira-sans/-/fira-sans-5.2.7.tgz", {}, "sha512-5DE4AealD/VnbwdzMgnpWfCttMQBbteNiK9DCJE7cVwZEbDTPLUoFDMMvxNQ498nZc5in7Mta9c/s+3Ehh0BAg=="],
 
     "@handlewithcare/prosemirror-inputrules": ["@handlewithcare/prosemirror-inputrules@0.1.4", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@handlewithcare/prosemirror-inputrules/-/prosemirror-inputrules-0.1.4.tgz", { "dependencies": { "prosemirror-history": "^1.4.1", "prosemirror-transform": "^1.0.0" }, "peerDependencies": { "prosemirror-model": "^1.0.0", "prosemirror-state": "^1.0.0", "prosemirror-view": "^1.0.0" } }, "sha512-GMqlBeG2MKM+tXEFd2N+wIv5z4VvJTg8JtfJUrdjvFq2W6v+AW8oTgiWyFw8L3iEQwvtQcVJxU873iB0LXUNNw=="],
 

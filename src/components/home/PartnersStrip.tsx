@@ -62,9 +62,9 @@ const MarqueeRow = ({ items, direction = "left" }: { items: Partner[]; direction
         {loop.map((p, i) => (
           <div
             key={`${p.name}-${i}`}
-            className="bg-white rounded-lg border border-border p-6 flex items-center justify-center h-24 w-48 shrink-0 hover:shadow-md hover:border-accent/30 transition-all"
+            className="bg-white rounded-xl border border-border/50 p-6 flex items-center justify-center h-24 w-52 shrink-0 hover:border-accent/30 transition-all"
           >
-            <img src={p.logo} alt={p.name} className="max-h-14 max-w-full object-contain" />
+            <img src={p.logo} alt={p.name} className="max-h-12 max-w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
           </div>
         ))}
       </div>
@@ -76,7 +76,7 @@ const MarqueeRow = ({ items, direction = "left" }: { items: Partner[]; direction
 
 const PartnersStrip = () => {
   return (
-    <section className="py-20 border-t border-border overflow-hidden">
+    <section className="py-24 lg:py-28 border-t border-border/60 bg-background overflow-hidden">
       <style>{`
         @keyframes marquee-left {
           0% { transform: translateX(0); }
@@ -87,16 +87,19 @@ const PartnersStrip = () => {
           100% { transform: translateX(0); }
         }
       `}</style>
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
-            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-3 block">
-              Trusted By
-            </span>
-            <h2 className="font-display text-2xl md:text-3xl text-foreground">Our Clients</h2>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-px w-10 bg-accent" />
+              <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">
+                Trusted By
+              </span>
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl text-foreground tracking-tight">Our clients & partners</h2>
           </div>
-          <Link to="/partners" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all text-sm tracking-wide uppercase">
-            View All <ChevronRight size={16} />
+          <Link to="/partners" className="inline-flex items-center gap-2 text-accent font-medium hover:gap-3 transition-all">
+            View all <ChevronRight size={16} />
           </Link>
         </div>
 
