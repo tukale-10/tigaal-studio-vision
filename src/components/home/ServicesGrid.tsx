@@ -14,39 +14,42 @@ const services = [
 
 const ServicesGrid = () => {
   return (
-    <section className="py-24 lg:py-32 bg-secondary">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">
-              What We Do
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight">
-              Our Capabilities
+    <section className="py-28 lg:py-40 bg-secondary/50">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-12 gap-10 mb-20 items-end">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px w-10 bg-accent" />
+              <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">
+                What We Do
+              </span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] text-foreground leading-[1.1] tracking-tight">
+              Six interconnected practice areas, one trusted partner.
             </h2>
           </div>
-          <p className="text-muted-foreground text-lg max-w-md">
-            Six interconnected practice areas — built around research, learning, and advocacy for a better tomorrow.
+          <p className="lg:col-span-5 text-muted-foreground text-lg leading-[1.75] font-light">
+            Built around research, learning, and advocacy — our capabilities are designed to address complex development questions with rigour and relevance.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <Link
               to={`/services/${service.slug}`}
               key={service.title}
-              className="group bg-background p-8 lg:p-10 hover:bg-accent/[0.03] transition-all duration-500 relative"
+              className="group relative bg-background rounded-2xl p-10 border border-border/60 hover:border-accent/40 hover:shadow-lg transition-all duration-500"
             >
-              <div className="w-12 h-12 bg-accent/10 rounded-sm flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
-                <service.icon className="text-accent" size={22} />
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                <service.icon className="text-accent group-hover:text-accent-foreground transition-colors" size={22} />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-xl font-semibold text-foreground mb-3 leading-snug">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+              <p className="text-muted-foreground text-[15px] leading-relaxed font-light">{service.desc}</p>
               <ArrowUpRight
                 size={18}
-                className="absolute top-8 right-8 text-muted-foreground/30 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                className="absolute top-10 right-10 text-muted-foreground/30 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </Link>
           ))}
