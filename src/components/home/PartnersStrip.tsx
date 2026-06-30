@@ -62,9 +62,9 @@ const MarqueeRow = ({ items, direction = "left" }: { items: Partner[]; direction
         {loop.map((p, i) => (
           <div
             key={`${p.name}-${i}`}
-            className="bg-white rounded-lg border border-border p-6 flex items-center justify-center h-24 w-48 shrink-0 hover:shadow-md hover:border-accent/30 transition-all"
+            className="bg-white rounded-xl border border-border/50 p-6 flex items-center justify-center h-24 w-52 shrink-0 hover:border-accent/30 transition-all"
           >
-            <img src={p.logo} alt={p.name} className="max-h-14 max-w-full object-contain" />
+            <img src={p.logo} alt={p.name} className="max-h-12 max-w-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
           </div>
         ))}
       </div>
