@@ -10,7 +10,7 @@ const Footer = () => {
           {/* About */}
           <div>
             <img src={logo} alt="TIGAAL" className="h-9 brightness-0 invert mb-6" />
-            <p className="text-primary-foreground/70 text-[15px] leading-[1.75] font-light">
+            <p className="text-primary-foreground/85 text-[15px] leading-[1.75] font-normal">
               A Somali-led social enterprise delivering research, analysis, and development programmes across Somalia, Kenya, and Ethiopia.
             </p>
           </div>
@@ -31,7 +31,7 @@ const Footer = () => {
                 { label: "Clients", path: "/partners" },
               ].map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-primary-foreground/70 hover:text-accent text-sm font-light transition-colors">
+                  <Link to={link.path} className="text-primary-foreground/85 hover:text-accent text-sm font-normal transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -45,7 +45,7 @@ const Footer = () => {
               <div className="h-px w-6 bg-accent" />
               <h4 className="text-[10px] font-semibold tracking-[0.32em] uppercase text-accent">Capabilities</h4>
             </div>
-            <ul className="space-y-3 text-sm text-primary-foreground/70 font-light">
+            <ul className="space-y-3 text-sm text-primary-foreground/85 font-normal">
               <li>Capacity Development & Trainings</li>
               <li>Monitoring, Evaluation & Learning</li>
               <li>Strategic Communication & PR</li>
@@ -62,19 +62,19 @@ const Footer = () => {
               <h4 className="text-[10px] font-semibold tracking-[0.32em] uppercase text-accent">Contact</h4>
             </div>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/85 font-normal">
                 <Phone size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 +252 613 926 664
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/85 font-normal">
                 <Mail size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 info@tigaal.com
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/85 font-normal">
                 <MapPin size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 Airport Road, Wadajir District, Mogadishu
               </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/70 font-light">
+              <li className="flex items-start gap-3 text-sm text-primary-foreground/85 font-normal">
                 <Globe size={15} className="mt-0.5 text-accent flex-shrink-0" />
                 www.tigaal.com
               </li>
@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-primary-foreground/10 text-xs text-primary-foreground/50 font-light text-center tracking-wide">
+        <div className="mt-20 pt-8 border-t border-primary-foreground/10 text-xs text-primary-foreground/70 font-normal text-center tracking-wide">
           © {new Date().getFullYear()} TIGAAL. All rights reserved.
         </div>
       </div>
