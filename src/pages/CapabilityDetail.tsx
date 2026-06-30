@@ -86,15 +86,17 @@ const CapabilityDetail = () => {
       </section>
 
       {/* OVERVIEW + HIGHLIGHTS */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="grid lg:grid-cols-[1.6fr_1fr] gap-12 lg:gap-16">
+      <section className="py-28 lg:py-40">
+        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+          <div className="grid lg:grid-cols-[1.6fr_1fr] gap-12 lg:gap-20">
             <div>
-              <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Overview</span>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6 leading-tight">
-                What we do, and <span className="italic text-accent">why it matters</span>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Overview</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground mb-8 leading-[1.1] tracking-tight">
+                What we do, and why it matters.
               </h2>
-              <div className="w-16 h-1 bg-accent mb-8" />
               {loading ? (
                 <div className="space-y-3">
                   <div className="h-4 bg-secondary rounded animate-pulse" />
@@ -102,18 +104,21 @@ const CapabilityDetail = () => {
                   <div className="h-4 bg-secondary rounded animate-pulse w-10/12" />
                 </div>
               ) : (
-                <p className="text-muted-foreground text-base lg:text-lg leading-relaxed whitespace-pre-line">
+                <p className="text-muted-foreground text-lg leading-[1.85] font-light whitespace-pre-line">
                   {service?.description}
                 </p>
               )}
             </div>
 
-            <aside className="space-y-8">
-              <div className="bg-secondary p-8 rounded-sm border-l-2 border-accent">
-                <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Key Focus Areas</span>
+            <aside className="space-y-8 lg:pt-4">
+              <div className="bg-secondary/50 p-10 rounded-2xl border border-border/60">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-px w-8 bg-accent" />
+                  <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Focus Areas</span>
+                </div>
                 <ul className="space-y-3">
                   {(service?.highlights || []).map((h) => (
-                    <li key={h} className="flex items-start gap-3 text-foreground text-sm">
+                    <li key={h} className="flex items-start gap-3 text-foreground text-[15px] font-light">
                       <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
                       <span>{h}</span>
                     </li>
@@ -122,10 +127,10 @@ const CapabilityDetail = () => {
               </div>
 
               {content.quote && (
-                <div className="relative bg-primary text-primary-foreground p-8 rounded-sm">
-                  <Quote className="absolute top-5 right-5 text-accent/30" size={36} />
-                  <p className="font-display text-xl leading-snug mb-4 italic">"{content.quote.text}"</p>
-                  <p className="text-xs tracking-[0.2em] uppercase text-primary-foreground/60">{content.quote.attribution}</p>
+                <div className="relative bg-primary text-primary-foreground p-10 rounded-2xl">
+                  <Quote className="absolute top-6 right-6 text-accent/30" size={32} />
+                  <p className="font-display text-xl leading-snug mb-4 tracking-tight">"{content.quote.text}"</p>
+                  <p className="text-[10px] tracking-[0.32em] uppercase text-primary-foreground/60 font-semibold">{content.quote.attribution}</p>
                 </div>
               )}
             </aside>
@@ -134,28 +139,31 @@ const CapabilityDetail = () => {
       </section>
 
       {/* WHAT WE OFFER */}
-      <section className="py-20 lg:py-28 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <section className="py-28 lg:py-40 bg-secondary/50">
+        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
-              <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">What We Offer</span>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">Service offerings</h2>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">What We Offer</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground leading-[1.1] tracking-tight">Service offerings.</h2>
             </div>
-            <p className="text-muted-foreground max-w-md">
+            <p className="text-muted-foreground max-w-md font-light leading-relaxed">
               Modular offerings adapted to client need, country context, and partner ecosystem.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {content.subServices.map((s) => {
               const Icon = getIcon(s.icon);
               return (
-                <div key={s.title} className="bg-background p-8 group hover:bg-accent/[0.03] transition-colors duration-300">
-                  <div className="w-11 h-11 bg-accent/10 rounded-sm flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
-                    <Icon className="text-accent" size={20} />
+                <div key={s.title} className="bg-background border border-border/60 rounded-2xl p-8 group hover:border-accent/40 hover:shadow-md transition-all duration-500">
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                    <Icon className="text-accent" size={22} />
                   </div>
-                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-accent transition-colors">{s.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{s.description}</p>
+                  <h3 className="font-display text-lg text-foreground mb-3 tracking-tight group-hover:text-accent transition-colors">{s.title}</h3>
+                  <p className="text-muted-foreground text-[15px] leading-relaxed font-light">{s.description}</p>
                 </div>
               );
             })}
@@ -164,22 +172,25 @@ const CapabilityDetail = () => {
       </section>
 
       {/* APPROACH */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
-          <div className="text-center mb-16">
-            <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Our Approach</span>
-            <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">How we work</h2>
-            <div className="w-16 h-1 bg-accent mx-auto mt-6" />
+      <section className="py-28 lg:py-40">
+        <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
+          <div className="text-center mb-20 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="h-px w-10 bg-accent" />
+              <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Our Approach</span>
+              <div className="h-px w-10 bg-accent" />
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl text-foreground leading-[1.1] tracking-tight">How we work.</h2>
           </div>
 
-          <ol className="relative border-l-2 border-accent/30 pl-8 md:pl-12 space-y-10">
+          <ol className="relative border-l-2 border-accent/30 pl-8 md:pl-14 space-y-12">
             {content.approach.map((step, i) => (
               <li key={step.title} className="relative">
-                <span className="absolute -left-[42px] md:-left-[58px] w-12 h-12 rounded-full bg-accent text-accent-foreground font-display text-lg flex items-center justify-center shadow-md">
+                <span className="absolute -left-[42px] md:-left-[63px] w-12 h-12 rounded-full bg-accent text-accent-foreground font-display text-lg flex items-center justify-center shadow-md">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display text-xl md:text-2xl text-foreground mb-2">{step.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                <h3 className="font-display text-2xl text-foreground mb-3 tracking-tight">{step.title}</h3>
+                <p className="text-muted-foreground leading-[1.75] font-light text-lg">{step.description}</p>
               </li>
             ))}
           </ol>
