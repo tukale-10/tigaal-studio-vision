@@ -150,7 +150,7 @@ const Partners = () => {
                       <img
                         src={partner.logo}
                         alt={partner.name}
-                        className="max-h-16 max-w-full object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                        className="max-h-16 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                       />
                     ) : (
                       <span className="text-base font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
