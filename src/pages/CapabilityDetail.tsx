@@ -187,27 +187,30 @@ const CapabilityDetail = () => {
       </section>
 
       {/* STATS / CHART */}
-      <section className="py-20 lg:py-28 bg-primary">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-28 lg:py-40 bg-primary">
+        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">By the Numbers</span>
-              <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-6 leading-tight">
-                Evidence at <span className="italic text-accent">scale</span>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">By the Numbers</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-primary-foreground mb-8 leading-[1.1] tracking-tight">
+                Evidence at scale.
               </h2>
-              <p className="text-primary-foreground/70 leading-relaxed mb-8">{content.statsCaption}</p>
-              <div className="grid grid-cols-2 gap-px bg-primary-foreground/10">
+              <p className="text-primary-foreground/70 leading-[1.75] mb-10 font-light text-lg">{content.statsCaption}</p>
+              <div className="grid grid-cols-2 gap-4">
                 {content.stats.map((s) => (
-                  <div key={s.label} className="bg-primary p-6">
-                    <div className="font-display text-3xl md:text-4xl text-accent mb-1">
+                  <div key={s.label} className="bg-primary-foreground/[0.05] border border-primary-foreground/10 p-6 rounded-2xl">
+                    <div className="font-display text-3xl md:text-4xl text-accent mb-1 tracking-tight">
                       {s.value.toLocaleString()}{s.suffix || "+"}
                     </div>
-                    <div className="text-primary-foreground/60 text-xs uppercase tracking-wider">{s.label}</div>
+                    <div className="text-primary-foreground/60 text-xs uppercase tracking-[0.2em]">{s.label}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-primary-foreground/[0.04] p-6 lg:p-8 rounded-sm border border-primary-foreground/10">
+            <div className="bg-primary-foreground/[0.04] p-8 rounded-2xl border border-primary-foreground/10">
               <StatsChart stats={content.stats} />
             </div>
           </div>
@@ -215,23 +218,25 @@ const CapabilityDetail = () => {
       </section>
 
       {/* MAP */}
-      <section className="py-20 lg:py-28 bg-secondary">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <section className="py-28 lg:py-40 bg-secondary/50">
+        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <div className="order-2 lg:order-1">
-              <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Where We Work</span>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6 leading-tight">
-                Regional footprint
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Where We Work</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground mb-8 leading-[1.1] tracking-tight">
+                Regional footprint.
               </h2>
-              <div className="w-16 h-1 bg-accent mb-8" />
-              <p className="text-muted-foreground leading-relaxed mb-6">
+              <p className="text-muted-foreground leading-[1.75] mb-5 font-light text-lg">
                 This capability spans Somalia, Kenya, and Ethiopia — pairing local presence with regional perspective.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-[1.75] font-light text-lg">
                 Engagements are delivered from Mogadishu and Nairobi, with field hubs and a network of local researchers, enumerators, and partners on the ground.
               </p>
             </div>
-            <div className="order-1 lg:order-2 bg-background p-6 lg:p-8 rounded-sm border border-border">
+            <div className="order-1 lg:order-2 bg-background p-8 rounded-2xl border border-border/60">
               <HornOfAfricaMap active={content.regions} />
             </div>
           </div>
@@ -239,19 +244,22 @@ const CapabilityDetail = () => {
       </section>
 
       {/* RELATED + CTA */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="flex items-end justify-between mb-12">
+      <section className="py-28 lg:py-40">
+        <div className="container mx-auto px-6 lg:px-12 max-w-6xl">
+          <div className="flex items-end justify-between mb-14">
             <div>
-              <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Related Capabilities</span>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight">Explore further</h2>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="h-px w-10 bg-accent" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">Related Capabilities</span>
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground leading-[1.1] tracking-tight">Explore further.</h2>
             </div>
             <Link to="/services" className="hidden md:inline-flex items-center gap-2 text-accent text-sm font-semibold group">
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> All capabilities
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-px bg-border">
+          <div className="grid md:grid-cols-2 gap-6">
             {content.related.map((relSlug) => {
               const relContent = capabilities[relSlug];
               const relService = allServices.find((s) => slugifyTitle(s.title) === relSlug);
@@ -261,13 +269,13 @@ const CapabilityDetail = () => {
                 <Link
                   key={relSlug}
                   to={`/services/${relSlug}`}
-                  className="bg-background p-8 lg:p-10 group hover:bg-accent/[0.03] transition-colors relative"
+                  className="bg-background border border-border/60 rounded-2xl p-10 group hover:border-accent/40 hover:shadow-md transition-all"
                 >
-                  <div className="w-12 h-12 bg-accent/10 rounded-sm flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors">
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                     <Icon className="text-accent" size={22} />
                   </div>
-                  <h3 className="font-display text-xl text-foreground mb-3 group-hover:text-accent transition-colors">{relService.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">{relContent.tagline}</p>
+                  <h3 className="font-display text-2xl text-foreground mb-3 tracking-tight group-hover:text-accent transition-colors">{relService.title}</h3>
+                  <p className="text-muted-foreground leading-[1.75] mb-6 line-clamp-3 font-light">{relContent.tagline}</p>
                   <span className="inline-flex items-center gap-2 text-accent text-sm font-semibold">
                     Read more <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -279,18 +287,16 @@ const CapabilityDetail = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 lg:py-28 bg-secondary relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-        <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
-          <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Get Started</span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-            Let's build something <span className="italic text-accent">together</span>
+      <section className="py-28 lg:py-32 bg-secondary/50">
+        <div className="container mx-auto px-6 lg:px-12 text-center max-w-3xl">
+          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6 leading-[1.1] tracking-tight">
+            Let's build something together.
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-10">
+          <p className="text-muted-foreground text-lg mb-10 font-light leading-relaxed">
             Tell us about your context and the decisions you're facing — we'll come back with a focused proposal.
           </p>
-          <Link to="/contact" className="group inline-flex items-center gap-3 px-10 py-4 bg-accent text-accent-foreground font-semibold rounded-sm hover:bg-accent/90 transition-all text-lg">
-            Start a conversation <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          <Link to="/contact" className="group inline-flex items-center gap-2 px-8 py-3.5 bg-accent text-accent-foreground font-medium rounded-full hover:bg-accent/90 transition-all">
+            Start a conversation <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>
