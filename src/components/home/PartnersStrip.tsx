@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
 import smrrc from "@/assets/partners/smrrc.png.asset.json";
+import acted from "@/assets/partners/acted.png.asset.json";
 import iftiin from "@/assets/partners/iftiin.jpg";
 import saferworld from "@/assets/partners/saferworld.jpg";
 import netherlands from "@/assets/partners/netherlands.png";
@@ -22,6 +23,7 @@ import care from "@/assets/partners/care.png";
 import savethechildren from "@/assets/partners/savethechildren.jpg";
 
 const partners = [
+  { name: "ACTED", logo: acted.url },
   { name: "World Bank", logo: worldbank },
   { name: "UNOPS", logo: unops },
   { name: "Save the Children", logo: savethechildren },

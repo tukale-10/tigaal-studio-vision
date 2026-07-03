@@ -1,5 +1,6 @@
 import PageHero from "@/components/PageHero";
 import smrrc from "@/assets/partners/smrrc.png.asset.json";
+import acted from "@/assets/partners/acted.png.asset.json";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Landmark, Users } from "lucide-react";
 
@@ -42,6 +43,7 @@ const partnerCategories: { category: string; config: CategoryConfig; partners: P
       topBar: "bg-primary",
     },
     partners: [
+      { name: "ACTED", logo: acted.url },
       { name: "World Bank", logo: worldbank },
       { name: "UNOPS", logo: unops },
       { name: "Save the Children", logo: savethechildren },
