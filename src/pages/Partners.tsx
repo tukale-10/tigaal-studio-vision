@@ -1,5 +1,6 @@
 import PageHero from "@/components/PageHero";
 import smrrc from "@/assets/partners/smrrc.png.asset.json";
+import acted from "@/assets/partners/acted.png.asset.json";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Landmark, Users } from "lucide-react";
 
