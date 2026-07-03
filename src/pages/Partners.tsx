@@ -43,6 +43,7 @@ const partnerCategories: { category: string; config: CategoryConfig; partners: P
       topBar: "bg-primary",
     },
     partners: [
+      { name: "ACTED", logo: acted.url },
       { name: "World Bank", logo: worldbank },
       { name: "UNOPS", logo: unops },
       { name: "Save the Children", logo: savethechildren },
