@@ -19,7 +19,7 @@
       {
         "name": "list_services",
         "title": "List services",
-        "description": "List TIGAAL's published services / capabilities (title, slug, summary).",
+        "description": "List TIGAAL's published services / capabilities.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -43,7 +43,7 @@
       {
         "name": "list_projects",
         "title": "List projects",
-        "description": "List TIGAAL's published projects with donor, location, status, and category.",
+        "description": "List TIGAAL's published projects. Filter by status (Active or Completed).",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -55,8 +55,8 @@
             "status": {
               "type": "string",
               "enum": [
-                "active",
-                "past"
+                "Active",
+                "Completed"
               ],
               "description": "Filter by project status."
             },

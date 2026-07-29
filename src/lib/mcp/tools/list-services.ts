@@ -14,7 +14,7 @@ function client(ctx: ToolContext) {
 export default defineTool({
   name: "list_services",
   title: "List services",
-  description: "List TIGAAL's published services / capabilities (title, slug, summary).",
+  description: "List TIGAAL's published services / capabilities.",
   inputSchema: {
     limit: z.number().int().min(1).max(50).optional().describe("Max rows (default 20)."),
   },
@@ -22,9 +22,9 @@ export default defineTool({
   handler: async ({ limit }, ctx) => {
     const { data, error } = await client(ctx)
       .from("services")
-      .select("id, title, slug, summary, category, order_index")
+      .select("id, title, description, highlights, display_order")
       .eq("published", true)
-      .order("order_index", { ascending: true })
+      .order("display_order", { ascending: true })
       .limit(limit ?? 20);
     if (error) return { content: [{ type: "text", text: error.message }], isError: true };
     return {

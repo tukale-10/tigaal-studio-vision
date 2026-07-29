@@ -14,19 +14,16 @@ function client(ctx: ToolContext) {
 export default defineTool({
   name: "list_projects",
   title: "List projects",
-  description: "List TIGAAL's published projects with donor, location, status, and category.",
+  description: "List TIGAAL's published projects. Filter by status (Active or Completed).",
   inputSchema: {
-    status: z.enum(["active", "past"]).optional().describe("Filter by project status."),
+    status: z.enum(["Active", "Completed"]).optional().describe("Filter by project status."),
     limit: z.number().int().min(1).max(50).optional(),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ status, limit }, ctx) => {
-    let q = client(ctx)
-      .from("projects")
-      .select("id, title, summary, category, location, donor, status, order_index")
-      .eq("published", true);
+    let q = client(ctx).from("projects").select("*").eq("published", true);
     if (status) q = q.eq("status", status);
-    const { data, error } = await q.order("order_index", { ascending: true }).limit(limit ?? 20);
+    const { data, error } = await q.order("created_at", { ascending: false }).limit(limit ?? 20);
     if (error) return { content: [{ type: "text", text: error.message }], isError: true };
     return {
       content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
