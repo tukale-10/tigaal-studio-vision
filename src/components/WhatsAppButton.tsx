@@ -1,8 +1,4 @@
-import { useState } from "react";
-
 export const WhatsAppButton = () => {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <a
       href="https://wa.me/252613926664"
@@ -22,8 +18,6 @@ export const WhatsAppButton = () => {
         active:scale-95
         animate-whatsapp-pulse
       `}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       {/* WhatsApp SVG Icon */}
       <svg
