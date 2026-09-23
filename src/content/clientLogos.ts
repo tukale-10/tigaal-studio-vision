@@ -66,6 +66,7 @@ export const clientLogoGroups: { category: string; clients: ClientLogo[] }[] = [
       { name: "Shaqo Platform", logo: shaqo, aliases: ["Shaqo Consortium"] },
       { name: "iRise", logo: irise },
       { name: "Gargaara Finance", logo: gargaara },
+      { name: "Horncenter Dialogue", logo: horncenter.url, aliases: ["HCD", "Horn Center Dialogue"] },
       { name: "Expanding Access to Justice" },
     ],
   },
