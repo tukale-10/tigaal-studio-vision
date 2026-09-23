@@ -1,121 +1,105 @@
 import PageHero from "@/components/PageHero";
-import { clientLogoGroups, type ClientLogo } from "@/content/clientLogos";
+import HornOfAfricaMap from "@/components/capability/HornOfAfricaMap";
+import { clientLogoGroups } from "@/content/clientLogos";
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe, Landmark, Users } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
+import { useEffect, useRef } from "react";
 
-type CategoryConfig = {
-  icon: React.ReactNode;
-  accent: "primary" | "accent" | "muted";
-  bg: string;
-  topBar: string;
-};
-
-const partnerCategories: { category: string; config: CategoryConfig; partners: ClientLogo[] }[] = [
-  {
-    category: "International Organizations",
-    config: {
-      icon: <Globe size={18} />,
-      accent: "primary",
-      bg: "bg-primary/[0.02]",
-      topBar: "bg-primary",
-    },
-    partners: clientLogoGroups[0].clients,
-  },
-  {
-    category: "Government Bodies",
-    config: {
-      icon: <Landmark size={18} />,
-      accent: "accent",
-      bg: "bg-accent/[0.03]",
-      topBar: "bg-accent",
-    },
-    partners: clientLogoGroups[1].clients,
-  },
-  {
-    category: "Regional & Local Partners",
-    config: {
-      icon: <Users size={18} />,
-      accent: "muted",
-      bg: "bg-secondary/50",
-      topBar: "bg-primary/70",
-    },
-    partners: clientLogoGroups[2].clients,
-  },
-];
-
-const accentClasses = {
-  primary: "group-hover:border-primary/40 group-hover:shadow-primary/10",
-  accent: "group-hover:border-accent/40 group-hover:shadow-accent/10",
-  muted: "group-hover:border-primary/30 group-hover:shadow-primary/10",
-};
-
-const topBarClasses = {
-  primary: "bg-primary",
-  accent: "bg-accent",
-  muted: "bg-primary/70",
-};
+const partners = clientLogoGroups.flatMap((group) => group.clients);
 
 const Partners = () => {
+  const logoGridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = logoGridRef.current;
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>("[data-logo-card]"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main>
       <PageHero title="Our Clients" subtitle="Strategic collaborations delivering impact at scale." breadcrumb="Clients" />
 
-      <section className="py-24 lg:py-32">
+      <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
-          <div className="text-center mb-20">
+          <div className="text-center mb-14 lg:mb-16">
             <span className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4 block">Collaborations</span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-6">
-              Working with <span className="text-accent italic">leaders</span> in development
+              Collaborating with leading organisations across the region
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               We're proud to work with leading international organisations, governments, and development actors. These partnerships let us deliver impact at scale and keep our work rigorous, relevant, and responsive.
             </p>
-            <div className="flex items-center justify-center gap-2 mt-8">
-              <div className="h-1 w-16 bg-primary rounded-full" />
-              <div className="h-1 w-4 bg-accent rounded-full" />
-              <div className="h-1 w-16 bg-primary rounded-full" />
-            </div>
           </div>
 
-          {partnerCategories.map((cat, catIndex) => (
-            <div key={cat.category} className={`mb-16 last:mb-0 rounded-3xl p-8 lg:p-12 ${cat.config.bg} border border-border/60`}>
-              <div className="flex items-center gap-4 mb-10">
-                <span className={`font-display text-4xl ${cat.config.accent === "accent" ? "text-accent/20" : "text-primary/15"}`}>
-                  {String(catIndex + 1).padStart(2, "0")}
-                </span>
-                <div className="flex items-center gap-3">
-                  <span className={`inline-flex items-center justify-center w-10 h-10 rounded-full text-primary-foreground ${topBarClasses[cat.config.accent]}`}>
-                    {cat.config.icon}
+          <div ref={logoGridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-t border-border">
+            {partners.map((partner, index) => (
+              <div
+                key={partner.name}
+                data-logo-card
+                className="client-logo-reveal group relative flex min-h-32 items-center justify-center overflow-hidden border-b border-r border-border bg-card p-5 text-center md:min-h-36 md:p-7"
+                style={{ transitionDelay: `${(index % 10) * 55}ms` }}
+              >
+                <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+                {partner.logo ? (
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="max-h-16 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className="text-base font-semibold leading-snug text-foreground transition-colors duration-300 group-hover:text-accent">
+                    {partner.name}
                   </span>
-                  <div>
-                    <h3 className="font-display text-xl text-foreground">{cat.category}</h3>
-                    <div className={`w-12 h-1 ${topBarClasses[cat.config.accent]} mt-2 rounded-full`} />
-                  </div>
-                </div>
+                )}
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                {cat.partners.map((partner) => (
-                  <div
-                    key={partner.name}
-                    className={`group relative bg-white rounded-xl border border-border p-6 lg:p-8 flex items-center justify-center text-center overflow-hidden hover:shadow-lg transition-all duration-300 min-h-[130px] ${accentClasses[cat.config.accent]}`}
-                  >
-                    <div className={`absolute top-0 left-0 right-0 h-1 ${topBarClasses[cat.config.accent]} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
-                    {partner.logo ? (
-                      <img
-                        src={partner.logo}
-                        alt={partner.name}
-                        className="max-h-16 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                      />
-                    ) : (
-                      <span className="text-base font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
-                        {partner.name}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-secondary/60 py-20 lg:py-28">
+        <div className="container mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:px-8">
+          <div>
+            <div className="mb-5 flex items-center gap-3 text-accent">
+              <MapPin size={18} aria-hidden="true" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em]">Our Reach</span>
             </div>
-          ))}
+            <h2 className="font-display text-4xl text-foreground md:text-5xl">Rooted locally. Connected regionally.</h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              TIGAAL works across Somalia, Kenya, and Ethiopia, combining trusted local networks with regional insight to support programmes that respond to real contexts.
+            </p>
+            <div className="mt-9 grid grid-cols-3 gap-3 border-t border-border pt-7">
+              {[
+                ["Somalia", "Primary base"],
+                ["Kenya", "Regional reach"],
+                ["Ethiopia", "Regional reach"],
+              ].map(([country, detail]) => (
+                <div key={country}>
+                  <div className="font-semibold text-foreground">{country}</div>
+                  <div className="mt-1 text-sm text-muted-foreground">{detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-card p-3 shadow-sm ring-1 ring-border md:p-5">
+            <HornOfAfricaMap active={["SO", "KE", "ET"]} />
+          </div>
         </div>
       </section>
 

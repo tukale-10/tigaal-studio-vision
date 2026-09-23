@@ -157,3 +157,24 @@ html {
 .animate-whatsapp-pulse {
   animation: whatsapp-pulse 2.5s infinite;
 }
+
+.client-logo-reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.97);
+  transition-property: opacity, transform, border-color, box-shadow;
+  transition-duration: 600ms, 600ms, 300ms, 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.client-logo-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logo-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
