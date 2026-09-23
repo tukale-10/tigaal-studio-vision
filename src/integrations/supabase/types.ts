@@ -277,6 +277,7 @@ export type Database = {
           budget: string | null
           category: string
           client: string | null
+          client_logo: string | null
           cover_image: string | null
           created_at: string
           description: string
@@ -300,6 +301,7 @@ export type Database = {
           budget?: string | null
           category?: string
           client?: string | null
+          client_logo?: string | null
           cover_image?: string | null
           created_at?: string
           description?: string
@@ -323,6 +325,7 @@ export type Database = {
           budget?: string | null
           category?: string
           client?: string | null
+          client_logo?: string | null
           cover_image?: string | null
           created_at?: string
           description?: string
