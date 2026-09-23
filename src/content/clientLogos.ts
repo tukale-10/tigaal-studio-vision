@@ -8,6 +8,9 @@ import iftiin from "@/assets/partners/iftiin.jpg";
 import igad from "@/assets/partners/igad.png";
 import irise from "@/assets/partners/irise.png";
 import lpi from "@/assets/partners/lpi.jpg";
+import mercycorps from "@/assets/partners/mercycorps.png.asset.json";
+import horncenter from "@/assets/partners/horncenter-dialogue.png.asset.json";
+import shuraako from "@/assets/partners/shuraako.png.asset.json";
 import moci from "@/assets/partners/moci.png";
 import moys from "@/assets/partners/moys.png";
 import nagaasho from "@/assets/partners/nagaasho.png";
@@ -38,6 +41,8 @@ export const clientLogoGroups: { category: string; clients: ClientLogo[] }[] = [
       { name: "Saferworld", logo: saferworld },
       { name: "IDLO", logo: idlo },
       { name: "Life & Peace Institute", logo: lpi, aliases: ["Life and Peace Institute", "LPI"] },
+      { name: "Mercy Corps", logo: mercycorps.url, aliases: ["Mercy Corps Somalia"] },
+      { name: "Shuraako", logo: shuraako.url, aliases: ["Shuraako Capital", "One Earth Future"] },
     ],
   },
   {
@@ -61,6 +66,7 @@ export const clientLogoGroups: { category: string; clients: ClientLogo[] }[] = [
       { name: "Shaqo Platform", logo: shaqo, aliases: ["Shaqo Consortium"] },
       { name: "iRise", logo: irise },
       { name: "Gargaara Finance", logo: gargaara },
+      { name: "Horncenter Dialogue", logo: horncenter.url, aliases: ["HCD", "Horn Center Dialogue"] },
       { name: "Expanding Access to Justice" },
     ],
   },
