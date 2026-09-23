@@ -89,7 +89,7 @@ const Projects = () => {
                   Driving impact across Somalia.
                 </h2>
               </div>
-              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light lg:pt-8">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-normal lg:pt-8 max-w-2xl">
                 Our portfolio spans governance, climate resilience, financial inclusion, strategic communications, and monitoring & evaluation — each engagement designed to answer specific questions and deliver tangible results.
               </p>
             </div>
@@ -155,7 +155,7 @@ const Projects = () => {
                   <div
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
-                    className="group relative bg-background border border-border/60 rounded-2xl p-10 cursor-pointer hover:border-accent/40 hover:shadow-md transition-all duration-500"
+                    className="group relative bg-background border border-border rounded-xl p-8 lg:p-10 cursor-pointer hover:border-accent/50 hover:shadow-md transition-all duration-500"
                   >
                     <div className="flex items-center gap-3 mb-5">
                       <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">{project.category}</span>
@@ -168,11 +168,11 @@ const Projects = () => {
                     <h3 className="font-display text-2xl text-foreground mb-3 leading-snug tracking-tight group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
-                    {project.client && <p className="text-muted-foreground text-sm mb-3">Client: {project.client}</p>}
+                    {project.client && <p className="text-muted-foreground text-base mb-3">Client: {project.client}</p>}
                     {clientLogo && (
                       <img src={clientLogo} alt={`${project.client || "Client"} logo`} className="h-10 w-32 object-contain object-left mb-5" loading="lazy" />
                     )}
-                    <p className="text-muted-foreground leading-[1.75] font-light line-clamp-3">{project.description}</p>
+                    <p className="text-muted-foreground text-[17px] leading-[1.75] font-normal line-clamp-3">{project.description}</p>
                     <div className="flex items-center gap-2 mt-6 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
                       View details <ArrowUpRight size={14} />
                     </div>
@@ -205,7 +205,7 @@ const Projects = () => {
                   {(selectedProject.client_logo || getClientLogo(selectedProject.client)) && <img src={selectedProject.client_logo || getClientLogo(selectedProject.client)} alt={`${selectedProject.client} logo`} className="h-12 w-40 object-contain object-left mt-4" />}
                 </div>
               )}
-              <p className="text-lg text-muted-foreground leading-[1.75] font-light">{selectedProject.description}</p>
+              <p className="text-lg text-muted-foreground leading-[1.75] font-normal">{selectedProject.description}</p>
             </div>
           </div>
         </div>

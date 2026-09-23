@@ -7,24 +7,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 210 29% 12%;
+    --foreground: 204 30% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 29% 12%;
+    --card-foreground: 204 30% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 29% 12%;
+    --popover-foreground: 204 30% 13%;
 
-    --primary: 205 40% 28%;
+    --primary: 204 30% 13%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 20% 96%;
-    --secondary-foreground: 210 29% 12%;
+    --secondary-foreground: 204 30% 13%;
 
     --muted: 210 20% 96%;
-    --muted-foreground: 215 14% 45%;
+    --muted-foreground: 205 10% 43%;
 
-    --accent: 90 55% 45%;
+    --accent: 89 55% 46%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,7 +32,7 @@
 
     --border: 214 20% 90%;
     --input: 214 20% 90%;
-    --ring: 200 45% 15%;
+    --ring: 204 30% 13%;
 
     --radius: 0.5rem;
 
@@ -45,11 +45,11 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --tigaal-dark: 205 40% 28%;
-    --tigaal-green: 90 55% 45%;
+    --tigaal-dark: 204 30% 13%;
+    --tigaal-green: 89 55% 46%;
     --tigaal-light-gray: 210 20% 96%;
-    --tigaal-text: 210 29% 12%;
-    --tigaal-muted: 215 14% 45%;
+    --tigaal-text: 204 30% 13%;
+    --tigaal-muted: 205 10% 43%;
   }
 }
 
@@ -81,6 +81,55 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Public-site reading rhythm: clear editorial type without changing layout structure. */
+.public-site main {
+  font-size: 1.0625rem;
+}
+
+.public-site main p {
+  line-height: 1.75;
+}
+
+.public-site main p.font-light,
+.public-site footer p.font-light {
+  font-weight: 400;
+}
+
+.public-site main p.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.public-site main p.text-sm,
+.public-site main p.text-\[15px\] {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.public-site main label.text-\[10px\],
+.public-site main span.text-\[10px\],
+.public-site main span.text-\[11px\] {
+  font-size: 0.75rem;
+}
+
+.public-site main input.text-sm,
+.public-site main select.text-sm,
+.public-site main textarea.text-sm,
+.public-site main button.text-sm {
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .public-site main {
+    font-size: 1rem;
+  }
+
+  .public-site main p.text-lg,
+  .public-site main p.text-xl {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
 }
 
 ::-webkit-scrollbar {

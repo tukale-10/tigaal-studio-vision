@@ -8,3 +8,4 @@
 - [x] Verify the project page on desktop and mobile.
 - [x] Add Advisory as a project category in admin and public filtering.
 - [x] Match project client names to the existing Clients-page logos.
+- [x] Improve public-site readability with larger descriptive text, stronger contrast, and clearer editorial spacing.

@@ -39,7 +39,7 @@ import AdminPipeline from "./admin/AdminPipeline";
 const queryClient = new QueryClient();
 
 const PublicLayout = () => (
-  <>
+  <div className="public-site">
     <div className="fixed top-0 left-0 right-0 z-50">
       <InfoBar />
       <Navbar />
@@ -49,7 +49,7 @@ const PublicLayout = () => (
     </div>
     <Footer />
     <WhatsAppButton />
-  </>
+  </div>
 );
 
 const App = () => (
