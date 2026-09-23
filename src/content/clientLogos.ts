@@ -41,6 +41,8 @@ export const clientLogoGroups: { category: string; clients: ClientLogo[] }[] = [
       { name: "Saferworld", logo: saferworld },
       { name: "IDLO", logo: idlo },
       { name: "Life & Peace Institute", logo: lpi, aliases: ["Life and Peace Institute", "LPI"] },
+      { name: "Mercy Corps", logo: mercycorps.url, aliases: ["Mercy Corps Somalia"] },
+      { name: "Shuraako", logo: shuraako.url, aliases: ["Shuraako Capital", "One Earth Future"] },
     ],
   },
   {
