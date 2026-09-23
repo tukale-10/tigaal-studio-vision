@@ -5,6 +5,7 @@ import {
   CheckSquare, Square, MapPin, Calendar, Users, DollarSign,
 } from "lucide-react";
 import ImageUpload from "./components/ImageUpload";
+import { getClientLogo } from "@/content/clientLogos";
 
 interface Project {
   id: string;
@@ -266,7 +267,7 @@ const AdminProjects = () => {
                   </td>
                   <td className="px-3 py-2 text-slate-600">
                     <div className="flex items-center gap-2">
-                      {item.client_logo && <img src={item.client_logo} alt="" className="h-7 w-10 object-contain bg-white border border-slate-100 rounded-sm" />}
+                      {(item.client_logo || getClientLogo(item.client)) && <img src={item.client_logo || getClientLogo(item.client)} alt="" className="h-7 w-10 object-contain bg-white border border-slate-100 rounded-sm" />}
                       <span>{item.client || "—"}</span>
                     </div>
                   </td>
@@ -408,7 +409,7 @@ const ProjectCard = ({ item, selected, onSelect, onEdit, onTogglePublish, onDele
       {item.subtitle && <p className="text-xs text-slate-500 mt-1 line-clamp-1">{item.subtitle}</p>}
       <div className="mt-3 space-y-1.5 text-xs text-slate-600">
         {item.client && <div className="flex items-center gap-1.5"><Users size={12} className="text-slate-400" />{item.client}</div>}
-        {item.client_logo && <img src={item.client_logo} alt={`${item.client || "Client"} logo`} className="h-8 w-24 object-contain object-left bg-white" />}
+        {(item.client_logo || getClientLogo(item.client)) && <img src={item.client_logo || getClientLogo(item.client)} alt={`${item.client || "Client"} logo`} className="h-8 w-24 object-contain object-left bg-white" />}
         {item.location && <div className="flex items-center gap-1.5"><MapPin size={12} className="text-slate-400" />{item.location}</div>}
         {(item.start_date || item.end_date) && <div className="flex items-center gap-1.5"><Calendar size={12} className="text-slate-400" />{fmtRange(item.start_date, item.end_date)}</div>}
       </div>

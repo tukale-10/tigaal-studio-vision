@@ -1,30 +1,7 @@
 import PageHero from "@/components/PageHero";
-import smrrc from "@/assets/partners/smrrc.png.asset.json";
-import acted from "@/assets/partners/acted.png.asset.json";
+import { clientLogoGroups } from "@/content/clientLogos";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Landmark, Users } from "lucide-react";
-
-import iftiin from "@/assets/partners/iftiin.jpg";
-import saferworld from "@/assets/partners/saferworld.jpg";
-import netherlands from "@/assets/partners/netherlands.png";
-import moys from "@/assets/partners/moys.png";
-import unops from "@/assets/partners/unops.png";
-import nagaasho from "@/assets/partners/nagaasho.png";
-import shaqo from "@/assets/partners/shaqo.jpg";
-import idlo from "@/assets/partners/idlo.png";
-import candlelight from "@/assets/partners/candlelight.jpeg";
-import igad from "@/assets/partners/igad.png";
-import worldbank from "@/assets/partners/worldbank.png";
-import gargaara from "@/assets/partners/gargaara.png";
-import cbs from "@/assets/partners/cbs.png";
-import irise from "@/assets/partners/irise.png";
-import supremecourt from "@/assets/partners/supremecourt.jpg";
-import moci from "@/assets/partners/moci.png";
-import lpi from "@/assets/partners/lpi.jpg";
-import care from "@/assets/partners/care.png";
-import savethechildren from "@/assets/partners/savethechildren.jpg";
-
-type Partner = { name: string; logo?: string };
 
 type CategoryConfig = {
   icon: React.ReactNode;
@@ -42,16 +19,7 @@ const partnerCategories: { category: string; config: CategoryConfig; partners: P
       bg: "bg-primary/[0.02]",
       topBar: "bg-primary",
     },
-    partners: [
-      { name: "ACTED", logo: acted.url },
-      { name: "World Bank", logo: worldbank },
-      { name: "UNOPS", logo: unops },
-      { name: "Save the Children", logo: savethechildren },
-      { name: "CARE", logo: care },
-      { name: "Saferworld", logo: saferworld },
-      { name: "IDLO", logo: idlo },
-      { name: "Life & Peace Institute", logo: lpi },
-    ],
+    partners: clientLogoGroups[0].clients,
   },
   {
     category: "Government Bodies",
@@ -61,14 +29,7 @@ const partnerCategories: { category: string; config: CategoryConfig; partners: P
       bg: "bg-accent/[0.03]",
       topBar: "bg-accent",
     },
-    partners: [
-      { name: "Ministry of Youth & Sports", logo: moys },
-      { name: "Netherlands Ministry of Foreign Affairs", logo: netherlands },
-      { name: "Central Bank of Somalia", logo: cbs },
-      { name: "Supreme Court of Somalia", logo: supremecourt },
-      { name: "Ministry of Commerce & Industry", logo: moci },
-      { name: "Somali Marine Resources Research Center (SMRRC)", logo: smrrc.url },
-    ],
+    partners: clientLogoGroups[1].clients,
   },
   {
     category: "Regional & Local Partners",
@@ -78,16 +39,7 @@ const partnerCategories: { category: string; config: CategoryConfig; partners: P
       bg: "bg-secondary/50",
       topBar: "bg-primary/70",
     },
-    partners: [
-      { name: "IGAD CAEP", logo: igad },
-      { name: "Iftiin Foundation", logo: iftiin },
-      { name: "Nagaasho", logo: nagaasho },
-      { name: "Candlelight", logo: candlelight },
-      { name: "Shaqo Platform", logo: shaqo },
-      { name: "iRise", logo: irise },
-      { name: "Gargaara Finance", logo: gargaara },
-      { name: "Expanding Access to Justice" },
-    ],
+    partners: clientLogoGroups[2].clients,
   },
 ];
 

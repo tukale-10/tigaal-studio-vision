@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import PageHero from "@/components/PageHero";
 import { X, ArrowUpRight, CalendarDays, Layers3 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { getClientLogo } from "@/content/clientLogos";
 
 interface Project {
   id: string;
@@ -148,7 +149,9 @@ const Projects = () => {
                 {projects.length === 0 ? (
                   <div className="py-16 text-center border border-dashed border-border rounded-md text-muted-foreground">No projects match these filters.</div>
                 ) : <div className="grid md:grid-cols-2 gap-6">
-                {projects.map((project) => (
+                {projects.map((project) => {
+                  const clientLogo = project.client_logo || getClientLogo(project.client);
+                  return (
                   <div
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
@@ -166,15 +169,16 @@ const Projects = () => {
                       {project.title}
                     </h3>
                     {project.client && <p className="text-muted-foreground text-sm mb-3">Client: {project.client}</p>}
-                    {project.client_logo && (
-                      <img src={project.client_logo} alt={`${project.client || "Client"} logo`} className="h-10 w-32 object-contain object-left mb-5" loading="lazy" />
+                    {clientLogo && (
+                      <img src={clientLogo} alt={`${project.client || "Client"} logo`} className="h-10 w-32 object-contain object-left mb-5" loading="lazy" />
                     )}
                     <p className="text-muted-foreground leading-[1.75] font-light line-clamp-3">{project.description}</p>
                     <div className="flex items-center gap-2 mt-6 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
                       View details <ArrowUpRight size={14} />
                     </div>
                   </div>
-                ))}
+                  );
+                })}
                 </div>}
               </div>
             )}
@@ -198,7 +202,7 @@ const Projects = () => {
               {selectedProject.client && (
                 <div className="mb-6 pb-6 border-b border-border">
                   <p className="text-sm text-muted-foreground"><strong className="text-foreground">Client:</strong> {selectedProject.client}</p>
-                  {selectedProject.client_logo && <img src={selectedProject.client_logo} alt={`${selectedProject.client} logo`} className="h-12 w-40 object-contain object-left mt-4" />}
+                  {(selectedProject.client_logo || getClientLogo(selectedProject.client)) && <img src={selectedProject.client_logo || getClientLogo(selectedProject.client)} alt={`${selectedProject.client} logo`} className="h-12 w-40 object-contain object-left mt-4" />}
                 </div>
               )}
               <p className="text-lg text-muted-foreground leading-[1.75] font-light">{selectedProject.description}</p>
