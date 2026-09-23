@@ -28,7 +28,7 @@ const ServicesGrid = () => {
               Six interconnected practice areas, one trusted partner.
             </h2>
           </div>
-          <p className="lg:col-span-5 text-muted-foreground text-lg leading-[1.75] font-light">
+          <p className="lg:col-span-5 text-muted-foreground text-lg leading-[1.75] font-normal max-w-xl">
             Built around research, learning, and advocacy — our capabilities are designed to address complex development questions with rigour and relevance.
           </p>
         </div>
@@ -38,7 +38,7 @@ const ServicesGrid = () => {
             <Link
               to={`/services/${service.slug}`}
               key={service.title}
-              className="group relative bg-background rounded-2xl p-10 border border-border/60 hover:border-accent/40 hover:shadow-lg transition-all duration-500"
+              className="group relative bg-background rounded-xl p-8 lg:p-10 border border-border hover:border-accent/40 hover:shadow-md transition-all duration-500"
             >
               <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-8 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                 <service.icon className="text-accent group-hover:text-accent-foreground transition-colors" size={22} />
@@ -46,7 +46,7 @@ const ServicesGrid = () => {
               <h3 className="text-xl font-semibold text-foreground mb-3 leading-snug">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground text-[15px] leading-relaxed font-light">{service.desc}</p>
+              <p className="text-muted-foreground text-[17px] leading-[1.7] font-normal">{service.desc}</p>
               <ArrowUpRight
                 size={18}
                 className="absolute top-10 right-10 text-muted-foreground/30 group-hover:text-accent transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

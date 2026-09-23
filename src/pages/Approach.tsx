@@ -36,10 +36,10 @@ const Approach = () => {
               </h2>
             </div>
             <div className="space-y-6 lg:pt-8">
-              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-normal max-w-2xl">
                 We're distinctive in how we approach, manage, and deliver work. Our model rests on a simple conviction: local problems need local solutions. As a social enterprise, we listen first — to clients, to local stakeholders, and to the subject-matter experts closest to the issue.
               </p>
-              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light">
+              <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-normal max-w-2xl">
                 This inclusive way of working keeps our analysis grounded, our recommendations practical, and our solutions accountable to the people they affect.
               </p>
             </div>
@@ -60,20 +60,20 @@ const Approach = () => {
               <h2 className="font-display text-4xl md:text-5xl lg:text-[3.5rem] text-primary-foreground mb-6 leading-[1.05] tracking-tight">
                 From dialogue to results.
               </h2>
-              <p className="text-lg text-primary-foreground/70 leading-relaxed font-light">
+              <p className="text-lg text-primary-foreground/85 leading-[1.7] font-normal">
                 A four-step framework that keeps every engagement grounded, collaborative, and outcome-focused.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, i) => (
-                <div key={step.title} className="bg-primary-foreground/[0.04] border border-primary-foreground/10 rounded-2xl p-10 hover:bg-primary-foreground/[0.07] transition-all duration-500">
+                <div key={step.title} className="bg-primary-foreground/[0.04] border border-primary-foreground/15 rounded-xl p-8 lg:p-9 hover:bg-primary-foreground/[0.07] transition-all duration-500">
                   <span className="font-display text-5xl text-accent/30 block mb-6 leading-none">{String(i + 1).padStart(2, "0")}</span>
                   <div className="w-14 h-14 bg-accent/15 rounded-xl flex items-center justify-center mb-6">
                     <step.icon className="text-accent" size={24} />
                   </div>
                   <h3 className="font-display text-2xl text-primary-foreground mb-3">{step.title}</h3>
-                  <p className="text-primary-foreground/65 leading-relaxed font-light">{step.desc}</p>
+                  <p className="text-primary-foreground/80 text-base leading-[1.7] font-normal">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -96,7 +96,7 @@ const Approach = () => {
                 </h2>
               </div>
               <div className="flex items-end">
-                <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-light">
+                <p className="text-lg lg:text-xl text-muted-foreground leading-[1.75] font-normal max-w-2xl">
                   Our delivery model brings together local stakeholders, influencers, and subject-matter experts — opening up space for innovation at every stage of the work.
                 </p>
               </div>
@@ -106,14 +106,14 @@ const Approach = () => {
               {deliveryModel.map((item, i) => (
                 <div
                   key={item.step}
-                  className="bg-background border border-border/60 rounded-2xl p-8 hover:border-accent/40 hover:shadow-md transition-all duration-500 relative"
+                  className="bg-background border border-border rounded-xl p-8 hover:border-accent/40 hover:shadow-md transition-all duration-500 relative"
                 >
                   <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                     <item.icon className="text-accent" size={22} />
                   </div>
                   <span className="font-display text-3xl text-accent/20 absolute top-6 right-6">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="font-display text-xl text-foreground mb-3">{item.step}</h3>
-                  <p className="text-muted-foreground leading-relaxed font-light text-[15px]">{item.desc}</p>
+                  <p className="text-muted-foreground leading-[1.7] font-normal text-base">{item.desc}</p>
                 </div>
               ))}
             </div>

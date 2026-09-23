@@ -46,7 +46,7 @@ const HeroSection = () => {
           </h1>
 
           <p
-            className="text-base md:text-lg text-primary-foreground/80 mb-12 max-w-xl leading-relaxed animate-slide-up-fade font-light"
+            className="text-lg md:text-xl text-primary-foreground/90 mb-12 max-w-2xl leading-[1.7] animate-slide-up-fade font-normal"
             style={{ animationDelay: "0.15s" }}
           >
             A Somalia-based social enterprise delivering rigorous research, advisory, and monitoring across Somalia, Kenya, and Ethiopia — pairing international standards with deep local knowledge.
