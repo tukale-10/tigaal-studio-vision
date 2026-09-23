@@ -1,4 +1,4 @@
-import mapAsset from "@/assets/tigaal-reach-map.png.asset.json";
+import mapAsset from "@/assets/tigaal-reach-map-v2.png.asset.json";
 
 const COUNTRY_NAMES: Record<string, string> = {
   SO: "Somalia",
