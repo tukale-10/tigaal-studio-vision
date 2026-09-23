@@ -51,7 +51,7 @@ const Partners = () => {
               <div
                 key={partner.name}
                 data-logo-card
-                className="client-logo-reveal group relative flex min-h-32 items-center justify-center overflow-hidden border-b border-r border-border bg-card p-5 text-center md:min-h-36 md:p-7"
+                className="client-logo-reveal group relative flex min-h-40 items-center justify-center overflow-hidden border-b border-r border-border bg-card p-6 text-center md:min-h-48 md:p-8"
                 style={{ transitionDelay: `${(index % 10) * 55}ms` }}
               >
                 <span className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
@@ -59,7 +59,7 @@ const Partners = () => {
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="max-h-16 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="max-h-24 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
                 ) : (
