@@ -11,6 +11,7 @@ interface Project {
   title: string;
   subtitle: string | null;
   client: string | null;
+  client_logo: string | null;
   description: string;
   category: string;
   status: string;
@@ -31,7 +32,7 @@ interface Project {
 type FormState = Omit<Project, "id">;
 
 const empty: FormState = {
-  title: "", subtitle: "", client: "", description: "",
+  title: "", subtitle: "", client: "", client_logo: "", description: "",
   category: "Research", status: "Active", published: true,
   cover_image: "", location: "", donor: "", partners: "",
   start_date: "", end_date: "", budget: "", sector: "",
@@ -94,7 +95,7 @@ const AdminProjects = () => {
     setCreating(false);
     setEditing(item);
     setForm({
-      title: item.title, subtitle: item.subtitle || "", client: item.client || "",
+      title: item.title, subtitle: item.subtitle || "", client: item.client || "", client_logo: item.client_logo || "",
       description: item.description || "", category: item.category, status: item.status,
       published: item.published, cover_image: item.cover_image || "", location: item.location || "",
       donor: item.donor || "", partners: item.partners || "",
@@ -263,7 +264,12 @@ const AdminProjects = () => {
                     <div className="font-medium text-slate-900">{item.title}</div>
                     {item.subtitle && <div className="text-xs text-slate-500">{item.subtitle}</div>}
                   </td>
-                  <td className="px-3 py-2 text-slate-600">{item.client || "—"}</td>
+                  <td className="px-3 py-2 text-slate-600">
+                    <div className="flex items-center gap-2">
+                      {item.client_logo && <img src={item.client_logo} alt="" className="h-7 w-10 object-contain bg-white border border-slate-100 rounded-sm" />}
+                      <span>{item.client || "—"}</span>
+                    </div>
+                  </td>
                   <td className="px-3 py-2 text-slate-600">{item.category}</td>
                   <td className="px-3 py-2">
                     <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs border ${statusTone[item.status] || "bg-slate-50 text-slate-600 border-slate-200"}`}>{item.status}</span>
@@ -322,6 +328,11 @@ const AdminProjects = () => {
 
               <Section title="Client & Partners">
                 <Field label="Client" value={form.client || ""} onChange={(v) => setForm({ ...form, client: v })} icon={<Users size={14} />} />
+                <div>
+                  <label className="block text-slate-600 text-xs mb-1">Client logo</label>
+                  <p className="text-xs text-slate-400 mb-2">Upload the client or commissioning organisation logo.</p>
+                  <ImageUpload value={form.client_logo || ""} onChange={(url) => setForm({ ...form, client_logo: url })} previewFit="contain" compact />
+                </div>
                 <Field label="Donor / Funder" value={form.donor || ""} onChange={(v) => setForm({ ...form, donor: v })} icon={<DollarSign size={14} />} />
                 <Field label="Partners (comma separated)" value={form.partners || ""} onChange={(v) => setForm({ ...form, partners: v })} />
                 <Field label="Location" value={form.location || ""} onChange={(v) => setForm({ ...form, location: v })} icon={<MapPin size={14} />} />
@@ -397,6 +408,7 @@ const ProjectCard = ({ item, selected, onSelect, onEdit, onTogglePublish, onDele
       {item.subtitle && <p className="text-xs text-slate-500 mt-1 line-clamp-1">{item.subtitle}</p>}
       <div className="mt-3 space-y-1.5 text-xs text-slate-600">
         {item.client && <div className="flex items-center gap-1.5"><Users size={12} className="text-slate-400" />{item.client}</div>}
+        {item.client_logo && <img src={item.client_logo} alt={`${item.client || "Client"} logo`} className="h-8 w-24 object-contain object-left bg-white" />}
         {item.location && <div className="flex items-center gap-1.5"><MapPin size={12} className="text-slate-400" />{item.location}</div>}
         {(item.start_date || item.end_date) && <div className="flex items-center gap-1.5"><Calendar size={12} className="text-slate-400" />{fmtRange(item.start_date, item.end_date)}</div>}
       </div>
