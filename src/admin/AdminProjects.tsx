@@ -39,7 +39,7 @@ const empty: FormState = {
   tags: [], outcomes: "", gallery: [],
 };
 
-const categories = ["Research", "M&E", "Communications", "Governance", "Climate", "Financial Inclusion"];
+const categories = ["Research", "Advisory", "M&E", "Communications", "Governance", "Climate", "Financial Inclusion"];
 const statuses = ["Active", "Completed", "On Hold", "Cancelled"];
 
 const statusTone: Record<string, string> = {
