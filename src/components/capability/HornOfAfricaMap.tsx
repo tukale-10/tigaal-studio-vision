@@ -1,4 +1,4 @@
-import mapAsset from "@/assets/tigaal-reach-map-v2.png.asset.json";
+import mapAsset from "@/assets/tigaal-reach-map.png";
 
 const COUNTRY_NAMES: Record<string, string> = {
   SO: "Somalia",
@@ -20,7 +20,7 @@ const HornOfAfricaMap = ({ active }: Props) => {
     <div className="relative w-full">
       <div className="relative w-full overflow-hidden rounded-sm bg-background">
         <img
-          src={mapAsset.url}
+          src={mapAsset}
           alt="TIGAAL Reach — Somalia, Kenya, Ethiopia"
           className="w-full h-auto block"
           loading="lazy"
