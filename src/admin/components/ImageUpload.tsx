@@ -45,7 +45,7 @@ const ImageUpload = ({ value, onChange, bucket = "cms-images", previewFit = "cov
           <button
             type="button"
             onClick={() => onChange("")}
-            className="absolute top-2 right-2 bg-black/60 text-slate-900 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute top-2 right-2 bg-slate-900/80 text-slate-50 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <X size={14} />
           </button>

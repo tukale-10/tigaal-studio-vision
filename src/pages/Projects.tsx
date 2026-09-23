@@ -23,7 +23,7 @@ const projectTouchesYear = (project: Project, year: number) => {
   if (startYear && endYear) return startYear <= year && endYear >= year;
   if (startYear) return startYear === year;
   if (endYear) return endYear === year;
-  return new Date(project.created_at).getUTCFullYear() === year;
+  return project.status === "Active";
 };
 
 const Projects = () => {
