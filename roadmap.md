@@ -9,3 +9,4 @@
 - [x] Add Advisory as a project category in admin and public filtering.
 - [x] Match project client names to the existing Clients-page logos.
 - [x] Improve public-site readability with larger descriptive text, stronger contrast, and clearer editorial spacing.
+- [x] Unify the Clients page into one animated logo wall and add the Our Reach section.
