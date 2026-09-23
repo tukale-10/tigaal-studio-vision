@@ -1,5 +1,5 @@
 import PageHero from "@/components/PageHero";
-import { clientLogoGroups } from "@/content/clientLogos";
+import { clientLogoGroups, type ClientLogo } from "@/content/clientLogos";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Landmark, Users } from "lucide-react";
 
@@ -10,7 +10,7 @@ type CategoryConfig = {
   topBar: string;
 };
 
-const partnerCategories: { category: string; config: CategoryConfig; partners: Partner[] }[] = [
+const partnerCategories: { category: string; config: CategoryConfig; partners: ClientLogo[] }[] = [
   {
     category: "International Organizations",
     config: {
