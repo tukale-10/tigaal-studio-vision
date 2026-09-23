@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import PageHero from "@/components/PageHero";
-import { X, ArrowUpRight, Briefcase, TrendingUp } from "lucide-react";
+import { X, ArrowUpRight, CalendarDays, Layers3 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Project {
@@ -8,13 +8,28 @@ interface Project {
   title: string;
   subtitle: string | null;
   client: string | null;
+  client_logo: string | null;
   description: string;
   category: string;
   status: string;
+  start_date: string | null;
+  end_date: string | null;
+  created_at: string;
 }
 
+const projectTouchesYear = (project: Project, year: number) => {
+  const startYear = project.start_date ? new Date(project.start_date).getUTCFullYear() : null;
+  const endYear = project.end_date ? new Date(project.end_date).getUTCFullYear() : null;
+  if (startYear && endYear) return startYear <= year && endYear >= year;
+  if (startYear) return startYear === year;
+  if (endYear) return endYear === year;
+  return project.status === "Active";
+};
+
 const Projects = () => {
-  const [tab, setTab] = useState<"past" | "current">("past");
+  const [scope, setScope] = useState<"2026" | "all">("2026");
+  const [statusFilter, setStatusFilter] = useState("All");
+  const [categoryFilter, setCategoryFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,9 +47,21 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  const pastProjects = allProjects.filter(p => p.status === "Completed");
   const currentProjects = allProjects.filter(p => p.status === "Active");
-  const projects = tab === "past" ? pastProjects : currentProjects;
+  const categories = useMemo(
+    () => Array.from(new Set(allProjects.map((project) => project.category))).sort(),
+    [allProjects],
+  );
+  const statuses = useMemo(
+    () => Array.from(new Set(allProjects.map((project) => project.status))).sort(),
+    [allProjects],
+  );
+  const projects = useMemo(() => allProjects.filter((project) => {
+    if (scope === "2026" && !projectTouchesYear(project, 2026)) return false;
+    if (statusFilter !== "All" && project.status !== statusFilter) return false;
+    if (categoryFilter !== "All" && project.category !== categoryFilter) return false;
+    return true;
+  }), [allProjects, scope, statusFilter, categoryFilter]);
 
   const stats = [
     { label: "Completed Projects", value: "60+" },
@@ -82,19 +109,33 @@ const Projects = () => {
       <section className="pb-28 lg:pb-40">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="flex gap-3 mb-12">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-12">
+              <div className="flex flex-wrap gap-2" role="group" aria-label="Project period">
               <button
-                onClick={() => setTab("past")}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${tab === "past" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
+                onClick={() => setScope("2026")}
+                className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${scope === "2026" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
               >
-                <Briefcase size={14} /> Past Projects (60+)
+                <CalendarDays size={15} /> 2026 Projects
               </button>
               <button
-                onClick={() => setTab("current")}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all ${tab === "current" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
+                onClick={() => setScope("all")}
+                className={`flex items-center gap-2 px-5 py-3 rounded-full text-sm font-medium transition-all ${scope === "all" ? "bg-accent text-accent-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"}`}
               >
-                <TrendingUp size={14} /> Current ({currentProjects.length})
+                <Layers3 size={15} /> All Projects ({allProjects.length})
               </button>
+              </div>
+              <div className="grid grid-cols-2 gap-2 w-full lg:w-auto">
+                <label className="sr-only" htmlFor="project-status">Filter by status</label>
+                <select id="project-status" value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)} className="min-w-0 lg:min-w-40 px-4 py-3 bg-background border border-border rounded-md text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30">
+                  <option value="All">All statuses</option>
+                  {statuses.map((status) => <option key={status} value={status}>{status}</option>)}
+                </select>
+                <label className="sr-only" htmlFor="project-category">Filter by category</label>
+                <select id="project-category" value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)} className="min-w-0 lg:min-w-44 px-4 py-3 bg-background border border-border rounded-md text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30">
+                  <option value="All">All categories</option>
+                  {categories.map((category) => <option key={category} value={category}>{category}</option>)}
+                </select>
+              </div>
             </div>
 
             {loading ? (
@@ -102,7 +143,11 @@ const Projects = () => {
                 {[...Array(4)].map((_, i) => <div key={i} className="h-48 bg-secondary rounded-2xl animate-pulse" />)}
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm text-muted-foreground mb-5">Showing {projects.length} {projects.length === 1 ? "project" : "projects"}</p>
+                {projects.length === 0 ? (
+                  <div className="py-16 text-center border border-dashed border-border rounded-md text-muted-foreground">No projects match these filters.</div>
+                ) : <div className="grid md:grid-cols-2 gap-6">
                 {projects.map((project) => (
                   <div
                     key={project.id}
@@ -111,7 +156,7 @@ const Projects = () => {
                   >
                     <div className="flex items-center gap-3 mb-5">
                       <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">{project.category}</span>
-                      {tab === "current" && (
+                      {project.status === "Active" && (
                         <span className="inline-flex items-center gap-1.5 text-xs text-emerald-600">
                           <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Active
                         </span>
@@ -120,13 +165,17 @@ const Projects = () => {
                     <h3 className="font-display text-2xl text-foreground mb-3 leading-snug tracking-tight group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
-                    {project.client && <p className="text-muted-foreground text-sm mb-4 font-light">Client: {project.client}</p>}
+                    {project.client && <p className="text-muted-foreground text-sm mb-3">Client: {project.client}</p>}
+                    {project.client_logo && (
+                      <img src={project.client_logo} alt={`${project.client || "Client"} logo`} className="h-10 w-32 object-contain object-left mb-5" loading="lazy" />
+                    )}
                     <p className="text-muted-foreground leading-[1.75] font-light line-clamp-3">{project.description}</p>
                     <div className="flex items-center gap-2 mt-6 text-accent text-sm font-semibold group-hover:gap-3 transition-all">
                       View details <ArrowUpRight size={14} />
                     </div>
                   </div>
                 ))}
+                </div>}
               </div>
             )}
           </div>
@@ -147,9 +196,10 @@ const Projects = () => {
                 <button onClick={() => setSelectedProject(null)} className="text-muted-foreground hover:text-foreground p-2"><X size={20} /></button>
               </div>
               {selectedProject.client && (
-                <p className="text-sm text-muted-foreground mb-6 pb-6 border-b border-border">
-                  <strong className="text-foreground">Client:</strong> {selectedProject.client}
-                </p>
+                <div className="mb-6 pb-6 border-b border-border">
+                  <p className="text-sm text-muted-foreground"><strong className="text-foreground">Client:</strong> {selectedProject.client}</p>
+                  {selectedProject.client_logo && <img src={selectedProject.client_logo} alt={`${selectedProject.client} logo`} className="h-12 w-40 object-contain object-left mt-4" />}
+                </div>
               )}
               <p className="text-lg text-muted-foreground leading-[1.75] font-light">{selectedProject.description}</p>
             </div>

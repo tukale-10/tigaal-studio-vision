@@ -6,9 +6,11 @@ interface ImageUploadProps {
   value?: string;
   onChange: (url: string) => void;
   bucket?: string;
+  previewFit?: "cover" | "contain";
+  compact?: boolean;
 }
 
-const ImageUpload = ({ value, onChange, bucket = "cms-images" }: ImageUploadProps) => {
+const ImageUpload = ({ value, onChange, bucket = "cms-images", previewFit = "cover", compact = false }: ImageUploadProps) => {
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
 
@@ -34,12 +36,16 @@ const ImageUpload = ({ value, onChange, bucket = "cms-images" }: ImageUploadProp
   return (
     <div>
       {value ? (
-        <div className="relative group">
-          <img src={value} alt="" className="w-full h-48 object-cover rounded-md border border-slate-200" />
+        <div className={`relative group ${compact ? "max-w-xs" : ""}`}>
+          <img
+            src={value}
+            alt="Uploaded preview"
+            className={`w-full ${compact ? "h-28" : "h-48"} ${previewFit === "contain" ? "object-contain p-4" : "object-cover"} bg-white rounded-md border border-slate-200`}
+          />
           <button
             type="button"
             onClick={() => onChange("")}
-            className="absolute top-2 right-2 bg-black/60 text-slate-900 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute top-2 right-2 bg-slate-900/80 text-slate-50 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <X size={14} />
           </button>
@@ -49,7 +55,7 @@ const ImageUpload = ({ value, onChange, bucket = "cms-images" }: ImageUploadProp
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
-          className={`flex flex-col items-center justify-center h-48 border-2 border-dashed rounded-md cursor-pointer transition-colors ${
+          className={`flex flex-col items-center justify-center ${compact ? "h-28 max-w-xs" : "h-48"} border-2 border-dashed rounded-md cursor-pointer transition-colors ${
             dragOver ? "border-[hsl(var(--accent))] bg-[hsl(var(--accent))]/5" : "border-slate-200 hover:border-slate-300"
           }`}
         >
