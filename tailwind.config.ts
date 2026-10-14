@@ -67,6 +67,7 @@ export default {
           "light-gray": "hsl(var(--tigaal-light-gray))",
           text: "hsl(var(--tigaal-text))",
           muted: "hsl(var(--tigaal-muted))",
+          gold: "hsl(var(--impact-gold))",
         },
       },
       borderRadius: {
