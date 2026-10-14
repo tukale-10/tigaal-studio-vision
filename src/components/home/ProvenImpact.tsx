@@ -2,29 +2,18 @@ import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, BarChart3, Users, Handshake, Globe2 } from "lucide-react";
 
 const stats = [
-  { icon: TrendingUp, value: "60+", label: "Projects delivered" },
-  { icon: BarChart3, value: "6", label: "Core service areas" },
-  { icon: Users, value: "7+", label: "In-house specialists" },
-  { icon: Handshake, value: "20+", label: "Clients & partners" },
+  { icon: TrendingUp, value: "150+", label: "Projects delivered" },
+  { icon: BarChart3, value: "8", label: "Core service areas" },
+  { icon: Users, value: "15+", label: "In-house specialists" },
+  { icon: Handshake, value: "50+", label: "Clients & partners" },
   { icon: Globe2, value: "3", label: "Countries of operation" },
 ];
 
 const ProvenImpact = () => {
   return (
-    <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
+    <section className="py-20 lg:py-24 bg-primary text-primary-foreground">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-px w-10 bg-accent" />
-          <span className="text-accent text-[11px] font-semibold tracking-[0.32em] uppercase">
-            Proven Impact
-          </span>
-          <div className="h-px w-10 bg-accent" />
-        </div>
-        <h2 className="font-display text-4xl md:text-5xl lg:text-[3.25rem] text-primary-foreground text-center mb-16 lg:mb-20 leading-[1.05] tracking-tight">
-          Numbers that speak for themselves.
-        </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12 mb-16 lg:mb-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-12 mb-14 lg:mb-16">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center text-center">
               <stat.icon className="text-accent mb-5" size={34} strokeWidth={1.75} />
