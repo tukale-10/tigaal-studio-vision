@@ -48,7 +48,6 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  const currentProjects = allProjects.filter(p => p.status === "Active");
   const categories = useMemo(
     () => Array.from(new Set(allProjects.map((project) => project.category))).sort(),
     [allProjects],
@@ -65,10 +64,10 @@ const Projects = () => {
   }), [allProjects, scope, statusFilter, categoryFilter]);
 
   const stats = [
-    { label: "Completed Projects", value: "60+" },
-    { label: "Active Engagements", value: currentProjects.length.toString() },
-    { label: "Partner Organizations", value: "15+" },
-    { label: "Sectors Covered", value: "6" },
+    { label: "Projects Delivered", value: "150+" },
+    { label: "Core Service Areas", value: "8" },
+    { label: "In-House Specialists", value: "15+" },
+    { label: "Clients & Partners", value: "50+" },
   ];
 
   return (

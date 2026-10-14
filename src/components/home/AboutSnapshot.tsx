@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import teamImg from "@/assets/team-workshop-3.jpg";
 
 const stats = [
-  { value: "60+", label: "Projects Delivered" },
-  { value: "6", label: "Core Service Areas" },
-  { value: "7+", label: "In-House Specialists" },
-  { value: "20+", label: "Clients & Partners" },
+  { value: "150+", label: "Projects Delivered" },
+  { value: "8", label: "Core Service Areas" },
+  { value: "15+", label: "In-House Specialists" },
+  { value: "50+", label: "Clients & Partners" },
 ];
 
 const AboutSnapshot = () => {
