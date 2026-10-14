@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, BarChart3, Users, Handshake, Globe2 } from "lucide-react";
 
 const stats = [
-  { icon: TrendingUp, value: "60+", label: "Projects delivered" },
-  { icon: BarChart3, value: "6", label: "Core service areas" },
-  { icon: Users, value: "7+", label: "In-house specialists" },
-  { icon: Handshake, value: "20+", label: "Clients & partners" },
+  { icon: TrendingUp, value: "150+", label: "Projects delivered" },
+  { icon: BarChart3, value: "8", label: "Core service areas" },
+  { icon: Users, value: "15+", label: "In-house specialists" },
+  { icon: Handshake, value: "50+", label: "Clients & partners" },
   { icon: Globe2, value: "3", label: "Countries of operation" },
 ];
 
