@@ -4,6 +4,7 @@ import ServicesGrid from "@/components/home/ServicesGrid";
 import ProgramDesign from "@/components/home/ProgramDesign";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
 import WhyChoose from "@/components/home/WhyChoose";
+import ProvenImpact from "@/components/home/ProvenImpact";
 import PartnersStrip from "@/components/home/PartnersStrip";
 import CTABanner from "@/components/home/CTABanner";
 
@@ -16,6 +17,7 @@ const Index = () => {
       <ProgramDesign />
       <FeaturedProjects />
       <WhyChoose />
+      <ProvenImpact />
       <PartnersStrip />
       <CTABanner />
     </main>
