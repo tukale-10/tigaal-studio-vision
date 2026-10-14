@@ -11,3 +11,4 @@
 - [x] Improve public-site readability with larger descriptive text, stronger contrast, and clearer editorial spacing.
 - [x] Unify the Clients page into one animated logo wall and add the Our Reach section.
 - [x] Remove the stats band headings and update the figures to 150+ projects, 8 core services, 15+ specialists, 50+ clients & partners.
+- [x] Align the homepage summary and Projects statistics with the approved company figures and labels.
